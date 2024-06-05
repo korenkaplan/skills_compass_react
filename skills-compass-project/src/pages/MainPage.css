@@ -1,0 +1,20 @@
+/* src/pages/MainPage.css */
+.main-page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  .content {
+    margin-left: 200px; /* Align with the side menu width */
+    width: calc(100% - 200px);
+    overflow-y: auto; /* Allow vertical scrolling */
+  }
+
+  .section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
+  }

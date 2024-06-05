@@ -1,0 +1,53 @@
+/* src/components/SideMenu.css */
+.side-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #1E2028;
+    color: white;
+    padding-top: 20px;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    overflow-y: auto; /* Add vertical scrolling if needed */
+    overflow-x: hidden; /* Hide horizontal scroll */
+    z-index: 1; /* Ensure the side menu stays above other content */
+}
+
+  .side-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Remove default margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the menu items */
+    width: 100%; /* Ensure the menu takes the full width of its container */
+  }
+
+  .side-menu li {
+    padding: 10px;
+    cursor: pointer;
+    text-align: center; /* Center the text within the list item */
+    width: 100%; /* Ensure the list item takes the full width of its container */
+  }
+
+  .side-menu li:not(:last-child) {
+    border-bottom: 1px solid #575757; /* Add separator line */
+    width: calc(100% - 20px); /* Adjust width to accommodate border */
+  }
+
+  .side-menu li:hover {
+    color: #086156; /* Change text color on hover */
+  }
+
+  .side-menu li.active {
+    color: #086156; /* Change text color of the active item */
+  }
+.logo {
+    display: block;
+    margin: 0 auto; /* Center the logo horizontally */
+    margin-bottom: 20px; /* Add margin below the logo */
+    width: 60%;
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add outer shadow */
+  }

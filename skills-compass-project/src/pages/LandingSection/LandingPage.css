@@ -1,0 +1,63 @@
+.arrow-circle {
+    position: relative;
+    width: 50px; /* Adjust size of the circle */
+    height: 50px; /* Adjust size of the circle */
+    border-radius: 50%; /* Make it a circle */
+    background-color: #ffff; /* Background color of the circle */
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg); /* Position arrow in the center */
+    width: 20px; /* Width of the arrow */
+    height: 20px; /* Height of the arrow */
+    border: solid #253439; /* Arrow color */
+    border-width: 0 2px 2px 0; /* Arrow shape */
+  }
+
+
+
+.mainLogo {
+    position: relative;
+    display: block;
+    margin: 0 auto; /* Center the logo horizontally */
+    margin-bottom: 20px; /* Add margin below the logo */
+    width: 30%;
+    border-radius: 8px; /* Add border radius */
+    z-index: 1;
+  }
+
+  .main {
+    position: relative; /* Add position relative */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header {
+    color: antiquewhite;
+    font-family: 'Inknut Antiqua', serif;
+    text-align: center;
+
+  }
+
+  .visitors-div {
+    background-color: antiquewhite;
+    position: fixed; /* Change position to fixed */
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 0 0 0 10px; /* Apply border radius only to bottom-left corner */
+    z-index: 9999; /* Set a high z-index value to ensure it's above all other content */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add outer shadow */
+
+  }
+
