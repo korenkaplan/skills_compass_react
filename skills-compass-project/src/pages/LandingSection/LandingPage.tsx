@@ -19,8 +19,8 @@ const subHeaderText: string = 'Scroll South'
       <h4>Total Visitors: {totalVisitors}</h4>
       </div> */}
       <img src={logo}  className="mainLogo" /> {/* Insert the logo image */}
-      <h2 className='header' dangerouslySetInnerHTML={{ __html: headerText }} />
-      <h2 className='header'>{subHeaderText}</h2>
+      <h2 className='headerLandingPage' dangerouslySetInnerHTML={{ __html: headerText }} />
+      <h2 className='headerLandingPage'>{subHeaderText}</h2>
       <div className="arrow-circle">
       <div className="arrow"></div>
       </div>

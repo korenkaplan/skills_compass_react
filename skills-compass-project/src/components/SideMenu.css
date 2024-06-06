@@ -32,8 +32,8 @@
   }
 
   .side-menu li:not(:last-child) {
-    border-bottom: 1px solid #575757; /* Add separator line */
-    width: calc(100% - 20px); /* Adjust width to accommodate border */
+    border-bottom: 2px solid antiquewhite; /* Add separator line */
+    width: calc(100% - 50px); /* Adjust width to accommodate border */
   }
 
   .side-menu li:hover {

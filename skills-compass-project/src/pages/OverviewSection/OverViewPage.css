@@ -1,0 +1,56 @@
+.textContainer {
+    background-color: antiquewhite;
+    border-radius: 20px;
+    width: 700px;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 25px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
+    -webkit-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
+    -moz-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
+}
+.mainText {
+    color: #253439;
+    font-size: 17px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.containerHeader {
+    display: flex;
+
+}
+
+.containerText {
+    width: calc(100% - 50px);
+    line-height:30px;
+
+}
+
+.imageRow {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logos {
+    display: block;
+    width: 120px;
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add outer shadow */
+  }
+
+  .headerOverviewPage {
+    color: #253439;
+    font-family: 'Inknut Antiqua', serif;
+    font-size: xx-large;
+  }
