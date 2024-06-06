@@ -7,8 +7,8 @@
   }
 
   .content {
-    margin-left: 200px; /* Align with the side menu width */
-    width: calc(100% - 200px);
+    margin-left: 300px; /* Align with the side menu width */
+    width: calc(100% - 300px);
     overflow-y: auto; /* Allow vertical scrolling */
   }
 

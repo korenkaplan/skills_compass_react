@@ -2,9 +2,10 @@
 import React from 'react';
 import './SideMenu.css';
 import logo from '../assets/logo/logo.png'; // Import the logo image
+import { Section } from '../utils/interfaces';
 
 interface SideMenuProps {
-  sections: { id: string, label: string }[];
+  sections: Section[];
   activeSection: string | null;
 }
 
