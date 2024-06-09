@@ -43,7 +43,11 @@
     text-align: center;
 
   }
-
+  .logoHeader {
+    color: antiquewhite;
+    font-family: 'Inknut Antiqua', serif;
+    text-align: center;
+  }
   .visitors-div {
     background-color: antiquewhite;
     position: fixed; /* Change position to fixed */

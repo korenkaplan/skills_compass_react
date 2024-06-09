@@ -7,7 +7,6 @@
     padding: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
 }
 .categoryButton {
@@ -45,8 +44,17 @@
     border-bottom: 2 px solid antiquewhite;
   }
   .descriptionDiv {
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    margin-top: 10px;
     width: 70%;
+  }
+  .headerDiv {
+
+  }
+  .headerRolePage{
+    color: antiquewhite;
+    margin: auto;
+    margin-bottom: 10px;
   }
 
 

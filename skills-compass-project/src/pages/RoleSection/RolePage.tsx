@@ -8,7 +8,8 @@ import axios from 'axios';
 import { TechCount, CategoryData } from '../../utils/interfaces';
 import _ from 'lodash';
 import TechRow from '../../components/TechRow/TechRow';
-
+import Line from '../../components/Line/Line'
+import { textColor } from '../../utils/variables';
 interface RolePageProps {
   role: Role;
   rolesFetched: boolean;
@@ -74,7 +75,9 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
 
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section containerRolePage">
-      <div className="headerDiv"><h1 className='textRolePage headerRolePage'>{_.startCase(role.name)}</h1></div>
+      <div className="headerDiv"><h1 className='headerRolePage'>{_.upperCase(role.name)}</h1>
+      <Line height="1px" width="12%" color={'antiquewhite'} radius="4px" />
+      </div>
       <div className="descriptionDiv textRolePage">{role.description}</div>
       <div className="">
         {data && (
