@@ -1,8 +1,52 @@
 .textRolePage {
     color: antiquewhite;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .containerRolePage{
-    padding: 20px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
+.categoryButton {
+
+}
+
+.categoriesButtonDiv {
+    display: flex;
+    justify-content: space-around;
+}
+.categoryButton {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .categoryButton.selected {
+    background-color: #F4F2EF; /* Change the background color to your desired color */
+    color: #253439; /* Change the text color for better visibility */
+    border-radius: 20px;
+    border: 1px solid #F4F2EF;
+    transition: background-color 0.5s;
+
+}
+
+  .tech-list {
+    position: relative;
+    margin-top: 20px;
+    right: 10%;
+  }
+
+  .headerRolePage{
+    font-size: 45px;
+    border-bottom: 2 px solid antiquewhite;
+  }
+  .descriptionDiv {
+    margin-bottom: 10px;
+    width: 70%;
+  }
+
+

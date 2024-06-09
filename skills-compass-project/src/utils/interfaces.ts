@@ -28,3 +28,8 @@ export type RoleCounts = {
     roleName: string;
     categoriesCounts: CategoryCount[];
 }
+
+
+export type CategoryData = {
+    [category: string]: TechCount[];
+  }

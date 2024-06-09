@@ -1,3 +1,4 @@
 // variables.ts
 const backgroundColor: string = '#253439';
-export { backgroundColor };
+const textColor: string = '#F4F2EF';
+export { backgroundColor, textColor };

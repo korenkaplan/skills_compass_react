@@ -1,0 +1,8 @@
+/* Line.css */
+
+.line {
+    height: 1px; /* Default height */
+    width: 100%; /* Default width */
+    background-color: black; /* Default color */
+    border-radius: 0; /* Default radius */
+  }
