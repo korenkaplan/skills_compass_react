@@ -1,3 +1,4 @@
+// src/pages/RoleSection/RolePage.tsx
 import React, { useState, useEffect } from 'react';
 import './RolePage.css';
 import '../../CSS/PageStyle.css';
@@ -10,9 +11,10 @@ import TechRow from '../../components/TechRow/TechRow';
 
 interface RolePageProps {
   role: Role;
+  rolesFetched: boolean;
 }
 
-const RolePage: React.FC<RolePageProps> = ({ role }) => {
+const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   const [data, setData] = useState<CategoryData>({});
   const [techList, setTechList] = useState<TechCount[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all categories'); // Initialize with an empty string
@@ -58,17 +60,17 @@ const RolePage: React.FC<RolePageProps> = ({ role }) => {
       }
     };
 
-    setSelectedCategory('all categories'); // Set the selected category to 'all categories' when the component mounts
-    fetchData();
-  }, []); // Run this effect only once when the component mounts
-
-
-
+    if (rolesFetched) {
+      setSelectedCategory('all categories'); // Set the selected category to 'all categories' when the component mounts
+      fetchData();
+    }
+  }, [rolesFetched]); // Run this effect only once when the component mounts and rolesFetched is true
 
   useEffect(() => {
-    console.log(maxCount);
-  }, [maxCount]);
-
+    console.log(role);
+    console.log(data);
+    console.log(rolesFetched);
+  }, [role, data]);
 
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section containerRolePage">

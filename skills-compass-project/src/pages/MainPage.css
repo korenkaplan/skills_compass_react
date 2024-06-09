@@ -10,6 +10,7 @@
     margin-left: 300px; /* Align with the side menu width */
     width: calc(100% - 300px);
     overflow-y: auto; /* Allow vertical scrolling */
+
   }
 
   .section {
@@ -17,4 +18,5 @@
     width: 100%;
     display: flex;
     box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
+
   }
