@@ -32,7 +32,7 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000//usage_stats/get_all_rolesss/');
+        const response = await axios.get('http://127.0.0.1:8000//usage_stats/get_all_roles/');
         console.log(response.data);
         setRoles(response.data);
         setRolesFetched(true);
@@ -49,14 +49,15 @@ const MainPage: React.FC = () => {
       { id: 'landingPage', label: 'Home', component: LandingPage },
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
       ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
-      { id: 'aboutMe', label: 'About Me', component: AboutMe }
+      { id: 'aboutMe', label: 'About Me', component: AboutMe },
+
     ];
   }, [roles, rolesFetched]);
 
   const activeSection = useIntersectionObserver(sections.map(section => section.id));
 
   return (
-    <div className="main-page">
+    <div className="main-page" >
       <SideMenu sections={sections} activeSection={activeSection} />
       <div className="content">
         {sections.map(section => (

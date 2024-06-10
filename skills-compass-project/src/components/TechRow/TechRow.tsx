@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './TechRow.css'; // Create this CSS file to style the component
-import _ from 'lodash';
+import _, { forEach, words } from 'lodash';
 
 interface TechRowProps {
   tech: string;
@@ -31,14 +31,28 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth }
         setLineWidth(currentWidth);
       }
     }, delay);
-
     return () => clearInterval(timer);
   }, [count, maxCount, maxLineWidth]);
 
+  const formatTitle = (title: string) => {
+    // Split the title into words
+    const words = title.split(' ');
+
+    // Map over each word and change the first letter to uppercase if it's a letter
+    const formattedWords = words.map(word => {
+      if (word[0] && /[a-zA-Z]/.test(word[0])) {
+        return word[0].toUpperCase() + word.slice(1);
+      }
+      return word;
+    });
+
+    // Join the words back into a single string
+    return formattedWords.join(' ');
+  };
   return (
     <div className="tech-row">
       <div className="tech-name-container">
-        <span className="tech-name">{_.startCase(tech)}</span>
+        <span className="tech-name">{formatTitle(tech)}</span>
       </div>
       <div className="lineWrapper" style={{ width: `${maxLineWidth}px` }}>
         <div className="tech-line" style={{ width: `${lineWidth}px` }}></div>

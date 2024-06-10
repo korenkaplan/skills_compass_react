@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
 import React from 'react';
 import './SideMenu.css';
-import logo from '../assets/logo/logo.png'; // Import the logo image
+import logo from '../assets/logo/logo-removebg-preview.png'; // Import the logo image
 import { Section } from '../utils/interfaces';
 
 interface SideMenuProps {

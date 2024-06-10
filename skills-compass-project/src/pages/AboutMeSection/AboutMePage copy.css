@@ -1,24 +1,15 @@
 /* src/components/SideMenu.css or AboutMePage.css */
-.wrapper {
-  display: inline-block; /* Ensure the container takes the size of the image */
-}
 .aboutMeContainer {
     display: flex;
     flex-direction: column;
-    padding: 50px 50px 10px 50px;
+    padding: 50px;
     justify-content: space-between;
   }
-
 
   .firstRow {
     margin-top: 10px;
     display: flex;
     width: 100%; /* Ensure the row takes full width */
-    flex: 1;
-  }
-  .headerAndTransalte {
-    display: flex;
-    align-items: center;
   }
 
   .aboutMeDiv {
@@ -46,7 +37,7 @@
     border-radius: 50px; /* Add border radius */
     box-shadow: 0 2px 4px rgba(0, 4, 4, 0.25); /* Add outer shadow */
     max-width: 100%; /* Ensure the image does not overflow */
-    height: 300px; /* Maintain aspect ratio */
+    height: 100%; /* Maintain aspect ratio */
     border: 2px solid white;
   }
   .thirdRow {
@@ -90,3 +81,4 @@
     color: antiquewhite;
     font-size: 20px;
   }
+  

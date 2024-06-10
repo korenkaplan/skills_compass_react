@@ -3,14 +3,14 @@ import React from 'react';
 import './LandingPage.css'
 import '../../CSS/PageStyle.css'
 import {backgroundColor} from '../../utils/variables'
-import logoCropped from '../../assets/logo/logoCropped.png'
+import logoCropped from '../../assets/logo/logoCropped-removebg-preview.png'
 import '../../CSS/RotatingImage.css'
 import Line from '../../components/Line/Line'
 
 const LandingPage: React.FC = () => {
 const lastScan = '05/06/2024 08:13'
 const totalVisitors = 1000
-const headerText: string = '"Discover The Most In Demand Skills For Your Desired Job<br />  In Israel’s Tech Industry"'
+const headerText: string = '"Discover the Key Skills for Your Dream Job in Israel\'s Hi-Tech Field"'
 const subHeaderText: string = 'Scroll Down'
 const logoText: string = 'SKILLS COMPASS'
 const textColor = 'antiquewhite'

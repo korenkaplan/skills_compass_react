@@ -1,0 +1,14 @@
+/* styles.css */
+
+.image-container {
+  display: inline-block; /* Ensure the container takes the size of the image */
+}
+
+.translationLogo {
+  transition: transform 0.5s ease; /* Add smooth transition for the rotation */
+  cursor: pointer;
+}
+
+.rotated .translationLogo {
+  transform: rotateY(180deg); /* Apply the rotation when the parent has the rotated class */
+}
