@@ -7,7 +7,24 @@
     border-radius: 8px; /* Add border radius */
     z-index: 1;
   }
+  .loadingDiv{
+    text-align: center;
+    height:'300px';
+    width:'40%';
+    color:'antiquewhite';
+  }
+  .fade-text {
+    opacity: 0;
+  }
 
+  .fade-text.animate {
+    animation: fadeInOut 4s infinite;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
   .main {
     position: relative; /* Add position relative */
     display: flex;

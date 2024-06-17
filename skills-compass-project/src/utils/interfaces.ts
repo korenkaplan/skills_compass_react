@@ -29,7 +29,11 @@ export type RoleCounts = {
     categoriesCounts: CategoryCount[];
 }
 
-
+export type RoleListingCount = {
+    id: number;
+    counter: number;
+    role_id: number;
+}
 export type CategoryData = {
     [category: string]: TechCount[];
   }

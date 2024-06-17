@@ -1,3 +1,9 @@
+.subheader {
+  color: antiquewhite;
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
 .textRolePage {
     color: antiquewhite;
     font-size: 17px;
@@ -48,17 +54,44 @@
     border-bottom: 2 px solid antiquewhite;
   }
   .descriptionDiv {
-    margin-bottom: 50px;
+    margin-bottom: 15px;
     margin-top: 10px;
     width: 70%;
-  }
-  .headerDiv {
-
   }
   .headerRolePage{
     color: antiquewhite;
     margin: auto;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+  }
+  .loading-text {
+    color: antiquewhite;
   }
 
+  .loading-text .dot {
+    opacity: 0;
+    animation: fade 1.5s infinite;
+  }
 
+  .loading-text .dot:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .loading-text .dot:nth-child(3) {
+    animation-delay: 1s;
+  }
+
+  @keyframes fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+  .loading-text.animate .dot {
+    animation-play-state: running;
+  }
+
+  .loading-text .dot {
+    animation-play-state: paused;
+  }
+  .loadingDivRolePage {
+    
+  }

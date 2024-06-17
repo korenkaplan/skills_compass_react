@@ -1,25 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import './TechRow.css'; // Create this CSS file to style the component
-import _, { forEach, words } from 'lodash';
+import './TechRow.css'; // Make sure to create this CSS file to style the component
+import _ from 'lodash';
 
 interface TechRowProps {
   tech: string;
   count: number;
-  maxCount: number; // Add a prop for the maximum count
-  maxLineWidth: number; // Add a prop for the maximum line width in pixels
+  maxCount: number; // Maximum count (either percentage or total count)
+  maxLineWidth: number; // Maximum line width in pixels
+  showPercentage: boolean; // Indicates whether to show as percentage
+  totalListingsAmount: number;
 }
 
-const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth }) => {
+const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, showPercentage }) => {
   const [lineWidth, setLineWidth] = useState(0);
 
   useEffect(() => {
+    let calculatedWidth = 0;
+
     // Calculate the scaling factor based on the maximum width and maximum count
-    const scaleFactor = maxLineWidth / maxCount;
-    // Calculate the width of the line based on the count and scaling factor
-    const calculatedWidth = Math.min(count * scaleFactor, maxLineWidth);
+    let scaleFactor = maxLineWidth / maxCount;
+
+    // If showPercentage is true, adjust the scaleFactor based on the percentage
+    if (showPercentage) 
+      scaleFactor = maxLineWidth / 100; // Scale factor based on percentage (out of 100)
+
+    calculatedWidth = Math.min(count * scaleFactor, maxLineWidth);
 
     // Set the line width with a delay to create a loading effect
-    const delay = 1; // milliseconds
+    const delay = 10; // milliseconds
     let currentWidth = 0;
     const increment = Math.max(calculatedWidth / 100, 1); // Increment the width in 100 steps
     const timer = setInterval(() => {
@@ -32,7 +40,7 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth }
       }
     }, delay);
     return () => clearInterval(timer);
-  }, [count, maxCount, maxLineWidth]);
+  }, [count, maxCount, maxLineWidth, showPercentage]);
 
   const formatTitle = (title: string) => {
     // Split the title into words
@@ -49,6 +57,14 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth }
     // Join the words back into a single string
     return formattedWords.join(' ');
   };
+
+  const showPercentageOrCount = () => {
+    if (showPercentage) {
+      return `${count.toFixed(1)}%`;
+    }
+    return `${count}`;
+  };
+
   return (
     <div className="tech-row">
       <div className="tech-name-container">
@@ -57,7 +73,7 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth }
       <div className="lineWrapper" style={{ width: `${maxLineWidth}px` }}>
         <div className="tech-line" style={{ width: `${lineWidth}px` }}></div>
       </div>
-      <span className="tech-count">{count}</span>
+      <span className="tech-count">{showPercentageOrCount()}</span>
     </div>
   );
 };

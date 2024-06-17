@@ -9,7 +9,10 @@ import { TechCount, CategoryData } from '../../utils/interfaces';
 import _ from 'lodash';
 import TechRow from '../../components/TechRow/TechRow';
 import Line from '../../components/Line/Line'
-import { textColor } from '../../utils/variables';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import perIcon from '../../assets/icons/icons8-percentage-50.png'
+import countIcon from '../../assets/icons/icons8-count-50.png'
 interface RolePageProps {
   role: Role;
   rolesFetched: boolean;
@@ -21,12 +24,30 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all categories'); // Initialize with an empty string
   const [maxCount, setMaxCount] = useState<number>(0); // State to store the maximum count
   const maxLineWidth = 400; // Define the maximum line width
+  const [totalListingsCount, setTotalListingsCount] = useState<number>(0)
+  const [showPercentage, setShowPercentage] = useState<boolean>(true)
+  const [isAnimating, setIsAnimating] = useState<boolean>(true)
+  const [alignment, setAlignment] = React.useState('percentages');
 
+  const handleChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: string,
+  ) => {
+    if (newAlignment == null)
+      return;
+
+    if (newAlignment !== alignment) {
+      setAlignment(newAlignment);
+      setShowPercentage(!showPercentage);
+    }
+  };
   const handleCategoryClicked = (categoryKey: string) => {
-    console.log("Category clicked:", categoryKey);
     setSelectedCategory(categoryKey); // Set the selected category
     setTechList(data[categoryKey]);
   };
+
+  const calculatePercentages = (part: number, total: number) => {return (part / total) * 100}
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,17 +57,15 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
           number_of_categories: 4,
           limit: 10
         });
+        const res = await axios.get(`http://127.0.0.1:8000//core/role-listings/?role_id=${role.id}`)
         setData(response.data.data);
-
         // Initialize techList with 'all categories' if it exists; otherwise, set it to an empty array
         const allCategoriesData = response.data.data['all categories'];
         const allTechList = allCategoriesData ? allCategoriesData : [];
         setTechList(allTechList);
         let max = 0;
-        console.log(selectedCategory);
         // Set the maximum count based on the selected category
         const selectedCategoryData = response.data.data[selectedCategory];
-        console.log(selectedCategoryData);
         if (selectedCategoryData) {
 
           selectedCategoryData.forEach((techCount: TechCount) => {
@@ -56,6 +75,9 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
           });
         }
         setMaxCount(max);
+        setTotalListingsCount(res.data[0].counter)
+        setIsAnimating(false)
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -67,19 +89,41 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
     }
   }, [rolesFetched]); // Run this effect only once when the component mounts and rolesFetched is true
 
-  useEffect(() => {
-    console.log(role);
-    console.log(data);
-    console.log(rolesFetched);
-  }, [role, data]);
+
 
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section containerRolePage">
-      <div className="headerDiv"><h1 className='headerRolePage'>{_.upperCase(role.name)}</h1>
-      <Line height="1px" width="12%" color={'antiquewhite'} radius="4px" />
+
+      <div className="headerDiv">
+        <div className="headerAndToggler" style={{display:'flex', justifyContent:'space-between'}}>
+        <div className=""><h1 className='headerRolePage'>{_.upperCase(role.name)}</h1></div>
+        <ToggleButtonGroup
+          color="warning"
+          value={alignment}
+          exclusive
+          onChange={handleChange}
+          aria-label="Platform"
+          style={{backgroundColor:'white', height:40, borderRadius:15}}
+        >
+          <ToggleButton value="percentages"> <img style={{width:30, height:30}} src={perIcon}/></ToggleButton>
+          <ToggleButton value="counts"> <img style={{width:30, height:30}} src={countIcon}/></ToggleButton>
+        </ToggleButtonGroup>
+        </div>
+        <h4 className='subheader'>Total Amount Of Job Listings {'-->'} {totalListingsCount}</h4>
+      <Line height="1px" width="25%" color={'antiquewhite'} radius="4px" />
+
       </div>
       <div className="descriptionDiv textRolePage">{role.description}</div>
-      <div className="">
+      <div className="loadingDivRolePage" style={{display: isAnimating? 'block': 'none', margin: 'auto'}}>
+        <h1 className={`loading-text ${isAnimating ? 'animate' : ''}`}>
+          Loading Data
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+          <span className="dot">.</span>
+        </h1>
+        </div>
+        <div className="dataDiv" style={{display: isAnimating? 'none': 'block'}}>
+             <div className="">
         {data && (
           <div className='categoriesButtonDiv'>
             {Object.keys(data).map(category =>
@@ -91,12 +135,17 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
               </span>))}
           </div>
         )}
+
+
+
       </div>
+
       <div className="tech-list">
         {techList.map((techCount, index) => (
-          <TechRow maxCount={maxCount} maxLineWidth={maxLineWidth} key={index} tech={techCount.tech} count={techCount.amount} />
+          <TechRow totalListingsAmount={totalListingsCount} maxCount={maxCount} maxLineWidth={maxLineWidth} key={index} tech={techCount.tech} count={showPercentage ?calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount } showPercentage={showPercentage} />
         ))}
       </div>
+        </div>
       <br />
     </div>
   );

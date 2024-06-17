@@ -13,7 +13,7 @@
   }
 
   .section {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */

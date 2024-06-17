@@ -11,6 +11,10 @@ import RolePage from './RoleSection/RolePage';
 import { Role, Section } from '../utils/interfaces';
 import _ from 'lodash';
 import axios from 'axios';
+import { fabClasses } from '@mui/material';
+
+
+
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean): Section[] => {
   return roles.flatMap(role => {
@@ -28,6 +32,8 @@ const convertRolesToSections = (roles: Role[], rolesFetched: boolean): Section[]
 const MainPage: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);
   const [rolesFetched, setRolesFetched] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +42,8 @@ const MainPage: React.FC = () => {
         console.log(response.data);
         setRoles(response.data);
         setRolesFetched(true);
+        setIsLoading(false);
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -44,9 +52,12 @@ const MainPage: React.FC = () => {
     fetchData();
   }, []);
 
+
+
   const sections = useMemo(() => {
     return [
-      { id: 'landingPage', label: 'Home', component: LandingPage },
+
+      { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading}/> },
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
       ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
       { id: 'aboutMe', label: 'About Me', component: AboutMe },
