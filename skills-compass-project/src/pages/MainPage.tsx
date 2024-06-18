@@ -3,7 +3,6 @@ import React, { useEffect, useState, useMemo } from 'react';
 import SideMenu from '../components/SideMenu';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 import './MainPage.css';
-import '../CSS/PageStyle.css';
 import LandingPage from './LandingSection/LandingPage';
 import OverviewPage from './OverviewSection/OverviewPage';
 import AboutMe from './AboutMeSection/AboutMePage';
@@ -38,7 +37,7 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000//usage_stats/get_all_roles/');
+        const response = await axios.get('http://127.0.0.1:8000//usage_stats/get-all-roles/');
         console.log(response.data);
         setRoles(response.data);
         setRolesFetched(true);
@@ -56,10 +55,9 @@ const MainPage: React.FC = () => {
 
   const sections = useMemo(() => {
     return [
-
+      ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
       { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading}/> },
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
-      ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
       { id: 'aboutMe', label: 'About Me', component: AboutMe },
 
     ];

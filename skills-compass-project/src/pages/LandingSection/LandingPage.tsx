@@ -1,7 +1,6 @@
 // src/components/SideMenu.tsx
 import React, { useState } from 'react';
 import './LandingPage.css'
-import '../../CSS/PageStyle.css'
 import {backgroundColor} from '../../utils/variables'
 import logoCropped from '../../assets/logo/logoCropped-removebg-preview.png'
 import '../../CSS/RotatingImage.css'

@@ -1,7 +1,6 @@
 // src/components/SideMenu.tsx
 import React, {useState} from 'react';
 import './OverViewPage.css'
-import '../../CSS/PageStyle.css'
 import {backgroundColor} from '../../utils/variables'
 import logo from '../../assets/logo/logo.png'
 import translation from '../../assets/icons/translation.png'
@@ -31,24 +30,24 @@ const developerSurveyText = () => (
     <p>🚀 Exciting things are on the horizon! We're planning to add more job roles, highlight emerging and declining tech trends, and provide even more data to help you navigate the job market with confidence.</p>
 
     <p><strong>🔧 How It Works:</strong></p>
-    <p>📊 Our site is organized by different tech roles. For each role, we show the most common technologies mentioned in job postings, grouped into categories. You'll see how many job postings mention each technology, giving you a clear picture of what skills are in demand.</p>
+    <p>📊 Our site is organized by different tech roles. For each role, we show the most common technologies mentioned in job postings, grouped into categories. You'll see how many job postings mention each technology and you can toggle between percentage and count views, giving you a clear picture of what skills are in demand.</p>
   </>
 );
 
 const developerSurveyTextHeb = (
   <>
-    <p><strong>💡 הרעיון המרכזי</strong></p>
-    <p>🌟 ב-Skills Compass, המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעזור להם להישאר רלוונטיים לתחום. אנחנו מספקים מידע עדכני על הטכנולוגיות הכי מבוקשות לפי סוג משרה.</p>
+  <p><strong>💡 הרעיון המרכזי</strong></p>
+  <p>🌟 ב-Skills Compass, המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעזור להם להישאר רלוונטיים לתחום. אנחנו מספקים מידע עדכני על הטכנולוגיות הכי מבוקשות לפי סוג משרה.</p>
 
-    <p><strong>⏱️ תובנות בזמן אמת</strong></p>
-    <p>🔍 המערכת שלנו אוספת מידע באופן יומיומי על ידי סריקת משרות המתפרסמות באינטרנט, מה שמבטיח שהנתונים שלנו הם המעודכנים והמדויקים ביותר, ובמיוחד עבור משרות המתפרסמות בישראל.</p>
+  <p><strong>⏱️ תובנות בזמן אמת</strong></p>
+  <p>🔍 המערכת שלנו אוספת מידע באופן יומיומי על ידי סריקת משרות המתפרסמות באינטרנט, מה שמבטיח שהנתונים שלנו הם המעודכנים והמדויקים ביותר, ובמיוחד עבור משרות המתפרסמות בישראל.</p>
 
-    <p><strong>🔮 מה צפוי בעתיד?</strong></p>
-    <p>🚀 בעתיד, אנו מתכננים להוסיף סוגי תפקידים נוספים, להציג מגמות עלייה וירידה של טכנולוגיות ולהציע נתונים נוספים שיעזרו לכם לנווט בשוק העבודה.</p>
+  <p><strong>🔮 מה צפוי בעתיד?</strong></p>
+  <p>🚀 בעתיד, אנו מתכננים להוסיף סוגי תפקידים נוספים, להציג מגמות עלייה וירידה של טכנולוגיות ולהציע נתונים נוספים שיעזרו לכם לנווט בשוק העבודה.</p>
 
-    <p><strong>🔍 איך זה עובד?</strong></p>
-    <p>📊 האתר מחולק לתפקידים שונים. לכל תפקיד מוצגות הטכנולוגיות השכיחות ביותר המופיעות במשרות עבור אותו תפקיד, והן מסודרות לפי קטגוריות. ליד כל טכנולוגיה מופיע מספר המשרות שבהן היא הופיעה.</p>
-  </>
+  <p><strong>🔍 איך זה עובד?</strong></p>
+  <p>📊 האתר מחולק לתפקידים שונים. לכל תפקיד מוצגות הטכנולוגיות השכיחות ביותר המופיעות במשרות עבור אותו תפקיד, והן מסודרות לפי קטגוריות. ליד כל טכנולוגיה יש אוצפיה לצפות או בתצוגת אחוז המשרות בהן הופיעה הכטנולוגיה או את כמות המשרות בהן הופיעה.</p>
+</>
 );
 
 

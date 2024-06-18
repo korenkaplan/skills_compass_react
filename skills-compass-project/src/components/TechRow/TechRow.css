@@ -1,23 +1,25 @@
 .tech-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   color: antiquewhite;
   margin: 0 0 10px 0;
-
+  width: 80%;
 }
 
+
 .tech-name-container {
-  width: 300px; /* Adjust the width as needed */
+  width: 30%; /* Adjust the width as needed */
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: right;
   font-size: 20px;
+  padding: 0  10px 0 0;
+
 }
 
 .tech-name {
   white-space: nowrap;
-  margin-right: 30px;
 }
 
 .tech-line {

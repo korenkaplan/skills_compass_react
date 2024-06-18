@@ -1,7 +1,6 @@
 // src/components/SideMenu.tsx
 import React, { useState } from 'react';
 import './AboutMePage.css';
-import '../../CSS/PageStyle.css';
 import { backgroundColor } from '../../utils/variables';
 import profilePic from '../../assets/images/profilePic.jpeg';
 import _ from 'lodash';
