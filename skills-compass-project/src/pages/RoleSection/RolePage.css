@@ -3,12 +3,25 @@
   display: flex;
   flex-direction: column;
 }
-
-.subheader {
+.headerAndToggler{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.headerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.headerRolePage{
+  margin: 0;
+}
+.subheaderRolePage {
   color: antiquewhite;
   font-size: 17px;
-  margin-bottom: 5px;
+  margin: 10px 0 5px 0; /* Reset margin */
 }
+
 
 .toggler {
   width: 100px;
@@ -16,7 +29,8 @@
   background:antiquewhite;
   border-radius: 10px;
   display: flex;
-  padding: 1px;
+  padding: 2px;
+  box-shadow: -1px 5px 10px 0px rgba(0,0,0,0.64);
 }
 .toggler_button{
   display: flex;
@@ -24,9 +38,10 @@
   align-items: center;
 }
 .selected_toggler_button {
-  background-color: rgba(149, 195, 140, 0.785);
   background-color: #08678a;
-
+  background-color: rgba(149, 195, 140, 0.785);
+  background-color: #086156;
+  transition: background-color 0.3s ease-in-out;
 
 
 }
@@ -51,8 +66,6 @@
 .headerRolePage {
   font-size: 45px;
   color: antiquewhite;
-  margin-bottom: 0px;
-  border-bottom: 2px solid antiquewhite;
 }
 
 .descriptionDiv {
@@ -149,3 +162,26 @@
   align-items: center;
   flex: 1; /* Ensure it fills the remaining space */
 }
+/* Disabled button styling */
+.categoryButton.disabled,
+.categoryButton.disabled:hover {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  pointer-events: none; /* Ensure the button is truly non-interactive */
+  opacity: 0.65; /* Slightly transparent to indicate disabled state */
+}
+/* .disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: auto;
+}
+
+.disabled:hover {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: auto;
+} */

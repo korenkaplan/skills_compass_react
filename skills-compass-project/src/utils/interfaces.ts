@@ -37,3 +37,10 @@ export type RoleListingCount = {
 export type CategoryData = {
     [category: string]: TechCount[];
   }
+
+export type FormattedDataRow = {
+    id: number;
+    tech: string;
+    amount: number;
+    role: string;
+}

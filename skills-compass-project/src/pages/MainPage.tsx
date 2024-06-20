@@ -10,7 +10,6 @@ import RolePage from './RoleSection/RolePage';
 import { Role, Section } from '../utils/interfaces';
 import _ from 'lodash';
 import axios from 'axios';
-import { fabClasses } from '@mui/material';
 
 
 
@@ -37,7 +36,7 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000//usage_stats/get-all-roles/');
+        const response = await axios.get('https://dev-skill-compass-server.onrender.com/usage_stats/get-all-roles/');
         console.log(response.data);
         setRoles(response.data);
         setRolesFetched(true);
