@@ -25,26 +25,14 @@ const MenuProps = {
   },
 };
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
-
 interface FormDialogProps {
   open: boolean;
   onClose: () => void;
   onSubmit: (data: { selectedNames: string[], numberValue: number }) => void;
+  names: string[]; // Add names as a prop
 }
 
-const FormDialog: React.FC<FormDialogProps> = ({ open, onClose, onSubmit }) => {
+const FormDialog: React.FC<FormDialogProps> = ({ open, onClose, onSubmit, names }) => {
   const [personName, setPersonName] = React.useState<string[]>([]);
   const [numberValue, setNumberValue] = React.useState<number>(10);
 

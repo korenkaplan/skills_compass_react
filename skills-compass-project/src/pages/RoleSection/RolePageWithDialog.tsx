@@ -45,7 +45,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [aggregatedSwitch, setAggregatedSwitch] = useState(false)
   const [listLimitSwitch, setListLimitSwitch] = useState(false)
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(defaultAmount);
   const [allCategories, setAllCategories] = useState<string[]>([])
   const togglerPressed = (buttonTitle: string) => {
     if(buttonTitle !== alignment)
@@ -110,7 +110,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
     // set tech list to result
     if(slice === true)
       {
-        const slicedResult = result.slice(0, limitValue > 0 ? limitValue : amount > 0 ? amount : defaultAmount)
+        const slicedResult = result.slice(0, limitValue > 0 ? limitValue : amount)
         setTechList(slicedResult)
         return
       }
@@ -123,52 +123,36 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
     aggregatedTechList(value === true ? amount : defaultAmount, value)
   }
   const calculatePercentages = (part: number, total: number) => { return (part / total) * 100 }
+
   const handleAggregationSwitchChange = (event) => {
     const value = event.target.checked
     setAggregatedSwitch(value);
 
     if(value === false)
       {
-        setTechList(data[selectedCategory])
-        return
+        // Handle the case when the switch is turned off
+        const firstSelectedCategory = selectedCategories[0]
+        setSelectedCategory(firstSelectedCategory)
+        setTechList(data[firstSelectedCategory])
       }
 
-    else if(value === true)
+    else if(selectedCategory !== allCategoriesString)
       {
-        if (selectedCategories.length == 0)
-          {
-            if (selectedCategory == allCategoriesString)
-              {
-                const defaultCategory = allCategories[1]
-                setSelectedCategories([defaultCategory])
-              }
-            else{
-              setSelectedCategories([selectedCategory])
-            }
-          }
-
-        else {
-          aggregatedTechList(amount, listLimitSwitch)
-        }
-
+        //setSelectedCategories([selectedCategory])
+        aggregatedTechList(amount, listLimitSwitch)
       }
 
-      // {
-      //   if(selectedCategories.length > 0)
-      //     {
-      //       setSelectedCategory(selectedCategories[0]);
-      //       setTechList(data[selectedCategories[0]])
-      //     }
-      //   else
-      //     {
-      //       setTechList(data[selectedCategory])
-      //     }
-      // }
+    else
+      {
+        setSelectedCategories([allCategories[1]])
+      }
+
 
 
   };
 
   const getCategoryButtonClass = (category) => {
+    console.log(category);
     if (aggregatedSwitch) {
       if(category === allCategoriesString)
           return 'disabled'
@@ -191,6 +175,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   };
 useEffect(() => {
   if(aggregatedSwitch == true)
+    console.log(amount, listLimitSwitch);
     aggregatedTechList(amount, listLimitSwitch)
 },[selectedCategories])
 
@@ -272,6 +257,22 @@ useEffect(() => {
     display: listLimitSwitch? 'block' : 'none',
   };
 //#endregion
+const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+const handleDialogOpen = () => {
+  setIsDialogOpen(true);
+};
+
+const handleDialogClose = () => {
+  setIsDialogOpen(false);
+};
+
+const handleDialogSubmit = (data: { selectedNames: string[], numberValue: number }) => {
+  console.log('Selected Names:', data.selectedNames);
+  console.log('Number Value:', data.numberValue);
+  // Do something with the selected names and number value
+  setIsDialogOpen(false);
+};
 
   return (
     <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section ">
@@ -298,7 +299,7 @@ useEffect(() => {
           <input
             type='number'
             id="outlined-basic"
-            value={amount == 0 ? defaultAmount : amount}
+            value={amount}
             onChange={handleAmountChange}
             min={1} // Ensure the input doesn't accept negative values
             max={100}
@@ -308,8 +309,20 @@ useEffect(() => {
 
       </FormGroup>
       <div>
+      <Button style={{display:`${aggregatedSwitch ? "block" : "none"}`}} variant="outlined" onClick={handleDialogOpen}>
+        Open form dialog
+      </Button>
+      <FormDialog
+        open={isDialogOpen}
+        onClose={handleDialogClose}
+        onSubmit={handleDialogSubmit}
+        names={allCategories.filter((category) => category !== allCategoriesString)} // Pass names as a prop
+      />
     </div>
+
       <Line height="1px" width="25%" color={'antiquewhite'} radius="4px" />
+
+
       </div>
 
       <div className="descriptionDiv textRolePage">{role.description}</div>
@@ -362,41 +375,3 @@ useEffect(() => {
 };
 
 export default RolePage;
-
-
-
-
-
-
-//   console.log(selectedCategory);
-//   console.log(value);
-
-//   if(value === false)
-//     {
-//       // Handle the case when the switch is turned off
-//       const firstSelectedCategory = selectedCategories.length > 0 ? selectedCategories[0]: selectedCategory
-//       console.log(firstSelectedCategory);
-//       setSelectedCategory(firstSelectedCategory)
-//       setTechList(data[firstSelectedCategory])
-//     }
-//     if(selectedCategories.length == 0)
-//       {
-//         console.log(allCategories[1]);
-//         setSelectedCategory(allCategories[1])
-//       }
-//   else if(selectedCategory !== allCategoriesString)
-//     {
-//         console.log(amount, listLimitSwitch);
-//       setSelectedCategories([selectedCategory])
-//       //aggregatedTechList(amount, listLimitSwitch)
-//     }
-
-//   else
-//     {
-//       console.log(allCategories[1]);
-//       setSelectedCategories([allCategories[1]])
-//     }
-
-
-
-// };
