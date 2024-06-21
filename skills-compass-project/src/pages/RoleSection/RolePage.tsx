@@ -1,4 +1,4 @@
-// src/pages/RoleSection/RolePage.tsx
+//#region imports
 import React, { useState, useEffect } from 'react';
 import './RolePage.css';
 import { backgroundColor, textColor } from '../../utils/variables';
@@ -8,11 +8,6 @@ import { TechCount, CategoryData } from '../../utils/interfaces';
 import _, { forEach, List, slice } from 'lodash';
 import TechRow from '../../components/TechRow/TechRow';
 import Line from '../../components/Line/Line'
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import perIcon from '../../assets/icons/icons8-percentage-50.png'
-import countIcon from '../../assets/icons/icons8-count-50.png'
-
 import whiteCount from '../../assets/white icons/count.png'
 import greenCount from '../../assets/white icons/green-count.png'
 import whitePercentage from '../../assets/white icons/percentage.png'
@@ -20,17 +15,19 @@ import greenPercentage from '../../assets/white icons/green-percentage.png'
 import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
 import Switch from '@mui/material/Switch/Switch';
 import { Button, FormGroup, TextField } from '@mui/material';
-import FormDialog from '../../components/CreateViewDialog/CreateViewDialog';
+//#endregion
+
 interface RolePageProps {
   role: Role;
   rolesFetched: boolean;
 }
 
 const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
-//#region My Custom Region
+//#region constants and states
   const allCategoriesString = 'all categories'
   const aggregateSwitchElementTitle = 'Enable Multiple Categories Selections'
   const listLImitSwitchElementTitle = 'Limit List Length'
+  const categoryLImitSwitchElementTitle = 'Limit Per Category'
   const defaultAmount = 10
   const [data, setData] = useState<CategoryData>({});
   const [techList, setTechList] = useState<FormattedDataRow[]>([]);
@@ -47,6 +44,13 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   const [listLimitSwitch, setListLimitSwitch] = useState(false)
   const [amount, setAmount] = useState(0);
   const [allCategories, setAllCategories] = useState<string[]>([])
+
+  const [categoryLimitSwitch, setCategoryLimitSwitch] = useState(false)
+  const [categoryAmount, setCategoryAmount] = useState(0);
+
+//#endregion
+//#region functions
+
   const togglerPressed = (buttonTitle: string) => {
     if(buttonTitle !== alignment)
       {
@@ -90,22 +94,29 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
    return result.some(item => item.id === tech_id)
   }
 
-  const aggregatedTechList = (limitValue = -1, slice = false) => {
+  const aggregatedTechList = (limitValue = -1, slice = false, amountPerCategory = -1, sliceCategory = false) => {
     const result: FormattedDataRow[] = [];
 
     // take all the categories data from the selected categories list
-    selectedCategories.forEach(category =>{
-      // add all the rows to result
-      data[category].forEach(row =>{
+    selectedCategories.forEach(category => {
+      // get the category data
+      let categoryData = data[category];
+
+      // slice the category data if amountPerCategory is set
+      if (amountPerCategory > 0 && sliceCategory == true) {
+        categoryData = categoryData.slice(0, amountPerCategory);
+      }
+
+      // add the rows to result
+      categoryData.forEach(row => {
         // check if the row is not already in results list
-        if(checkIfTechInAggregatedList(result, row.id) == false)
+        if (!checkIfTechInAggregatedList(result, row.id)) {
           result.push(row);
+        }
       });
     });
 
-
     //sort results by category.amount descending
-
     result.sort((a, b) => b.amount - a.amount);
     // set tech list to result
     if(slice === true)
@@ -117,11 +128,42 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
 
     setTechList(result)
   }
+  // const aggregatedTechList = (limitValue = -1, slice = false, amountPerCategory = -1) => {
+  //   const result: FormattedDataRow[] = [];
+
+  //   // take all the categories data from the selected categories list
+  //   selectedCategories.forEach(category =>{
+  //     // add all the rows to result
+  //     data[category].forEach(row =>{
+  //       // check if the row is not already in results list
+  //       if(checkIfTechInAggregatedList(result, row.id) == false)
+  //         {
+  //           result.push(row);
+  //         }
+
+  //     });
+  //   });
+
+
+  //   //sort results by category.amount descending
+
+  //   result.sort((a, b) => b.amount - a.amount);
+  //   // set tech list to result
+  //   if(slice === true)
+  //     {
+  //       const slicedResult = result.slice(0, limitValue > 0 ? limitValue : amount > 0 ? amount : defaultAmount)
+  //       setTechList(slicedResult)
+  //       return
+  //     }
+
+  //   setTechList(result)
+  // }
   const handleLimitSwitchChange = (event) => {
     const value = event.target.checked
     setListLimitSwitch(value);
-    aggregatedTechList(value === true ? amount : defaultAmount, value)
+    aggregatedTechList(value === true ? amount : defaultAmount, value, categoryAmount, categoryLimitSwitch)
   }
+
   const calculatePercentages = (part: number, total: number) => { return (part / total) * 100 }
   const handleAggregationSwitchChange = (event) => {
     const value = event.target.checked
@@ -148,24 +190,10 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
           }
 
         else {
-          aggregatedTechList(amount, listLimitSwitch)
+          aggregatedTechList(amount, listLimitSwitch, categoryAmount, categoryLimitSwitch)
         }
 
       }
-
-      // {
-      //   if(selectedCategories.length > 0)
-      //     {
-      //       setSelectedCategory(selectedCategories[0]);
-      //       setTechList(data[selectedCategories[0]])
-      //     }
-      //   else
-      //     {
-      //       setTechList(data[selectedCategory])
-      //     }
-      // }
-
-
   };
 
   const getCategoryButtonClass = (category) => {
@@ -185,13 +213,33 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
     if (value >= 1) {
       setAmount(value);
       const sliceList = true;
-      aggregatedTechList(value, sliceList)
+      aggregatedTechList(value, sliceList, categoryAmount, categoryLimitSwitch)
     }
 
   };
+
+
+
+  const handleCategoryAmountChange = (event) => {
+    // Ensure the value is non-negative
+    const value = event.target.value;
+    if (value >= 1) {
+      setCategoryAmount(value);
+      aggregatedTechList(amount, listLimitSwitch, value, categoryLimitSwitch)
+    }
+
+  };
+
+  const handleCategoryLimitSwitchChange = (event) => {
+    const value = event.target.checked
+    setCategoryLimitSwitch(value);
+    aggregatedTechList(amount, listLimitSwitch, categoryAmount, value)
+  }
+//#endregion
+//#region use effect and other
 useEffect(() => {
   if(aggregatedSwitch == true)
-    aggregatedTechList(amount, listLimitSwitch)
+    aggregatedTechList(amount, listLimitSwitch, categoryAmount, categoryLimitSwitch)
 },[selectedCategories])
 
   useEffect(() => {
@@ -257,6 +305,7 @@ useEffect(() => {
     <div onClick={()=> togglerPressed("counts")} className={`toggler_button countButton ${alignment == 'counts'? 'selected_toggler_button': ''}`}><img style={{ width: 30, height: 30 }} src={alignment == 'counts'? whiteCount: greenCount} /></div>
   </div>
   )
+
   const inputStyle = {
     width: '60px',
     height: '30px',
@@ -271,8 +320,22 @@ useEffect(() => {
     padding: '8px', // Example padding
     display: listLimitSwitch? 'block' : 'none',
   };
-//#endregion
 
+  const CategoryinputStyle = {
+    width: '60px',
+    height: '30px',
+    color: '#333', // Desired text color
+    backgroundColor: '#f0f0f0', // Background color
+    textAlign: 'center', // Center align the input text
+    border: '1px solid #ccc', // Example border
+    borderRadius: '4px', // Example border radius
+    outline: 'none', // Remove default outline
+    boxSizing: 'border-box', // Ensure padding and border are included in width and height
+    fontSize: '16px', // Example font size
+    padding: '8px', // Example padding
+    display: categoryLimitSwitch? 'block' : 'none',
+  };
+//#endregion
   return (
     <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section ">
       <div className="headerDiv">
@@ -289,7 +352,7 @@ useEffect(() => {
             style={{ color: 'antiquewhite', fontSize:'20px', marginTop:5 }}
             label={aggregateSwitchElementTitle}
           />
-          <div className="limitDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+          <div className="switchDiv limitDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
           <FormControlLabel
             control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
@@ -303,6 +366,23 @@ useEffect(() => {
             min={1} // Ensure the input doesn't accept negative values
             max={100}
             style={inputStyle} // Apply custom styles via style attribute
+          />
+          </div>
+
+          <div className="switchDiv limitPerCategoryDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+            <FormControlLabel
+            control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
+            style={{ color: 'antiquewhite', fontSize:'20px' }}
+            label={categoryLImitSwitchElementTitle}
+          />
+          <input
+            type='number'
+            id="outlined-basic"
+            value={categoryAmount == 0 ? defaultAmount : categoryAmount}
+            onChange={handleCategoryAmountChange}
+            min={1} // Ensure the input doesn't accept negative values
+            max={100}
+            style={CategoryinputStyle} // Apply custom styles via style attribute
           />
           </div>
 
@@ -362,41 +442,3 @@ useEffect(() => {
 };
 
 export default RolePage;
-
-
-
-
-
-
-//   console.log(selectedCategory);
-//   console.log(value);
-
-//   if(value === false)
-//     {
-//       // Handle the case when the switch is turned off
-//       const firstSelectedCategory = selectedCategories.length > 0 ? selectedCategories[0]: selectedCategory
-//       console.log(firstSelectedCategory);
-//       setSelectedCategory(firstSelectedCategory)
-//       setTechList(data[firstSelectedCategory])
-//     }
-//     if(selectedCategories.length == 0)
-//       {
-//         console.log(allCategories[1]);
-//         setSelectedCategory(allCategories[1])
-//       }
-//   else if(selectedCategory !== allCategoriesString)
-//     {
-//         console.log(amount, listLimitSwitch);
-//       setSelectedCategories([selectedCategory])
-//       //aggregatedTechList(amount, listLimitSwitch)
-//     }
-
-//   else
-//     {
-//       console.log(allCategories[1]);
-//       setSelectedCategories([allCategories[1]])
-//     }
-
-
-
-// };

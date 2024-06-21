@@ -21,7 +21,10 @@
   font-size: 17px;
   margin: 10px 0 5px 0; /* Reset margin */
 }
-
+.switchDiv{
+  width: 25%;
+  justify-content: space-between;
+}
 
 .toggler {
   width: 100px;
