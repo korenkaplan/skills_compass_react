@@ -7,6 +7,9 @@
     border-radius: 8px; /* Add border radius */
     z-index: 1;
   }
+  .logoLandingPage {
+    
+  }
   .loadingDiv{
     text-align: center;
     height:'300px';

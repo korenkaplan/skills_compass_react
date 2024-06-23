@@ -13,7 +13,6 @@ import axios from 'axios';
 
 
 
-
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean): Section[] => {
   return roles.flatMap(role => {
     const roleProps = { role: role, rolesFetched: rolesFetched }; // Props to pass to RolePage component
@@ -37,7 +36,6 @@ const MainPage: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://dev-skill-compass-server.onrender.com/usage_stats/get-all-roles/');
-        console.log(response.data);
         setRoles(response.data);
         setRolesFetched(true);
         setIsLoading(false);
@@ -67,6 +65,8 @@ const MainPage: React.FC = () => {
   return (
     <div className="main-page" >
       <SideMenu sections={sections} activeSection={activeSection} />
+      <div style={{backgroundColor:'red', position:'absolute', top: 0, right: 0}} className="">
+      </div>
       <div className="content">
         {sections.map(section => (
           <div key={section.id} id={section.id} className="section">
@@ -74,6 +74,7 @@ const MainPage: React.FC = () => {
           </div>
         ))}
       </div>
+
     </div>
   );
 };

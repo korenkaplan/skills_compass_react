@@ -13,6 +13,22 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.togglerInfoDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+}
+.switchMultipleCategoriesDiv{
+  display: flex;
+  align-items: center;
+}
+.infoImg {
+width: 20px;
+height: 20px;
+margin: 0 10px 0 0;
+}
 .headerRolePage{
   margin: 0;
 }
@@ -21,14 +37,16 @@
   font-size: 17px;
   margin: 10px 0 5px 0; /* Reset margin */
 }
-.switchDiv{
-  width: 25%;
-  justify-content: space-between;
+.switchDiv {
+  width: 360px; /* Default width */
+  max-width: 100%; /* Allow it to shrink if necessary */
+  justify-content: space-between; /* Space between items */
+  flex-wrap: wrap; /* Wrap items if they exceed container width */
 }
 
 .toggler {
   width: 100px;
-  height: 40px;
+  height: 34px;
   background:antiquewhite;
   border-radius: 10px;
   display: flex;
@@ -74,7 +92,7 @@
 .descriptionDiv {
   margin-top: 10px;
   margin-bottom: 15px;
-  width: 70%;
+  width: 90%;
 }
 .loadingDivRolePage {
   justify-content: center;

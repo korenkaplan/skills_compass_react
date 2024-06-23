@@ -1,3 +1,8 @@
-=============  Frontend =================
-- Handle loading time (cache)
-- Try a different color schema
+
+About Me page:
+- go through the text.
+
+
+How It Works:
+
+

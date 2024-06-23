@@ -15,6 +15,8 @@ import greenPercentage from '../../assets/white icons/green-percentage.png'
 import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
 import Switch from '@mui/material/Switch/Switch';
 import { Button, FormGroup, TextField } from '@mui/material';
+import { Tooltip } from 'react-tooltip'
+import info from '../../assets/icons/info.png'
 //#endregion
 
 interface RolePageProps {
@@ -33,7 +35,6 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   const [techList, setTechList] = useState<FormattedDataRow[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>(allCategoriesString); // Initialize with an empty string
   const [maxCount, setMaxCount] = useState<number>(0); // State to store the maximum count
-  const maxLineWidth = 400; // Define the maximum line width
   const [totalListingsCount, setTotalListingsCount] = useState<number>(0)
   const [showPercentage, setShowPercentage] = useState<boolean>(true)
   const [isAnimating, setIsAnimating] = useState<boolean>(true)
@@ -44,7 +45,6 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   const [listLimitSwitch, setListLimitSwitch] = useState(false)
   const [amount, setAmount] = useState(0);
   const [allCategories, setAllCategories] = useState<string[]>([])
-
   const [categoryLimitSwitch, setCategoryLimitSwitch] = useState(false)
   const [categoryAmount, setCategoryAmount] = useState(0);
 
@@ -301,8 +301,8 @@ useEffect(() => {
 
   const toggler = (
     <div className="toggler">
-    <div onClick={()=> togglerPressed("percentages")} className={`toggler_button percentageButton ${alignment == 'percentages'? 'selected_toggler_button': ''}`}><img style={{ width: 30, height: 30 }} src={alignment == 'percentages'? whitePercentage: greenPercentage} /></div>
-    <div onClick={()=> togglerPressed("counts")} className={`toggler_button countButton ${alignment == 'counts'? 'selected_toggler_button': ''}`}><img style={{ width: 30, height: 30 }} src={alignment == 'counts'? whiteCount: greenCount} /></div>
+    <div onClick={()=> togglerPressed("percentages")} className={`toggler_button percentageButton  ${alignment == 'percentages'? 'selected_toggler_button': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'percentages'? whitePercentage: greenPercentage} /></div>
+    <div onClick={()=> togglerPressed("counts")} className={`toggler_button countButton  ${alignment == 'counts'? 'selected_toggler_button': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'counts'? whiteCount: greenCount} /></div>
   </div>
   )
 
@@ -336,28 +336,80 @@ useEffect(() => {
     display: categoryLimitSwitch? 'block' : 'none',
   };
 //#endregion
-  return (
+
+const calculateMaxLineWidth = () => {
+  const screenWidth = window.innerWidth;
+  // Example logic to calculate maxLineWidth based on screen width
+  // Adjust the calculation as needed
+  return screenWidth * 0.35;
+};
+const [maxLineWidths, setMaxLineWidth] = useState(calculateMaxLineWidth());
+
+useEffect(() => {
+  const handleResize = () => {
+    setMaxLineWidth(calculateMaxLineWidth());
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  // Cleanup listener on component unmount
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
+return (
     <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section ">
       <div className="headerDiv">
         <div className="headerAndToggler">
           <h1 className='headerRolePage'>{_.upperCase(role.name)}</h1>
+          <div className="togglerInfoDiv">
+            <img className='infoImg togglerInfo' src={info} alt="" />
            {toggler}
+           <Tooltip place='left' anchorSelect='.togglerInfo'>
+            <div>
+              <h3>Percentages</h3>
+              <p>Show the percentage of job listings that mention this technology.</p>
+            </div>
+            <div>
+              <h3>Count</h3>
+              <p>Show the total number of job postings that mention this technology.</p>
+            </div>
+          </Tooltip>
+          </div>
+
         </div>
         <h4 className='subheaderRolePage'>JOB POSTINGS AMOUNT : {totalListingsCount}</h4>
-
-        <Line height="1px" width="25%" color={'antiquewhite'} radius="4px" />
+        <div className="switchesDiv">
+        <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
         <FormGroup>
+          <div data-tip data-for='tooltip-right' className="switchMultipleCategoriesDiv">
             <FormControlLabel
             control={<Switch color='warning' checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px', marginTop:5 }}
             label={aggregateSwitchElementTitle}
           />
+          <img className='infoImg SwitchMultipleCategories' src={info} alt="" />
+          <Tooltip place='right' anchorSelect='.SwitchMultipleCategories'>
+            <div>
+              <h3>Enable Multi-Category Selection</h3>
+              <p>Select multiple categories to view a combined and sorted list of their items.</p>
+            </div>
+          </Tooltip>
+          </div>
           <div className="switchDiv limitDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+            <div className="">
           <FormControlLabel
             control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={listLImitSwitchElementTitle}
           />
+            <img className='infoImg SwitchLimitDiv' src={info} alt="" />
+          <Tooltip place='right' anchorSelect='.SwitchLimitDiv'>
+            <div>
+            <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
+            </div>
+          </Tooltip>
+          </div>
           <input
             type='number'
             id="outlined-basic"
@@ -370,11 +422,20 @@ useEffect(() => {
           </div>
 
           <div className="switchDiv limitPerCategoryDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+            <div className="">
             <FormControlLabel
             control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={categoryLImitSwitchElementTitle}
           />
+           <img className='infoImg SwitchLimitPerCategory' src={info} alt="" />
+            <Tooltip place='right' anchorSelect='.SwitchLimitPerCategory'>
+              <div>
+              <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>
+              </div>
+            </Tooltip>
+            </div>
+
           <input
             type='number'
             id="outlined-basic"
@@ -387,12 +448,15 @@ useEffect(() => {
           </div>
 
       </FormGroup>
+        </div>
+
       <div>
     </div>
-      <Line height="1px" width="25%" color={'antiquewhite'} radius="4px" />
+      <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
       </div>
 
       <div className="descriptionDiv textRolePage">{role.description}</div>
+      <Line height="0.5px" width="100%" margin='0 0 20px 0' color={'antiquewhite'} radius="4px" />
 
       <div className="loadingDivRolePage" style={{ display: isAnimating ? 'flex' : 'none' }}>
         <div className="loadingDivInner">
@@ -409,25 +473,21 @@ useEffect(() => {
         {data && (
           <div className='categoriesButtonDiv'>
             {allCategories?.map(category =>
-            (<button
+            (<span
               disabled={aggregatedSwitch && category == allCategoriesString }
               onClick={() => handleCategoryClicked(category)}
               className={`categoryButton textRolePage ${getCategoryButtonClass(category)}`}
               key={category}>
               {_.startCase(category)}
-            </button>))}
+            </span>))}
           </div>
         )}
-
-
-
-
         <div className="techListDiv" >
           {techList.map((techCount, index) => (
             <TechRow
               totalListingsAmount={totalListingsCount}
-              maxCount={maxCount}
-              maxLineWidth={maxLineWidth}
+              maxCount={totalListingsCount}
+              maxLineWidth={maxLineWidths}
               key={index}
               tech={techCount.tech}
               count={showPercentage ? calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount}

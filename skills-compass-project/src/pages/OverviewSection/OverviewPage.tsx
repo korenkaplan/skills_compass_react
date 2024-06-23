@@ -6,33 +6,27 @@ import logo from '../../assets/logo/logo.png'
 import translation from '../../assets/icons/translation.png'
 import '../../CSS/RotatingImageClick.css'
 const Overview: React.FC = () => {
-const developerSurveyText2=(
-  <>
-    <p><strong>The Main Idea</strong></p>
-    <p>At Skills Compass, we're all about helping you thrive in the tech world. Our main idea? Providing you with the most up-to-date insights on the skills you need for your dream tech job.</p>
+  const developerSurveyText = () => (
+    <>
+      <p><strong>💡 The Main Idea:</strong></p>
+      <p>🌟 Welcome to Skills Compass! Our mission is to guide you on the most in-demand technologies in Israel's tech job market. We help you stay relevant by providing the latest information on the skills you need for different tech roles.</p>
 
-    <p><strong>Real-Time Insights</strong></p>
-    <p>Picture this: every single day, we're out there scraping the latest job listings from across the web. Why? So we can give you real-time insights that are as fresh as they come. When we say real-time, we mean it. Our data isn't just accurate, it's the most updated and reliable you'll find anywhere.</p>
+      <p><strong>🌍 What Makes Us Unique:</strong></p>
+      <p>🔍 Every day, our system scans the latest job postings online, ensuring that our data is the freshest and most accurate, especially for jobs in Israel. This way, you get real-time insights into what employers are looking for.</p>
 
-    <p><strong>What's Coming Next</strong></p>
-    <p>But wait, there's more! We're not stopping here. In the future, we're gearing up to cover even more roles, delve into the hottest tech trends, and bring you even deeper insights into the tech landscape. Stay tuned for exciting updates as we continue to grow and evolve with you.</p>
-  </>
-);
-const developerSurveyText = () => (
-  <>
-    <p><strong>💡 The Main Idea:</strong></p>
-    <p>🌟 Welcome to Skills Compass! Our mission is to guide you on the most in-demand technologies in Israel's tech job market. We help you stay relevant by providing the latest information on the skills you need for different tech roles.</p>
+      <p><strong>🔮 What's Coming Next:</strong></p>
+      <p>🚀 Exciting things are on the horizon! We're planning to add more job roles, highlight emerging and declining tech trends, and provide even more data to help you navigate the job market with confidence.</p>
 
-    <p><strong>🌍 What Makes Us Unique:</strong></p>
-    <p>🔍 Every day, our system scans the latest job postings online, ensuring that our data is the freshest and most accurate, especially for jobs in Israel. This way, you get real-time insights into what employers are looking for.</p>
+      <p><strong>🔧 How It Works:</strong></p>
+      <p>📊 Our site is organized by different tech roles. For each role, we show the most common technologies mentioned in job postings, grouped into categories. You'll see how many job postings mention each technology and you can toggle between percentage and count views, giving you a clear picture of what skills are in demand.</p>
+      <p>🔧 Additionally, for each role, you can choose to view selected categories at once and limit the list length and the items per category. This helps you to focus on the most relevant information according to your preferences.</p>
 
-    <p><strong>🔮 What's Coming Next:</strong></p>
-    <p>🚀 Exciting things are on the horizon! We're planning to add more job roles, highlight emerging and declining tech trends, and provide even more data to help you navigate the job market with confidence.</p>
+      <p><strong>🎨 Customization:</strong></p>
+      <p>Additionally, for each role, you can now choose to view selected categories all at once and customize the list length and items per category. </p>
+      <p>This feature allows you to focus more effectively on the most relevant information based on your preferences.</p>
+    </>
+  );
 
-    <p><strong>🔧 How It Works:</strong></p>
-    <p>📊 Our site is organized by different tech roles. For each role, we show the most common technologies mentioned in job postings, grouped into categories. You'll see how many job postings mention each technology and you can toggle between percentage and count views, giving you a clear picture of what skills are in demand.</p>
-  </>
-);
 
 const developerSurveyTextHeb = (
   <>
@@ -47,6 +41,10 @@ const developerSurveyTextHeb = (
 
   <p><strong>🔍 איך זה עובד?</strong></p>
   <p>📊 האתר מחולק לתפקידים שונים. לכל תפקיד מוצגות הטכנולוגיות השכיחות ביותר המופיעות במשרות עבור אותו תפקיד, והן מסודרות לפי קטגוריות. ליד כל טכנולוגיה יש אוצפיה לצפות או בתצוגת אחוז המשרות בהן הופיעה הכטנולוגיה או את כמות המשרות בהן הופיעה.</p>
+
+  <p><strong>🛠️ התאמה אישית:</strong></p>
+  <p>בנוסף, עבור כל תפקיד, עכשיו תוכלו לבחור להציג קטגוריות נבחרות בבת אחת ולהתאים את אורך הרשימה ואת מספר הפריטים בכל קטגוריה.</p>
+  <p>תכונה זו מאפשרת לכם להתמקד במידע הרלוונטי ביותר לפי ההעדפות שלכם.</p>
 </>
 );
 
