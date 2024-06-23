@@ -52,9 +52,9 @@ const MainPage: React.FC = () => {
 
   const sections = useMemo(() => {
     return [
-      ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
       { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading}/> },
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
+      ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
       { id: 'aboutMe', label: 'About Me', component: AboutMe },
 
     ];
