@@ -8,7 +8,7 @@ const MyTicker: React.FC = () => {
   return (
     <div className="ticker-container" style={{ backgroundColor: 'red', width: '100%', color: 'white' }}>
       <Ticker speed={5}>
-        {({ index }) => (
+        {() => (
           <div>
             {hostages_names.map((name, idx) => (
               <div key={idx}>{name}</div>

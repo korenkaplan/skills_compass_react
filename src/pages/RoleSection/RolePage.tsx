@@ -1,11 +1,10 @@
 //#region imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, CSSProperties } from 'react';
 import './RolePage.css';
-import { backgroundColor, textColor } from '../../utils/variables';
+import { backgroundColor} from '../../utils/variables';
 import { FormattedDataRow, Role } from '../../utils/interfaces';
 import axios from 'axios';
-import { TechCount, CategoryData } from '../../utils/interfaces';
-import _, { forEach, List, slice } from 'lodash';
+import {CategoryData } from '../../utils/interfaces';
 import TechRow from '../../components/TechRow/TechRow';
 import Line from '../../components/Line/Line'
 import whiteCount from '../../assets/white icons/count.png'
@@ -14,9 +13,10 @@ import whitePercentage from '../../assets/white icons/percentage.png'
 import greenPercentage from '../../assets/white icons/green-percentage.png'
 import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
 import Switch from '@mui/material/Switch/Switch';
-import { Button, FormGroup, TextField } from '@mui/material';
+import {FormGroup} from '@mui/material';
 import { Tooltip } from 'react-tooltip'
 import info from '../../assets/icons/info.png'
+import _ from 'lodash'
 //#endregion
 
 interface RolePageProps {
@@ -34,7 +34,6 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   const [data, setData] = useState<CategoryData>({});
   const [techList, setTechList] = useState<FormattedDataRow[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>(allCategoriesString); // Initialize with an empty string
-  const [maxCount, setMaxCount] = useState<number>(0); // State to store the maximum count
   const [totalListingsCount, setTotalListingsCount] = useState<number>(0)
   const [showPercentage, setShowPercentage] = useState<boolean>(true)
   const [isAnimating, setIsAnimating] = useState<boolean>(true)
@@ -158,14 +157,14 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
 
   //   setTechList(result)
   // }
-  const handleLimitSwitchChange = (event) => {
+  const handleLimitSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.checked
     setListLimitSwitch(value);
     aggregatedTechList(value === true ? amount : defaultAmount, value, categoryAmount, categoryLimitSwitch)
   }
 
   const calculatePercentages = (part: number, total: number) => { return (part / total) * 100 }
-  const handleAggregationSwitchChange = (event) => {
+  const handleAggregationSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.checked
     setAggregatedSwitch(value);
 
@@ -196,7 +195,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
       }
   };
 
-  const getCategoryButtonClass = (category) => {
+  const getCategoryButtonClass = (category: string) => {
     if (aggregatedSwitch) {
       if(category === allCategoriesString)
           return 'disabled'
@@ -207,9 +206,9 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
       return selectedCategory === category ? 'selected' : '';
     }
   };
-  const handleAmountChange = (event) => {
+  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Ensure the value is non-negative
-    const value = event.target.value;
+    const value: number = parseInt(event.target.value, 10);
     if (value >= 1) {
       setAmount(value);
       const sliceList = true;
@@ -220,9 +219,9 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
 
 
 
-  const handleCategoryAmountChange = (event) => {
+  const handleCategoryAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Ensure the value is non-negative
-    const value = event.target.value;
+    const value = parseInt(event.target.value, 10);
     if (value >= 1) {
       setCategoryAmount(value);
       aggregatedTechList(amount, listLimitSwitch, value, categoryLimitSwitch)
@@ -230,7 +229,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
 
   };
 
-  const handleCategoryLimitSwitchChange = (event) => {
+  const handleCategoryLimitSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.checked
     setCategoryLimitSwitch(value);
     aggregatedTechList(amount, listLimitSwitch, categoryAmount, value)
@@ -267,17 +266,7 @@ useEffect(() => {
         const allCategoriesData = response.data.data[allCategoriesString] || [];
         setTechList(allCategoriesData);
 
-        // Calculate maximum count based on the selected category
-        let max = 0;
-        const selectedCategoryData = response.data.data[selectedCategory];
-        if (selectedCategoryData) {
-          selectedCategoryData.forEach((techCount) => {
-            if (techCount.amount > max) {
-              max = techCount.amount;
-            }
-          });
-        }
-        setMaxCount(max);
+
         const temp: string[] = []
         Object.keys(response.data.data).map(category => temp.push(category))
         setAllCategories(temp);
@@ -306,7 +295,7 @@ useEffect(() => {
   </div>
   )
 
-  const inputStyle = {
+  const inputStyle: CSSProperties = {
     width: '60px',
     height: '30px',
     color: '#333', // Desired text color
@@ -321,7 +310,7 @@ useEffect(() => {
     display: listLimitSwitch? 'block' : 'none',
   };
 
-  const CategoryinputStyle = {
+  const CategoryInputStyle: CSSProperties = {
     width: '60px',
     height: '30px',
     color: '#333', // Desired text color
@@ -443,7 +432,7 @@ return (
             onChange={handleCategoryAmountChange}
             min={1} // Ensure the input doesn't accept negative values
             max={100}
-            style={CategoryinputStyle} // Apply custom styles via style attribute
+            style={CategoryInputStyle} // Apply custom styles via style attribute
           />
           </div>
 
@@ -474,7 +463,6 @@ return (
           <div className='categoriesButtonDiv'>
             {allCategories?.map(category =>
             (<span
-              disabled={aggregatedSwitch && category == allCategoriesString }
               onClick={() => handleCategoryClicked(category)}
               className={`categoryButton textRolePage ${getCategoryButtonClass(category)}`}
               key={category}>

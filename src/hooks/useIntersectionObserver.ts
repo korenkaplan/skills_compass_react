@@ -11,7 +11,7 @@ const useIntersectionObserver = (sectionIds: string[]) => {
       threshold: 0.6,
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);

@@ -7,7 +7,6 @@ import '../../CSS/RotatingImage.css'
 import Line from '../../components/Line/Line'
 import LinearProgress from '@mui/material/LinearProgress';
 import {calculateMaxLineWidth} from '../../utils/functions'
-import { hostages_names } from '../../utils/variables';
 import Lottie from "lottie-react";
 import scrollAnimation from '../../assets/animations/scroll_down_animation.json'
 interface LandingPageProps {
@@ -20,8 +19,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ isLoading }) => {
 const percentOfScreenWidth = 0.18
 const [logoWidth, setMaxLineWidth] = useState(calculateMaxLineWidth(percentOfScreenWidth));
 const [currentIndex, setCurrentIndex] = useState(0);
-const [currentIndex2, setCurrentIndex2] = useState(0);
-const [currentHostageName, setCurrentHostageName] = useState(hostages_names[0]);
 const headerText: string = '"Discover the Key Skills for Your Dream Job in Israel\'s Hi-Tech Field"'
 const logoText: string = 'SKILLS COMPASS'
 const textColor = 'antiquewhite'
