@@ -44,3 +44,8 @@ export type FormattedDataRow = {
     amount: number;
     role: string;
 }
+
+export type FaqAccordion = {
+    question: string;
+    answer: React.ReactNode;
+};

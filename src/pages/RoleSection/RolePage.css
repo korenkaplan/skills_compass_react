@@ -163,7 +163,7 @@ margin: 0 10px 0 0;
   transition: width 3;
 }
 .categoryButton:hover {
-  background-color: rgba(149, 195, 140, 0.785);
+  background-color: #95c38cc8;
   color: antiquewhite;
 }
 .categoryButton.selected {

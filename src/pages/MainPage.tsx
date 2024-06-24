@@ -6,6 +6,7 @@ import './MainPage.css';
 import LandingPage from './LandingSection/LandingPage';
 import OverviewPage from './OverviewSection/OverviewPage';
 import AboutMe from './AboutMeSection/AboutMePage';
+import FaqPage from './FaqPage/FaqPage';
 import RolePage from './RoleSection/RolePage';
 import { Role, Section } from '../utils/interfaces';
 import _ from 'lodash';
@@ -56,7 +57,7 @@ const MainPage: React.FC = () => {
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
       ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
       { id: 'aboutMe', label: 'About Me', component: AboutMe },
-
+      { id: 'faqPage', label: 'FAQ', component: FaqPage },
     ];
   }, [roles, rolesFetched]);
 
