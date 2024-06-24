@@ -50,7 +50,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ sections, activeSection }) => {
           <li
             key={section.id}
             onClick={() => handleClick(section.id)}
-            className={activeSection === section.id ? 'active' : ''}
+            className={activeSection === section.id ? 'active' : 'li'}
           >
             {section.label}
           </li>

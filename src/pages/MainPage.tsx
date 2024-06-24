@@ -56,8 +56,8 @@ const MainPage: React.FC = () => {
       { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading}/> },
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
       ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
-      { id: 'aboutMe', label: 'About Me', component: AboutMe },
       { id: 'faqPage', label: 'FAQ', component: FaqPage },
+      { id: 'aboutMe', label: 'About Me', component: AboutMe },
     ];
   }, [roles, rolesFetched]);
 
