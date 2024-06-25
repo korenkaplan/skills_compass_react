@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import useIntersectionObserver from '../hooks/useIntersectionObserver'; // Import your custom hook
 import './MainPage.css';
 import LandingPage from './LandingSection/LandingPage';
 import OverviewPage from './OverviewSection/OverviewPage';

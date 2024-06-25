@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import './OverviewPageMobile.css'
 import {backgroundColor} from '../../utils/variables'
 import logo from '../../assets/logo/logo.png'
-import translation from '../../assets/icons/translation.png'
 import '../../CSS/RotatingImageClick.css'
 import ClampLines from 'react-clamp-lines';
 import { MdGTranslate } from "react-icons/md";

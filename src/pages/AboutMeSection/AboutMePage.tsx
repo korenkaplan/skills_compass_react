@@ -10,7 +10,6 @@ import whatsapp from '../../assets/icons/whatsapp.png'
 import download from '../../assets/icons/download.png'
 import Line from '../../components/Line/Line'
 import {textColor} from '../../utils/variables'
-import translation from '../../assets/icons/translationBright.png'
 import { MdGTranslate } from "react-icons/md";
 
 const AboutMe: React.FC = () => {

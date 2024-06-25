@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 //#region imports
 import React, { useState, useEffect, CSSProperties } from 'react';
 import './RolePageMobile.css';
@@ -457,6 +458,7 @@ return (
 
         {/* Render the rest of the categories sorted and interleaved */}
         {splitAndInterleaveCategories(
+          // @ts-expect-error
           allCategories.slice(1).sort((a, b) => a.length - b.length)
         ).map(category => (
           <span

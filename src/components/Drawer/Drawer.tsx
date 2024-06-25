@@ -59,7 +59,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, va
       <Divider />
       <List>
         {
-        sections.filter(section => (section.label !== 'Home')).map((section, index) => (
+        sections.filter(section => (section.label !== 'Home')).map((section) => (
             <ListItem
             key={section.id}
             disablePadding
