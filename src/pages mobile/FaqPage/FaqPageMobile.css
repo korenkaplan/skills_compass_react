@@ -1,0 +1,50 @@
+.accordionDiv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.containerFaq {
+    color: white;
+    padding: 20px 20px 50px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerFaqMobile{
+  font-size: 20px;
+}
+.headerDivFaq{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.headerIconDiv{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+.accordion {
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+
+  .accordion-hovered {
+    background-color: #6a3210;
+  }
+
+  .accordion-item {
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+
+  .accordion-item-hovered {
+    box-shadow: 0px 4px 15px rgba(8, 15, 15, 0.2);
+    transform: translateY(-5px);
+  }
+.disabled {
+    background-color: rgb(85, 177, 82);
+}
