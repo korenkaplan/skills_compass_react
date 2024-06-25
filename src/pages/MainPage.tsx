@@ -11,9 +11,12 @@ import RolePage from './RoleSection/RolePage';
 import { Role, Section } from '../utils/interfaces';
 import _ from 'lodash';
 import axios from 'axios';
+import TemporaryDrawer from '../components/Drawer/Drawer';
+import { useMediaQuery } from 'react-responsive'
+import { GiHamburgerMenu } from "react-icons/gi";
+import { backgroundColor } from '../utils/variables';
 
-
-
+import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean): Section[] => {
   return roles.flatMap(role => {
     const roleProps = { role: role, rolesFetched: rolesFetched }; // Props to pass to RolePage component
@@ -31,7 +34,18 @@ const MainPage: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);
   const [rolesFetched, setRolesFetched] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const marginLeftAmount = 250
+  const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent'
+  const toggleDrawer = (newOpen: boolean) => {
+    if(!isMobile)
+    {
+      setIsOpen(true);
+      return
+    }
+    setIsOpen(newOpen);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,6 +65,16 @@ const MainPage: React.FC = () => {
 
 
 
+  const sectionsMobile = useMemo(() => {
+    return [
+      { id: 'landingPage', label: 'Home', component: () => <LandingPageMobile isLoading={isLoading}/> },
+      { id: 'overviewPage', label: 'Overview', component: OverviewPage },
+      ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
+      { id: 'faqPage', label: 'FAQ', component: FaqPage },
+      { id: 'aboutMe', label: 'About Me', component: AboutMe },
+    ];
+  }, [roles, rolesFetched]);
+
   const sections = useMemo(() => {
     return [
       { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading}/> },
@@ -61,20 +85,46 @@ const MainPage: React.FC = () => {
     ];
   }, [roles, rolesFetched]);
 
-  const activeSection = useIntersectionObserver(sections.map(section => section.id));
+  const activeSection =  useIntersectionObserver(isMobile? sectionsMobile.map(section => section.id) : sections.map(section => section.id));
+
+  useEffect(() => {
+      setIsOpen(!isMobile)
+  },[isMobile]);
+console.log(isMobile);
 
   return (
     <div className="main-page" >
-      <SideMenu sections={sections} activeSection={activeSection} />
-      <div style={{backgroundColor:'red', position:'absolute', top: 0, right: 0}} className="">
-      </div>
-      <div className="content">
-        {sections.map(section => (
-          <div key={section.id} id={section.id} className="section">
-            <section.component />
-          </div>
-        ))}
-      </div>
+       <GiHamburgerMenu style={{border:`1px solid ${backgroundColor}`}}  size={40} className='drawerButton' onClick={() => toggleDrawer(true)}/>
+      {/* <SideMenu sections={sections} activeSection={activeSection} /> */}
+      {
+        isMobile ?
+        (
+          <>
+          <TemporaryDrawer sections={sectionsMobile} activeSection={activeSection} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
+        <div className="content" style={{marginLeft: isOpen && !isMobile ? marginLeftAmount : 0}}>
+          {sectionsMobile.map(section => (
+            <div key={section.id} id={section.id} className="section">
+              <section.component />
+            </div>
+          ))}
+        </div>
+        </>
+        )
+        :
+        (
+          <>
+          <TemporaryDrawer sections={sections} activeSection={activeSection} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
+        <div className="content" style={{marginLeft: isOpen && !isMobile ? marginLeftAmount : 0}}>
+          {sections.map(section => (
+            <div key={section.id} id={section.id} className="section">
+              <section.component />
+            </div>
+          ))}
+        </div>
+        </>
+        )
+      }
+
 
     </div>
   );

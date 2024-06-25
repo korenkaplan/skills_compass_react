@@ -1,0 +1,78 @@
+.mainLogo {
+    position: relative;
+    display: block;
+    margin: 0 auto; /* Center the logo horizontally */
+    margin-bottom: 20px; /* Add margin below the logo */
+    width: 30%;
+    border-radius: 8px; /* Add border radius */
+    z-index: 1;
+  }
+  .logoLandingPage {
+
+  }
+  .loadingDiv{
+    text-align: center;
+    height:'300px';
+    color:'antiquewhite';
+  }
+  .fade-text {
+    opacity: 0;
+  }
+
+  .fade-text.animate {
+    animation: fadeInOut 4s infinite;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  .main {
+    position: relative; /* Add position relative */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .headerLandingPage {
+    color: antiquewhite;
+    font-family: 'Inknut Antiqua', serif;
+    text-align: center;
+    width: 80%;
+    font-size: 20px;
+    line-height: 40px;
+    margin: 30px 0 0 0;
+
+  }
+  .logoHeader {
+    color: antiquewhite;
+    font-family: 'Inknut Antiqua', serif;
+    text-align: center;
+    font-size: 30px;
+  }
+  .visitors-div {
+    background-color: antiquewhite;
+    position: fixed; /* Change position to fixed */
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 0 0 0 10px; /* Apply border radius only to bottom-left corner */
+    z-index: 9999; /* Set a high z-index value to ensure it's above all other content */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add outer shadow */
+
+  }
+
+.scrollDivMobile{
+  position: absolute;
+  bottom: 5%;
+}
+.loadingDivMobile{
+  position: absolute;
+  bottom: 5%;
+}

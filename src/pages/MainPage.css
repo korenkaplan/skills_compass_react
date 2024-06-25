@@ -7,9 +7,8 @@
   }
 
   .content {
-    margin-left: 300px; /* Align with the side menu width */
-    width: calc(100% - 300px);
     overflow-y: auto; /* Allow vertical scrolling */
+    transition: margin 0.3s ease-in-out;
   }
 
   .section {
@@ -22,4 +21,15 @@
   }
   .li{
     font-size: 16px;
+  }
+  .drawerButton{
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    z-index: 2;
+    background-color: #ffff;
+    padding: 5px;
+    border-radius: 15px;
+
+
   }

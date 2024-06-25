@@ -49,3 +49,7 @@ export type FaqAccordion = {
     question: string;
     answer: React.ReactNode;
 };
+
+export type DrawerVariant = {
+    variant: 'temporary' | 'persistent' | 'permanent';
+  }

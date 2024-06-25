@@ -1,0 +1,27 @@
+.logoDiv{
+    padding: 10px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    color: red;
+}
+.li{
+    color: black
+}
+
+  .drawer{
+    overflow-y: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    padding: 4px;
+  }
+
+
+/* Hide scrollbar for modern browsers */
+.drawer::-webkit-scrollbar {
+    display: none;
+  }
