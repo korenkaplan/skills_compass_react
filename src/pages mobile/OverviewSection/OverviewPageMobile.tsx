@@ -1,53 +1,51 @@
 // src/components/SideMenu.tsx
 import React, {useState} from 'react';
-import './OverViewPage.css'
+import './OverviewPageMobile.css'
 import {backgroundColor} from '../../utils/variables'
 import logo from '../../assets/logo/logo.png'
 import translation from '../../assets/icons/translation.png'
 import '../../CSS/RotatingImageClick.css'
-const Overview: React.FC = () => {
-  const developerSurveyText = () => (
-    <>
-      <p><strong>💡 The Main Idea:</strong></p>
-      <p>🌟 Welcome to Skills Compass! Our mission is to guide you on the most in-demand technologies in Israel's tech job market. We help you stay relevant by providing the latest information on the skills you need for different tech roles.</p>
+import ClampLines from 'react-clamp-lines';
+const OverviewPageMobile: React.FC = () => {
+  const developerSurveyText = `
+  💡 The Main Idea:
+  🌟 Welcome to Skills Compass! Our mission is to guide you on the most in-demand technologies in Israel's tech job market. We help you stay relevant by providing the latest information on the skills you need for different tech roles.
 
-      <p><strong>🌍 What Makes Us Unique:</strong></p>
-      <p>🔍 Every day, our system scans the latest job postings online, ensuring that our data is the freshest and most accurate, especially for jobs in Israel. This way, you get real-time insights into what employers are looking for.</p>
+  🌍 What Makes Us Unique:
+  🔍 Every day, our system scans the latest job postings online, ensuring that our data is the freshest and most accurate, especially for jobs in Israel. This way, you get real-time insights into what employers are looking for.
 
-      <p><strong>🔮 What's Coming Next:</strong></p>
-      <p>🚀 Exciting things are on the horizon! We're planning to add more job roles, highlight emerging and declining tech trends, and provide even more data to help you navigate the job market with confidence.</p>
+  🔮 What's Coming Next:
+  🚀 Exciting things are on the horizon! We're planning to add more job roles, highlight emerging and declining tech trends, and provide even more data to help you navigate the job market with confidence.
 
-      <p><strong>🔧 How It Works:</strong></p>
-      <p>📊 Our site is organized by different tech roles. For each role, we show the most common technologies mentioned in job postings, grouped into categories. You'll see how many job postings mention each technology and you can toggle between percentage and count views, giving you a clear picture of what skills are in demand.</p>
-      <p>🔧 Additionally, for each role, you can choose to view selected categories at once and limit the list length and the items per category. This helps you to focus on the most relevant information according to your preferences.</p>
+  🔧 How It Works:
+  📊 Our site is organized by different tech roles. For each role, we show the most common technologies mentioned in job postings, grouped into categories. You'll see how many job postings mention each technology and you can toggle between percentage and count views, giving you a clear picture of what skills are in demand.
+  🔧 Additionally, for each role, you can choose to view selected categories at once and limit the list length and the items per category. This helps you to focus on the most relevant information according to your preferences.
 
-      <p><strong>🎨 Customization:</strong></p>
-      <p>Additionally, for each role, you can now choose to view selected categories all at once and customize the list length and items per category. </p>
-      <p>This feature allows you to focus more effectively on the most relevant information based on your preferences.</p>
-    </>
-  );
+  🎨 Customization:
+  Additionally, for each role, you can now choose to view selected categories all at once and customize the list length and items per category.
+  This feature allows you to focus more effectively on the most relevant information based on your preferences.
+`;
 
+const developerSurveyTextHeb = `
+  💡 הרעיון המרכזי:
+  🌟 ב-Skills Compass, המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעזור להם להישאר רלוונטיים לתחום. אנחנו מספקים מידע עדכני על הטכנולוגיות הכי מבוקשות לפי סוג משרה.
 
-const developerSurveyTextHeb = (
-  <>
-  <p><strong>💡 הרעיון המרכזי</strong></p>
-  <p>🌟 ב-Skills Compass, המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעזור להם להישאר רלוונטיים לתחום. אנחנו מספקים מידע עדכני על הטכנולוגיות הכי מבוקשות לפי סוג משרה.</p>
+  ⏱️ תובנות בזמן אמת:
+  🔍 המערכת שלנו אוספת מידע באופן יומיומי על ידי סריקת משרות המתפרסמות באינטרנט, מה שמבטיח שהנתונים שלנו הם המעודכנים והמדויקים ביותר, ובמיוחד עבור משרות המתפרסמות בישראל.
 
-  <p><strong>⏱️ תובנות בזמן אמת</strong></p>
-  <p>🔍 המערכת שלנו אוספת מידע באופן יומיומי על ידי סריקת משרות המתפרסמות באינטרנט, מה שמבטיח שהנתונים שלנו הם המעודכנים והמדויקים ביותר, ובמיוחד עבור משרות המתפרסמות בישראל.</p>
+  🔮 מה צפוי בעתיד?
+  🚀 בעתיד, אנו מתכננים להוסיף סוגי תפקידים נוספים, להציג מגמות עלייה וירידה של טכנולוגיות ולהציע נתונים נוספים שיעזרו לכם לנווט בשוק העבודה.
 
-  <p><strong>🔮 מה צפוי בעתיד?</strong></p>
-  <p>🚀 בעתיד, אנו מתכננים להוסיף סוגי תפקידים נוספים, להציג מגמות עלייה וירידה של טכנולוגיות ולהציע נתונים נוספים שיעזרו לכם לנווט בשוק העבודה.</p>
+  🔍 איך זה עובד?
+  📊 האתר מחולק לתפקידים שונים. לכל תפקיד מוצגות הטכנולוגיות השכיחות ביותר המופיעות במשרות עבור אותו תפקיד, והן מסודרות לפי קטגוריות. ליד כל טכנולוגיה יש אוצפיה לצפות או בתצוגת אחוז המשרות בהן הופיעה הכטנולוגיה או את כמות המשרות בהן הופיעה.
 
-  <p><strong>🔍 איך זה עובד?</strong></p>
-  <p>📊 האתר מחולק לתפקידים שונים. לכל תפקיד מוצגות הטכנולוגיות השכיחות ביותר המופיעות במשרות עבור אותו תפקיד, והן מסודרות לפי קטגוריות. ליד כל טכנולוגיה יש אוצפיה לצפות או בתצוגת אחוז המשרות בהן הופיעה הכטנולוגיה או את כמות המשרות בהן הופיעה.</p>
+  🛠️ התאמה אישית:
+  בנוסף, עבור כל תפקיד, עכשיו תוכלו לבחור להציג קטגוריות נבחרות בבת אחת ולהתאים את אורך הרשימה ואת מספר הפריטים בכל קטגוריה.
+  תכונה זו מאפשרת לכם להתמקד במידע הרלוונטי ביותר לפי ההעדפות שלכם.
+`;
 
-  <p><strong>🛠️ התאמה אישית:</strong></p>
-  <p>בנוסף, עבור כל תפקיד, עכשיו תוכלו לבחור להציג קטגוריות נבחרות בבת אחת ולהתאים את אורך הרשימה ואת מספר הפריטים בכל קטגוריה.</p>
-  <p>תכונה זו מאפשרת לכם להתמקד במידע הרלוונטי ביותר לפי ההעדפות שלכם.</p>
-</>
-);
-
+console.log(developerSurveyText);
+console.log(developerSurveyTextHeb);
 
 const headerEnglish = "Overview"
 const headerHeb = "סקירה כללית"
@@ -58,7 +56,6 @@ const [mainText, setMainText] = useState(developerSurveyText);
 const [header, setHeader] = useState<string>(headerEnglish);
 const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
 const [isRotated, setIsRotated] = useState(false);
-
   const handleRotate = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
     setMainText(isRotated ? developerSurveyText : developerSurveyTextHeb); // Toggle between English and Hebrew texts
@@ -66,7 +63,6 @@ const [isRotated, setIsRotated] = useState(false);
     setBottomWords(isRotated ? bottomWordsEng : bottomWordsHeb); // Toggle between English and Hebrew texts
 
   };
-
 
 
   return (
@@ -81,8 +77,15 @@ const [isRotated, setIsRotated] = useState(false);
 
       </div>
       <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
-
-          <p className='mainText'>{mainText}</p>
+      <ClampLines
+          id='123'
+          text={mainText}
+          lines={3}
+          ellipsis="..."
+          moreText= {isRotated? "הצג עוד": " Show More"}
+          lessText={isRotated? "הצג פחות": " Show Less"}
+          innerElement="pre"
+        />
         </div>
       <div className="imageRow">
         <p>{bottomWords}</p>
@@ -94,4 +97,4 @@ const [isRotated, setIsRotated] = useState(false);
   );
 };
 
-export default Overview;
+export default OverviewPageMobile;

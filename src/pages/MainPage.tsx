@@ -17,6 +17,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { backgroundColor } from '../utils/variables';
 
 import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
+import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean): Section[] => {
   return roles.flatMap(role => {
     const roleProps = { role: role, rolesFetched: rolesFetched }; // Props to pass to RolePage component
@@ -67,11 +68,8 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
+      { id:'overviewPage', label: 'Overview', component: OverviewPageMobile },
       { id: 'landingPage', label: 'Home', component: () => <LandingPageMobile isLoading={isLoading}/> },
-      { id: 'overviewPage', label: 'Overview', component: OverviewPage },
-      ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
-      { id: 'faqPage', label: 'FAQ', component: FaqPage },
-      { id: 'aboutMe', label: 'About Me', component: AboutMe },
     ];
   }, [roles, rolesFetched]);
 
@@ -90,7 +88,6 @@ const MainPage: React.FC = () => {
   useEffect(() => {
       setIsOpen(!isMobile)
   },[isMobile]);
-console.log(isMobile);
 
   return (
     <div className="main-page" >
