@@ -18,16 +18,27 @@ import { backgroundColor } from '../utils/variables';
 
 import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
 import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
-const convertRolesToSections = (roles: Role[], rolesFetched: boolean): Section[] => {
+import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
+
+const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap(role => {
     const roleProps = { role: role, rolesFetched: rolesFetched }; // Props to pass to RolePage component
-    return [
+    return  isMobile ?
+    [
+      {
+        id: role.id.toString(),
+        label: _.startCase(role.name),
+        component: () => <RolePageMobile {...roleProps} />, // Pass roleProps to RolePage component
+      }
+    ]:
+    [
       {
         id: role.id.toString(),
         label: _.startCase(role.name),
         component: () => <RolePage {...roleProps} />, // Pass roleProps to RolePage component
       }
-    ];
+    ]
+    ;
   });
 };
 
@@ -68,8 +79,10 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id:'overviewPage', label: 'Overview', component: OverviewPageMobile },
+      ...convertRolesToSections(roles, rolesFetched, isMobile), // Spread the array returned by convertRolesToSections
       { id: 'landingPage', label: 'Home', component: () => <LandingPageMobile isLoading={isLoading}/> },
+      { id:'overviewPage', label: 'Overview', component: OverviewPageMobile },
+
     ];
   }, [roles, rolesFetched]);
 
@@ -77,7 +90,7 @@ const MainPage: React.FC = () => {
     return [
       { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading}/> },
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
-      ...convertRolesToSections(roles, rolesFetched), // Spread the array returned by convertRolesToSections
+      ...convertRolesToSections(roles, rolesFetched, isMobile), // Spread the array returned by convertRolesToSections
       { id: 'faqPage', label: 'FAQ', component: FaqPage },
       { id: 'aboutMe', label: 'About Me', component: AboutMe },
     ];
