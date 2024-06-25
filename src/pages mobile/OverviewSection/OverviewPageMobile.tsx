@@ -6,6 +6,7 @@ import logo from '../../assets/logo/logo.png'
 import translation from '../../assets/icons/translation.png'
 import '../../CSS/RotatingImageClick.css'
 import ClampLines from 'react-clamp-lines';
+import { MdGTranslate } from "react-icons/md";
 const OverviewPageMobile: React.FC = () => {
   const developerSurveyText = `
   💡 The Main Idea:
@@ -72,8 +73,8 @@ const [isRotated, setIsRotated] = useState(false);
         <h2 className='headerOverviewPage'>{header}</h2>
 
         <div className={`image-container ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
-      <img src={translation} alt="Translation Logo" className="translationLogo" />
-    </div>
+            <MdGTranslate size={40} style={{color:'#253439'}} />
+        </div>
 
       </div>
       <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>

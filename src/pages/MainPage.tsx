@@ -20,7 +20,7 @@ import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile'
 import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
 import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
 import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
-
+import AboutMePageMobile from '../pages mobile/AboutMeSection/AboutMePageMobile';
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap(role => {
@@ -81,10 +81,11 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id: 'faqPage', label: 'FAQ', component: FaqPageMobile },
+      { id: 'aboutMe', label: 'About Me', component: AboutMePageMobile },
       { id: 'landingPage', label: 'Home', component: () => <LandingPageMobile isLoading={isLoading}/> },
       { id:'overviewPage', label: 'Overview', component: OverviewPageMobile },
       ...convertRolesToSections(roles, rolesFetched, isMobile), // Spread the array returned by convertRolesToSections
+      { id: 'faqPage', label: 'FAQ', component: FaqPageMobile },
 
 
     ];
