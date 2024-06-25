@@ -1,50 +1,50 @@
-.containerRolePage {
+.containerRolePageDesktop {
   padding: 20px 50px 20px 50px;
   display: flex;
   flex-direction: column;
 }
-.headerAndToggler{
+.headerAndTogglerDesktop{
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.headerDiv {
+.headerDivDesktop {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.togglerInfoDiv {
+.togglerInfoDivDesktop {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: fit-content;
 }
-.switchMultipleCategoriesDiv{
+.switchMultipleCategoriesDivDesktop{
   display: flex;
   align-items: center;
 }
-.infoImg {
+.infoImgDesktop {
 width: 20px;
 height: 20px;
 margin: 0 10px 0 0;
 }
-.headerRolePage{
+.headerRolePageDesktop{
   margin: 0;
 }
-.subheaderRolePage {
+.subheaderRolePageDesktop {
   color: antiquewhite;
   font-size: 17px;
   margin: 10px 0 5px 0; /* Reset margin */
 }
-.switchDiv {
+.switchDivDesktop {
   width: 360px; /* Default width */
   max-width: 100%; /* Allow it to shrink if necessary */
   justify-content: space-between; /* Space between items */
   flex-wrap: wrap; /* Wrap items if they exceed container width */
 }
 
-.toggler {
+.togglerDesktop {
   width: 100px;
   height: 34px;
   background:antiquewhite;
@@ -53,12 +53,12 @@ margin: 0 10px 0 0;
   padding: 2px;
   box-shadow: -1px 5px 10px 0px rgba(0,0,0,0.64);
 }
-.toggler_button{
+.toggler_buttonDesktop{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.selected_toggler_button {
+.selected_toggler_buttonDesktop {
   background-color: #08678a;
   background-color: rgba(149, 195, 140, 0.785);
   background-color: #086156;
@@ -66,57 +66,57 @@ margin: 0 10px 0 0;
 
 
 }
-.percentageButton{
+.percentageButtonDesktop{
   width: 50%;
   height: 100%;
   border-radius: 10px 0 0 10px;
   cursor: pointer;
 }
-.countButton{
+.countButtonDesktop{
   width: 50%;
   height: 100%;
   border-radius: 0 10px 10px 0;
   cursor: pointer;
 
 }
-.textRolePage {
+.textRolePageDesktop {
   color: antiquewhite;
   font-size: 17px;
 }
 
-.headerRolePage {
+.headerRolePageDesktop {
   font-size: 45px;
   color: antiquewhite;
 }
 
-.descriptionDiv {
+.descriptionDivDesktop {
   margin-top: 10px;
   margin-bottom: 15px;
   width: 90%;
 }
-.loadingDivRolePage {
+.loadingDivRolePageDesktop {
   justify-content: center;
   align-items: center;
   flex: 1;
 }
-.loadingDivInner {
+.loadingDivInnerDesktop {
   width: fit-content;
 }
 
-.loading-text {
+.loading-textDesktop {
   color: antiquewhite;
 }
 
-.loading-text .dot {
+.loading-textDesktop .dot {
   opacity: 0;
   animation: fade 1.5s infinite;
 }
 
-.loading-text .dot:nth-child(2) {
+.loading-textDesktop .dot:nth-child(2) {
   animation-delay: 0.5s;
 }
 
-.loading-text .dot:nth-child(3) {
+.loading-textDesktop .dot:nth-child(3) {
   animation-delay: 1s;
 }
 
@@ -130,15 +130,15 @@ margin: 0 10px 0 0;
   }
 }
 
-.loading-text.animate .dot {
+.loading-textDesktop.animate .dot {
   animation-play-state: running;
 }
 
-.loading-text .dot {
+.loading-textDesktop .dot {
   animation-play-state: paused;
 }
 
-.categoriesButtonDiv {
+.categoriesButtonDivDesktop {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -149,7 +149,7 @@ margin: 0 10px 0 0;
   margin: auto;
 }
 
-.categoryButton {
+.categoryButtonDesktop {
   padding: 10px 15px;
   margin: 5px;
   cursor: pointer;
@@ -162,11 +162,11 @@ margin: 0 10px 0 0;
   transition: border-radius 1s;
   transition: width 3;
 }
-.categoryButton:hover {
+.categoryButtonDesktop:hover {
   background-color: #95c38cc8;
   color: antiquewhite;
 }
-.categoryButton.selected {
+.categoryButtonDesktop.selected {
   background-color: #086156;
   color: antiquewhite;
   border-radius: 20px;
@@ -175,7 +175,7 @@ margin: 0 10px 0 0;
   transition: border-radius 1s;
 }
 
-.techListDiv {
+.techListDivDesktop {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -184,8 +184,8 @@ margin: 0 10px 0 0;
   flex: 1; /* Ensure it fills the remaining space */
 }
 /* Disabled button styling */
-.categoryButton.disabled,
-.categoryButton.disabled:hover {
+.categoryButtonDesktop.disabled,
+.categoryButtonDesktop.disabled:hover {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
@@ -193,16 +193,4 @@ margin: 0 10px 0 0;
   pointer-events: none; /* Ensure the button is truly non-interactive */
   opacity: 0.65; /* Slightly transparent to indicate disabled state */
 }
-/* .disabled {
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-  cursor: auto;
-}
-
-.disabled:hover {
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-  cursor: auto;
-} */
+Desktop

@@ -11,7 +11,7 @@ import download from '../../assets/icons/download.png'
 import Line from '../../components/Line/Line'
 import {textColor} from '../../utils/variables'
 import translation from '../../assets/icons/translationBright.png'
-
+import { MdGTranslate } from "react-icons/md";
 
 const AboutMe: React.FC = () => {
 
@@ -62,68 +62,68 @@ const AboutMe: React.FC = () => {
   }
   return (
         <div style={{ backgroundColor: backgroundColor }} className={"section"} dir={isRotated ? 'rtl' : 'ltr'}>
-        <div className='aboutMeContainer'>
-          <div className="top" >
-          <div className="image">
-          <img src={profilePic} className='profilePic' alt="Profile" style={{ float: isRotated ? 'left' : 'right', margin: '15px' }} />
+        <div className='aboutMeContainerDesktop'>
+          <div className="topDesktop" >
+          <div className="imageDesktop">
+          <img src={profilePic} className='profilePicDesktop' alt="Profile" style={{ float: isRotated ? 'left' : 'right', margin: '15px' }} />
             </div>
-          <div className="text">
-            <div className="headerAndTransalte" >
-              <div className="headerAndLine" style={{marginRight: isRotated? '0px': '30px', marginLeft: isRotated? '30px': '0px'}}>
-              <h1 className='header'>{header}</h1>
+          <div className="textDesktop">
+            <div className="headerAndTransalteDesktop" >
+              <div className="headerAndLineDesktop" style={{marginRight: isRotated? '0px': '30px', marginLeft: isRotated? '30px': '0px'}}>
+              <h1 className='headerDesktop'>{header}</h1>
               <Line height="2px" width="80px" color={textColor} radius="4px" />
               </div>
-              <div className={`image-container ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
-                <img src={translation} alt="Translation Logo" className="translationLogo" />
+              <div className={`image-containerDesktop ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
+              <MdGTranslate size={40} style={{color:'antiquewhite', cursor:'pointer'}} />
               </div>
             </div>
 
           <div style={{color:textColor}}>{mainText}</div>
           </div>
           </div>
-          <div className="thirdRow" >
-      <h1 className='header'>{bottomHeader}</h1>
+          <div className="thirdRowDesktop" >
+      <h1 className='headerDesktop'>{bottomHeader}</h1>
       <Line height="2px" width="80px" color={textColor} radius="4px" />
-        <div className="iconsAndLinksDiv">
-        <div className="iconDiv">
-        <a className='icon' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-              <img src={linkedin} alt="My Image" className="clickableImage" />
+        <div className="iconsAndLinksDivDesktop">
+        <div className="iconDivDesktop">
+        <a className='iconDesktop' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
+              <img src={linkedin} alt="My Image" className="clickableImageDesktop" />
           </a>
-          <a className='aTag' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-             <p className='iconText'>{isRotated? 'פרופיל Linkedin':'Linkedin Profile'}</p>
+          <a className='aTagDesktop' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
+             <p className='iconTextDesktop'>{isRotated? 'פרופיל Linkedin':'Linkedin Profile'}</p>
           </a>
         </div>
 
-        <div className="iconDiv">
-        <a className='icon' href="https://wa.me/972533406789" target="_blank" rel="noopener noreferrer">
-              <img src={whatsapp} alt="My Image" className="clickableImage" />
+        <div className="iconDivDesktop">
+        <a className='iconDesktop' href="https://wa.me/972533406789" target="_blank" rel="noopener noreferrer">
+              <img src={whatsapp} alt="My Image" className="clickableImageDesktop" />
           </a>
-          <a className='aTag' href="https://wa.me/972533406789" target="_blank" rel="noopener noreferrer">
-             <p className='iconText'>{isRotated?'פלאפון: 053-340-6789': 'Phone: 053-340-6789'}</p>
-          </a>
-        </div>
-        <div className="iconDiv">
-        <a className='icon'  href={resumeDownloadLink} download="Koren_Kaplan_Resume.pdf">
-              <img src={download} alt="My Image" className="clickableImage" />
-          </a>
-          <a className='aTag' href={resumeDownloadLink} download="Koren_Kaplan_Resume.pdf">
-             <p className='iconText'>{isRotated? 'הורדת קו"ח': 'Download My CV'}</p>
+          <a className='aTagDesktop' href="https://wa.me/972533406789" target="_blank" rel="noopener noreferrer">
+             <p className='iconTextDesktop'>{isRotated?'פלאפון: 053-340-6789': 'Phone: 053-340-6789'}</p>
           </a>
         </div>
-        <div className="iconDiv">
-        <a className='icon' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-              <img  src={github} alt="My Image" className="clickableImage" />
+        <div className="iconDivDesktop">
+        <a className='iconDesktop'  href={resumeDownloadLink} download="Koren_Kaplan_Resume.pdf">
+              <img src={download} alt="My Image" className="clickableImageDesktop" />
           </a>
-          <a className='aTag' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-             <p className='iconText'>{isRotated? 'ריפו צד שרת': 'Server Repository'}</p>
+          <a className='aTagDesktop' href={resumeDownloadLink} download="Koren_Kaplan_Resume.pdf">
+             <p className='iconTextDesktop'>{isRotated? 'הורדת קו"ח': 'Download My CV'}</p>
           </a>
         </div>
-        <div className="iconDiv">
-        <a className='icon' href="https://github.com/korenkaplan/skills_compass_react/" target="_blank" rel="noopener noreferrer">
-              <img  src={github} alt="My Image" className="clickableImage" />
+        <div className="iconDivDesktop">
+        <a className='iconDesktop' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
+              <img  src={github} alt="My Image" className="clickableImageDesktop" />
           </a>
-          <a className='aTag' href="https://github.com/korenkaplan/skills_compass_react/" target="_blank" rel="noopener noreferrer">
-             <p className='iconText'>{isRotated? 'ריפו צד לקוח': 'Client Repository'}</p>
+          <a className='aTagDesktop' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
+             <p className='iconTextDesktop'>{isRotated? 'ריפו צד שרת': 'Server Repository'}</p>
+          </a>
+        </div>
+        <div className="iconDivDesktop">
+        <a className='iconDesktop' href="https://github.com/korenkaplan/skills_compass_react/" target="_blank" rel="noopener noreferrer">
+              <img  src={github} alt="My Image" className="clickableImageDesktop" />
+          </a>
+          <a className='aTagDesktop' href="https://github.com/korenkaplan/skills_compass_react/" target="_blank" rel="noopener noreferrer">
+             <p className='iconTextDesktop'>{isRotated? 'ריפו צד לקוח': 'Client Repository'}</p>
           </a>
         </div>
         </div>

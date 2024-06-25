@@ -30,7 +30,6 @@
   color: antiquewhite;
   padding: 0 5px 0 5px;
   box-sizing: border-box;
-  text-align: center;
 
 }
 .textContainer {
@@ -56,6 +55,7 @@
 .communicationAboutMeDivMobile {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 }
 .RowBottomAboutMe{
   display: flex;

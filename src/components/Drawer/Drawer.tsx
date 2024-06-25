@@ -51,12 +51,12 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, va
     fetchData();
    })
    const DrawerList = (
-    <Box className='drawer'  sx={{ width: 250, backgroundColor:'lightblue' }} role="presentation" onClick={() => toggleDrawer(false)}>
+    <Box className='drawer'  sx={{ width: 250, backgroundColor:'#1E2028' }} role="presentation" onClick={() => toggleDrawer(false)}>
+        <div className="">
         <div className="logoDiv">
-        <img src={logo} alt="Logo" style={{width:'60%'}} />
+        <img src={logo} alt="Logo" style={{width:'50%'}} />
         </div>
       <Divider />
-
       <List>
         {
         sections.filter(section => (section.label !== 'Home')).map((section, index) => (
@@ -64,9 +64,16 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, va
             key={section.id}
             disablePadding
             onClick={() => handleClick(section.id)}
+            sx={{
+              '&:hover': {
+                backgroundColor: 'gray', // Replace 'lightgray' with your desired hover color
+              }
+            }}
             className={activeSection === section.id ? 'active' : 'li'}
             >
-            <ListItemButton>
+            <ListItemButton
+            sx={{textAlign:'center'}}
+            >
               <ListItemText primary={section.label} />
             </ListItemButton>
           </ListItem>
@@ -75,9 +82,11 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, va
       </List>
       <Divider />
       <div style={{display: isFetched? 'flex':'none'}} className="lastScanDiv">
-        <p style={{marginRight:'10px'}}>Last Jobs Scan: </p>
+        <p style={{marginRight:'10px'}}>Last  Scan: </p>
         <p>{time} | {date}</p>
       </div>
+        </div>
+
       <BringThemHomeNowDiv/>
     </Box>
   );

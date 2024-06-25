@@ -20,33 +20,37 @@ const AboutMePageMobile: React.FC = () => {
   const headerFormatted: string = _.upperCase(aboutMeHeader);
 
   const aboutMeParagraph = `
-  Hey there!
+Hey there!
 
-  Welcome to my little corner of the internet! If you're here, it means you're curious about the person behind the screen, and I'm thrilled you stopped by!
+Welcome to my little corner of the internet! If you're here, it means you're curious about the person behind the screen, and I'm thrilled you stopped by!
 
-  I'm Koren Kaplan, a 27-year-old software enthusiast who simply loves to code and learn new things. I recently graduated from Ruppin College as a Practical Software Engineer, where I achieved a GPA of 95.
+I'm Koren Kaplan, a 27-year-old software enthusiast who simply loves to code and learn new things. I recently graduated from Ruppin College as a Practical Software Engineer, where I achieved a GPA of 95.
 
-  My journey in the tech world has led me to specialize in Python backend development. I find genuine joy in tackling everyday problems and discovering creative solutions. Currently, I'm on the lookout for my first job in the field, eager to roll up my sleeves and dive into exciting projects.
+My journey in the tech world has led me to specialize in Python backend development. I find genuine joy in tackling everyday problems and discovering creative solutions. Currently, I'm on the lookout for my first job in the field, eager to roll up my sleeves and dive into exciting projects.
 
-  "Skills Compass" isn't just a website; it's my passion project. I'm continuously working on improving it and adding new features. This project is not just about enhancing my skills; it's also about helping others find the skills they need for their desired roles.
-
-  Feel free to explore the site, grab my resume from the bottom right corner, or connect with me on LinkedIn. I'd love to hear your suggestions for improvements and any ideas you have for the website. Let's connect and chat!
 `;
+const aboutSkillsCompass = `
+"Skills Compass" isn't just a website; it's my passion project. I'm continuously working on improving it and adding new features. This project is not just about enhancing my skills; it's also about helping others find the skills they need for their desired roles.
 
+Feel free to explore the site, grab my resume from the bottom right corner, or connect with me on LinkedIn. I'd love to hear your suggestions for improvements and any ideas you have for the website. Let's connect and chat!
+
+`
 const aboutMeParagraphHebrew = `
   היי! 👋
 
-  ברוכים הבאים לפינה הקטנה שלי באינטרנט! אם אתם כאן, זה אומר שאתם סקרים לגבי האדם מאחורי המסך, ואני שמח שהחלטתם לעצור ולקרוא!😊
+ברוכים הבאים לפינה הקטנה שלי באינטרנט! אם אתם כאן, זה אומר שאתם סקרים לגבי האדם מאחורי המסך, ואני שמח שהחלטתם לעצור ולקרוא!😊
 
-  אני קורן קפלן, מפתח תוכנה בן 27 שפשוט אוהב לתכנת וללמוד דברים חדשים. לאחרונה סיימתי בהצטיינות יתרה לימודי הנדסאי תוכנה במכללת רופין. 🎓
+אני קורן קפלן, מפתח תוכנה בן 27 שפשוט אוהב לתכנת וללמוד דברים חדשים. לאחרונה סיימתי בהצטיינות יתרה לימודי הנדסאי תוכנה במכללת רופין. 🎓
 
-  המסע שלי בעולם התכנות הוביל אותי להתמחות בפיתוח צד שרת ב-Python. אני מוצא עניין וסיפוק אמיתי בפתרון בעיות יומיומיות ובגילוי פתרונות יצירתיים. כרגע, אני בחיפוש אחר העבודה הראשונה שלי בתחום. 🚀
+המסע שלי בעולם התכנות הוביל אותי להתמחות בפיתוח צד שרת ב-Python. אני מוצא עניין וסיפוק אמיתי בפתרון בעיות יומיומיות ובגילוי פתרונות יצירתיים. כרגע, אני בחיפוש אחר העבודה הראשונה שלי בתחום. 🚀
 
-  פרויקט "Skills Compass" הוא לא רק אתר; זהו פרויקט האישי שלי. אני עובד באופן קבוע על שיפורו והוספת פיצ'רים חדשים. הפרויקט הזה הוא לא רק בשביל שיפור המיומנויות שלי; זה גם על עזרה לאחרים למצוא את הכישורים שהם זקוקים להם בשביל להיות רלוונטיים לשוק העבודה. 🔍
 
-  אתם מוזמנים לעיין באתר, להוריד את קורות החיים שלי בלחיצה לינק מטה, או להתחבר איתי ב-LinkedIn. אשמח לשמוע הצעות לשיפורים וכל הרעיונות שיש לכם להציע לאתר או בכללי מה אתם חושבים עליו. 📝
 `;
+const aboutSkillCompassHebrew = `
+פרויקט "Skills Compass" הוא לא רק אתר; זהו פרויקט האישי שלי. אני עובד באופן קבוע על שיפורו והוספת פיצ'רים חדשים. הפרויקט הזה הוא לא רק בשביל שיפור המיומנויות שלי; זה גם על עזרה לאחרים למצוא את הכישורים שהם זקוקים להם בשביל להיות רלוונטיים לשוק העבודה. 🔍
 
+אתם מוזמנים לעיין באתר, להוריד את קורות החיים שלי בלחיצה לינק מטה, או להתחבר איתי ב-LinkedIn. אשמח לשמוע הצעות לשיפורים וכל הרעיונות שיש לכם להציע לאתר או בכללי מה אתם חושבים עליו. 📝
+`;
 
 
   const contactLinksHeader: string = 'CONTACT INFORMATION';
@@ -79,7 +83,7 @@ const aboutMeParagraphHebrew = `
             <Line height="2px" width="80px" color={textColor} radius="4px" />
             </div>
             <div className={`image-container ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
-                <MdGTranslate size={40} style={{color:'antiquewhite'}} />
+                <MdGTranslate size={40} style={{color:'antiquewhite', cursor:'pointer'}} />
             </div>
           </div>
           <div className="mainTextDivAboutMeMobile">

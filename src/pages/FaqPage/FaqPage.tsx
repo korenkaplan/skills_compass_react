@@ -212,27 +212,27 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
   </div>
 );
   return (
-    <div style={{backgroundColor:backgroundColor}} className="section  containerFaq" >
-        <div className="headerDivFaq">
+    <div style={{backgroundColor:backgroundColor}} className="section  containerFaqDesktop" >
+        <div className="headerDivFaqDesktop">
           <FaQuestionCircle style={{margin:'0 20px 0 0'}}  size={50}/>
           <h1>Frequently Asked Questions</h1>
         </div>
-        <div className="accordionDiv">
-          <div className="general">
-            <div className="headerIconDiv">
+        <div className="accordionDivDesktop">
+          <div className="generalDesktop">
+            <div className="headerIconDivDesktop">
             <FaQuestionCircle size={20} style={{margin:'0 5px 0 0'}} />
             <h2>General</h2>
             </div>
-            <div className="accordions">
+            <div className="accordionsDesktop">
             {displayFaqQuestionsSection(generalSectionQuestionsList)}
             </div>
           </div>
-          <div className="DataCollection">
-          <div className="headerIconDiv">
+          <div className="DataCollectionDesktop">
+          <div className="headerIconDivDesktop">
             <BsCollection  size={20} style={{margin:'0 5px 0 0'}} />
             <h2>Data Collection</h2>
             </div>
-            <div className="accordions">
+            <div className="accordionsDesktop">
             {displayFaqQuestionsSection(dataCollectionSectionQuestionsList)}
             <Accordion
                     onChange={handleAccordionChange(uniqueIndex)}
@@ -268,12 +268,12 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
             </Accordion>
             </div>
           </div>
-          <div className="TechnicalSupport">
-          <div className="headerIconDiv">
+          <div className="TechnicalSupportDesktop">
+          <div className="headerIconDivDesktop">
             <MdSupportAgent  size={25} style={{margin:'0 5px 0 0'}} />
             <h2>Technical Support</h2>
             </div>
-            <div className="accordions">
+            <div className="accordionsDesktop">
               {displayFaqQuestionsSection(technicalSupportSectionQuestionsList)}
             </div>
           </div>
@@ -284,20 +284,3 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
 
 export default FaqPage;
 
-{/*
-<Accordion>
-  <AccordionSummary
-  expandIcon={<AiFillCaretDown />}
-  aria-controls="panel1-content"
-  id="panel1-header"
-  >
-    <Typography>Accordion 1</Typography>
-  </AccordionSummary>
-  <AccordionDetails>
-    <Typography>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-      malesuada lacus ex, sit amet blandit leo lobortis eget.
-    </Typography>
-  </AccordionDetails>
-</Accordion>
-*/}

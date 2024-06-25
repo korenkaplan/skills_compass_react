@@ -1,4 +1,4 @@
-.textContainer {
+.textContainerDesktop {
     background-color: antiquewhite;
     border-radius: 20px;
     max-width: 1000px;
@@ -12,7 +12,7 @@
     -moz-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
   }
 
-  .containerHeader {
+  .containerHeaderDesktop {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,27 +20,27 @@
     width: 100%;
   }
 
-  .translationLogo {
+  .translationLogoDesktop {
     width: 40px;
     height: 40px;
     margin-right: 10px;
     cursor: pointer;
   }
 
-  .headerOverviewPage {
+  .headerOverviewPageDesktop {
     color: #253439;
     font-family: 'Inknut Antiqua', serif;
     font-size: xx-large;
     margin: 0;
   }
 
-  .mainText {
+  .mainTextDesktop {
     color: #253439;
     font-size: 17px;
     margin: 0;
   }
 
-  .container {
+  .containerDesktop {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,13 +50,13 @@
     background-color: var(--backgroundColor);
   }
 
-  .containerText {
+  .containerTextDesktop {
     width: 100%;
     overflow: auto;
     flex-grow: 1;
   }
 
-  .imageRow {
+  .imageRowDesktop {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,7 +64,7 @@
     margin-top: 20px;
   }
 
-  .logos {
+  .logosDesktop {
     width: 120px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -92,3 +92,4 @@
       font-size: 15px;
     }
   }
+  Desktop

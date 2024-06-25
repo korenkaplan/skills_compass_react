@@ -289,9 +289,9 @@ useEffect(() => {
 
 
   const toggler = (
-    <div className="toggler">
-    <div onClick={()=> togglerPressed("percentages")} className={`toggler_button percentageButton  ${alignment == 'percentages'? 'selected_toggler_button': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'percentages'? whitePercentage: greenPercentage} /></div>
-    <div onClick={()=> togglerPressed("counts")} className={`toggler_button countButton  ${alignment == 'counts'? 'selected_toggler_button': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'counts'? whiteCount: greenCount} /></div>
+    <div className="togglerDesktop">
+    <div onClick={()=> togglerPressed("percentages")} className={`toggler_buttonDesktop percentageButtonDesktop  ${alignment == 'percentages'? 'selected_toggler_buttonDesktop': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'percentages'? whitePercentage: greenPercentage} /></div>
+    <div onClick={()=> togglerPressed("counts")} className={`toggler_buttonDesktop countButtonDesktop  ${alignment == 'counts'? 'selected_toggler_buttonDesktop': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'counts'? whiteCount: greenCount} /></div>
   </div>
   )
 
@@ -348,13 +348,13 @@ useEffect(() => {
 }, []);
 return (
     <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section ">
-      <div className="headerDiv">
-        <div className="headerAndToggler">
-          <h1 className='headerRolePage'>{_.upperCase(role.name)}</h1>
-          <div className="togglerInfoDiv">
-            <img className='infoImg togglerInfo' src={info} alt="" />
+      <div className="headerDivDesktop">
+        <div className="headerAndTogglerDesktop">
+          <h1 className='headerRolePageDesktop'>{_.upperCase(role.name)}</h1>
+          <div className="togglerInfoDivDesktop">
+            <img className='infoImgDesktop togglerInfoDesktop' src={info} alt="" />
            {toggler}
-           <Tooltip place='left' anchorSelect='.togglerInfo'>
+           <Tooltip place='left' anchorSelect='.togglerInfoDesktop'>
             <div>
               <h3>Percentages</h3>
               <p>Show the percentage of job listings that mention this technology.</p>
@@ -367,33 +367,33 @@ return (
           </div>
 
         </div>
-        <h4 className='subheaderRolePage'>JOB POSTINGS AMOUNT : {totalListingsCount}</h4>
-        <div className="switchesDiv">
+        <h4 className='subheaderRolePageDesktop'>JOB POSTINGS AMOUNT : {totalListingsCount}</h4>
+        <div className="switchesDivDesktop">
         <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
         <FormGroup>
-          <div data-tip data-for='tooltip-right' className="switchMultipleCategoriesDiv">
+          <div data-tip data-for='tooltip-right' className="switchMultipleCategoriesDivDesktop">
             <FormControlLabel
             control={<Switch color='warning' checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px', marginTop:5 }}
             label={aggregateSwitchElementTitle}
           />
-          <img className='infoImg SwitchMultipleCategories' src={info} alt="" />
-          <Tooltip place='right' anchorSelect='.SwitchMultipleCategories'>
+          <img className='infoImgDesktop SwitchMultipleCategoriesDesktop' src={info} alt="" />
+          <Tooltip place='right' anchorSelect='.SwitchMultipleCategoriesDesktop'>
             <div>
               <h3>Enable Multi-Category Selection</h3>
               <p>Select multiple categories to view a combined and sorted list of their items.</p>
             </div>
           </Tooltip>
           </div>
-          <div className="switchDiv limitDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+          <div className="switchDivDesktop limitDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
             <div className="">
           <FormControlLabel
             control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={listLImitSwitchElementTitle}
           />
-            <img className='infoImg SwitchLimitDiv' src={info} alt="" />
-          <Tooltip place='right' anchorSelect='.SwitchLimitDiv'>
+            <img className='infoImgDesktop SwitchLimitDivDesktop' src={info} alt="" />
+          <Tooltip place='right' anchorSelect='.SwitchLimitDivDesktop'>
             <div>
             <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
             </div>
@@ -410,15 +410,15 @@ return (
           />
           </div>
 
-          <div className="switchDiv limitPerCategoryDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+          <div className="switchDivDesktop limitPerCategoryDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
             <div className="">
             <FormControlLabel
             control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={categoryLImitSwitchElementTitle}
           />
-           <img className='infoImg SwitchLimitPerCategory' src={info} alt="" />
-            <Tooltip place='right' anchorSelect='.SwitchLimitPerCategory'>
+           <img className='infoImgDesktop SwitchLimitPerCategoryDesktop' src={info} alt="" />
+            <Tooltip place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
               <div>
               <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>
               </div>
@@ -444,12 +444,12 @@ return (
       <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
       </div>
 
-      <div className="descriptionDiv textRolePage">{role.description}</div>
+      <div className="descriptionDivDesktop textRolePageDesktop">{role.description}</div>
       <Line height="0.5px" width="100%" margin='0 0 20px 0' color={'antiquewhite'} radius="4px" />
 
-      <div className="loadingDivRolePage" style={{ display: isAnimating ? 'flex' : 'none' }}>
-        <div className="loadingDivInner">
-          <h1 className={`loading-text ${isAnimating ? 'animate' : ''}`}>
+      <div className="loadingDivRolePageDesktop" style={{ display: isAnimating ? 'flex' : 'none' }}>
+        <div className="loadingDivInnerDesktop">
+          <h1 className={`loading-textDesktop ${isAnimating ? 'animate' : ''}`}>
             {loadingTitle}
             <span className="dot">.</span>
             <span className="dot">.</span>
@@ -458,19 +458,19 @@ return (
         </div>
       </div>
 
-      <div className="dataDiv" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
+      <div className="dataDivDesktop" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
         {data && (
-          <div className='categoriesButtonDiv'>
+          <div className='categoriesButtonDivDesktop'>
             {allCategories?.map(category =>
             (<span
               onClick={() => handleCategoryClicked(category)}
-              className={`categoryButton textRolePage ${getCategoryButtonClass(category)}`}
+              className={`categoryButtonDesktop textRolePageDesktop ${getCategoryButtonClass(category)}`}
               key={category}>
               {_.startCase(category)}
             </span>))}
           </div>
         )}
-        <div className="techListDiv" >
+        <div className="techListDivDesktop" >
           {techList.map((techCount, index) => (
             <TechRow
               totalListingsAmount={totalListingsCount}

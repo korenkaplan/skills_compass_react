@@ -1,9 +1,9 @@
-.accordionDiv{
+.accordionDivDesktop{
     display: flex;
     flex-direction: column;
     width: 80%;
 }
-.containerFaq {
+.containerFaqDesktop {
     color: white;
     padding: 20px 20px 50px 20px;
     display: flex;
@@ -12,38 +12,38 @@
     align-items: center;
 }
 
-.accordionSummery{
+.accordionSummeryDesktop{
 }
-.headerDivFaq{
+.headerDivFaqDesktop{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
-.headerIconDiv{
+.headerIconDivDesktop{
     display: flex;
     justify-content: start;
     align-items: center;
 
 }
-.accordion {
+.accordionDesktop {
     background-color: white;
     transition: all 0.3s ease;
   }
 
-  .accordion-hovered {
+  .accordion-hoveredDesktop {
     background-color: #6a3210;
   }
 
-  .accordion-item {
+  .accordion-itemDesktop {
     background-color: white;
     transition: all 0.3s ease;
   }
 
-  .accordion-item-hovered {
+  .accordion-item-hoveredDesktop {
     box-shadow: 0px 4px 15px rgba(8, 15, 15, 0.2);
     transform: translateY(-5px);
   }
-.disabled {
+.disabledDesktop {
     background-color: rgb(85, 177, 82);
 }

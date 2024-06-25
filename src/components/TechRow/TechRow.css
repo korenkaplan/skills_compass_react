@@ -1,4 +1,4 @@
-.tech-row {
+.tech-rowDesktop {
   display: flex;
   align-items: center;
   justify-content: left;
@@ -8,7 +8,7 @@
 }
 
 
-.tech-name-container {
+.tech-name-containerDesktop {
   width: 30%; /* Adjust the width as needed */
   overflow: hidden;
   text-overflow: ellipsis;
@@ -19,22 +19,22 @@
 
 }
 
-.tech-name {
+.tech-nameDesktop {
   white-space: nowrap;
 }
 
-.tech-line {
+.tech-lineDesktop {
   height: 20px;
   background-color: #086156; /* Change the background color to your desired color */
   border: 1px solid #F4F2EF;
   border-radius: 0 10px 10px 0;
 }
 
-.tech-count {
+.tech-countDesktop {
   margin-left: 40px;
   font-size: 20px;
 
 }
-.lineWrapper {
+.lineWrapperDesktop {
   width: 500px;
 }

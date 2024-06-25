@@ -21,7 +21,7 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, 
     let scaleFactor = maxLineWidth / maxCount;
 
     // If showPercentage is true, adjust the scaleFactor based on the percentage
-    if (showPercentage) 
+    if (showPercentage)
       scaleFactor = maxLineWidth / 100; // Scale factor based on percentage (out of 100)
 
     calculatedWidth = Math.min(count * scaleFactor, maxLineWidth);
@@ -66,14 +66,14 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, 
   };
 
   return (
-    <div className="tech-row">
-      <div className="tech-name-container">
-        <span className="tech-name">{formatTitle(tech)}</span>
+    <div className="tech-rowDesktop">
+      <div className="tech-name-containerDesktop">
+        <span className="tech-nameDesktop">{formatTitle(tech)}</span>
       </div>
-      <div className="lineWrapper" style={{ width: `${maxLineWidth}px` }}>
-        <div className="tech-line" style={{ width: `${lineWidth}px` }}></div>
+      <div className="lineWrapperDesktop" style={{ width: `${maxLineWidth}px` }}>
+        <div className="tech-lineDesktop" style={{ width: `${lineWidth}px` }}></div>
       </div>
-      <span className="tech-count">{showPercentageOrCount()}</span>
+      <span className="tech-countDesktop">{showPercentageOrCount()}</span>
     </div>
   );
 };

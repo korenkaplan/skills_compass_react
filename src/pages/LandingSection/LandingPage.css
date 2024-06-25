@@ -7,19 +7,17 @@
     border-radius: 8px; /* Add border radius */
     z-index: 1;
   }
-  .logoLandingPage {
-    
-  }
-  .loadingDiv{
+
+  .loadingDivDesktop{
     text-align: center;
     height:'300px';
     color:'antiquewhite';
   }
-  .fade-text {
+  .fade-text-Desktop {
     opacity: 0;
   }
 
-  .fade-text.animate {
+  .fade-text-Desktop.animate {
     animation: fadeInOut 4s infinite;
   }
 
@@ -35,13 +33,13 @@
     align-items: center;
   }
 
-  .headerLandingPage {
+  .headerLandingPageDesktop {
     color: antiquewhite;
     font-family: 'Inknut Antiqua', serif;
     text-align: center;
 
   }
-  .logoHeader {
+  .logoHeaderDesktop {
     color: antiquewhite;
     font-family: 'Inknut Antiqua', serif;
     text-align: center;
@@ -63,3 +61,4 @@
 
   }
 
+  Desktop

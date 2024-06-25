@@ -67,14 +67,14 @@ useEffect(() => {
       <div className="image-container">
       <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo Your Image" className="rotatingImage"/>
     </div>
-      <h1  className='logoHeader'>{logoText}</h1>
+      <h1  className='logoHeaderDesktop'>{logoText}</h1>
       <Line height="5px" width="12%" color={textColor} radius="4px" />
-      <h2 className='headerLandingPage' dangerouslySetInnerHTML={{ __html: headerText }} />
-      <div className="loadingDiv" style={{color:'antiquewhite', width:'50%', display: isLoading? 'block' :'none'}}>
-      <h3 className={`fade-text ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
+      <h2 className='headerLandingPageDesktop' dangerouslySetInnerHTML={{ __html: headerText }} />
+      <div className="loadingDivDesktop" style={{color:'antiquewhite', width:'50%', display: isLoading? 'block' :'none'}}>
+      <h3 className={`fade-text-Desktop ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
       <LinearProgress color="inherit" />
     </div>
-    <div className="scrollDiv" style={{color:'antiquewhite', width:'100px', height:'100px', display: isLoading? 'none' :'block', margin:'0 0 20px 0'}}>
+    <div className="scrollDivDesktop" style={{color:'antiquewhite', width:'100px', height:'100px', display: isLoading? 'none' :'block', margin:'0 0 20px 0'}}>
     <Lottie animationData={scrollAnimation} loop={true} autoPlay={true}/>
     </div>
 

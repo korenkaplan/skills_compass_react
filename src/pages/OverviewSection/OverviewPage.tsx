@@ -5,6 +5,7 @@ import {backgroundColor} from '../../utils/variables'
 import logo from '../../assets/logo/logo.png'
 import translation from '../../assets/icons/translation.png'
 import '../../CSS/RotatingImageClick.css'
+import { MdGTranslate } from "react-icons/md";
 const Overview: React.FC = () => {
   const developerSurveyText = () => (
     <>
@@ -71,20 +72,21 @@ const [isRotated, setIsRotated] = useState(false);
 
   return (
     <div style={{backgroundColor:backgroundColor}} className="section container" >
-      <div className="textContainer" dir={isRotated ? 'rtl' : 'ltr'}>
-      <div className="containerHeader">
-        <h2 className='headerOverviewPage'>{header}</h2>
+      <div className="textContainerDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
+      <div className="containerHeaderDesktop">
+        <h2 className='headerOverviewPageDesktop'>{header}</h2>
 
         <div className={`image-container ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
-      <img src={translation} alt="Translation Logo" className="translationLogo" />
+      <MdGTranslate size={40} style={{color:'#253439', cursor:'pointer'}} />
+
     </div>
 
       </div>
-      <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
+      <div className="containerTextDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
 
-          <p className='mainText'>{mainText}</p>
+          <p className='mainTextDesktop'>{mainText}</p>
         </div>
-      <div className="imageRow">
+      <div className="imageRowDesktop">
         <p>{bottomWords}</p>
       <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
       </div>

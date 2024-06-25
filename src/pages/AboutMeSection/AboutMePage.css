@@ -1,8 +1,8 @@
 /* src/components/SideMenu.css or AboutMePage.css */
-.wrapper {
+.wrapperDesktop {
   display: inline-block; /* Ensure the container takes the size of the image */
 }
-.aboutMeContainer {
+.aboutMeContainerDesktop {
     display: flex;
     flex-direction: column;
     padding: 50px 50px 10px 50px;
@@ -10,68 +10,68 @@
   }
 
 
-  .firstRow {
+  .firstRowDesktop {
     margin-top: 10px;
     display: flex;
     width: 100%; /* Ensure the row takes full width */
     flex: 1;
   }
-  .headerAndTransalte {
+  .headerAndTransalteDesktop {
     display: flex;
     align-items: center;
   }
 
-  .aboutMeDiv {
+  .aboutMeDivDesktop {
     width: 55%;
   }
 
-  .header {
+  .headerDesktop {
     color: antiquewhite;
     font-size: 35px;
   }
 
-  .aboutMeText {
+  .aboutMeTextDesktop {
     color: antiquewhite;
     font-size: 20px;
   }
 
-  .imageDiv {
+  .imageDivDesktop {
     width: 45%; /* Adjust based on the layout */
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .profilePic {
+  .profilePicDesktop {
     border-radius: 50px; /* Add border radius */
     box-shadow: 0 2px 4px rgba(0, 4, 4, 0.25); /* Add outer shadow */
     max-width: 100%; /* Ensure the image does not overflow */
     height: 300px; /* Maintain aspect ratio */
     border: 2px solid white;
   }
-  .thirdRow {
+  .thirdRowDesktop {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  .aTag {
+  .aTagDesktop {
     display: flex;
     justify-content: center;
     align-self: center;
     position: relative;
     margin-right: 5px;
   }
-  .iconDiv {
+  .iconDivDesktop {
     width: 20%;
     display: flex;
   }
-  .iconsAndLinksDiv {
+  .iconsAndLinksDivDesktop {
     display: flex;
     align-self: center;
     width: 100%;
     justify-content: space-around;
   }
-  .icon {
+  .iconDesktop {
     display: flex;
     justify-content: center;
     align-self: center;
@@ -79,14 +79,14 @@
     margin-right: 8px;
   }
 
-  .iconText {
+  .iconTextDesktop {
     color: antiquewhite;
     font-size: 16px;
   }
-  .clickableImage {
+  .clickableImageDesktop {
     width: 30px;
   }
-  .subHeader {
+  .subHeaderDesktop {
     color: antiquewhite;
     font-size: 20px;
   }
