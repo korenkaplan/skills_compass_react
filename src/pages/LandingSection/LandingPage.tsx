@@ -63,7 +63,7 @@ useEffect(() => {
 
 
   return (
-    <div style={{backgroundColor:backgroundColor}} className="section main" >
+    <div style={{backgroundColor:backgroundColor}} className="section main dividerBottom" >
       <div className="image-container">
       <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo Your Image" className="rotatingImage"/>
     </div>

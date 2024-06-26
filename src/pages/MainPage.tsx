@@ -45,7 +45,6 @@ const MainPage: React.FC = () => {
   const marginLeftAmount = 250;
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
-  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const toggleDrawer = (newOpen: boolean) => {
     if (!isMobile) {
@@ -83,49 +82,18 @@ const MainPage: React.FC = () => {
 
   const sections = useMemo(() => {
     return [
-      { id: 'swiperPage', label: 'Roles', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)}/> },
       { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading} /> },
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
+      { id: 'swiperPage', label: 'Roles Info', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)}/> },
       { id: 'faqPage', label: 'FAQ', component: FaqPage },
       { id: 'aboutMe', label: 'About Me', component: AboutMe },
     ];
   }, [roles, rolesFetched, isMobile]);
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
 
-      // Determine which section is in view based on scroll position
-      for (const section of sections) {
-        const sectionElement = document.getElementById(section.id);
-        if (sectionElement) {
-          const sectionOffsetTop = sectionElement.offsetTop;
-          const sectionHeight = sectionElement.clientHeight;
-
-          if (scrollPosition >= sectionOffsetTop && scrollPosition < sectionOffsetTop + sectionHeight) {
-            setActiveSection(section.id);
-            break;
-          }
-        }
-      }
-    };
-
-    // Attach scroll event listener
-    window.addEventListener('scroll', handleScroll);
-
-    // Initial check on mount
-    handleScroll();
-
-    // Clean up scroll event listener
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [sections]);
-  console.log('Active Section:', activeSection); // Log the active section for debugging
 
   useEffect(() => {
     setIsOpen(!isMobile);
   }, [isMobile]);
-console.log(isMobile);
 
   return (
     <div className="main-page">
@@ -134,7 +102,7 @@ console.log(isMobile);
         isMobile ?
           (
             <>
-              <TemporaryDrawer sections={sectionsMobile} activeSection={activeSection} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
+              <TemporaryDrawer sections={sectionsMobile}  variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
               <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
                 {sectionsMobile.map(section => (
                   <div key={section.id} id={section.id} className="section">
@@ -147,7 +115,7 @@ console.log(isMobile);
           :
           (
             <>
-              <TemporaryDrawer sections={sections} activeSection={activeSection} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
+              <TemporaryDrawer sections={sections}  variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
               <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
                 {
                   sections.map(section => (

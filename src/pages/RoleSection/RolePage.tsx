@@ -14,10 +14,10 @@ import greenPercentage from '../../assets/white icons/green-percentage.png'
 import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
 import Switch from '@mui/material/Switch/Switch';
 import {FormGroup} from '@mui/material';
-import { Tooltip } from 'react-tooltip'
+import { Tooltip } from 'react-tooltip';
+import { IoInformationCircleSharp } from "react-icons/io5";
 import info from '../../assets/icons/info.png'
 import _ from 'lodash'
-import { IoInformationCircleSharp } from "react-icons/io5";
 
 //#endregion
 
@@ -354,7 +354,8 @@ return (
         <div className="headerAndTogglerDesktop">
           <h1 className='headerRolePageDesktop'>{_.upperCase(role.name)}</h1>
           <div className="togglerInfoDivDesktop">
-            <IoInformationCircleSharp style={{marginRight: 10}} className='togglerInfoDesktop' size={22}/>
+          <IoInformationCircleSharp style={{marginRight: 10, color:'antiquewhite'}} className='togglerInfoDesktop' size={22}/>
+
            {toggler}
            <Tooltip place='left' anchorSelect='.togglerInfoDesktop'>
             <div>
@@ -379,7 +380,7 @@ return (
             style={{ color: 'antiquewhite', fontSize:'20px', marginTop:5 }}
             label={aggregateSwitchElementTitle}
           />
-            <IoInformationCircleSharp className='SwitchMultipleCategoriesDesktop' size={22}/>
+            <IoInformationCircleSharp style={{color:'antiquewhite'}} className='SwitchMultipleCategoriesDesktop' size={22}/>
           <Tooltip place='right' anchorSelect='.SwitchMultipleCategoriesDesktop'>
             <div>
               <h3>Enable Multi-Category Selection</h3>
@@ -393,7 +394,7 @@ return (
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={listLImitSwitchElementTitle}
           />
-          <IoInformationCircleSharp className='SwitchLimitDivDesktop' size={22}/>
+          <IoInformationCircleSharp style={{color:'antiquewhite'}}  className='SwitchLimitDivDesktop' size={22}/>
           <Tooltip place='right' anchorSelect='.SwitchLimitDivDesktop'>
             <div>
             <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
@@ -416,7 +417,7 @@ return (
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={categoryLImitSwitchElementTitle}
           />
-          <IoInformationCircleSharp className='SwitchLimitPerCategoryDesktop' size={22}/>
+          <IoInformationCircleSharp style={{color:'antiquewhite'}}  className='SwitchLimitPerCategoryDesktop' size={22}/>
             <Tooltip place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
               <div>
               <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>

@@ -1,5 +1,5 @@
 .containerRolePageDesktop {
-  padding: 60px 50px 20px 50px;
+  padding: 70px 50px 20px 50px;
   display: flex;
   flex-direction: column;
 }
@@ -197,4 +197,3 @@ margin: 0 10px 0 0;
   pointer-events: none; /* Ensure the button is truly non-interactive */
   opacity: 0.65; /* Slightly transparent to indicate disabled state */
 }
-Desktop

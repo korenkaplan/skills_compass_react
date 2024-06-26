@@ -10,18 +10,21 @@ import { Section } from '../../utils/interfaces';
 import logo from '../../assets/logo/logo ellow ribbon with text.png'; // Import the logo image
 import './Drawer.css'
 import axios from 'axios';
+import { useMediaQuery } from 'react-responsive';
+
+
 interface TemporaryDrawerProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
   variant: 'temporary' | 'persistent' | 'permanent'
   sections: Section[];
-  activeSection: string | null;
 }
 
-const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, variant, sections, activeSection}) => {
+const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, variant, sections}) => {
     const [time, setTime] = useState<string>();
     const [date, setDate] = useState<string>();
     const [isFetched, setIsFetched] = useState<boolean>(false);
+    const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
 
 
   const handleClick = (id: string) => {
@@ -54,9 +57,9 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, va
     <Box className='drawer'  sx={{ width: 250, backgroundColor:'#1E2028' }} role="presentation" onClick={() => toggleDrawer(false)}>
         <div className="">
         <div className="logoDiv">
-        <img src={logo} alt="Logo" style={{width:'50%'}} />
+        <img src={logo} alt="Logo" style={{width:isMobile? '50%' : '80%'}} />
         </div>
-      <Divider />
+      <Divider sx={{backgroundColor:'white'}} />
       <List>
         {
         sections.filter(section => (section.label !== 'Home')).map((section) => (
@@ -69,7 +72,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, va
                 backgroundColor: 'gray', // Replace 'lightgray' with your desired hover color
               }
             }}
-            className={activeSection === section.id ? 'active' : 'li'}
+            className={'li'}
             >
             <ListItemButton
             sx={{textAlign:'center'}}
@@ -91,7 +94,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({open, toggleDrawer, va
     </Box>
   );
   return (
-    <Drawer variant={variant} slotProps={{backdrop: {invisible:true}}} open={open} onClose={() => toggleDrawer(false)}>
+    <Drawer variant={variant} slotprops={{backdrop: {invisible:true}}} open={open} onClose={() => toggleDrawer(false)}>
       {DrawerList}
     </Drawer>
   );
