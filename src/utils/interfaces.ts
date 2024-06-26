@@ -10,6 +10,7 @@ export type Section = {
     id: string;
     label: string;
     component: React.FC;
+    isRole: boolean
 }
 
 export type TechCount = {

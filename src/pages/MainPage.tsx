@@ -18,6 +18,7 @@ import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobi
 import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
 import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
 import AboutMePageMobile from '../pages mobile/AboutMeSection/AboutMePageMobile';
+import DrawerMobile from '../components/DrawerDesktop/DrawerMobile';
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap(role => {
@@ -27,11 +28,13 @@ const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: 
         id: `mobile_${role.id}`, // Ensure unique IDs for mobile
         label: _.startCase(role.name),
         component: () => <RolePageMobile {...roleProps} />,
+        isRole: true,
       }] :
       [{
         id: `desktop_${role.id}`, // Ensure unique IDs for desktop
         label: _.startCase(role.name),
         component: () => <RolePage {...roleProps} />,
+        isRole: true,
       }];
   });
 };
@@ -71,21 +74,21 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id: 'landingPage', label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },
-      { id: 'overviewPage', label: 'Overview', component: OverviewPageMobile },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },
+      { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
       ...convertRolesToSections(roles, rolesFetched, true),
-      { id: 'faqPage', label: 'FAQ', component: FaqPageMobile },
-      { id: 'aboutMe', label: 'About Me', component: AboutMePageMobile },
+      { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPageMobile },
+      { id: 'aboutMe', isRole: false, label: 'About Me', component: AboutMePageMobile },
     ];
   }, [roles, rolesFetched, isMobile]);
 
   const sections = useMemo(() => {
     return [
-      { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading} /> },
-      { id: 'overviewPage', label: 'Overview', component: OverviewPage },
-      { id: 'swiperPage', label: 'Roles Info', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)}/> },
-      { id: 'faqPage', label: 'FAQ', component: FaqPage },
-      { id: 'aboutMe', label: 'About Me', component: AboutMe },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage isLoading={isLoading} /> },
+      { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPage },
+      { id: 'swiperPage', isRole: false, label: 'Roles Info', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)}/> },
+      { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPage },
+      { id: 'aboutMe', isRole: false, label: 'About Me', component: AboutMe },
     ];
   }, [roles, rolesFetched, isMobile]);
 
@@ -103,7 +106,7 @@ const MainPage: React.FC = () => {
         isMobile ?
           (
             <>
-              <TemporaryDrawer sections={sectionsMobile}  variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
+              <DrawerMobile sections={sectionsMobile}  variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
               <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
                 {sectionsMobile.map(section => (
                   <div key={section.id} id={section.id} className="section">

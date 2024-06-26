@@ -1,0 +1,52 @@
+.logoDiv{
+    padding: 10px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    color: red;
+}
+.li{
+    color: white;
+}
+
+  .drawer{
+    overflow-y: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    padding: 4px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+
+
+/* Hide scrollbar for modern browsers */
+.drawer::-webkit-scrollbar {
+    display: none;
+  }
+  .bringThemHomeNowDiv{
+    bottom: 0;
+    left: 2%;
+    display: flex;
+    color: white;
+
+  }
+  .nowHeader{
+    color: red;
+    border-bottom: 2px solid red;
+  }
+  .lastScanDiv{
+    border-top: 1px solid white;
+    display: flex;
+    color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
