@@ -10,7 +10,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 
 const OverviewPageMobile: React.FC = () => {
   const developerSurveyTextPartOne = (
-    <div>
+    <div style={{color:backgroundColor}}>
       <p>💡 The Main Idea:</p>
       <p>🌟 Welcome to Skills Compass! Our mission is to guide you on the most in-demand technologies in Israel's tech job market. We help you stay relevant by providing the latest information on the skills you need for different tech roles.</p>
       <p>🌍 What Makes Us Unique:</p>
@@ -20,7 +20,7 @@ const OverviewPageMobile: React.FC = () => {
   );
 
   const developerSurveyTextPartTwo = (
-    <div>
+    <div style={{color:backgroundColor}}>
       <p>🚀 Exciting things are on the horizon! We're planning to add more job roles, highlight emerging and declining tech trends, and provide even more data to help you navigate the job market with confidence.</p>
       <p>🔧 How It Works:</p>
       <p>📊 Our site is organized by different tech roles. For each role, we show the most common technologies mentioned in job postings, grouped into categories. You'll see how many job postings mention each technology and you can toggle between percentage and count views, giving you a clear picture of what skills are in demand.</p>
@@ -31,7 +31,7 @@ const OverviewPageMobile: React.FC = () => {
   );
 
   const developerSurveyTextHebPartOne = (
-    <div>
+    <div style={{color:backgroundColor}}>
       <p>💡 הרעיון המרכזי:</p>
       <p>🌟 ב-Skills Compass, המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעזור להם להישאר רלוונטיים לתחום. אנחנו מספקים מידע עדכני על הטכנולוגיות הכי מבוקשות לפי סוג משרה.</p>
       <p>⏱️ תובנות בזמן אמת:</p>
@@ -41,7 +41,7 @@ const OverviewPageMobile: React.FC = () => {
   );
 
   const developerSurveyTextHebPartTwo = (
-    <div>
+    <div style={{color:backgroundColor}}>
       <p>🚀 בעתיד, אנו מתכננים להוסיף סוגי תפקידים נוספים, להציג מגמות עלייה וירידה של טכנולוגיות ולהציע נתונים נוספים שיעזרו לכם לנווט בשוק העבודה.</p>
       <p>🔍 איך זה עובד?</p>
       <p>📊 האתר מחולק לתפקידים שונים. לכל תפקיד מוצגות הטכנולוגיות השכיחות ביותר המופיעות במשרות עבור אותו תפקיד, והן מסודרות לפי קטגוריות. ליד כל טכנולוגיה יש אוצפיה לצפות או בתצוגת אחוז המשרות בהן הופיעה הכטנולוגיה או את כמות המשרות בהן הופיעה.</p>
@@ -108,7 +108,7 @@ const OverviewPageMobile: React.FC = () => {
               <Collapse in={isOpen}>
               {isRotated ? developerSurveyTextHebPartTwo : developerSurveyTextPartTwo}
               </Collapse>
-            <button onClick={toggleCollapse}>{buttonWords}</button>
+            <button style={{backgroundColor:backgroundColor, color:'antiquewhite'}} onClick={toggleCollapse}>{buttonWords}</button>
           </div>
         </div>
         <div className="imageRow">

@@ -14,7 +14,7 @@ import { MdGTranslate } from "react-icons/md";
 
 const AboutMe: React.FC = () => {
 
-  const aboutMeHeader: string = 'about me';
+  const aboutMeHeader: string = 'ABOUT ME';
   const aboutMeHeaderHebrew: string = 'קצת עלי...'
   const headerFormatted: string = _.upperCase(aboutMeHeader);
 
@@ -47,9 +47,9 @@ const AboutMe: React.FC = () => {
   const resumeDownloadLink: string = "https://drive.google.com/uc?export=download&id=1NUAHmmDQ355s1QrkjrsTBb1EVnCyuzSu"
 
 
-  const [mainText, setMainText] = useState(aboutMeParagraphHebrew);
-  const [header, setHeader] = useState<string>(aboutMeHeaderHebrew);
-  const [bottomHeader, setBottomHeader] = useState<string>(contactLinksHeaderHebrew);
+  const [mainText, setMainText] = useState(aboutMeParagraph);
+  const [header, setHeader] = useState<string>(aboutMeHeader);
+  const [bottomHeader, setBottomHeader] = useState<string>(contactLinksHeader);
   const [isRotated, setIsRotated] = useState(false);
 
 

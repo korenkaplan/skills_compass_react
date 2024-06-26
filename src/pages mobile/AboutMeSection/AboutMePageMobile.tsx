@@ -48,12 +48,10 @@ const AboutMePageMobile: React.FC = () => {
       );
   const contactLinksHeader: string = 'CONTACT INFORMATION';
   const contactLinksHeaderHebrew: string = 'פרטי התקשרות & תיעוד הקוד';
-  const contactLinksHeaderFormatted: string = contactLinksHeader
 
   const resumeDownloadLink: string = "https://drive.google.com/uc?export=download&id=1NUAHmmDQ355s1QrkjrsTBb1EVnCyuzSu"
 
 
-  const [bottomHeader, setBottomHeader] = useState<string>(contactLinksHeaderHebrew);
   const [isRotated, setIsRotated] = useState(false);
   const [buttonWords, setButtonWords] = useState<string>('');
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +64,6 @@ const AboutMePageMobile: React.FC = () => {
   const headerHeb = 'קצת עלי...'
   const handleRotate = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
-    setBottomHeader(isRotated? contactLinksHeaderFormatted : contactLinksHeaderHebrew)
   }
   const toggleCollapse = () => {
     setIsOpen(!isOpen);
@@ -108,12 +105,12 @@ const AboutMePageMobile: React.FC = () => {
               {isRotated ? aboutMeParagraphHebrewPartTwo : aboutMeParagraphPartTwo}
               </Collapse>
 
-          <button onClick={toggleCollapse}>{buttonWords}</button>
+          <button style={{backgroundColor:'antiquewhite', color:backgroundColor}} onClick={toggleCollapse}>{buttonWords}</button>
 
           </div>
           <div className="communicationAboutMeDivMobile">
           <div style={{display:'flex', flexDirection:'column'}}>
-            <h1 className='headrAboutMeMobile'>{bottomHeader}</h1>
+            <h1 className='headrAboutMeMobile'>{isRotated? contactLinksHeaderHebrew : contactLinksHeader}</h1>
             <Line height="2px" width="80px" color={textColor} radius="4px" />
             </div>
 
