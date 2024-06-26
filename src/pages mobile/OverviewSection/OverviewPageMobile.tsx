@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import './OverviewPageMobile.css';
 import { backgroundColor } from '../../utils/variables';
 import logo from '../../assets/logo/logo.png';
 import '../../CSS/RotatingImageClick.css';
 import { MdGTranslate } from "react-icons/md";
 import Collapse from '@mui/material/Collapse';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
 
 const OverviewPageMobile: React.FC = () => {
   const developerSurveyTextPartOne = (
@@ -104,7 +102,6 @@ const OverviewPageMobile: React.FC = () => {
         <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
           <div>
             {isRotated ? developerSurveyTextHebPartOne : developerSurveyTextPartOne}
-              {isOpen ? <ExpandLess onClick={toggleCollapse} /> : <ExpandMore onClick={toggleCollapse} />}
               <Collapse in={isOpen}>
               {isRotated ? developerSurveyTextHebPartTwo : developerSurveyTextPartTwo}
               </Collapse>

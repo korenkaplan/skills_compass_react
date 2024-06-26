@@ -12,8 +12,6 @@ import Line from '../../components/Line/Line'
 import {textColor} from '../../utils/variables'
 import { MdGTranslate } from "react-icons/md";
 import Collapse from '@mui/material/Collapse';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
 const AboutMePageMobile: React.FC = () => {
 
 
@@ -100,7 +98,6 @@ const AboutMePageMobile: React.FC = () => {
           </div>
           <div className="mainTextDivAboutMeMobile">
               {isRotated ? aboutMeParagraphHebrewPartOne : aboutMeParagraphPartOne}
-              {isOpen ? <ExpandLess onClick={toggleCollapse} /> : <ExpandMore onClick={toggleCollapse} />}
               <Collapse in={isOpen}>
               {isRotated ? aboutMeParagraphHebrewPartTwo : aboutMeParagraphPartTwo}
               </Collapse>
