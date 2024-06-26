@@ -17,6 +17,8 @@ import {FormGroup} from '@mui/material';
 import { Tooltip } from 'react-tooltip'
 import info from '../../assets/icons/info.png'
 import _ from 'lodash'
+import { IoInformationCircleSharp } from "react-icons/io5";
+
 //#endregion
 
 interface RolePageProps {
@@ -347,12 +349,12 @@ useEffect(() => {
   };
 }, []);
 return (
-    <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section ">
+    <div style={{ backgroundColor: backgroundColor }} className="containerRolePageDesktop section ">
       <div className="headerDivDesktop">
         <div className="headerAndTogglerDesktop">
           <h1 className='headerRolePageDesktop'>{_.upperCase(role.name)}</h1>
           <div className="togglerInfoDivDesktop">
-            <img className='infoImgDesktop togglerInfoDesktop' src={info} alt="" />
+            <IoInformationCircleSharp style={{marginRight: 10}} className='togglerInfoDesktop' size={22}/>
            {toggler}
            <Tooltip place='left' anchorSelect='.togglerInfoDesktop'>
             <div>
@@ -377,7 +379,7 @@ return (
             style={{ color: 'antiquewhite', fontSize:'20px', marginTop:5 }}
             label={aggregateSwitchElementTitle}
           />
-          <img className='infoImgDesktop SwitchMultipleCategoriesDesktop' src={info} alt="" />
+            <IoInformationCircleSharp className='SwitchMultipleCategoriesDesktop' size={22}/>
           <Tooltip place='right' anchorSelect='.SwitchMultipleCategoriesDesktop'>
             <div>
               <h3>Enable Multi-Category Selection</h3>
@@ -386,19 +388,17 @@ return (
           </Tooltip>
           </div>
           <div className="switchDivDesktop limitDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
-            <div className="">
           <FormControlLabel
             control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={listLImitSwitchElementTitle}
           />
-            <img className='infoImgDesktop SwitchLimitDivDesktop' src={info} alt="" />
+          <IoInformationCircleSharp className='SwitchLimitDivDesktop' size={22}/>
           <Tooltip place='right' anchorSelect='.SwitchLimitDivDesktop'>
             <div>
             <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
             </div>
           </Tooltip>
-          </div>
           <input
             type='number'
             id="outlined-basic"
@@ -411,19 +411,17 @@ return (
           </div>
 
           <div className="switchDivDesktop limitPerCategoryDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
-            <div className="">
             <FormControlLabel
             control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={categoryLImitSwitchElementTitle}
           />
-           <img className='infoImgDesktop SwitchLimitPerCategoryDesktop' src={info} alt="" />
+          <IoInformationCircleSharp className='SwitchLimitPerCategoryDesktop' size={22}/>
             <Tooltip place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
               <div>
               <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>
               </div>
             </Tooltip>
-            </div>
 
           <input
             type='number'
@@ -435,7 +433,6 @@ return (
             style={CategoryInputStyle} // Apply custom styles via style attribute
           />
           </div>
-
       </FormGroup>
         </div>
 
@@ -443,7 +440,6 @@ return (
     </div>
       <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
       </div>
-
       <div className="descriptionDivDesktop textRolePageDesktop">{role.description}</div>
       <Line height="0.5px" width="100%" margin='0 0 20px 0' color={'antiquewhite'} radius="4px" />
 

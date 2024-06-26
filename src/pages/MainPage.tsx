@@ -12,6 +12,7 @@ import TemporaryDrawer from '../components/Drawer/Drawer';
 import { useMediaQuery } from 'react-responsive';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { backgroundColor } from '../utils/variables';
+import SwiperPage from './Swiper/Swiper';
 
 import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
 import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
@@ -82,9 +83,9 @@ const MainPage: React.FC = () => {
 
   const sections = useMemo(() => {
     return [
+      { id: 'swiperPage', label: 'Roles', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)}/> },
       { id: 'landingPage', label: 'Home', component: () => <LandingPage isLoading={isLoading} /> },
       { id: 'overviewPage', label: 'Overview', component: OverviewPage },
-      ...convertRolesToSections(roles, rolesFetched, false),
       { id: 'faqPage', label: 'FAQ', component: FaqPage },
       { id: 'aboutMe', label: 'About Me', component: AboutMe },
     ];

@@ -1,0 +1,73 @@
+.App {
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  color: white;
+  border: 1px solid white;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.slick-dots.custom-indicator {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  height: 30px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5); /* Background for the entire indicator group */
+  border-radius: 10px; /* Rounded corners for the background */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.slick-dots.custom-indicator li {
+  width: auto;
+  margin: 0 5px; /* Adjust spacing between indicators */
+  pointer-events: all;
+  position: relative; /* Ensure relative positioning for pseudo-element */
+}
+
+.slick-dots.custom-indicator li::after {
+  content: '';
+  position: absolute;
+  top: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; /* Initial width */
+  height: 2px;
+  background-color: aqua;
+  transition: width 0.3s ease; /* Transition for width change */
+}
+
+.slick-dots.custom-indicator li:hover::after {
+  width: calc(100% - 10px); /* Spread to full width minus margin on hover */
+}
+
+.slick-dots.custom-indicator li button {
+  padding: 10px;
+  border-radius: 50%; /* Make the indicators circular */
+  border: 2px solid #fff; /* Border color for indicators */
+  cursor: pointer;
+}
+
+
+.custom-dot {
+  position: relative;
+  color: 1px solid aqua;
+  padding: 5px;
+  border-width: 0;
+  cursor: pointer;
+  overflow: hidden; /* Ensure overflow hidden to clip animation */
+}
+
+.custom-dot.active {
+  font-size: 16px;
+  transition: 0.3s ease-in;
+  color: aqua;
+}
+

@@ -29,10 +29,13 @@
     "react-lottie": "^1.2.4",
     "react-resize-detector": "^11.0.1",
     "react-responsive": "^10.0.0",
+    "react-slick": "^0.30.2",
     "react-tooltip": "^5.27.0",
     "rsuite": "^5.64.2",
     "sass": "^1.77.4",
-    "styled-components": "^6.1.11"
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.11",
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
