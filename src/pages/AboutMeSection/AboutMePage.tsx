@@ -22,7 +22,7 @@ const AboutMe: React.FC = () => {
 <div style={{ lineHeight: '30px', fontSize: '18px' }}>
   <p>Hey there!</p>
   <p>Welcome to my little corner of the internet! If you're here, it means you're curious about the person behind the screen, and I'm thrilled you stopped by!</p>
-  <p>I'm Koren Kaplan, a 27-year-old software enthusiast who simply loves to code and learn new things. I recently graduated from Ruppin College as a Practical Software Engineer, where I achieved a GPA of 95.</p>
+  <p>I'm Koren Kaplan, a 27-year-old software enthusiast who simply loves to code and learn new things. I recently graduated with great honor from Ruppin College as a Practical Software Engineer, where I achieved a GPA of 95.</p>
   <p>My journey in the tech world has led me to specialize in <strong>Python backend development.</strong> I find genuine joy in tackling everyday problems and discovering creative solutions. Currently, I'm on the lookout for my first job in the field, eager to roll up my sleeves and dive into exciting projects.</p>
   <p>"Skills Compass" isn't just a website; it's my passion project. I'm continuously working on improving it and adding new features. This project is not just about enhancing my skills; it's also about helping others find the skills they need for their desired roles.</p>
   <p>Feel free to explore the site, grab my resume from the bottom right corner, or connect with me on LinkedIn. I'd love to hear your suggestions for improvements and any ideas you have for the website. Let's connect and chat!</p>
@@ -32,10 +32,10 @@ const AboutMe: React.FC = () => {
     <div style={{ lineHeight: '30px', fontSize: '18px' }}>
       <p>היי! 👋</p>
       <p>ברוכים הבאים לפינה הקטנה שלי באינטרנט! אם אתם כאן, זה אומר שאתם סקרים לגבי האדם מאחורי המסך, ואני שמח שהחלטתם לעצור ולקרוא! 😊</p>
-      <p>אני קורן קפלן, מפתח תוכנה בן 27 שפשוט אוהב לתכנת וללמוד דברים חדשים. לאחרונה סיימתי בהצטיינות יתרה לימודי הנדסאי תוכנה במכללת רופין. 🎓</p>
+      <p>אני קורן קפלן, לאחרונה סיימתי בהצטיינות יתרה לימודי הנדסאי תוכנה במכללת רופין. 🎓</p>
       <p>המסע שלי בעולם התכנות הוביל אותי להתמחות בפיתוח צד שרת ב-Python. אני מוצא עניין וסיפוק אמיתי בפתרון בעיות יומיומיות ובגילוי פתרונות יצירתיים. כרגע, אני בחיפוש אחר העבודה הראשונה שלי בתחום. 🚀</p>
       <p>פרויקט "Skills Compass" הוא לא רק אתר; זהו פרויקט האישי שלי. אני עובד באופן קבוע על שיפורו והוספת פיצ'רים חדשים. הפרויקט הזה הוא לא רק בשביל שיפור המיומנויות שלי; זה גם על עזרה לאחרים למצוא את הכישורים שהם זקוקים להם בשביל להיות רלוונטיים לשוק העבודה. 🔍</p>
-      <p>אתם מוזמנים לעיין באתר, להוריד את קורות החיים שלי בלחיצה לינק מטה, או להתחבר איתי ב-LinkedIn. אשמח לשמוע הצעות לשיפורים וכל הרעיונות שיש לכם להציע לאתר או בכללי מה אתם חושבים עליו. 📝</p>
+      <p>אתם מוזמנים לעיין באתר, להוריד את קורות החיים שלי בלחיצה לינק מטה, או ליצור איתי קשר ב-LinkedIn. אשמח לשמוע הצעות לשיפורים וכל הרעיונות שיש לכם להציע לאתר או בכללי מה אתם חושבים עליו. 📝</p>
     </div>
   );
 
@@ -50,7 +50,7 @@ const AboutMe: React.FC = () => {
   const [mainText, setMainText] = useState(aboutMeParagraphHebrew);
   const [header, setHeader] = useState<string>(aboutMeHeaderHebrew);
   const [bottomHeader, setBottomHeader] = useState<string>(contactLinksHeaderHebrew);
-  const [isRotated, setIsRotated] = useState(true);
+  const [isRotated, setIsRotated] = useState(false);
 
 
   const handleRotate = () => {

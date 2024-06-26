@@ -16,7 +16,6 @@ import Switch from '@mui/material/Switch/Switch';
 import {FormGroup} from '@mui/material';
 import { Tooltip } from 'react-tooltip';
 import { IoInformationCircleSharp } from "react-icons/io5";
-import info from '../../assets/icons/info.png'
 import _ from 'lodash'
 
 //#endregion
@@ -389,12 +388,14 @@ return (
           </Tooltip>
           </div>
           <div className="switchDivDesktop limitDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+            <div className="infoAndLabelAndSwitchDivDesktop">
           <FormControlLabel
             control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={listLImitSwitchElementTitle}
           />
           <IoInformationCircleSharp style={{color:'antiquewhite'}}  className='SwitchLimitDivDesktop' size={22}/>
+          </div>
           <Tooltip place='right' anchorSelect='.SwitchLimitDivDesktop'>
             <div>
             <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
@@ -412,12 +413,15 @@ return (
           </div>
 
           <div className="switchDivDesktop limitPerCategoryDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+            <div className="infoAndLabelAndSwitchDivDesktop">
             <FormControlLabel
             control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
             style={{ color: 'antiquewhite', fontSize:'20px' }}
             label={categoryLImitSwitchElementTitle}
           />
           <IoInformationCircleSharp style={{color:'antiquewhite'}}  className='SwitchLimitPerCategoryDesktop' size={22}/>
+            </div>
+
             <Tooltip place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
               <div>
               <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>

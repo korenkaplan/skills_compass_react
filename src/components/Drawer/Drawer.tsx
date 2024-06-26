@@ -67,7 +67,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
             <ListItem
               key={section.id}
               disablePadding
-              onClick={(event) => handleClick(section.id, event)}
+              onClick={() => handleClick(section.id)}
               sx={{
                 '&:hover': {
                   backgroundColor: 'gray', // Replace 'lightgray' with your desired hover color

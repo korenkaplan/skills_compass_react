@@ -18,7 +18,7 @@ import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobi
 import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
 import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
 import AboutMePageMobile from '../pages mobile/AboutMeSection/AboutMePageMobile';
-import DrawerMobile from '../components/DrawerDesktop/DrawerMobile';
+import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap(role => {

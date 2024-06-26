@@ -25,6 +25,10 @@
   align-items: center;
 
 }
+.infoAndLabelAndSwitchDivDesktop{
+  display: flex;
+  align-items: center;
+}
 .infoImgDesktop {
 width: 20px;
 height: 20px;
@@ -41,7 +45,7 @@ margin: 0 10px 0 0;
 .switchDivDesktop {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: space-between;
   width: 360px; /* Default width */
   max-width: 100%; /* Allow it to shrink if necessary */
   flex-wrap: wrap; /* Wrap items if they exceed container width */
