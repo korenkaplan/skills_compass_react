@@ -31,6 +31,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   const handleClick = (id: string) => {
+    toggleDrawer(false)
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
@@ -73,7 +74,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   }, [sections]);
 
   const DrawerList = (
-    <Box className='drawer' sx={{ width: 250, backgroundColor: '#1E2028' }} role="presentation" onClick={() => toggleDrawer(false)}>
+    <Box className='drawer' sx={{ width: 250, backgroundColor: '#1E2028' }} role="presentation">
       <div>
         <div className="logoDiv">
           <img src={logo} alt="Logo" style={{ width: isMobile ? '50%' : '80%' }} />
