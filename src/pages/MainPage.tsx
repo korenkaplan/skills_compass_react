@@ -10,10 +10,9 @@ import _ from 'lodash';
 import axios from 'axios';
 import TemporaryDrawer from '../components/Drawer/Drawer';
 import { useMediaQuery } from 'react-responsive';
-import { GiHamburgerMenu } from "react-icons/gi";
 import { backgroundColor } from '../utils/variables';
 import SwiperPage from './Swiper/Swiper';
-
+import menuPng from '../assets/icons/menu_green.png'
 import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
 import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
 import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
@@ -97,7 +96,9 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-      <GiHamburgerMenu style={{ border: `1px solid ${backgroundColor}` }} size={40} className='drawerButton' onClick={() => toggleDrawer(true)} />
+      <div className="burgerButtonDiv" style={{border:`1px solid ${backgroundColor}`}} onClick={() => toggleDrawer(true)}>
+        <img src={menuPng} style={{width:'30px', color:backgroundColor}} alt="" />
+      </div>
       {
         isMobile ?
           (

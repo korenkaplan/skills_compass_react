@@ -85,6 +85,7 @@ const aboutMeParagraphHebrew = `
           moreText= {isRotated? "הצג עוד": " Show More"}
           lessText={isRotated? "הצג פחות": " Show Less"}
           innerElement="pre"
+          className='custom_clampAboutME'
         />
           </div>
           <div className="communicationAboutMeDivMobile">

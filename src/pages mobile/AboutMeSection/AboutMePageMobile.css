@@ -160,3 +160,8 @@
     color: antiquewhite;
     font-size: 20px;
   }
+   .custom_clampAboutME button{
+    background-color: antiquewhite;
+    color: #253439;
+    border: 0px solid antiquewhite;
+   }

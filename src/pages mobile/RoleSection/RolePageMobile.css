@@ -164,10 +164,7 @@ margin: 0 10px 0 0;
   transition: border-radius 1s;
   transition: width 3;
 }
-.categoryButton:hover {
-  background-color: #95c38cc8;
-  color: antiquewhite;
-}
+
 .categoryButton.selected {
   background-color: rgb(8, 97, 86);
   color: antiquewhite;
@@ -184,5 +181,8 @@ margin: 0 10px 0 0;
   justify-content: center;
   align-items: center;
   flex: 1; /* Ensure it fills the remaining space */
+}
+.disabled {
+  background-color: gray;
 }
 /* Custom CSS for Tooltip */

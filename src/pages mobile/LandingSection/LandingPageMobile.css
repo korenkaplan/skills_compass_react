@@ -69,10 +69,23 @@
   }
 
 .scrollDivMobile{
-  position: absolute;
-  bottom: 5%;
+
 }
 .loadingDivMobile{
-  position: absolute;
-  bottom: 5%;
+
+}
+.mainContainerLandingPage{
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.textContainerLandingPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

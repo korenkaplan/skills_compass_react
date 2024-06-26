@@ -45,7 +45,14 @@
     font-size: 17px;
     margin: 0;
   }
-
+ .custom_clamp{
+  color: #253439;
+ }
+ .custom_clamp button{
+  background-color: #253439;
+  color: antiquewhite;
+  border: 0px solid antiquewhite;
+ }
   .container {
     display: flex;
     justify-content: center;

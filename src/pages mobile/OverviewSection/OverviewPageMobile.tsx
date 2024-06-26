@@ -77,15 +77,16 @@ const [isRotated, setIsRotated] = useState(false);
 
       </div>
       <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
-      <ClampLines
-          id='123'
-          text={mainText}
-          lines={3}
-          ellipsis="..."
-          moreText= {isRotated? "הצג עוד": " Show More"}
-          lessText={isRotated? "הצג פחות": " Show Less"}
-          innerElement="pre"
-        />
+      <div style={{  }}>
+            <ClampLines
+              id='123'
+              text={mainText}
+              lines={3}
+              lessText={isRotated ? "הצג פחות" : " Show Less"}
+              innerElement="pre"
+              className='custom_clamp'
+            />
+          </div>
         </div>
       <div className="imageRow">
         <p>{bottomWords}</p>

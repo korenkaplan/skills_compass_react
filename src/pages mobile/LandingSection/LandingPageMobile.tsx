@@ -63,21 +63,24 @@ useEffect(() => {
 
 
   return (
-    <div style={{backgroundColor:backgroundColor}} className="section main" >
+    <div style={{backgroundColor:backgroundColor}} className="section main " >
+      <div className="mainContainerLandingPage">
       <div className="image-container">
-      <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo Your Image" className="rotatingImage"/>
-    </div>
-      <h1  className='logoHeader'>{logoText}</h1>
-      <Line height="5px" width="175px" color={textColor} radius="4px" />
-      <h2 className='headerLandingPage' dangerouslySetInnerHTML={{ __html: headerText }} />
+        <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo Your Image" className="rotatingImage"/>
+      </div>
+      <div className="textContainerLandingPage">
+        <h1  className='logoHeader'>{logoText}</h1>
+        <Line height="5px" width="175px" color={textColor} radius="4px" />
+        <h2 className='headerLandingPage' dangerouslySetInnerHTML={{ __html: headerText }} />
+      </div>
       <div className="loadingDivMobile" style={{color:'antiquewhite', width:'50%', display: isLoading? 'block' :'none'}}>
       <h3 className={`fade-text ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
       <LinearProgress color="inherit" />
-    </div>
-    <div className="scrollDivMobile" style={{color:'antiquewhite', width:'100px', height:'100px', display: isLoading? 'none' :'block', margin:'0 0 20px 0'}}>
+      </div>
+      <div className="scrollDivMobile" style={{color:'antiquewhite', width:'100px', height:'80px', display: isLoading? 'none' :'block', margin:'0 0 20px 0'}}>
     <Lottie animationData={scrollAnimation} loop={true} autoPlay={true}/>
-    </div>
-
+      </div>
+      </div>
 
     </div>
   );

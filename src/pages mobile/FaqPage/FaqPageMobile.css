@@ -45,6 +45,3 @@
     box-shadow: 0px 4px 15px rgba(8, 15, 15, 0.2);
     transform: translateY(-5px);
   }
-.disabled {
-    background-color: rgb(85, 177, 82);
-}
