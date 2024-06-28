@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
 import React, { useEffect, useState } from 'react';
 import './AboutMePageMobile.css';
-import { backgroundColor } from '../../utils/variables';
+import { backgroundColor, resumeDownloadLink } from '../../utils/variables';
 import profilePic from '../../assets/images/profilePic.jpeg';
 import _ from 'lodash';
 import linkedin from '../../assets/icons/linkedin.png'
@@ -47,7 +47,6 @@ const AboutMePageMobile: React.FC = () => {
   const contactLinksHeader: string = 'CONTACT INFORMATION';
   const contactLinksHeaderHebrew: string = 'פרטי התקשרות & תיעוד הקוד';
 
-  const resumeDownloadLink: string = "https://drive.google.com/uc?export=download&id=1NUAHmmDQ355s1QrkjrsTBb1EVnCyuzSu"
 
 
   const [isRotated, setIsRotated] = useState(false);

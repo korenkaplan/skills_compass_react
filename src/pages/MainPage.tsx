@@ -118,17 +118,17 @@ const MainPage: React.FC = () => {
           )
           :
           (
-            <>
-              <TemporaryDrawer sections={sections}  variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
-              <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
-                {
-                  sections.map(section => (
-                    <div key={section.id} id={section.id} className="section">
-                      <section.component />
-                    </div>
-                  ))}
-              </div>
-            </>
+            <div className='sectionsWrapperDesktop'>
+            <TemporaryDrawer sections={sections}  variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
+            <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
+              {
+                sections.map(section => (
+                  <div key={section.id} id={section.id} className="section">
+                    <section.component />
+                  </div>
+                ))}
+            </div>
+          </div>
           )
       }
     </div>

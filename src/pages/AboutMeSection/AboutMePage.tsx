@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
 import React, { useState } from 'react';
 import './AboutMePage.css';
-import { backgroundColor } from '../../utils/variables';
+import { backgroundColor, resumeDownloadLink } from '../../utils/variables';
 import profilePic from '../../assets/images/profilePic.jpeg';
 import _ from 'lodash';
 import linkedin from '../../assets/icons/linkedin.png'
@@ -44,7 +44,6 @@ const AboutMe: React.FC = () => {
   const contactLinksHeaderHebrew: string = 'פרטי התקשרות & תיעוד הקוד';
   const contactLinksHeaderFormatted: string = contactLinksHeader
 
-  const resumeDownloadLink: string = "https://drive.google.com/uc?export=download&id=1NUAHmmDQ355s1QrkjrsTBb1EVnCyuzSu"
 
 
   const [mainText, setMainText] = useState(aboutMeParagraph);

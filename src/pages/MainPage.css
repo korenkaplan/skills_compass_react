@@ -63,3 +63,21 @@
 
 
   }
+  .sectionsWrapperDesktop{
+    overflow-y: scroll;
+  }
+  /* Scrollbar track */
+  .sectionsWrapperDesktop::-webkit-scrollbar {
+    width: fit-content; /* Width of the scrollbar */
+    background-color: antiquewhite;
+    border-radius: 20px; /* Roundness of the handle */
+  }
+
+  /* Scrollbar handle */
+  .sectionsWrapperDesktop::-webkit-scrollbar-thumb {
+    background: #253439; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Roundness of the handle */
+    border: 2px solid antiquewhite;
+    width: 50%;
+
+  }

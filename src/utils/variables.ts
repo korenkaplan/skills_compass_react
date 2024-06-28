@@ -1,5 +1,6 @@
 // variables.ts
 const backgroundColor: string = '#253439';
+ const resumeDownloadLink: string = "https://drive.google.com/uc?export=download&id=10Tpl27oSImgvjaUK7aRlspeGQWAfKCqA"
 const textColor: string = '#F4F2EF';
 const hostages_names: string[] = [
     "הישאם א-סייד",
@@ -124,4 +125,4 @@ const hostages_names: string[] = [
     "יוסי שרעבי ז\"ל"
   ];
 
-export { backgroundColor, textColor, hostages_names };
+export { backgroundColor, textColor, hostages_names, resumeDownloadLink };
