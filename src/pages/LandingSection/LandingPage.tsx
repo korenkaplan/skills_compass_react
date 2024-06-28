@@ -9,6 +9,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import {calculateMaxLineWidth} from '../../utils/functions'
 import Lottie from "lottie-react";
 import scrollAnimation from '../../assets/animations/scroll_down_animation.json'
+import Compass from '../../components/compass/Compass';
 interface LandingPageProps {
   isLoading: boolean;
 }
@@ -63,7 +64,7 @@ useEffect(() => {
 
 
   return (
-    <div style={{backgroundColor:backgroundColor}} className="section main dividerBottom" >
+    <div style={{backgroundColor:backgroundColor}} className="section main  heightAndBorder" >
       <div className="image-container">
       <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo Your Image" className="rotatingImage"/>
     </div>

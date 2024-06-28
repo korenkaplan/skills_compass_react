@@ -70,7 +70,7 @@ const [isRotated, setIsRotated] = useState(false);
 
 
   return (
-    <div style={{backgroundColor:backgroundColor, padding:50}} className="section container containerOVerview " >
+    <div style={{backgroundColor:backgroundColor, padding:50}} className="section container heightAndBorder  " >
       <div className="textContainerDesktop "  dir={isRotated ? 'rtl' : 'ltr'}>
       <div className="containerHeaderDesktop">
         <h2 className='headerOverviewPageDesktop'>{header}</h2>

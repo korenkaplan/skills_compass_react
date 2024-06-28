@@ -5,14 +5,23 @@ import logo from '../../assets/logo/logo.png';
 import '../../CSS/RotatingImageClick.css';
 import { MdGTranslate } from "react-icons/md";
 import Collapse from '@mui/material/Collapse';
-
+import Line from '../../components/Line/Line';
 const OverviewPageMobile: React.FC = () => {
+  const lineProps = {
+    color:'#253439',
+    height:'2px',
+    width:'40%',
+    radius:'10px',
+    margin:'auto',
+  }
   const developerSurveyTextPartOne = (
     <div style={{color:backgroundColor}}>
       <p>💡 The Main Idea:</p>
       <p>🌟 Welcome to Skills Compass! Our mission is to guide you on the most in-demand technologies in Israel's tech job market. We help you stay relevant by providing the latest information on the skills you need for different tech roles.</p>
+      <Line {...lineProps}  />
       <p>🌍 What Makes Us Unique:</p>
       <p>🔍 Every day, our system scans the latest job postings online, ensuring that our data is the freshest and most accurate, especially for jobs in Israel. This way, you get real-time insights into what employers are looking for.</p>
+      <Line {...lineProps}/>
       <p>🔮 What's Coming Next:</p>
     </div>
   );
@@ -20,9 +29,11 @@ const OverviewPageMobile: React.FC = () => {
   const developerSurveyTextPartTwo = (
     <div style={{color:backgroundColor}}>
       <p>🚀 Exciting things are on the horizon! We're planning to add more job roles, highlight emerging and declining tech trends, and provide even more data to help you navigate the job market with confidence.</p>
+      <Line {...lineProps}/>
       <p>🔧 How It Works:</p>
       <p>📊 Our site is organized by different tech roles. For each role, we show the most common technologies mentioned in job postings, grouped into categories. You'll see how many job postings mention each technology and you can toggle between percentage and count views, giving you a clear picture of what skills are in demand.</p>
       <p>🔧 Additionally, for each role, you can choose to view selected categories at once and limit the list length and the items per category. This helps you to focus on the most relevant information according to your preferences.</p>
+      <Line {...lineProps}/>
       <p>🎨 Customization:</p>
       <p>Additionally, for each role, you can now choose to view selected categories all at once and customize the list length and items per category. This feature allows you to focus more effectively on the most relevant information based on your preferences.</p>
     </div>
@@ -90,7 +101,7 @@ const OverviewPageMobile: React.FC = () => {
   }, [isRotated])
 
   return (
-    <div style={{ backgroundColor: backgroundColor }} className="section container">
+    <div style={{ backgroundColor: backgroundColor }} className="section container heightAndBorder">
       <div className="textContainer" dir={isRotated ? 'rtl' : 'ltr'}>
         <div className="containerHeader">
           <h2 className='headerOverviewPage'>{header}</h2>

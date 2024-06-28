@@ -1,6 +1,6 @@
 // src/components/SideMenu.tsx
 import React, { useState, useEffect } from 'react';
-import './LandingPageMobile.css'
+import './LandingPage.css'
 import {backgroundColor} from '../../utils/variables'
 import logoCropped from '../../assets/logo/logoCropped-removebg-preview.png'
 import '../../CSS/RotatingImage.css'
@@ -15,8 +15,8 @@ interface LandingPageProps {
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
-const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading }) => {
-const percentOfScreenWidth = 0.50
+const LandingPage: React.FC<LandingPageProps> = ({ isLoading }) => {
+const percentOfScreenWidth = 0.18
 const [logoWidth, setMaxLineWidth] = useState(calculateMaxLineWidth(percentOfScreenWidth));
 const [currentIndex, setCurrentIndex] = useState(0);
 const headerText: string = '"Discover the Key Skills for Your Dream Job in Israel\'s Hi-Tech Field"'
@@ -63,27 +63,24 @@ useEffect(() => {
 
 
   return (
-    <div className="section main heightAndBorder" >
-      <div className="mainContainerLandingPage" style={{backgroundColor:backgroundColor}}>
+    <div style={{backgroundColor:backgroundColor}} className="section main dividerBottom" >
       <div className="image-container">
-        <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo Your Image" className="rotatingImage"/>
-      </div>
-      <div className="textContainerLandingPage">
-        <h1  className='logoHeader'>{logoText}</h1>
-        <Line height="5px" width="175px" color={textColor} radius="4px" />
-        <h2 className='headerLandingPage' dangerouslySetInnerHTML={{ __html: headerText }} />
-      </div>
-      <div className="loadingDivMobile" style={{color:'antiquewhite', width:'50%', display: isLoading? 'block' :'none'}}>
-      <h3 className={`fade-text ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
+      <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo Your Image" className="rotatingImage"/>
+    </div>
+      <h1  className='logoHeaderDesktop'>{logoText}</h1>
+      <Line height="5px" width="12%" color={textColor} radius="4px" />
+      <h2 className='headerLandingPageDesktop' dangerouslySetInnerHTML={{ __html: headerText }} />
+      <div className="loadingDivDesktop" style={{color:'antiquewhite', width:'50%', display: isLoading? 'block' :'none'}}>
+      <h3 className={`fade-text-Desktop ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
       <LinearProgress color="inherit" />
-      </div>
-      <div className="scrollDivMobile" style={{color:'antiquewhite', width:'100px', height:'80px', display: isLoading? 'none' :'block', margin:'0 0 20px 0'}}>
+    </div>
+    <div className="scrollDivDesktop" style={{color:'antiquewhite', width:'100px', height:'100px', display: isLoading? 'none' :'block', margin:'0 0 20px 0'}}>
     <Lottie animationData={scrollAnimation} loop={true} autoPlay={true}/>
-      </div>
-      </div>
+    </div>
+
 
     </div>
   );
 };
 
-export default LandingPageMobile;
+export default LandingPage;

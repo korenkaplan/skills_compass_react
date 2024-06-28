@@ -171,8 +171,8 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
             <p>{time} | {date}</p>
           </div>
         )}
-      </div>
       <BringThemHomeNowDiv />
+      </div>
     </Box>
   );
 

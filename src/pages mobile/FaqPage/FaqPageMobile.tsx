@@ -212,7 +212,7 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
   </div>
 );
   return (
-    <div style={{backgroundColor:backgroundColor}} className="section  containerFaq" >
+    <div style={{backgroundColor:backgroundColor}} className="section  containerFaq heightAndBorder" >
         <div className="headerDivFaq">
           <h3 className='headerFaqMobile'>Frequently Asked Questions</h3>
         </div>

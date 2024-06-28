@@ -340,7 +340,7 @@ const tooltipStyle:CSSProperties = {
   zIndex: 3,
 }
 return (
-    <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section ">
+    <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section  heightAndBorder">
        <div className="togglerInfoDiv">
             <img className='infoImg togglerInfo' src={info} alt="" />
            {toggler}

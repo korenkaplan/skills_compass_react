@@ -60,7 +60,7 @@ const AboutMe: React.FC = () => {
     setBottomHeader(isRotated? contactLinksHeaderFormatted : contactLinksHeaderHebrew)
   }
   return (
-        <div style={{ backgroundColor: backgroundColor }} className={"section"} dir={isRotated ? 'rtl' : 'ltr'}>
+        <div style={{ backgroundColor: backgroundColor }} className={"last"} dir={isRotated ? 'rtl' : 'ltr'}>
         <div className='aboutMeContainerDesktop'>
           <div className="topDesktop" >
           <div className="imageDesktop">
