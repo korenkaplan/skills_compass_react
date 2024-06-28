@@ -13,8 +13,8 @@ Every day, our system scans the latest job postings online, ensuring that our da
 🚀 Exciting things are on the horizon! We're planning to add more job roles, highlight emerging and declining tech trends, and provide even more data to help you navigate the job market with confidence.
 
 #### Website: [Skills Compass](https://skills-compass.netlify.app/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-My%20Profile-blue?logo=linkedin)](https://www.linkedin.com/in/koren-kaplan/)
 [![GitHub](https://img.shields.io/badge/GitHub-Backend%20Repository-black?logo=github)](https://github.com/korenkaplan/Dev-Skill-Compass-Server.git)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-My%20Profile-blue?logo=linkedin)](https://www.linkedin.com/in/koren-kaplan/) 
 
 ## Table of Contents
 
