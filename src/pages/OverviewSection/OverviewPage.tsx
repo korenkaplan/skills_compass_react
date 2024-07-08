@@ -1,12 +1,10 @@
 // src/components/SideMenu.tsx
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './OverViewPage.css'
-import {backgroundColor} from '../../utils/variables'
+import { backgroundColor } from '../../utils/variables'
 import logo from '../../assets/logo/logo.png'
 import '../../CSS/RotatingImageClick.css'
 import { MdGTranslate } from "react-icons/md";
-import ThreeSteps from './ThreeSteps';
-import FutureUpgrades from './FutureUpgrades';
 import bell from '../../assets/icons/bell.png'
 import Line from '../../components/Line/Line';
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
@@ -50,7 +48,7 @@ const Overview: React.FC = () => {
           <img src={bell} alt="" style={{ width: `${bellLogoSize}px`, height: `${bellLogoSize}px` }} />
           <h2 style={{ margin: '0 0 0 10px', fontSize: '25px' }}>מצלצל מוכר ?</h2>
         </div>
-        <p><strong>אם גם אתה  הולך לאיבוד לפעמים מהכמות האין סופית של טכנולוגיות  ולא יודע מה  ללמוד כדי להיות הכי רלוונטי לשוק העבודה שממשיך להתקדם ולהשתנות ללא הפסקה ?</strong></p>
+        <p><strong>אם גם אתה  הולך לאיבוד לפעמים מהכמות האין סופית של טכנולוגיות  ולא יודע מה כדאי  ללמוד כדי להיות הכי רלוונטי לשוק העבודה שממשיך להתקדם ולהשתנות ללא הפסקה ?</strong></p>
         <p><strong>אז הגעת למקום הנכון!</strong> 🚀</p>
         <Line height='1px' width='70%' color={backgroundColor} />
         <p>המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>
@@ -58,16 +56,16 @@ const Overview: React.FC = () => {
       </div>
     </>
   );
-const headerEnglish = "Overview"
-const headerHeb = "סקירה כללית"
-const bottomWordsEng = "Happy reading !"
-const bottomWordsHeb = "קריאה מהנה !"
+  const headerEnglish = "Overview"
+  const headerHeb = "סקירה כללית"
+  const bottomWordsEng = "Happy reading !"
+  const bottomWordsHeb = "קריאה מהנה !"
 
-const [mainText, setMainText] = useState(developerSurveyText);
-const [header, setHeader] = useState<string>(headerEnglish);
-const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
-const [isRotated, setIsRotated] = useState(false);
-const [currentIndex, setCurrentIndex] = useState(0);
+  const [mainText, setMainText] = useState(developerSurveyText);
+  const [header, setHeader] = useState<string>(headerEnglish);
+  const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
+  const [isRotated, setIsRotated] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleRotate = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
@@ -82,35 +80,35 @@ const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     const currentYear: number = new Date().getFullYear();
     setCurrentYear(currentYear)
-      const interval = setInterval(() => {
-          setCurrentIndex(prevIndex => (prevIndex + 1) % questions.length);
-          console.log(currentIndex);
+    const interval = setInterval(() => {
+      setCurrentIndex(prevIndex => (prevIndex + 1) % questions.length);
+      console.log(currentIndex);
 
-      }, 3000); // Change every 3 seconds
-      return () => clearInterval(interval);
+    }, 3000); // Change every 3 seconds
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div style={{backgroundColor:backgroundColor, padding:50}} className="section OverviewContainerDesktop heightAndBorder  " >
-    <div className="textContainerDesktop "  dir={isRotated ? 'rtl' : 'ltr'}>
-      <div className="containerHeaderDesktop">
-        <h2 className='headerOverviewPageDesktop'>{header}</h2>
-        <div className={`image-container ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
-      <MdGTranslate size={40} style={{color:'#253439', cursor:'pointer'}} />
-    </div>
+    <div style={{ backgroundColor: backgroundColor, padding: 50 }} className="section OverviewContainerDesktop heightAndBorder  " >
+      <div className="textContainerDesktop " dir={isRotated ? 'rtl' : 'ltr'}>
+        <div className="containerHeaderDesktop">
+          <h2 className='headerOverviewPageDesktop'>{header}</h2>
+          <div className={`image-container ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
+            <MdGTranslate size={40} style={{ color: '#253439', cursor: 'pointer' }} />
+          </div>
 
-      </div>
-      <div className="containerTextDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
-        <TypeQuestionAnimation questions={questions} currentYear={currentYear}/>
+        </div>
+        <div className="containerTextDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
+          <div  dir='ltr'>
+          <TypeQuestionAnimation questions={questions} currentYear={currentYear} />
+          </div>
           <p className='mainTextDesktop'>{mainText}</p>
         </div>
-      <div className="imageRowDesktop">
-        <p>{bottomWords}</p>
-      <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
+        <div className="imageRowDesktop">
+          <p>{bottomWords}</p>
+          <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
+        </div>
       </div>
-    </div>
-    <ThreeSteps/>
-    <FutureUpgrades/>
     </div>
   );
 };

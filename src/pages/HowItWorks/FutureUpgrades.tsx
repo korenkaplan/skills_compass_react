@@ -18,8 +18,8 @@ const FutureUpgrades: React.FC = () => {
   }
   return (
     <div style={{backgroundColor:backgroundColor}} className="three-steps">
-    <h1>What's Next? 🚀</h1>
     <div className="steps-container">
+    <div className="stepAndArrowDiv">
         <div className="step">
             <div className="step-number">
                 <Lottie animationData={moreRoles} loop={true} style={lottieStyle} />
@@ -28,6 +28,8 @@ const FutureUpgrades: React.FC = () => {
             <p>We will expand our coverage to include more roles in the tech industry.</p>
         </div>
         <CurvedArrow />
+        </div>
+        <div className="stepAndArrowDiv">
         <div className="step">
             <div className="step-number">
                 <Lottie animationData={graphs} loop={true} style={lottieStyle} />
@@ -36,6 +38,8 @@ const FutureUpgrades: React.FC = () => {
             <p>We will provide insights into technology trends over time, helping you stay ahead of the curve.</p>
         </div>
         <CurvedArrow />
+        </div>
+
         <div className="step">
             <div className="step-number">
                 <Lottie animationData={roadmap} loop={true} style={lottieStyle} />

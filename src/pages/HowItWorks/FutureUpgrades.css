@@ -1,4 +1,4 @@
-.three-steps {
+.three-stepsFuture {
     text-align: center;
     padding: 40px;
     color: white;
@@ -6,7 +6,7 @@
 
   }
 
-  .steps-container {
+  .steps-containerFuture {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,14 +14,14 @@
 
   }
 
-  .step {
+  .stepFuture {
     width: fit-content;
     max-width: 20%;
     height:50%;
 
   }
 
-  .step-number {
+  .step-numberFuture {
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 10px;
