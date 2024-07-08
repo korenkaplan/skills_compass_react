@@ -1,6 +1,5 @@
-import React, { CSSProperties } from 'react';
-import './ThreeSteps.css';
-import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
+import React, { CSSProperties, ReactNode } from 'react';
+import './ThreeStepsMobile.css';
 import Lottie from 'lottie-react';
 import pagesAnimation from '../../assets/animations/pages.json';
 import robotScans from '../../assets/animations/robotScan.json';
@@ -9,19 +8,24 @@ import { backgroundColor } from '../../utils/variables';
 import OneDigit from '../../assets/digits/icons8-1-50.png';
 import TwoDigit from '../../assets/digits/icons8-2-50.png';
 import ThreeDigit from '../../assets/digits/icons8-3-50.png';
+import Line from '../../components/Line/Line';
 
-const ThreeSteps: React.FC = () => {
+const ThreeStepsMobile: React.FC = () => {
+const digitSize = 90
+
   const lottieStyle = {
     width: '100%',
     height: '200px',
   };
 
   const digitStyle = {
-    height: '60px',
-    width: '60px',
+    height: `${digitSize}px`,
+    width: `${digitSize}px`,
     margin:' 0 0 20px 0'
   };
-
+ const stepTextStyle:CSSProperties = {
+  fontSize:'18px',
+ }
   const imageContainerStyle: CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
@@ -31,43 +35,62 @@ const ThreeSteps: React.FC = () => {
 const strongStyle: CSSProperties = {
   color: 'salmon'
 }
+
+type Step = {
+  header: string;
+  text: ReactNode;
+  lottie: object;
+  img: string;
+}
+
+const steps: Step[] = [
+  {
+    header: '🔍 Scanning',
+    text:(<p style={stepTextStyle}>We scan <strong style={strongStyle}>100+</strong> job listings on a daily basis from various  job searching websites to ensure our data is consistently up-to-date and highly reliable.</p>),
+    img: OneDigit,
+    lottie:pagesAnimation,
+  },
+  {
+    header: '📝 Text Analysis',
+    text:( <p style={stepTextStyle}>We extract key technological words from job descriptions and accurately identify them using our dataset of <strong style={strongStyle}>700+</strong> technological keywords.</p>),
+    img: TwoDigit,
+    lottie:robotScans,
+  },
+  {
+    header: '🔄 Data Processing',
+    text:(<p style={stepTextStyle}>We process the keywords by counting, grouping synonyms, and categorizing them to provide clear insights and identify the most in-demand technologies.</p>),
+    img: ThreeDigit,
+    lottie:legoAnimation,
+  },
+]
+const stepWrapperStyle: CSSProperties = {
+display: 'flex',
+flexDirection: 'column',
+alignItems: 'center',
+margin: '0 0 50px 0',
+
+}
   return (
     <div style={{ backgroundColor: backgroundColor }} className="three-steps">
-      <div className="steps-container">
-        <div className="stepAndArrowDiv">
-        <div className="step">
-          <div className="step-number" style={imageContainerStyle}>
-            <img src={OneDigit} style={digitStyle} alt="digit" />
-            <Lottie animationData={pagesAnimation} loop={true} style={lottieStyle} />
+      <div className="steps-containerMobile">
+        {
+          steps.map(step => (
+            < div style={stepWrapperStyle}>
+              <div className="stepMobile">
+              <div className="step-numberMobile" style={imageContainerStyle}>
+                <img src={step.img} style={digitStyle} alt="digit" />
+                <Lottie animationData={step.lottie} loop={true} style={lottieStyle} />
+              </div>
+              <h3>{step.header}</h3>
+              {step.text}
+            </div>
           </div>
-          <h3>🔍 Scanning</h3>
-          <p>We scan <strong style={strongStyle}>100+</strong> job listings on a daily basis from various  job searching websites to ensure our data is consistently up-to-date and highly reliable.</p>
-        </div>
-        <CurvedArrow />
-        </div>
-        <div className="stepAndArrowDiv">
-        <div className="step">
-          <div className="step-number" style={imageContainerStyle}>
-            <img src={TwoDigit} style={digitStyle} alt="digit" />
-            <Lottie animationData={robotScans} loop={true} style={lottieStyle} />
-          </div>
-          <h3>📝 Text Analysis</h3>
-          <p>We extract key technological words from job descriptions and accurately identify them using our dataset of <strong style={strongStyle}>700+</strong> technological keywords.</p>
-        </div>
-        <CurvedArrow />
-        </div>
+          ))
+        }
 
-        <div className="step">
-          <div className="step-number" style={imageContainerStyle}>
-            <img src={ThreeDigit} style={digitStyle} alt="digit" />
-            <Lottie animationData={legoAnimation} loop={true} style={lottieStyle} />
-          </div>
-          <h3>🔄 Data Processing</h3>
-          <p>We process the keywords by counting, grouping synonyms, and categorizing them to provide clear insights and identify the most in-demand technologies.</p>
-        </div>
       </div>
     </div>
   );
 };
 
-export default ThreeSteps;
+export default ThreeStepsMobile;

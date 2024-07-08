@@ -15,10 +15,12 @@ import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile'
 import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
 import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
 import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
-import AboutMePageMobile from '../pages mobile/AboutMeSection/AboutMePageMobile';
+import ContactInformationMobile from '../pages mobile/ContactFooter/ContactFooterMobile';
 import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
 import Overview from './OverviewSection/OverviewPage';
 import HowItWorks from './HowItWorks/HowItWorks';
+
+import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap(role => {
     const roleProps = { role: role, rolesFetched: rolesFetched };
@@ -73,13 +75,18 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
       { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },
+      { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
       ...convertRolesToSections(roles, rolesFetched, true),
+      { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorksMobile },
       { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPageMobile },
-      { id: 'aboutMe', isRole: false, label: 'About Me', component: AboutMePageMobile },
+      { id: 'ContactInformationMobile', isRole: false, label: 'Contact Us', component: ContactInformationMobile },
     ];
   }, [roles, rolesFetched, isMobile]);
+
+
+
+
 
   const sections = useMemo(() => {
     return [
