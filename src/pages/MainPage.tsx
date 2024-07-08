@@ -19,7 +19,8 @@ import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
 import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
 import AboutMePageMobile from '../pages mobile/AboutMeSection/AboutMePageMobile';
 import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
-
+import ThreeSteps from './OverviewSection/ThreeSteps';
+import Overview from './OverviewSection/OverviewPage';
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap(role => {
     const roleProps = { role: role, rolesFetched: rolesFetched };
@@ -85,7 +86,7 @@ const MainPage: React.FC = () => {
   const sections = useMemo(() => {
     return [
       { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage isLoading={isLoading} /> },
-      { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPage },
+      { id: 'overview', isRole: false, label: 'Overview', component: Overview },
       { id: 'swiperPage', isRole: false, label: 'Roles Info', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)}/> },
       { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPage },
       { id: 'aboutMe', isRole: false, label: 'About Me', component: AboutMe },
