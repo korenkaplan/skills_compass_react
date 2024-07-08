@@ -17,8 +17,6 @@ import linkedin from '../../assets/icons/linkedin.png'
 import github from '../../assets/icons/github.png'
 import whatsapp from '../../assets/icons/whatsapp.png'
 import download from '../../assets/icons/download.png'
-import Line from '../../components/Line/Line'
-import {textColor} from '../../utils/variables'
 interface FaqPageProps {
 
 }

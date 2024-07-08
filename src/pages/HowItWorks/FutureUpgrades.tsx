@@ -12,10 +12,7 @@ const FutureUpgrades: React.FC = () => {
     height:'200px',
 
   }
-  const digitStyle = {
-    height:'60px',
-    width:'60px',
-  }
+
   return (
     <div style={{backgroundColor:backgroundColor}} className="three-steps">
     <div className="steps-container">

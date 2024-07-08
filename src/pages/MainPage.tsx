@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import './MainPage.css';
 import LandingPage from './LandingSection/LandingPage';
-import OverviewPage from './OverviewSection/OverviewPage';
-import AboutMe from './AboutMeSection/AboutMePage';
 import FaqPage from './FaqPage/FaqPage';
 import RolePage from './RoleSection/RolePage';
 import { Role, Section } from '../utils/interfaces';
