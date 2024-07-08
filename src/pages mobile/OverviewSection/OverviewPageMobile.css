@@ -1,107 +1,115 @@
 .textContainer {
-    background-color: antiquewhite;
-    border-radius: 20px;
-    width: 100%;
-    min-height: 700px;
-    width: 100vw; /* Use 100vw for full viewport width */
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    padding: 20px 10px 20px 25px;
-    box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
-    -webkit-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
-    -moz-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
-  }
-  .textContainer pre {
-    max-width: 90%; /* Ensure <pre> tag respects max-width of .textContainer */
-    white-space: pre-wrap; /* Wrap long lines in <pre> content */
-    overflow-x: auto; /* Enable horizontal scroll if content overflows */
-    font-family: inherit
-  }
-  .containerHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-    width: 100%;
-  }
+  background-color: antiquewhite;
+  border-radius: 20px;
+  width: 100%;
+  min-height: 700px;
+  width: 100vw; /* Use 100vw for full viewport width */
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  padding: 20px 10px 20px 25px;
+  box-shadow: -1px 6px 64px 16px rgba(0, 0, 0, 0.64);
+  -webkit-box-shadow: -1px 6px 64px 16px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: -1px 6px 64px 16px rgba(0, 0, 0, 0.64);
+}
+.containerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 100%;
+}
 
-  .translationLogo {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    cursor: pointer;
+.translationLogo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.headerOverviewPage {
+  color: #253439;
+  font-family: "Inknut Antiqua", serif;
+  font-size: xx-large;
+  margin: 0;
+}
+
+.custom_clamp {
+  color: #253439;
+}
+.custom_clamp button {
+  background-color: #253439;
+  color: antiquewhite;
+  border: 0px solid antiquewhite;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--backgroundColor);
+}
+
+.containerText {
+  width: 100%;
+  overflow: auto;
+  flex-grow: 1;
+}
+
+.imageRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.logos {
+  width: 120px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.overviewInnerHeaderMobile{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.topMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+
+}
+
+@media (max-width: 768px) {
+  .textContainer {
+    padding: 15px 10px;
   }
 
   .headerOverviewPage {
-    color: #253439;
-    font-family: 'Inknut Antiqua', serif;
-    font-size: xx-large;
-    margin: 0;
+    font-size: large;
+  }
+
+  .translationLogo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logos {
+    width: 80px;
   }
 
   .mainText {
     color: #253439;
-    font-size: 17px;
+    font-size: 20px;
     margin: 0;
   }
- .custom_clamp{
-  color: #253439;
- }
- .custom_clamp button{
-  background-color: #253439;
-  color: antiquewhite;
-  border: 0px solid antiquewhite;
- }
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: var(--backgroundColor);
-  }
-
-  .containerText {
-    width: 100%;
-    overflow: auto;
-    flex-grow: 1;
-  }
-
-  .imageRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .logos {
-    width: 120px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    .textContainer {
-      padding: 15px 10px;
-    }
-
-    .headerOverviewPage {
-      font-size: large;
-    }
-
-    .translationLogo {
-      width: 30px;
-      height: 30px;
-    }
-
-    .logos {
-      width: 80px;
-    }
-
-    .mainText {
-      font-size: 15px;
-    }
-  }
+}

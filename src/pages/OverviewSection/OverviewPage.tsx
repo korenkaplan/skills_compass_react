@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
 import React, { useEffect, useState } from 'react';
 import './OverViewPage.css'
-import { backgroundColor } from '../../utils/variables'
+import { backgroundColor, } from '../../utils/variables'
 import logo from '../../assets/logo/logo.png'
 import '../../CSS/RotatingImageClick.css'
 import { MdGTranslate } from "react-icons/md";
@@ -41,7 +41,7 @@ const Overview: React.FC = () => {
     </>
   );
 
-  const developerSurveyTextHeb = (
+  const developerSurveyTextHeb = () => (
     <>
       <div className="topDesktop">
         <div className="overviewInnerHeaderDesktop">
@@ -100,7 +100,7 @@ const Overview: React.FC = () => {
         </div>
         <div className="containerTextDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
           <div  dir='ltr'>
-          <TypeQuestionAnimation questions={questions} currentYear={currentYear} />
+          <TypeQuestionAnimation fontSize={24} questions={questions} currentYear={currentYear} />
           </div>
           <p className='mainTextDesktop'>{mainText}</p>
         </div>

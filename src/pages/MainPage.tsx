@@ -73,8 +73,8 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },
       { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },
       ...convertRolesToSections(roles, rolesFetched, true),
       { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPageMobile },
       { id: 'aboutMe', isRole: false, label: 'About Me', component: AboutMePageMobile },
