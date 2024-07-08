@@ -15,12 +15,13 @@ import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile'
 import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
 import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
 import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
-import ContactInformationMobile from '../pages mobile/ContactFooter/ContactFooterMobile';
+import ContactInformationMobile from '../pages mobile/ContactFooterMobile/ContactFooterMobile';
 import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
 import Overview from './OverviewSection/OverviewPage';
 import HowItWorks from './HowItWorks/HowItWorks';
 
 import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
+import ContactFooter from './ContactFooter/ContactFooter';
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap(role => {
     const roleProps = { role: role, rolesFetched: rolesFetched };
@@ -95,6 +96,7 @@ const MainPage: React.FC = () => {
       { id: 'swiperPage', isRole: false, label: 'Roles Overview', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)} /> },
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorks },
       { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPage },
+      { id: 'ContactFooter', isRole: false, label: 'Contact Us', component: ContactFooter },
     ];
   }, [roles, rolesFetched, isMobile]);
 

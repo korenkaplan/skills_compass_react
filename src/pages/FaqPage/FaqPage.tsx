@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
 import React, { useState } from 'react';
 import './FaqPage.css'
-import {backgroundColor, resumeDownloadLink } from '../../utils/variables'
+import {backgroundColor} from '../../utils/variables'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -13,10 +13,6 @@ import {FaqAccordion} from '../../utils/interfaces'
 import { FaGithub } from "react-icons/fa";
 import { MdSupportAgent, MdAlternateEmail  } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
-import linkedin from '../../assets/icons/linkedin.png'
-import github from '../../assets/icons/github.png'
-import whatsapp from '../../assets/icons/whatsapp.png'
-import download from '../../assets/icons/download.png'
 interface FaqPageProps {
 
 }
@@ -216,7 +212,7 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
   </div>
 );
   return (
-    <div style={{backgroundColor:backgroundColor}} className="section  containerFaqDesktop" >
+    <div style={{backgroundColor:backgroundColor}} className="section  containerFaqDesktop dividerBottom " >
         <div className="headerDivFaqDesktop">
           <FaQuestionCircle style={{margin:'0 20px 0 0'}}  size={50}/>
           <h1>Frequently Asked Questions</h1>
@@ -282,52 +278,6 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
             </div>
           </div>
         </div>
-        <div className="thirdRowDesktop" >
-      <h2  style={{margin:'auto', marginTop:'20px'}} className='headerDesktop'>CONTACT INFORMATION & CODE DOCUMENTATION</h2>
-        <div style={{display:'flex', justifyContent:'space-around'}} className="iconsAndLinksDivDesktop">
-        <div className="iconDivDesktop">
-        <a className='iconDesktop' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-              <img src={linkedin} alt="My Image" className="clickableImageDesktop" />
-          </a>
-          <a className='aTagDesktop' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-             <p className='iconTextDesktop'>{'Linkedin Profile'}</p>
-          </a>
-        </div>
-
-        <div className="iconDivDesktop">
-        <a className='iconDesktop' href="https://wa.me/972533406789" target="_blank" rel="noopener noreferrer">
-              <img src={whatsapp} alt="My Image" className="clickableImageDesktop" />
-          </a>
-          <a className='aTagDesktop' href="https://wa.me/972533406789" target="_blank" rel="noopener noreferrer">
-             <p className='iconTextDesktop'>{'Phone: 053-340-6789'}</p>
-          </a>
-        </div>
-        <div className="iconDivDesktop">
-        <a className='iconDesktop'  href={resumeDownloadLink} download="Koren_Kaplan_Resume.pdf">
-              <img src={download} alt="My Image" className="clickableImageDesktop" />
-          </a>
-          <a className='aTagDesktop' href={resumeDownloadLink} download="Koren_Kaplan_Resume.pdf">
-             <p className='iconTextDesktop'>{'Download My CV'}</p>
-          </a>
-        </div>
-        <div className="iconDivDesktop">
-        <a className='iconDesktop' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-              <img  src={github} alt="My Image" className="clickableImageDesktop" />
-          </a>
-          <a className='aTagDesktop' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-             <p className='iconTextDesktop'>{'Server Repository'}</p>
-          </a>
-        </div>
-        <div className="iconDivDesktop">
-        <a className='iconDesktop' href="https://github.com/korenkaplan/skills_compass_react/" target="_blank" rel="noopener noreferrer">
-              <img  src={github} alt="My Image" className="clickableImageDesktop" />
-          </a>
-          <a className='aTagDesktop' href="https://github.com/korenkaplan/skills_compass_react/" target="_blank" rel="noopener noreferrer">
-             <p className='iconTextDesktop'>{'Client Repository'}</p>
-          </a>
-        </div>
-        </div>
-      </div>
     </div>
   );
 };

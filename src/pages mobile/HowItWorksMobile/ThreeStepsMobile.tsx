@@ -8,7 +8,6 @@ import { backgroundColor } from '../../utils/variables';
 import OneDigit from '../../assets/digits/icons8-1-50.png';
 import TwoDigit from '../../assets/digits/icons8-2-50.png';
 import ThreeDigit from '../../assets/digits/icons8-3-50.png';
-import Line from '../../components/Line/Line';
 
 const ThreeStepsMobile: React.FC = () => {
 const digitSize = 90

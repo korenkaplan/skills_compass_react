@@ -1,6 +1,5 @@
 import React, { CSSProperties, ReactNode } from 'react';
 import './FutureUpgradesMobile.css';
-import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
 import Lottie from 'lottie-react';
 import moreRoles from '../../assets/animations/moreJobs.json'
 import graphs from '../../assets/animations/graphs.json'

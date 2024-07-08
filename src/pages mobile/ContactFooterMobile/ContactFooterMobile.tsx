@@ -2,7 +2,6 @@
 import React from 'react';
 import './ContactFooterMobile.css';
 import { resumeDownloadLink, sideMenuBackgroundColor } from '../../utils/variables';
-import _ from 'lodash';
 import linkedin from '../../assets/icons/linkedin.png'
 import github from '../../assets/icons/github.png'
 import whatsapp from '../../assets/icons/whatsapp.png'

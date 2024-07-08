@@ -58,13 +58,10 @@ const OverviewPageMobile: React.FC = () => {
   const bottomWordsEng = "Happy reading!";
   const bottomWordsHeb = "קריאה מהנה!";
 
-  const showMoreHeb = 'הצג עוד'
 
   const [header, setHeader] = useState<string>(headerEnglish);
-  const [buttonWords, setButtonWords] = useState<string>('');
   const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
   const [isRotated, setIsRotated] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [mainText, setMainText] = useState(developerSurveyText);
 
   const handleRotate = () => {
@@ -78,11 +75,6 @@ const OverviewPageMobile: React.FC = () => {
   useEffect(() => {
     const currentYear: number = new Date().getFullYear();
     setCurrentYear(currentYear)
-    const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % questions.length);
-
-    }, 3000); // Change every 3 seconds
-    return () => clearInterval(interval);
   }, []);
   const questionsRowsStyle: CSSProperties = {
     height:'100px'
