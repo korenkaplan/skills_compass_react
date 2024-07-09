@@ -1,0 +1,11 @@
+body {
+    /* font-family: 'Inknut Antiqua', serif; */
+    font-family: 'Inter', serif;
+
+  }
+
+  /* לדוגמה של יישום הגופן למחלקה מסוימת */
+  .custom-heading {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* השתמש בגרסה מאוכלת של Roboto */
+  }

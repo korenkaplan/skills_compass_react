@@ -76,7 +76,7 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile  isLoading={isLoading} /> },
       { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
       ...convertRolesToSections(roles, rolesFetched, true),
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorksMobile },
@@ -91,7 +91,7 @@ const MainPage: React.FC = () => {
 
   const sections = useMemo(() => {
     return [
-      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage isLoading={isLoading} /> },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage defaultSection='overview' isLoading={false} /> },
       { id: 'overview', isRole: false, label: 'Overview', component: Overview },
       { id: 'swiperPage', isRole: false, label: 'Roles Overview', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)} /> },
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorks },
