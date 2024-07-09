@@ -24,7 +24,7 @@
     background-color: antiquewhite;
     border-radius: 20px;
     max-width: 1000px;
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -91,6 +91,13 @@
     width: 120px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .hebrewText{
+    font-size: 18px;
+    font-weight:500;
+  }
+  .questionsDiv{
+    height: 120px;
   }
 
   @media (max-width: 768px) {

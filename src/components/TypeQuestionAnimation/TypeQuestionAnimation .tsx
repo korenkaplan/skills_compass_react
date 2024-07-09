@@ -15,12 +15,12 @@ const TypeQuestionAnimation: React.FC<TypeQuestionAnimationProps> = ({
   const sequence = questions.reduce((acc, question, index) => {
     // Delay before typing the next question, except for the first one
     if (index !== 0) {
-      acc.push(1000);
+      acc.push(1500);
     }
     // Replace currentYear placeholder in the question
     const formattedQuestion = question.replace('${currentYear}', `${currentYear}`);
     acc.push(formattedQuestion);
-    acc.push(1000); // Wait after typing each question
+    acc.push(1500); // Wait after typing each question
     return acc;
   }, [] as (string | number)[]);
 
@@ -28,8 +28,8 @@ const TypeQuestionAnimation: React.FC<TypeQuestionAnimationProps> = ({
     <TypeAnimation
       sequence={sequence}
       wrapper="span"
-      speed={99}
-      deletionSpeed={99}
+      speed={40}
+      deletionSpeed={80}
       style={{ fontSize: `${fontSize}px`, display: 'inline-block' }}
       repeat={Infinity}
     />
