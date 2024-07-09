@@ -57,8 +57,8 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
   };
 
   const selectInputStyle: React.CSSProperties = {
-    backgroundColor: 'white',
-    width: '100%',
+    backgroundColor: 'antiquewhite',
+    color:backgroundColor,
   };
 
   return (

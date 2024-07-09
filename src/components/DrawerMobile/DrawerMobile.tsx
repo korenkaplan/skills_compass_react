@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -11,9 +10,6 @@ import logo from '../../assets/logo/logo ellow ribbon with text.png';
 import './DrawerMobile.css'
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-import Collapse from '@mui/material/Collapse';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
 interface DrawerMobileProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
@@ -26,9 +22,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   const [date, setDate] = useState<string>();
   const [isFetched, setIsFetched] = useState<boolean>(false);
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
-  const [rolesSectionsList, setRolesSectionsList] = useState<Section[]>([]);
   const [notRolesSectionsList, setNotRolesSectionsList] = useState<Section[]>([]);
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   const handleClick = (id: string) => {
     toggleDrawer(false)
@@ -38,9 +32,6 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
     }
   };
 
-  const handleClickCollapsed = () => {
-    setIsCollapsed(!isCollapsed);
-  };
 
   const BringThemHomeNowDiv = () => (
     <div className="bringThemHomeNowDiv">
@@ -66,7 +57,6 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
 
   const getRolesSections = () => {
     setNotRolesSectionsList(sections.filter(section => section && !section.isRole && section.label !== 'Home'));
-    setRolesSectionsList(sections.filter(section => section && section.isRole));
   };
 
   useEffect(() => {
@@ -98,50 +88,6 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
             </ListItemButton>
           </ListItem>
         )}
-        </div>
-
-        <div className="collapse">
-        <ListItem
-         sx={{
-          '&:hover': {
-            backgroundColor: 'gray',
-          },
-          padding:0,
-        }}
-        className={'li'}
-        >
-       <ListItemButton onClick={handleClickCollapsed}
-       sx={{
-       }}
-       >
-        <ListItemText primary="Roles" />
-        {isCollapsed ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-        </ListItem>
-
-        <Collapse in={isCollapsed} timeout="auto" unmountOnExit>
-          <List disablePadding>
-            {rolesSectionsList.map((section) => (
-              section && section.id && (
-                <ListItem
-                  key={section.id}
-                  disablePadding
-                  onClick={() => handleClick(section.id)}
-                  sx={{
-                    '&:hover': {
-                      backgroundColor: 'gray',
-                    }
-                  }}
-                  className={'li'}
-                >
-                  <ListItemButton sx={{ textAlign: 'center' }}>
-                    <ListItemText primary={section.label} />
-                  </ListItemButton>
-                </ListItem>
-              )
-            ))}
-          </List>
-        </Collapse>
         </div>
 
           <div className="restOfSections">
