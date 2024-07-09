@@ -61,10 +61,10 @@ const Overview: React.FC = () => {
   const bottomWordsEng = "Happy reading !"
   const bottomWordsHeb = "קריאה מהנה !"
 
-  const [mainText, setMainText] = useState(developerSurveyText);
-  const [header, setHeader] = useState<string>(headerEnglish);
-  const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
-  const [isRotated, setIsRotated] = useState(false);
+  const [mainText, setMainText] = useState(developerSurveyTextHeb);
+  const [header, setHeader] = useState<string>(headerHeb);
+  const [bottomWords, setBottomWords] = useState<string>(bottomWordsHeb);
+  const [isRotated, setIsRotated] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleRotate = () => {

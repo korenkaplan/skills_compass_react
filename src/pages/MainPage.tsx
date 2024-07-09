@@ -21,7 +21,7 @@ import Overview from './OverviewSection/OverviewPage';
 import HowItWorks from './HowItWorks/HowItWorks';
 import linkedin from '../assets/icons/linkedin black.png'
 import github from '../assets/icons/github black.png'
-
+import ribbon from '../assets/icons/icons8-ribbon-50.png'
 import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
 import ContactFooter from './ContactFooter/ContactFooter';
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
@@ -130,6 +130,11 @@ const MainPage: React.FC = () => {
           </div>
             <div className="icons">
             <div className="iconWithATag">
+        <a className='' href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
+              <img  src={ribbon} alt="My Image" className="clickableImageDesktop" />
+          </a>
+        </div>
+            <div className="iconWithATag">
         <a className='' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
               <img src={linkedin} alt="My Image" className="clickableImageDesktop" />
           </a>
@@ -139,6 +144,7 @@ const MainPage: React.FC = () => {
               <img  src={github} alt="My Image" className="clickableImageDesktop" />
           </a>
         </div>
+
             </div>
       </div>
 
