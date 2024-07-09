@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 interface TypeQuestionAnimationProps {
   questions: string[]; // Array of questions to animate
-  currentYear: number; // Current year for dynamic insertion
-  fontSize:number
+  currentYear?: number; // Current year for dynamic insertion
+  fontSize:number;
+  classNameCustom?: string;
 }
 
 const TypeQuestionAnimation: React.FC<TypeQuestionAnimationProps> = ({
   questions,
   currentYear,
   fontSize,
+  classNameCustom,
 }) => {
   // Convert questions array into a sequence for TypeAnimation
   const sequence = questions.reduce((acc, question, index) => {
@@ -32,6 +34,7 @@ const TypeQuestionAnimation: React.FC<TypeQuestionAnimationProps> = ({
       deletionSpeed={80}
       style={{ fontSize: `${fontSize}px`, display: 'inline-block' }}
       repeat={Infinity}
+      className={classNameCustom}
     />
   );
 };

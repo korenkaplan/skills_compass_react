@@ -82,7 +82,6 @@ const Overview: React.FC = () => {
     setCurrentYear(currentYear)
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % questions.length);
-      console.log(currentIndex);
 
     }, 3000); // Change every 3 seconds
     return () => clearInterval(interval);

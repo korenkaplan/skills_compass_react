@@ -10,6 +10,12 @@
   .logoLandingPage {
 
   }
+  .headerLandingPageMobile{
+    color: antiquewhite;
+    font-family: 'Inknut Antiqua', serif;
+    font-size: 30px;
+    text-align: center;
+  }
   .loadingDiv{
     text-align: center;
     height:'300px';
