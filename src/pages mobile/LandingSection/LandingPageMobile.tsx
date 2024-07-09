@@ -70,7 +70,7 @@ useEffect(() => {
       <div className="textContainerLandingPage">
         <h1  className='logoHeader'>{logoText}</h1>
         <Line height="5px" width="175px" color={textColor} radius="4px" />
-        <h2 className='headerLandingPageMobile'>Discover the <strong className='highlighted'>Most Wanted </strong> Skills for your dream job in Israel's High-Tech industry</h2>
+        <h2 className='headerLandingPageMobile'>Discover the <strong className='highlighted'>Most Wanted </strong> Skills for your dream job <br/> in Israel's High-Tech industry</h2>
       </div>
       <div className="loadingDivMobile" style={{color:'antiquewhite', width:'50%', display: isLoading? 'block' :'none'}}>
       <h3 className={`fade-text ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
