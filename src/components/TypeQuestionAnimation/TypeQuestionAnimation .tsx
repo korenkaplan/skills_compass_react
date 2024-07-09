@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 interface TypeQuestionAnimationProps {
   questions: string[]; // Array of questions to animate

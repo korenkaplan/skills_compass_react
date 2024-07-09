@@ -1,5 +1,5 @@
 // src/components/SideMenu.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './OverViewPage.css'
 import { backgroundColor, } from '../../utils/variables'
 import logo from '../../assets/logo/logo.png'
@@ -9,7 +9,7 @@ import bell from '../../assets/icons/bell.png'
 import Line from '../../components/Line/Line';
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
 const Overview: React.FC = () => {
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [currentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80
 
   const questions = [
@@ -65,7 +65,6 @@ const Overview: React.FC = () => {
   const [header, setHeader] = useState<string>(headerHeb);
   const [bottomWords, setBottomWords] = useState<string>(bottomWordsHeb);
   const [isRotated, setIsRotated] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleRotate = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
@@ -77,15 +76,7 @@ const Overview: React.FC = () => {
 
 
 
-  useEffect(() => {
-    const currentYear: number = new Date().getFullYear();
-    setCurrentYear(currentYear)
-    const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % questions.length);
 
-    }, 3000); // Change every 3 seconds
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div style={{ backgroundColor: backgroundColor, padding: 50 }} className="section OverviewContainerDesktop heightAndBorder  " >
