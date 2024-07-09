@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, CSSProperties } from 'react';
 import './MainPage.css';
 import LandingPage from './LandingSection/LandingPage';
 import FaqPage from './FaqPage/FaqPage';
@@ -19,6 +19,8 @@ import ContactInformationMobile from '../pages mobile/ContactFooterMobile/Contac
 import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
 import Overview from './OverviewSection/OverviewPage';
 import HowItWorks from './HowItWorks/HowItWorks';
+import linkedin from '../assets/icons/linkedin black.png'
+import github from '../assets/icons/github black.png'
 
 import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
 import ContactFooter from './ContactFooter/ContactFooter';
@@ -49,7 +51,19 @@ const MainPage: React.FC = () => {
   const marginLeftAmount = 250;
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
+  const headerStyle:CSSProperties = {
+    color: backgroundColor,
+    fontSize: '20px',
+    marginLeft: '20px',
+  };
 
+  const burgerHeaderStyle: CSSProperties = {
+    display:'flex',
+    alignItems: 'center',
+    justifyContent:'space-between',
+
+
+  }
   const toggleDrawer = (newOpen: boolean) => {
     if (!isMobile) {
       setIsOpen(true);
@@ -107,9 +121,27 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-      <div className="burgerButtonDiv" style={{ border: `1px solid ${backgroundColor}` }} onClick={() => toggleDrawer(true)}>
-        <img src={menuPng} style={{ width: '30px', color: backgroundColor }} alt="" />
+         <div className="appbar" style={{ border: `1px solid ${backgroundColor}` }} onClick={() => toggleDrawer(true)}>
+          <div style={burgerHeaderStyle}>
+                <div className="burgerButtonDiv" style={{ border: `1px solid ${backgroundColor}` }} onClick={() => toggleDrawer(true)}>
+              <img src={menuPng} style={{ width: '30px', color: backgroundColor }} alt="" />
+            </div>
+            <p style={headerStyle}>Skills Compass</p>
+          </div>
+            <div className="icons">
+            <div className="iconWithATag">
+        <a className='' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
+              <img src={linkedin} alt="My Image" className="clickableImageDesktop" />
+          </a>
+            </div>
+            <div className="iconWithATag">
+        <a className='' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
+              <img  src={github} alt="My Image" className="clickableImageDesktop" />
+          </a>
+        </div>
+            </div>
       </div>
+
       {
         isMobile ?
           (

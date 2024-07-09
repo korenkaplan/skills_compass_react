@@ -7,20 +7,28 @@
 
   }
   .burgerButtonDiv{
-    position: fixed;
-    top: 2%;
-    left: 5%;
     z-index: 2;
     background-color: #ffff;
     padding: 5px;
-    border-radius: 15px;
     width: 40px;
-    height: 40px;
-    border-radius: 50px;
+    height: 100%;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+  }
+  .appbar{
+    position: fixed;
+    z-index: 2;
+    background-color: #ffff;
+    width: 100%;
+    display: flex;
+    padding: 0 10px ;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
   .burgerLine{
@@ -29,7 +37,18 @@
     min-width: 3px;
     background-color: #253439;
   }
+  .icons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: fit-content;
+  }
+  .iconWithATag{
+    width: min-content;
+    height: 30px;
+    margin: 0 0 0 20px;
 
+  }
   .content {
     overflow-y: auto; /* Allow vertical scrolling */
     transition: margin 0.3s ease-in-out;
