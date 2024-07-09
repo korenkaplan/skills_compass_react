@@ -52,7 +52,7 @@ const MainPage: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);
   const [rolesFetched, setRolesFetched] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const marginLeftAmount = 250;
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
@@ -96,8 +96,9 @@ const MainPage: React.FC = () => {
       { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile  isLoading={isLoading} /> },
       { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
       { id: 'RoleSelect', isRole: false, label: 'Roles', component: () => <RoleSelect  sections={convertRolesToSections(roles, rolesFetched, true)} /> },
-      { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorksMobile },
       { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPageMobile },
+      { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorksMobile },
+
       { id: 'ContactInformationMobile', isRole: false, label: 'Contact Us', component: ContactInformationMobile },
     ];
   }, [roles, rolesFetched, isMobile]);

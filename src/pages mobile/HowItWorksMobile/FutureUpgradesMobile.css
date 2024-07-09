@@ -13,7 +13,11 @@
     position: relative;
 
   }
-
+.FutureUpgradeMobile{
+  width:100%;
+  height:200px;
+  position: relative;
+}
   .stepFuture {
     width: fit-content;
     max-width: 20%;
