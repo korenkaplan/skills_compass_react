@@ -121,7 +121,7 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-         <div className="appbar" style={{ border: `1px solid ${backgroundColor}` }} onClick={() => toggleDrawer(true)}>
+         <div className="appbar" style={{ border: `1px solid ${backgroundColor}`, display: isMobile? 'flex': 'none' }} onClick={() => toggleDrawer(true)}>
           <div style={burgerHeaderStyle}>
                 <div className="burgerButtonDiv" style={{ border: `1px solid ${backgroundColor}` }} onClick={() => toggleDrawer(true)}>
               <img src={menuPng} style={{ width: '30px', color: backgroundColor }} alt="" />
