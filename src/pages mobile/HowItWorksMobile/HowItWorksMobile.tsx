@@ -14,14 +14,18 @@ const HowItWorksMobile: React.FC = () => {
     <div style={{backgroundColor:backgroundColor, padding:50, color:'white'}} className="section OverviewContainerDesktop heightAndBorder  " >
 
         <>
+        <div style={{textAlign:'center'}}>
             <h1 style={headerStyle} >Workflow 🛠️</h1>
             <h2>Discover our  3-step process for delivering the most relevant and reliable data on the internet</h2>
+        </div>
               <ThreeStepsMobile/>
         </>
             <Line height='1px' width='80%' color='white' />
         <>
+        <div style={{textAlign:'center'}}>
             <h1 style={headerStyle}>What's Next? 🚀</h1>
             <h2>Discover our exciting upcoming improvements and features</h2>
+        </div>
             <FutureUpgradesMobile/>
 
         </>

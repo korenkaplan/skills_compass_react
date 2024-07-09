@@ -27,7 +27,7 @@ const OverviewPageMobile: React.FC = () => {
           <img src={bell} alt="" style={{ width: `${bellLogoSize}px`, height: `${bellLogoSize}px` }} />
           <h2 style={{ margin: '0 0 0 10px', fontSize: '25px' }}>Rings a Bell?</h2>
         </div>
-        <p><strong>Do you sometimes feel overwhelmed by the  countless technologies out there, and unsure which ones to learn in order to stay relevant in the constantly changing job market?</strong></p>
+        <p>Do you sometimes feel overwhelmed by the  countless technologies out there, and unsure which ones to learn in order to stay relevant in the constantly changing job market?</p>
         <p><strong>You've Come To The Right Place!</strong> 🚀</p>
         <Line height='1px' width='80%' color={backgroundColor} />
         <p>Our mission is to guide you through the most in-demand technologies in Israel's hi-tech job market. 🌟</p>
@@ -45,7 +45,7 @@ const OverviewPageMobile: React.FC = () => {
           <img src={bell} alt="" style={{ width: `${bellLogoSize}px`, height: `${bellLogoSize}px` }} />
           <h2 style={{ margin: '0 0 0 10px', fontSize: '25px' }}>מצלצל מוכר ?</h2>
         </div>
-        <p><strong>אם גם אתה  הולך לאיבוד לפעמים מהכמות האין סופית של טכנולוגיות  ולא יודע מה כדאי  ללמוד כדי להיות הכי רלוונטי לשוק העבודה שממשיך להתקדם ולהשתנות ללא הפסקה ?</strong></p>
+        <p>אם גם אתה  הולך לאיבוד לפעמים מהכמות האין סופית של טכנולוגיות  ולא יודע מה כדאי  ללמוד כדי להיות הכי רלוונטי לשוק העבודה שממשיך להתקדם ולהשתנות ללא הפסקה ?</p>
         <p><strong>אז הגעת למקום הנכון!</strong> 🚀</p>
         <Line height='1px' width='70%' color={backgroundColor} />
         <p>המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>

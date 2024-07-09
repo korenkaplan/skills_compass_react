@@ -69,7 +69,8 @@
   }
 
 .scrollDivMobile{
-
+position: relative;
+right: 20px;
 }
 .loadingDivMobile{
 
