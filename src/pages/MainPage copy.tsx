@@ -24,7 +24,8 @@ import github from '../assets/icons/github black.png'
 import ribbon from '../assets/icons/icons8-ribbon-50.png'
 import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
 import ContactFooter from './ContactFooter/ContactFooter';
-import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
+
+
 
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
@@ -46,8 +47,6 @@ const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: 
   });
 };
 
-
-
 const MainPage: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);
   const [rolesFetched, setRolesFetched] = useState<boolean>(false);
@@ -61,6 +60,7 @@ const MainPage: React.FC = () => {
     fontSize: '20px',
     marginLeft: '20px',
   };
+
   const burgerHeaderStyle: CSSProperties = {
     display:'flex',
     alignItems: 'center',
@@ -75,6 +75,7 @@ const MainPage: React.FC = () => {
       setIsOpen(newOpen);
     }
   };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -95,13 +96,15 @@ const MainPage: React.FC = () => {
     return [
       { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile  isLoading={isLoading} /> },
       { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
-      { id: 'RoleSelect', isRole: false, label: 'Roles', component: () => <RoleSelect  sections={convertRolesToSections(roles, rolesFetched, true)} /> },
-
+      ...convertRolesToSections(roles, rolesFetched, true),
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorksMobile },
       { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPageMobile },
       { id: 'ContactInformationMobile', isRole: false, label: 'Contact Us', component: ContactInformationMobile },
     ];
   }, [roles, rolesFetched, isMobile]);
+
+
+
 
 
   const sections = useMemo(() => {
@@ -114,6 +117,7 @@ const MainPage: React.FC = () => {
       { id: 'ContactFooter', isRole: false, label: 'Contact Us', component: ContactFooter },
     ];
   }, [roles, rolesFetched, isMobile]);
+
 
   useEffect(() => {
     setIsOpen(!isMobile);
