@@ -10,7 +10,7 @@ import TwoDigit from '../../assets/digits/icons8-2-50.png';
 import ThreeDigit from '../../assets/digits/icons8-3-50.png';
 
 const ThreeStepsMobile: React.FC = () => {
-const digitSize = 0
+const digitSize = 50
 
   const lottieStyle = {
     width: '100%',
@@ -77,7 +77,7 @@ margin: '0 0 50px 0',
             < div style={stepWrapperStyle}>
               <div className="stepMobile">
               <div className="step-numberMobile" style={imageContainerStyle}>
-                <img src={step.img} style={digitStyle} alt="digit" />
+                <img  src={step.img} style={digitStyle} alt="digit" />
                 <Lottie animationData={step.lottie} loop={true} style={lottieStyle} />
               </div>
               <h2>{step.header}</h2>
