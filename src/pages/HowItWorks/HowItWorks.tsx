@@ -16,7 +16,7 @@ const HowItWorks: React.FC = () => {
         </>
         <div className="imagesDivDesktop">
           <div className="">
-            <h2 className='resultDivHeaderDesktop'>This is How our system looks at Job Descriptions</h2>
+            <h2 className='resultDivHeaderDesktop'>This Is How Our System Looks at Job Descriptions</h2>
           <img src={jobDescriptionhighlited} alt="" />
           </div>
           <div className="arrowDivDesktop">
