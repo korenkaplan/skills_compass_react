@@ -16,7 +16,7 @@ function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading }) => {
-const percentOfScreenWidth = 0.50
+const percentOfScreenWidth = 0.40
 const [logoWidth, setMaxLineWidth] = useState(calculateMaxLineWidth(percentOfScreenWidth));
 const [currentIndex, setCurrentIndex] = useState(0);
 const logoText: string = 'SKILLS COMPASS'
