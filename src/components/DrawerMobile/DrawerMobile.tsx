@@ -67,7 +67,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
     <Box className='drawer' sx={{ width: 250, backgroundColor: '#1E2028' }} role="presentation">
       <div>
         <div className="logoDiv">
-          <img src={logo} alt="Logo" style={{ width: isMobile ? '50%' : '80%' }} />
+          <img src={logo} alt="Logo" style={{ width: '60%' }} />
         </div>
         <Divider sx={{ backgroundColor: 'white' }} />
         <div className="firstSection">
