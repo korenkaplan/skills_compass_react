@@ -23,7 +23,7 @@ const HowItWorksMobile: React.FC = () => {
         </>
         <div className="imagesDivMobile">
           <div className="">
-            <h2 className='resultDivHeaderMobile'>This is How our system looks at Job Descriptions</h2>
+            <h2 className='resultDivHeaderMobile'>This Is How Our System Looks at Job Descriptions</h2>
           <img src={jobDescriptionhighlited} alt="" />
           </div>
 
