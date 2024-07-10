@@ -87,7 +87,6 @@ const OverviewPageMobile: React.FC = () => {
   };
   const getScrollDownAnimationStyle = (): CSSProperties => ({
     height: '150px',
-    cursor: 'pointer',
   });
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section container heightAndBorder">
@@ -113,7 +112,7 @@ const OverviewPageMobile: React.FC = () => {
         </div>
         <div className="imageRow">
           <p style={{color:backgroundColor}}>{bottomWords}</p>
-          <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='RoleSelect' styleProps={getScrollDownAnimationStyle()}/>
+          <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='none' styleProps={getScrollDownAnimationStyle()}/>
           <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
         </div>
       </div>
