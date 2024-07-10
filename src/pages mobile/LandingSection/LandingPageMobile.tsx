@@ -76,11 +76,13 @@ useEffect(() => {
       <h3 className={`fade-text ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
       <LinearProgress color="inherit" />
       </div>
-      <div className="scrollDivMobile" style={{color:'antiquewhite', width:'100px', height:'80px', display: isLoading? 'none' :'block', margin:'0 0 20px 0'}}>
-    <Lottie animationData={scrollAnimation} loop={true} autoPlay={true}/>
+      <div
+          onClick={() => document.getElementById('overviewPage')?.scrollIntoView({behavior:'smooth'})}
+          className="actionButtonMobile" style={{display: isLoading? 'none': 'flex'}}>
+          <p>Get Started</p>
+          <Lottie className='alottieMobile' animationData={scrollAnimation} loop={true} autoPlay={true} />
+        </div>
       </div>
-      </div>
-
     </div>
   );
 };

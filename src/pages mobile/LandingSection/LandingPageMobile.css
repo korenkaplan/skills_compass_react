@@ -99,3 +99,23 @@ right: 20px;
   justify-content: center;
   align-items: center;
 }
+.actionButtonMobile {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  background-color: blueviolet;
+  width: 150px;
+  color: antiquewhite;
+  padding: 0 15px; /* Add padding for spacing */
+  border-radius: 20px;
+  justify-content: space-between;
+  cursor: pointer; /* Add pointer cursor */
+  transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Initial box-shadow */
+  height:60px;
+}
+.alottieMobile {
+  width: 50px;
+  position: relative;
+  right: 20px;
+  height: 40px;
+}

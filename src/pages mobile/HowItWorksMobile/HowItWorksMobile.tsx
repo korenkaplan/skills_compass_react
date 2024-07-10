@@ -91,7 +91,7 @@ const HowItWorksMobile: React.FC = () => {
 
           </div>
         </div>
-            <Line height='1px' width='80%' color='white' />
+       <Line margin='50px 0' height='1px' width='80%' color='white' />
         <>
         <div style={{textAlign:'center'}}>
             <h1 style={headerStyle}>What's Next? 🚀</h1>

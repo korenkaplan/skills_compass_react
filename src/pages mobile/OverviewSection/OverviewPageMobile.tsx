@@ -65,10 +65,10 @@ const OverviewPageMobile: React.FC = () => {
   const bottomWordsHeb = "קריאה מהנה!";
 
 
-  const [header, setHeader] = useState<string>(headerHeb);
-  const [bottomWords, setBottomWords] = useState<string>(bottomWordsHeb);
-  const [isRotated, setIsRotated] = useState(true);
-  const [mainText, setMainText] = useState(developerSurveyTextHeb);
+  const [header, setHeader] = useState<string>(headerEnglish);
+  const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
+  const [isRotated, setIsRotated] = useState(false);
+  const [mainText, setMainText] = useState(developerSurveyText);
 
   const handleRotate = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
@@ -113,7 +113,7 @@ const OverviewPageMobile: React.FC = () => {
         </div>
         <div className="imageRow">
           <p style={{color:backgroundColor}}>{bottomWords}</p>
-          <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='swiperPage' styleProps={getScrollDownAnimationStyle()}/>
+          <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='RoleSelect' styleProps={getScrollDownAnimationStyle()}/>
           <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
         </div>
       </div>
