@@ -44,8 +44,8 @@ const HowItWorks: React.FC = () => {
               <strong>Databases:</strong>
             <ul>
               <li>MongoDB</li>
-              <li>PostgreSQL</li>
               <li>Redis</li>
+              <li>PostgreSQL</li>
             </ul>
               </div>
             </div>
