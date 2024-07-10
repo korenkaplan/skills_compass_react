@@ -3,10 +3,12 @@ import './OverviewPageMobile.css';
 import { backgroundColor } from '../../utils/variables';
 import logo from '../../assets/logo/logo.png';
 import '../../CSS/RotatingImageClick.css';
-import { MdGTranslate } from "react-icons/md";
+import translateIcon from '../../assets/icons/tranaslteIconForButton.png'
+
 import Line from '../../components/Line/Line';
 import bell from '../../assets/icons/bell.png'
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
+import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
 const OverviewPageMobile: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80
@@ -32,8 +34,9 @@ const OverviewPageMobile: React.FC = () => {
         <Line height='1px' width='80%' color={backgroundColor} />
         <p>Our mission is to guide you through the most in-demand technologies in Israel's hi-tech job market. 🌟</p>
         <p>We do the hard research work for you and provide real-time data to help you stay ahead. 📊</p>
+        <p><strong>What Makes Us Unique ?</strong> 🔍</p>
         <Line height='1px' width='80%' color={backgroundColor} />
-        <p></p>
+        <p>All our data is extracted straight from analyzing <strong>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google Jobs</strong> and from companies websites.</p>
       </div>
     </>
   );
@@ -50,6 +53,9 @@ const OverviewPageMobile: React.FC = () => {
         <Line height='1px' width='70%' color={backgroundColor} />
         <p>המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>
         <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג משרה.</p>
+        <p><strong>מה מייחד אותנו משאר האתרים?</strong> 🔍</p>
+        <Line height='1px' width='70%' color={backgroundColor} />
+        <p>כל המידע שלנו מגיע היישר מניתוח של <strong> אלפי משרות</strong> מאתרי חיפוש העבודה הפופולרים ביותר כמו <strong dir='ltr' style={{marginLeft:'5px'}}>LinkedIn, Google Jobs </strong> ומאתרי החברות .</p>
       </div>
     </>
   );
@@ -79,14 +85,21 @@ const OverviewPageMobile: React.FC = () => {
   const questionsRowsStyle: CSSProperties = {
     height:'100px'
   };
+  const getScrollDownAnimationStyle = (): CSSProperties => ({
+    height: '150px',
+    cursor: 'pointer',
+  });
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section container heightAndBorder">
       <div className="textContainer" dir={isRotated ? 'rtl' : 'ltr'}>
         <div className="containerHeader">
           <h2 className='headerOverviewPage'>{header}</h2>
-          <div className={`image-container ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
-            <MdGTranslate size={40} style={{ color: '#253439' }} />
-          </div>
+          <div className='translateButtonDivMobile'
+           onClick={handleRotate}
+          >
+            <p className='translateButtonTitleDesktop'> {isRotated ? 'English' : 'עברית'}</p>
+            <img className='translateIconDesktop' src={translateIcon} alt="" />
+        </div>
         </div>
         <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
           <div style={questionsRowsStyle}  dir='ltr'>
@@ -96,9 +109,11 @@ const OverviewPageMobile: React.FC = () => {
           {mainText}
 
           </div>
+          <div className='OverviewPressHereDesktop' ><div className='pressHereButtonDesktopOverview' onClick={()=> document.getElementById('howItWorks')?.scrollIntoView({behavior:'smooth'})}>{isRotated ? 'להסבר המלא לחץ כאן': 'Full Explanation'}</div></div>
         </div>
         <div className="imageRow">
           <p style={{color:backgroundColor}}>{bottomWords}</p>
+          <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='swiperPage' styleProps={getScrollDownAnimationStyle()}/>
           <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
         </div>
       </div>

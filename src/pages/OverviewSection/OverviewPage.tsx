@@ -36,8 +36,11 @@ const Overview: React.FC = () => {
         <Line height='1px' width='80%' color={backgroundColor} />
         <p>Our mission is to guide you through the most in-demand technologies in Israel's hi-tech job market. 🌟</p>
         <p>We do the hard research work for you and provide real-time data to help you stay ahead. </p>
+        <p><strong>What Makes Us Unique ?</strong> 🔍</p>
         <Line height='1px' width='80%' color={backgroundColor} />
-        <p></p>
+        <p>All our data is extracted straight from analyzing <strong>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google Jobs</strong> and from companies websites.
+
+</p>
       </div>
     </>
   );
@@ -51,7 +54,7 @@ const Overview: React.FC = () => {
         <p className='hebrewText'>אם גם אתה  הולך לאיבוד לפעמים מהכמות האין סופית של טכנולוגיות  ולא יודע 🤔 מה כדאי  ללמוד כדי להיות הכי רלוונטי לשוק העבודה שממשיך להתקדם ולהשתנות ללא הפסקה ?</p>
         <p><strong>אז הגעת למקום הנכון!</strong> 🚀</p>
         <Line height='1px' width='70%' color={backgroundColor} />
-        <p>המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>
+        <p>המטרה שלנו היא לעזור ולהכווין אותך  לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>
         <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג משרה. </p>
         <p><strong>מה מייחד אותנו משאר האתרים?</strong> 🔍</p>
         <Line height='1px' width='70%' color={backgroundColor} />
@@ -64,10 +67,10 @@ const Overview: React.FC = () => {
   const bottomWordsEng = "Happy reading !"
   const bottomWordsHeb = "קריאה מהנה !"
 
-  const [mainText, setMainText] = useState(developerSurveyTextHeb);
-  const [header, setHeader] = useState<string>(headerHeb);
-  const [bottomWords, setBottomWords] = useState<string>(bottomWordsHeb);
-  const [isRotated, setIsRotated] = useState(true);
+  const [mainText, setMainText] = useState(developerSurveyText);
+  const [header, setHeader] = useState<string>(headerEnglish);
+  const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
+  const [isRotated, setIsRotated] = useState(false);
 
   const handleRotate = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state

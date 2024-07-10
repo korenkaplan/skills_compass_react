@@ -30,7 +30,7 @@ const HowItWorks: React.FC = () => {
             <div className="resultListsDivDesktop">
             <p style={{textAlign:'center'}}><strong >Role: </strong> Backend Developer</p>
             <div className="row">
-              <div className="col">
+              <div className="col1">
               <strong>Programming Languages:</strong>
             <ul>
               <li>Typescript</li>
@@ -40,7 +40,7 @@ const HowItWorks: React.FC = () => {
               <li>Scala</li>
             </ul>
               </div>
-              <div className="col">
+              <div className="col2">
               <strong>Databases:</strong>
             <ul>
               <li>MongoDB</li>
@@ -50,14 +50,13 @@ const HowItWorks: React.FC = () => {
               </div>
             </div>
             <div className="row">
-              <div className="col">
-              <strong>Frameworks:</strong>
+              <div className="col1">
+              <strong>Cloud Architecture:</strong>
             <ul>
-              <li>Node.js</li>
-              <li>Nest.js</li>
+              <li>Microservices</li>
             </ul>
               </div>
-              <div className="col">
+              <div className="col2">
               <strong>Top Libraries:</strong>
             <ul>
               <li>Express.js</li>
@@ -66,17 +65,19 @@ const HowItWorks: React.FC = () => {
             </div>
 
             <div className="row">
-              <div className="col">
+              <div className="col1">
               <strong>Methodologies:</strong>
             <ul>
               <li>Agile</li>
             </ul>
               </div>
-              <div className="col">
-              <strong>Cloud Architecture:</strong>
+              <div className="col2">
+              <strong>Frameworks:</strong>
             <ul>
-              <li>Microservices</li>
+              <li>Node.js</li>
+              <li>Nest.js</li>
             </ul>
+
               </div>
             </div>
 

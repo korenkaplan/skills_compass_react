@@ -12,6 +12,26 @@
   -webkit-box-shadow: -1px 6px 64px 16px rgba(0, 0, 0, 0.64);
   -moz-box-shadow: -1px 6px 64px 16px rgba(0, 0, 0, 0.64);
 }
+.translateButtonDivMobile{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 3px solid black;
+  padding: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: antiquewhite;
+  background-color: #357b92;
+  height: 35px;
+  width: 100px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add outer shadow */
+
+}
+.ScrollDownMouseAnimationMobile{
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
 .containerHeader {
   display: flex;
   align-items: center;
