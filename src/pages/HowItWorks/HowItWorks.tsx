@@ -57,9 +57,14 @@ const HowItWorks: React.FC = () => {
             </ul>
               </div>
               <div className="col2">
-              <strong>Top Libraries:</strong>
+              <strong>Frameworks:</strong>
             <ul>
+              <li>Node.js</li>
+              <li>Nest.js</li>
               <li>Express.js</li>
+            </ul>
+
+            <ul>
             </ul>
               </div>
             </div>
@@ -72,11 +77,6 @@ const HowItWorks: React.FC = () => {
             </ul>
               </div>
               <div className="col2">
-              <strong>Frameworks:</strong>
-            <ul>
-              <li>Node.js</li>
-              <li>Nest.js</li>
-            </ul>
 
               </div>
             </div>

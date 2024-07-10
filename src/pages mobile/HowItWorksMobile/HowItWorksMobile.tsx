@@ -60,12 +60,6 @@ const HowItWorksMobile: React.FC = () => {
               <li>Microservices</li>
             </ul>
               </div>
-              <div className="col2Mobile">
-              <strong>Top Libraries:</strong>
-            <ul>
-              <li>Express.js</li>
-            </ul>
-              </div>
             </div>
 
             <div className="rowMobile">
@@ -80,7 +74,7 @@ const HowItWorksMobile: React.FC = () => {
             <ul>
               <li>Nest.js</li>
               <li>Node.js</li>
-
+              <li>Express.js</li>
             </ul>
 
               </div>
