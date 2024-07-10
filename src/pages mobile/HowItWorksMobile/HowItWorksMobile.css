@@ -67,7 +67,7 @@ h2 {
 
 
 }
-ul {
+.rowMobile ul {
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
@@ -75,10 +75,8 @@ ul {
     margin: 0;
   }
 
-  li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 8px 12px;
+ .rowMobile li {
+    padding: 5px;
     margin: 8px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
