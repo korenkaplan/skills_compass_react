@@ -10,6 +10,56 @@
   justify-content: center;
   align-items: center;
 }
+.translateButtonDivDesktop{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 3px solid black;
+  padding: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: antiquewhite;
+  background-color: #357b92;
+  height: 35px;
+  width: 100px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add outer shadow */
+
+}
+.pressHereButtonDesktopOverview{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 3px solid black;
+  padding: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: antiquewhite;
+  background-color: #357b92;
+  height: 35px;
+  width: 200px;
+  position: relative;
+}
+.jobDescriptionImageDesktop{
+  width: 80%;
+  margin: auto;
+}
+.OverviewPressHereDesktop{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+}
+.pressHereButtonDesktopOverview:hover {
+  box-shadow: 0px 0px 5px 3px rgba(0, 10, 0, 0.64);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.ScrollDownMouseAnimationDesktop{
+  height: 150px;
+}
+.translateIconDesktop{
+width: 30px;
+height: 30px;
+}
 .topDesktop {
   display: flex;
   flex-direction: column;
@@ -20,6 +70,18 @@
   margin-top: 20px;
 
 }
+.scrollDownAnimationMouseDesktop {
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollDownAnimationMouseDesktop:hover {
+  box-shadow: 0px 0px 5px 3px rgba(0, 10, 0, 0.64);
+  transition: box-shadow 1s ease-in-out;
+}
+
 .textContainerDesktop {
     background-color: antiquewhite;
     border-radius: 20px;
@@ -40,13 +102,6 @@
     justify-content: space-between;
     height: 60px;
     width: 100%;
-  }
-
-  .translationLogoDesktop {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    cursor: pointer;
   }
 
   .headerOverviewPageDesktop {
@@ -82,7 +137,7 @@
   .imageRowDesktop {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
     margin-top: 20px;
   }

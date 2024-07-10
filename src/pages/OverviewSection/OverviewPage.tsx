@@ -1,13 +1,14 @@
 // src/components/SideMenu.tsx
-import React, { useState } from 'react';
+import React, { CSSProperties, useState } from 'react';
 import './OverViewPage.css'
 import { backgroundColor, } from '../../utils/variables'
 import logo from '../../assets/logo/logo.png'
 import '../../CSS/RotatingImageClick.css'
-import { MdGTranslate } from "react-icons/md";
 import bell from '../../assets/icons/bell.png'
 import Line from '../../components/Line/Line';
+import translateIcon from '../../assets/icons/tranaslteIconForButton.png'
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
+import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
 const Overview: React.FC = () => {
   const [currentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80
@@ -34,13 +35,12 @@ const Overview: React.FC = () => {
         <p><strong>You've Come To The Right Place!</strong> 🚀</p>
         <Line height='1px' width='80%' color={backgroundColor} />
         <p>Our mission is to guide you through the most in-demand technologies in Israel's hi-tech job market. 🌟</p>
-        <p>We do the hard research work for you and provide real-time data to help you stay ahead. 📊</p>
+        <p>We do the hard research work for you and provide real-time data to help you stay ahead. </p>
         <Line height='1px' width='80%' color={backgroundColor} />
         <p></p>
       </div>
     </>
   );
-
   const developerSurveyTextHeb = () => (
     <>
       <div className="topDesktop">
@@ -52,7 +52,10 @@ const Overview: React.FC = () => {
         <p><strong>אז הגעת למקום הנכון!</strong> 🚀</p>
         <Line height='1px' width='70%' color={backgroundColor} />
         <p>המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>
-        <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג משרה. 📊</p>
+        <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג משרה. </p>
+        <p><strong>מה מייחד אותנו משאר האתרים?</strong> 🔍</p>
+        <Line height='1px' width='70%' color={backgroundColor} />
+        <p>כל המידע שלנו מגיע היישר מניתוח של <strong> אלפי משרות</strong> מאתרי חיפוש העבודה הפופולרים ביותר כמו <strong dir='ltr' style={{marginLeft:'5px'}}>LinkedIn, Google Jobs </strong> ומאתרי החברות .</p>
       </div>
     </>
   );
@@ -74,7 +77,10 @@ const Overview: React.FC = () => {
 
   };
 
-
+  const getScrollDownAnimationStyle = (): CSSProperties => ({
+    height: '150px',
+    cursor: 'pointer',
+  });
 
 
 
@@ -83,19 +89,24 @@ const Overview: React.FC = () => {
       <div className="textContainerDesktop " dir={isRotated ? 'rtl' : 'ltr'}>
         <div className="containerHeaderDesktop">
           <h2 className='headerOverviewPageDesktop'>{header}</h2>
-          <div className={`image-container ${isRotated ? 'rotated' : ''}`} onClick={handleRotate}>
-            <MdGTranslate size={40} style={{ color: '#253439', cursor: 'pointer' }} />
-          </div>
+          <div className='translateButtonDivDesktop'
+           onClick={handleRotate}
+          >
+            <p className='translateButtonTitleDesktop'> {isRotated ? 'English' : 'עברית'}</p>
+            <img className='translateIconDesktop' src={translateIcon} alt="" />
+        </div>
 
         </div>
-        <div className="containerTextDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
+        <div  className="containerTextDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
           <div className='questionsDiv' dir='ltr'>
           <TypeQuestionAnimation fontSize={24} questions={questions} currentYear={currentYear} />
           </div>
           <p className='mainTextDesktop'>{mainText}</p>
+        <div className='OverviewPressHereDesktop' ><div className='pressHereButtonDesktopOverview' onClick={()=> document.getElementById('howItWorks')?.scrollIntoView({behavior:'smooth'})}>{isRotated ? 'להסבר המלא לחץ כאן': 'Full Explanation'}</div></div>
         </div>
         <div className="imageRowDesktop">
           <p>{bottomWords}</p>
+          <ScrollDownMouseAnimation CustomClassName='scrollDownAnimationMouseDesktop' scrollToSectionId='swiperPage' styleProps={getScrollDownAnimationStyle()}/>
           <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
         </div>
       </div>

@@ -52,9 +52,9 @@ const MainPage: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);
   const [rolesFetched, setRolesFetched] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const marginLeftAmount = 250;
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+  const [isOpen, setIsOpen] = useState<boolean>(isMobile? false : true);
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
   const headerStyle:CSSProperties = {
     color: backgroundColor,
