@@ -9,7 +9,6 @@ import { Section } from '../../utils/interfaces';
 import logo from '../../assets/logo/logo ellow ribbon with text.png';
 import './DrawerMobile.css'
 import axios from 'axios';
-import { useMediaQuery } from 'react-responsive';
 interface DrawerMobileProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
@@ -21,7 +20,6 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   const [time, setTime] = useState<string>();
   const [date, setDate] = useState<string>();
   const [isFetched, setIsFetched] = useState<boolean>(false);
-  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
   const [notRolesSectionsList, setNotRolesSectionsList] = useState<Section[]>([]);
 
   const handleClick = (id: string) => {
