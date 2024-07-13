@@ -1,70 +1,13 @@
-
-Sure, here are some example FAQ questions you could include:
-
-General
-What is [Your Site Name]?
-How does [Your Site Name] work?
-Who can benefit from using [Your Site Name]?
-Data Collection
-Where do you get your data from?
-How often do you update your data?
-How do you ensure the accuracy of the job listings you scrape?
-How do you avoid collecting the same listing from different sites?
-How do you prevent listing repeats?
-
-Technology and Analysis
-How do you analyze the job listings?
-What technologies do you track?
-How do you identify and categorize key technology-related keywords?
-How do you handle synonyms and different terminologies?
-
-User Experience
-How can I search for a specific technology or job position?
-Can I customize the data I see?
-How often is the information updated on your site?
-
-TechnicalSupport
-What should I do if I encounter a problem on your site?
-How can I provide feedback or suggest new features?
-Is there a way to export the data from your site?
-Privacy and Security
-How do you ensure the privacy of the data you collect?
-Do you store any personal information from the job listings?
-Is my data secure on your site?
-
-Other
-How can I contact your support team?
-Are there any costs associated with using [Your Site Name]?
-Do you offer any premium features or services?
-How can I stay updated with new features and updates from [Your Site Name]?
+Landing Page:
+- align the logo
 
 
-Certainly! Here are more questions focused on data collection for your FAQ page:
+Roles Page:
+- animate switches div toggle.
 
-Data Collection
-Where do you get your data from?
-How often do you update your data?
-How do you ensure the accuracy of the job listings you scrape?
-How do you avoid collecting the same listing from different sites?
-How do you prevent listing repeats?
-How do you handle duplicate listings?
-What sources do you use for scraping job listings?
-Do you scrape data from specific job boards or from company websites as well?
-How do you filter out non-relevant listings?
-How do you ensure the listings are up-to-date?
-How do you deal with listings that contain outdated information?
-What criteria do you use to select the job listings you scrape?
-How do you manage and update your list of sources for scraping?
-How do you handle and process incomplete job listings?
-How do you identify and remove spam or irrelevant job postings?
-How do you keep track of new job listings versus already existing ones in your database?
-What technologies do you use for data scraping?
-How do you ensure compliance with website terms of service when scraping data?
-How do you handle regional differences in job listings (e.g., language, terminology)?
-How do you verify the authenticity of job listings?
-How do you deal with listings that appear on multiple job boards?
-How do you ensure you are not collecting personal or sensitive information from job listings?
-How long do you retain the job listings data?
-How do you handle changes in the structure or format of the job listing sites you scrape?
-Do you provide any information on the job listing sources to users?
-How do you address legal considerations related to data scraping?
+How it Works:
+- subtitle: repeat once
+- continue framer motion
+
+Rest of desktop:
+- continue framer motion (including navbar)
