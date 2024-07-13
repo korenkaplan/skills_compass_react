@@ -7,37 +7,57 @@ type Props = {
   delay?: number;
   amount?: UseInViewOptions["amount"];
   once?: UseInViewOptions["once"];
-  slideFrom: 'left' | 'right' ;
+  slideFrom?: 'left' | 'right';
   slideAmount?: number;
+  duration?: number;
+  stiffness?: number
+  damping?: number;
+  enabled?: boolean;
+
 };
 
-export default function Slide({ slideAmount, slideFrom, once, children, delay, className, amount }: Props) {
+export default function Slide({
+  duration = 0.5,
+  damping = 8, stiffness = 100,
+  slideAmount = 100,
+  slideFrom = 'right',
+  once = true,
+  children, delay,
+  className,
+  enabled = true,
+  amount = 0.2 }: Props) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: once ? once :false, amount:amount ? amount : 0.2});
+  const isInView = useInView(ref, { once: once, amount: amount });
   const controls = useAnimation();
-  const slideX = slideAmount ? slideAmount : 100
+  const slideX = slideAmount
   useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
+    if(enabled){
+      if (isInView) {
+        controls.start("visible");
+      }
+      if (!once && !isInView) {
+        controls.start("hidden")
+      }
     }
-    else {
-      controls.start("hidden")
-  }
+    else{
+      controls.set("visible")
+    }
+
   }, [isInView, controls]);
 
   return (
     <motion.div
       ref={ref}
       variants={{
-        hidden: { opacity: 0, translateX:slideFrom && slideFrom == 'left'? -1 * slideX : slideX  },
+        hidden: { opacity: 0, translateX: slideFrom == 'left' ? -1 * slideX : slideX },
         visible: { opacity: 1, translateX: 0 },
       }}
       transition={{
         type: "spring",
-        duration: 0.5,
-        damping: 8,
+        duration: duration,
+        damping: damping,
         delay: delay,
-        stiffness: 100,
+        stiffness: stiffness,
       }}
       initial="hidden"
       animate={controls}

@@ -17,16 +17,19 @@ import {FormGroup} from '@mui/material';
 import { Tooltip } from 'react-tooltip';
 import { IoInformationCircleSharp } from "react-icons/io5";
 import _ from 'lodash'
-import WordByWordReveal from '../../components/FramerMotion/ItemByItemReveal';
+import WordByWordReveal from '../../components/FramerMotion/WordByWordReveal';
+import Reveal from '../../components/FramerMotion/Reveal';
+import Slide from '../../components/FramerMotion/Slide';
 
 //#endregion
 
 interface RolePageProps {
   role: Role;
   rolesFetched: boolean;
+  framerMotionEnabled: boolean;
 }
 
-const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
+const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEnabled=true }) => {
 //#region constants and states
   const allCategoriesString = 'all categories'
   const aggregateSwitchElementTitle = 'Enable Multiple Categories Selections'
@@ -321,6 +324,8 @@ useEffect(() => {
 }, []);
 return (
     <div style={{ backgroundColor: backgroundColor }} className="containerRolePageDesktop section ">
+      <Slide enabled={framerMotionEnabled} slideFrom='left'>
+
       <div className="headerDivDesktop">
         <div className="headerAndTogglerDesktop">
           <h1 className='headerRolePageDesktop'>{_.upperCase(role.name)}</h1>
@@ -383,7 +388,6 @@ return (
             style={inputStyle} // Apply custom styles via style attribute
           />
           </div>
-
           <div className="switchDivDesktop limitPerCategoryDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
             <div className="infoAndLabelAndSwitchDivDesktop">
             <FormControlLabel
@@ -417,7 +421,8 @@ return (
     </div>
       <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
       </div>
-      <div className="descriptionDivDesktop textRolePageDesktop"><WordByWordReveal text={role.description}/> </div>
+      </Slide>
+      <div className="descriptionDivDesktop textRolePageDesktop"><WordByWordReveal  enabled={framerMotionEnabled} speed={30} text={role.description}/> </div>
       <Line height="0.5px" width="100%" margin='0 0 20px 0' color={'antiquewhite'} radius="4px" />
 
       <div className="loadingDivRolePageDesktop" style={{ display: isAnimating ? 'flex' : 'none' }}>
@@ -434,15 +439,23 @@ return (
       <div className="dataDivDesktop" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
         {data && (
           <div className='categoriesButtonDivDesktop'>
-            {allCategories?.map(category =>
-            (<span
+            {allCategories?.map((category, i) =>
+            (
+              <span
               onClick={() => handleCategoryClicked(category)}
               className={`categoryButtonDesktop textRolePageDesktop ${getCategoryButtonClass(category)}`}
-              key={category}>
+              >
+                <Reveal enabled={framerMotionEnabled} duration={0.3} delay={i / 40}>
+                <div >
               {_.startCase(category)}
-            </span>))}
+                </div>
+                </Reveal>
+
+            </span>
+            ))}
           </div>
         )}
+          <Reveal enabled={framerMotionEnabled}>
         <div className="techListDivDesktop" >
           {techList.map((techCount, index) => (
             <TechRow
@@ -455,7 +468,8 @@ return (
               showPercentage={showPercentage}
             />
           ))}
-        </div>
+          </div>
+        </Reveal>
       </div>
       <br />
     </div>

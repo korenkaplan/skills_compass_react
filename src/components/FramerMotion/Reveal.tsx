@@ -1,10 +1,6 @@
 import React, {useRef, useEffect, CSSProperties} from 'react';
 import {motion, useInView, useAnimation, UseInViewOptions} from "framer-motion";
-
-enum Variants {
-    basicHidden = 'hidden',
-    basicVisible = 'visible',
-}
+import {FramerMotionVariants} from '../../utils/enums'
 
 interface Props {
     children: JSX.Element;
@@ -14,8 +10,12 @@ interface Props {
     className?: string;
     once?: boolean;
     amount?: UseInViewOptions["amount"];
-    visibleVariant?: Variants;
-    hiddenVariant?: Variants;
+    visibleVariant?: FramerMotionVariants ;
+    hiddenVariant?:  FramerMotionVariants;
+    delay?: number;
+    duration?: number;
+    distanceYAxis?: number;
+    enabled?: boolean;
 }
 
 export default function Reveal ({
@@ -24,13 +24,17 @@ export default function Reveal ({
     slidingSquare,
     squareStyle,
     className,
-    once,
-    amount,
-    visibleVariant,
-    hiddenVariant,
+    once = true,
+    amount = 0.2,
+    visibleVariant = FramerMotionVariants.basicVisible,
+    hiddenVariant = FramerMotionVariants.basicHidden,
+    delay = 0.25,
+    duration = 0.5,
+    distanceYAxis = 100 ,
+    enabled = true,
 } : Props)  {
 const ref = useRef(null)
-const isInView = useInView(ref, {once: once? once : false, amount : amount? amount : 0.2});
+const isInView = useInView(ref, {once, amount});
 const mainControls = useAnimation();
 const slideControls = useAnimation();
 const slideStyle: CSSProperties = {
@@ -43,28 +47,35 @@ const slideStyle: CSSProperties = {
     ...squareStyle
 }
 useEffect(() => {
-    if (isInView)
+    if(enabled)
     {
-        mainControls.start(visibleVariant ? visibleVariant.toString :"visible")
-        slideControls.start("visible")
+        if (isInView)
+            {
+                mainControls.start(visibleVariant)
+                slideControls.start("visible")
+            }
+            if (!once && !isInView){
+                mainControls.start(hiddenVariant)
+                slideControls.start("hidden")
+            }
     }
-    else {
-        mainControls.start(hiddenVariant ? hiddenVariant.toString :"hidden")
-        slideControls.start("hidden")
+    else{
+        mainControls.set(visibleVariant); // Instantly show without animation
+        slideControls.set("visible");
     }
-},[isInView])
+
+},[isInView, enabled])
 
 return (
-    <div  ref={ref} style={{position: "relative", width, overflow:'hidden'}}>
+    <div className={className} ref={ref} style={{position: "relative", width, overflow:'hidden'}}>
         <motion.div
         variants={{
-            hidden: { opacity: 0,y: 100 },
+            hidden: { opacity: 0,y: distanceYAxis },
             visible: { opacity: 1,y: 0 },
         }}
-        initial={hiddenVariant ? hiddenVariant: "hidden"}
+        initial={hiddenVariant}
         animate= {mainControls}
-        transition={{ duration: 0.5, delay:0.25 }}
-        className={className}
+        transition={{ duration: duration, delay:delay }}
         >
           {children}
         </motion.div>

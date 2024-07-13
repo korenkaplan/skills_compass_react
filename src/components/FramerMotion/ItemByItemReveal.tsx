@@ -20,6 +20,8 @@ interface Props {
     customStyle?: CSSProperties;
 }
 
+const voidElements = new Set(['br', 'img', 'hr', 'input', 'link', 'meta', 'area', 'base', 'col', 'command', 'embed', 'keygen', 'param', 'source', 'track', 'wbr']);
+
 export default function ItemByItemReveal({ customStyle, className, speed, duration, children, visibleVariant, hiddenVariant, amount, once, width }: Props) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: once ? once : false, amount: amount ? amount : 0.2 });
@@ -28,17 +30,14 @@ export default function ItemByItemReveal({ customStyle, className, speed, durati
     useEffect(() => {
         if (isInView) {
             mainControls.start(visibleVariant ? visibleVariant.toString() : "visible");
-        }
-        else {
-            mainControls.start("hidden")
+        } else {
+            mainControls.start("hidden");
         }
     }, [isInView, mainControls, visibleVariant]);
 
     const renderAnimatedText = (node: React.ReactNode, keyPrefix: string = ''): React.ReactNode => {
         if (node && typeof node === 'string') {
-            console.log(node);
-
-            const textArray =node.split(" ");
+            const textArray = node.split(" ");
             return textArray.map((word, i) => (
                 <motion.span
                     variants={{
@@ -57,6 +56,10 @@ export default function ItemByItemReveal({ customStyle, className, speed, durati
                 </motion.span>
             ));
         } else if (React.isValidElement(node)) {
+            if (voidElements.has(node.type as string)) {
+                return node; // Return void elements as is
+            }
+
             const childrenArray = React.Children.toArray(node.props.children);
             return React.cloneElement(node, {
                 ...node.props,
@@ -67,7 +70,7 @@ export default function ItemByItemReveal({ customStyle, className, speed, durati
     };
 
     return (
-        <div ref={ref} className={className} style={{ position: "relative", width, overflow: 'hidden' , ...customStyle}}>
+        <div ref={ref} className={className} style={{ position: "relative", width, overflow: 'hidden', ...customStyle }}>
             {React.Children.map(children, (child, i) => renderAnimatedText(child, `child-${i}`))}
         </div>
     );

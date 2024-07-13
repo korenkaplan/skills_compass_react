@@ -18,7 +18,7 @@ const scaleVariants = (scaleAmount: number, enableHoverEffect: boolean, duration
         : {}
 });
 
-export default function ScaleOnTapButtonWrapper({ duration = 1, children, scaleAmount = 0.85, enableHoverEffect = false }: Props) {
+export default function ScaleOnTapButtonWrapper({ duration = 1.3, children, scaleAmount = 0.95, enableHoverEffect = true }: Props) {
 
     return (
         <motion.div

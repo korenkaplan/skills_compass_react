@@ -1,5 +1,5 @@
-import {useRef, useEffect} from 'react';
-import {motion, useInView, useAnimation, UseInViewOptions} from "framer-motion";
+import { useRef, useEffect } from 'react';
+import { motion, useInView, useAnimation, UseInViewOptions } from "framer-motion";
 enum Variants {
     basicHidden = 'hidden',
     basicVisible = 'visible',
@@ -13,44 +13,67 @@ interface Props {
     width?: 'fit-content' | '100%';
     text: string
     duration?: number;
-    delay?: number;
+    speed?: number;
+    enabled?: boolean;
+
 }
 
-export default function WordByWordReveal ({delay, duration, text, visibleVariant, hiddenVariant, amount, once,  width}: Props) {
-const ref = useRef(null)
-const isInView = useInView(ref, {once: once? once : true, amount : amount? amount : 0.2});
-const mainControls = useAnimation();
+export default function WordByWordReveal({
+    speed = 10,
+    duration,
+    text,
+    visibleVariant = Variants.basicVisible,
+    hiddenVariant = Variants.basicHidden,
+    amount = 0.2,
+    once = true,
+    width,
+    enabled = true,
 
-useEffect(() => {
-    if (isInView)
-    {
-        mainControls.start(visibleVariant ? visibleVariant.toString :"visible")
-    }
-},[isInView])
+}: Props) {
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once, amount });
+    const mainControls = useAnimation();
 
-const textArray: string[] = text.split(" ");
-
-return (
-    <div  ref={ref} style={{position: "relative", width, overflow:'hidden'}}>
+    useEffect(() => {
+        if(enabled)
         {
-            textArray.map((el, i) => (
-                <motion.span
-                variants={{
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1 },
-                }}
-                initial= {hiddenVariant ? hiddenVariant : "hidden"}
-                animate={mainControls}
-                transition={{
-                  duration: duration? duration :0.25,
-                  delay:  i / (delay ? delay : 10),
-                }}
-                key={i}
-                >
-                 {el}{" "}
-                </motion.span>
-            ))
+            if (isInView) {
+                mainControls.start(visibleVariant)
+            }
+            if(!isInView && !once) {
+                mainControls.start(hiddenVariant)
+            }
         }
-    </div>
+        else{
+            mainControls.set(visibleVariant)
+
+        }
+
+    }, [isInView])
+
+    const textArray: string[] = text.split(" ");
+
+    return (
+        <div ref={ref} style={{ position: "relative", width, overflow: 'hidden' }}>
+            {
+                textArray.map((el, i) => (
+                    <motion.span
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: { opacity: 1 },
+                        }}
+                        initial={hiddenVariant ? hiddenVariant : "hidden"}
+                        animate={mainControls}
+                        transition={{
+                            duration: duration ? duration : 0.25,
+                            delay: i / speed,
+                        }}
+                        key={i}
+                    >
+                        {el}{" "}
+                    </motion.span>
+                ))
+            }
+        </div>
     )
 }

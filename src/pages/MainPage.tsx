@@ -28,19 +28,19 @@ import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
 import Slide from '../components/FramerMotion/Slide';
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
-  return roles.flatMap(role => {
+  return roles.flatMap((role, index) => {
     const roleProps = { role: role, rolesFetched: rolesFetched };
     return isMobile ?
       [{
         id: `mobile_${role.id}`, // Ensure unique IDs for mobile
         label: _.startCase(role.name),
-        component: () => <RolePageMobile {...roleProps} />,
+        component: () => <RolePageMobile  {...roleProps} />,
         isRole: true,
       }] :
       [{
         id: `desktop_${role.id}`, // Ensure unique IDs for desktop
         label: _.startCase(role.name),
-        component: () => <RolePage {...roleProps} />,
+        component: () => <RolePage framerMotionEnabled={index == 0} {...roleProps} />,
         isRole: true,
       }];
   });

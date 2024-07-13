@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Section } from '../../utils/interfaces';
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
+import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 
 interface SwiperPageProps {
   sections: Section[];
@@ -24,7 +25,9 @@ const SwiperPage: React.FC<SwiperPageProps> = ({ sections }) => {
     beforeChange: (_current: number, next: number) => setActiveSlide(next), // Update active slide index
     customPaging: (i: number) => (
       <div className={`custom-dot ${activeSlide === i ? 'active' : ''}`}>
-        {sections[i].label}
+        <Reveal delay={i / 8}>
+          <div>{sections[i].label}</div>
+        </Reveal>
       </div>
     ),
     dotsClass: "slick-dots custom-indicator",
@@ -39,15 +42,13 @@ const SwiperPage: React.FC<SwiperPageProps> = ({ sections }) => {
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section main">
       <div className="App">
-        <Slide>
         <Slider {...settings}>
           {sections.map((section) => (
             <div key={section.id} id={section.id} className="section">
-              <section.component />
+              <section.component  />
             </div>
           ))}
         </Slider>
-        </Slide>
       </div>
     </div>
   );

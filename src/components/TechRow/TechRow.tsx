@@ -1,6 +1,6 @@
-import React, { useState, useEffect, CSSProperties } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './TechRow.css'; // Make sure to create this CSS file to style the component
-import Reveal from '../FramerMotion/Reveal';
 
 interface TechRowProps {
   tech: string;
@@ -13,10 +13,12 @@ interface TechRowProps {
 
 const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, showPercentage }) => {
   const [lineWidth, setLineWidth] = useState(0);
-  const slidingSquareStyle: CSSProperties = {
-    backgroundColor: '#086156',
-    height:'20px',
-  }
+
+  const duration = 1;
+  const lineVariants = {
+    hidden: { width: 0 },
+    visible: { width: lineWidth }
+  };
   useEffect(() => {
     let calculatedWidth = 0;
 
@@ -24,11 +26,10 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, 
     let scaleFactor = maxLineWidth / maxCount;
 
     // If showPercentage is true, adjust the scaleFactor based on the percentage
-    if (showPercentage)
-      scaleFactor = maxLineWidth / 100; // Scale factor based on percentage (out of 100)
+    if (showPercentage) scaleFactor = maxLineWidth / 100; // Scale factor based on percentage (out of 100)
 
     calculatedWidth = Math.min(count * scaleFactor, maxLineWidth);
-    setLineWidth(calculatedWidth)
+    setLineWidth(calculatedWidth);
   }, [count, maxCount, maxLineWidth, showPercentage]);
 
   const formatTitle = (title: string) => {
@@ -54,20 +55,23 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, 
     return `${count}`;
   };
 
+
+
   return (
     <div className="tech-rowDesktop">
-
       <div className="tech-name-containerDesktop">
-       <Reveal>
         <span className="tech-nameDesktop">{formatTitle(tech)}</span>
-       </Reveal>
-
       </div>
-      <Reveal slidingSquare = {true} squareStyle={slidingSquareStyle}>
       <div className="lineWrapperDesktop" style={{ width: `${maxLineWidth}px` }}>
-        <div className="tech-lineDesktop" style={{ width: `${lineWidth}px` }}></div>
+        <motion.div
+          className="tech-lineDesktop"
+          style={{ width: `${lineWidth}px` }}
+          initial="hidden"
+          animate="visible"
+          variants={lineVariants}
+          transition={{ duration: duration, ease: 'easeInOut' }}
+        ></motion.div>
       </div>
-      </Reveal>
       <span className="tech-countDesktop">{showPercentageOrCount()}</span>
     </div>
   );

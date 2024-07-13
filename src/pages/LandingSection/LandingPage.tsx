@@ -92,7 +92,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ isLoading, defaultSection, ro
   }
   const getStartedButton = (
     <Reveal>
-      <ScaleOnTapButtonWrapper enableHoverEffect={true} duration={1.3}  scaleAmount={0.95} >
+      <ScaleOnTapButtonWrapper enableHoverEffect={true}  >
         <div
           onClick={() => handleClick(defaultSection)}
           className="actionButton" style={{ display: isLoading ? 'none' : 'flex' }}>
