@@ -9,6 +9,7 @@ import { backgroundColor } from '../../utils/variables';
 import OneDigit from '../../assets/digits/icons8-1-50.png';
 import TwoDigit from '../../assets/digits/icons8-2-50.png';
 import ThreeDigit from '../../assets/digits/icons8-3-50.png';
+import Slide from '../../components/FramerMotion/Slide';
 
 const ThreeSteps: React.FC = () => {
   const lottieStyle = {
@@ -35,6 +36,7 @@ const strongStyle: CSSProperties = {
     <div style={{ backgroundColor: backgroundColor }} className="three-steps">
       <div className="steps-container">
         <div className="stepAndArrowDiv">
+        <Slide>
         <div className="step">
           <div className="step-number" style={imageContainerStyle}>
             <img src={OneDigit} style={digitStyle} alt="digit" />
@@ -43,9 +45,12 @@ const strongStyle: CSSProperties = {
           <h3>🔍 Scanning</h3>
           <p>We scan <strong style={strongStyle}>100+</strong> job listings on a daily basis from various  job searching websites to ensure our data is consistently up-to-date and highly reliable.</p>
         </div>
+        </Slide>
+
         <CurvedArrow />
         </div>
         <div className="stepAndArrowDiv">
+        <Slide>
         <div className="step">
           <div className="step-number" style={imageContainerStyle}>
             <img src={TwoDigit} style={digitStyle} alt="digit" />
@@ -54,9 +59,11 @@ const strongStyle: CSSProperties = {
           <h3>📝 Text Analysis</h3>
           <p>We extract key technological words from job descriptions and accurately identify them using our dataset of <strong style={strongStyle}>700+</strong> technological keywords.</p>
         </div>
+        </Slide>
+
         <CurvedArrow />
         </div>
-
+          <Slide>
         <div className="step">
           <div className="step-number" style={imageContainerStyle}>
             <img src={ThreeDigit} style={digitStyle} alt="digit" />
@@ -65,6 +72,7 @@ const strongStyle: CSSProperties = {
           <h3>🔄 Data Processing</h3>
           <p>We process the keywords by counting, grouping synonyms, and categorizing them to provide clear insights and identify the most in-demand technologies.</p>
         </div>
+        </Slide>
       </div>
     </div>
   );

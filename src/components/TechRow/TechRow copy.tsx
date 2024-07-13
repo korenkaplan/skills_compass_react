@@ -1,6 +1,6 @@
-import React, { useState, useEffect, CSSProperties } from 'react';
+import React, { useState, useEffect } from 'react';
 import './TechRow.css'; // Make sure to create this CSS file to style the component
-import Reveal from '../FramerMotion/Reveal';
+import _ from 'lodash';
 
 interface TechRowProps {
   tech: string;
@@ -13,10 +13,7 @@ interface TechRowProps {
 
 const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, showPercentage }) => {
   const [lineWidth, setLineWidth] = useState(0);
-  const slidingSquareStyle: CSSProperties = {
-    backgroundColor: '#086156',
-    height:'20px',
-  }
+
   useEffect(() => {
     let calculatedWidth = 0;
 
@@ -28,7 +25,21 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, 
       scaleFactor = maxLineWidth / 100; // Scale factor based on percentage (out of 100)
 
     calculatedWidth = Math.min(count * scaleFactor, maxLineWidth);
-    setLineWidth(calculatedWidth)
+
+    // Set the line width with a delay to create a loading effect
+    const delay = 10; // milliseconds
+    let currentWidth = 0;
+    const increment = Math.max(calculatedWidth / 100, 1); // Increment the width in 100 steps
+    const timer = setInterval(() => {
+      currentWidth += increment;
+      if (currentWidth >= calculatedWidth) {
+        clearInterval(timer);
+        setLineWidth(calculatedWidth);
+      } else {
+        setLineWidth(currentWidth);
+      }
+    }, delay);
+    return () => clearInterval(timer);
   }, [count, maxCount, maxLineWidth, showPercentage]);
 
   const formatTitle = (title: string) => {
@@ -56,18 +67,12 @@ const TechRow: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, 
 
   return (
     <div className="tech-rowDesktop">
-
       <div className="tech-name-containerDesktop">
-       <Reveal>
         <span className="tech-nameDesktop">{formatTitle(tech)}</span>
-       </Reveal>
-
       </div>
-      <Reveal slidingSquare = {true} squareStyle={slidingSquareStyle}>
       <div className="lineWrapperDesktop" style={{ width: `${maxLineWidth}px` }}>
         <div className="tech-lineDesktop" style={{ width: `${lineWidth}px` }}></div>
       </div>
-      </Reveal>
       <span className="tech-countDesktop">{showPercentageOrCount()}</span>
     </div>
   );

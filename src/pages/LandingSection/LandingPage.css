@@ -92,7 +92,7 @@ border-radius: 0 20px 120px 0;
   background-color: blueviolet;
   width: 300px;
   padding: 0 15px; /* Add padding for spacing */
-  border-radius: 20px;
+  border-radius: 10px;
   justify-content: space-between;
   cursor: pointer; /* Add pointer cursor */
   transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
@@ -102,6 +102,7 @@ border-radius: 0 20px 120px 0;
 
 .actionButton:hover {
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Box-shadow on hover */
+
 }
 
 .actionButton p {

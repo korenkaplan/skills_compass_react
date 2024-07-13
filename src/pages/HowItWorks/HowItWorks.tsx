@@ -6,12 +6,15 @@ import './HowItWorks.css'
 import FutureUpgrades from './FutureUpgrades';
 import jobDescriptionhighlited from '../../assets/images/Job description highlited.png'
 import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
+import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 const HowItWorks: React.FC = () => {
   return (
     <div style={{backgroundColor:backgroundColor, padding:50, color:'white'}} className="section OverviewContainerDesktop heightAndBorder  " >
         <>
+            <ItemByItemReveal customStyle={{textAlign:'center'}} speed={20} >
             <h1 >Workflow 🛠️</h1>
             <h2>Discover our  3-step process for delivering the most relevant and reliable data on the internet</h2>
+            </ItemByItemReveal>
             <ThreeSteps/>
         </>
         <div className="imagesDivDesktop">

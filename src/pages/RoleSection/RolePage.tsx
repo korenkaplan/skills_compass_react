@@ -17,6 +17,7 @@ import {FormGroup} from '@mui/material';
 import { Tooltip } from 'react-tooltip';
 import { IoInformationCircleSharp } from "react-icons/io5";
 import _ from 'lodash'
+import WordByWordReveal from '../../components/FramerMotion/ItemByItemReveal';
 
 //#endregion
 
@@ -128,36 +129,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
 
     setTechList(result)
   }
-  // const aggregatedTechList = (limitValue = -1, slice = false, amountPerCategory = -1) => {
-  //   const result: FormattedDataRow[] = [];
 
-  //   // take all the categories data from the selected categories list
-  //   selectedCategories.forEach(category =>{
-  //     // add all the rows to result
-  //     data[category].forEach(row =>{
-  //       // check if the row is not already in results list
-  //       if(checkIfTechInAggregatedList(result, row.id) == false)
-  //         {
-  //           result.push(row);
-  //         }
-
-  //     });
-  //   });
-
-
-  //   //sort results by category.amount descending
-
-  //   result.sort((a, b) => b.amount - a.amount);
-  //   // set tech list to result
-  //   if(slice === true)
-  //     {
-  //       const slicedResult = result.slice(0, limitValue > 0 ? limitValue : amount > 0 ? amount : defaultAmount)
-  //       setTechList(slicedResult)
-  //       return
-  //     }
-
-  //   setTechList(result)
-  // }
   const handleLimitSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.checked
     setListLimitSwitch(value);
@@ -445,7 +417,7 @@ return (
     </div>
       <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
       </div>
-      <div className="descriptionDivDesktop textRolePageDesktop">{role.description}</div>
+      <div className="descriptionDivDesktop textRolePageDesktop"><WordByWordReveal text={role.description}/> </div>
       <Line height="0.5px" width="100%" margin='0 0 20px 0' color={'antiquewhite'} radius="4px" />
 
       <div className="loadingDivRolePageDesktop" style={{ display: isAnimating ? 'flex' : 'none' }}>

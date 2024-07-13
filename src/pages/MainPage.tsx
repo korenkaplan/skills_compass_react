@@ -25,7 +25,7 @@ import ribbon from '../assets/icons/icons8-ribbon-50.png'
 import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
 import ContactFooter from './ContactFooter/ContactFooter';
 import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
-
+import Slide from '../components/FramerMotion/Slide';
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap(role => {

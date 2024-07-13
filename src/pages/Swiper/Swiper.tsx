@@ -5,6 +5,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Section } from '../../utils/interfaces';
+import Reveal from '../../components/FramerMotion/Reveal';
+import Slide from '../../components/FramerMotion/Slide';
 
 interface SwiperPageProps {
   sections: Section[];
@@ -37,6 +39,7 @@ const SwiperPage: React.FC<SwiperPageProps> = ({ sections }) => {
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section main">
       <div className="App">
+        <Slide>
         <Slider {...settings}>
           {sections.map((section) => (
             <div key={section.id} id={section.id} className="section">
@@ -44,6 +47,7 @@ const SwiperPage: React.FC<SwiperPageProps> = ({ sections }) => {
             </div>
           ))}
         </Slider>
+        </Slide>
       </div>
     </div>
   );
