@@ -10,6 +10,7 @@ import OneDigit from '../../assets/digits/icons8-1-50.png';
 import TwoDigit from '../../assets/digits/icons8-2-50.png';
 import ThreeDigit from '../../assets/digits/icons8-3-50.png';
 import Slide from '../../components/FramerMotion/Slide';
+import Reveal from '../../components/FramerMotion/Reveal';
 
 const ThreeSteps: React.FC = () => {
   const lottieStyle = {
@@ -32,11 +33,13 @@ const ThreeSteps: React.FC = () => {
 const strongStyle: CSSProperties = {
   color: 'salmon'
 }
+const arrowFramerMotionANimationDelay = 0.5
+
   return (
     <div style={{ backgroundColor: backgroundColor }} className="three-steps">
       <div className="steps-container">
         <div className="stepAndArrowDiv">
-        <Slide>
+        <Slide slideFrom='left'>
         <div className="step">
           <div className="step-number" style={imageContainerStyle}>
             <img src={OneDigit} style={digitStyle} alt="digit" />
@@ -46,11 +49,12 @@ const strongStyle: CSSProperties = {
           <p>We scan <strong style={strongStyle}>100+</strong> job listings on a daily basis from various  job searching websites to ensure our data is consistently up-to-date and highly reliable.</p>
         </div>
         </Slide>
-
-        <CurvedArrow />
+        <Reveal  delay={arrowFramerMotionANimationDelay} distanceYAxis={0}>
+         <CurvedArrow />
+        </Reveal>
         </div>
         <div className="stepAndArrowDiv">
-        <Slide>
+        <Reveal delay={0.5} distanceYAxis={0}>
         <div className="step">
           <div className="step-number" style={imageContainerStyle}>
             <img src={TwoDigit} style={digitStyle} alt="digit" />
@@ -59,11 +63,12 @@ const strongStyle: CSSProperties = {
           <h3>📝 Text Analysis</h3>
           <p>We extract key technological words from job descriptions and accurately identify them using our dataset of <strong style={strongStyle}>700+</strong> technological keywords.</p>
         </div>
-        </Slide>
-
-        <CurvedArrow />
+        </Reveal>
+        <Reveal  delay={arrowFramerMotionANimationDelay} distanceYAxis={0}>
+         <CurvedArrow />
+        </Reveal>
         </div>
-          <Slide>
+          <Slide slideFrom='right'>
         <div className="step">
           <div className="step-number" style={imageContainerStyle}>
             <img src={ThreeDigit} style={digitStyle} alt="digit" />

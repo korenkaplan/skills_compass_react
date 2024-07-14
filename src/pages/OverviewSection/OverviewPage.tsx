@@ -10,7 +10,7 @@ import translateIcon from '../../assets/icons/tranaslteIconForButton.png'
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
 import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
 import Reveal from '../../components/FramerMotion/Reveal';
-import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
+import ScaleOnTapButtonWrapper from '../../components/FramerMotion/HoverEffect';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 const Overview: React.FC = () => {
   const [currentYear] = useState(new Date().getFullYear());
@@ -152,23 +152,23 @@ const Overview: React.FC = () => {
 
           <p className='mainTextDesktop'>{mainText}</p>
           <Reveal >
-          <ScaleOnTapButtonWrapper>
-          <div className='OverviewPressHereDesktop' ><div className='pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorks')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div></div>
-          </ScaleOnTapButtonWrapper>
+            <ScaleOnTapButtonWrapper>
+              <div className='OverviewPressHereDesktop' ><div className='pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorks')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div></div>
+            </ScaleOnTapButtonWrapper>
+          </Reveal>
+
+        </div>
+        <Reveal >
+          <div className="imageRowDesktop">
+            <p>{bottomWords}</p>
+            <ScaleOnTapButtonWrapper>
+              <ScrollDownMouseAnimation CustomClassName='scrollDownAnimationMouseDesktop' scrollToSectionId='swiperPage' styleProps={getScrollDownAnimationStyle()} />
+            </ScaleOnTapButtonWrapper>
+            <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
+          </div>
         </Reveal>
 
       </div>
-      <Reveal >
-      <div className="imageRowDesktop">
-        <p>{bottomWords}</p>
-        <ScaleOnTapButtonWrapper>
-        <ScrollDownMouseAnimation CustomClassName='scrollDownAnimationMouseDesktop' scrollToSectionId='swiperPage' styleProps={getScrollDownAnimationStyle()} />
-        </ScaleOnTapButtonWrapper>
-        <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
-      </div>
-      </Reveal>
-
-    </div>
     </div >
   );
 };

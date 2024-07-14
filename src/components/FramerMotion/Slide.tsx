@@ -1,5 +1,6 @@
 import { motion, useInView, useAnimation, UseInViewOptions } from "framer-motion";
 import { useRef, useEffect } from "react";
+import { framerMotionRepeatOnce } from "../../utils/variables";
 
 type Props = {
   children: JSX.Element;
@@ -21,7 +22,7 @@ export default function Slide({
   damping = 8, stiffness = 100,
   slideAmount = 100,
   slideFrom = 'right',
-  once = true,
+  once = framerMotionRepeatOnce,
   children, delay,
   className,
   enabled = true,

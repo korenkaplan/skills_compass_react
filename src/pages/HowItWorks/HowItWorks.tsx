@@ -1,5 +1,5 @@
 // src/components/SideMenu.tsx
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {backgroundColor} from '../../utils/variables'
 import ThreeSteps from './ThreeSteps';
 import './HowItWorks.css'
@@ -7,7 +7,96 @@ import FutureUpgrades from './FutureUpgrades';
 import jobDescriptionhighlited from '../../assets/images/Job description highlited.png'
 import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
+import Reveal from '../../components/FramerMotion/Reveal';
+import Slide from '../../components/FramerMotion/Slide';
+import HoverEffect from '../../components/FramerMotion/HoverEffect';
+//#region Technologies objects
+
+interface Category {
+  name: string;
+  items: string[];
+}
+interface CategoryRow {
+  columns: Category[]
+}
+const programmingLanguages: Category = {
+  name: "Programming Languages",
+  items: ["Typescript", "Java", "Python", "Javascript", "Scala"],
+};
+
+const databases: Category = {
+  name: "Databases",
+  items: ["MongoDB", "Redis", "PostgreSQL"],
+};
+
+const cloudArchitecture: Category = {
+  name: "Cloud Architecture",
+  items: ["Microservices"],
+};
+
+const frameworks: Category = {
+  name: "Frameworks",
+  items: ["Node.js", "Nest.js", "Express.js"],
+};
+
+const methodologies: Category = {
+  name: "Methodologies",
+  items: ["Agile"],
+};
+const role: Category = {
+  name: "Role",
+  items: ["Backend Developer"],
+}
+const row1: CategoryRow = {columns: [ programmingLanguages, databases] }
+const row2: CategoryRow = {columns: [ cloudArchitecture, frameworks]}
+const row3: CategoryRow = {columns: [role, methodologies]}
+
+//#endregion
+
 const HowItWorks: React.FC = () => {
+const imageRef = useRef<HTMLImageElement>(null);
+const resultDivRef = useRef<HTMLDivElement>(null);
+const spreadRows = (rows: CategoryRow[]) => {
+  let delayInSeconds = 2.5;
+  return rows.map((row, rowIndex) => (
+    <div className="row" key={rowIndex}>
+      {row.columns.map((col, colIndex) => (
+        <div className={`col${colIndex + 1}`} key={colIndex}>
+          <Slide delay={0.5}>
+          <strong>{col.name}</strong>
+          </Slide>
+          <ul>
+            {col.items.map((item, itemIndex) => (
+              <Reveal  duration={1} delay={(delayInSeconds++) / 10}>
+              <li key={itemIndex}>{item}</li>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  ));
+};
+useEffect(() =>{
+  const imageElement = imageRef.current
+  const resultDivElement = resultDivRef.current
+
+  if (imageElement && resultDivElement)
+  {
+    let height = 0
+    while (height == 1){
+      height = getElementHeight(imageElement)
+      console.log(height);
+    }
+    // resultDivElement.style.height = `${height}px`
+  }
+
+},[]);
+const getElementHeight = (element: HTMLElement): number => {
+  const rect = element.getBoundingClientRect();
+  const result = rect.bottom - rect.top;
+  return result
+};
   return (
     <div style={{backgroundColor:backgroundColor, padding:50, color:'white'}} className="section OverviewContainerDesktop heightAndBorder  " >
         <>
@@ -18,80 +107,38 @@ const HowItWorks: React.FC = () => {
             <ThreeSteps/>
         </>
         <div className="imagesDivDesktop">
-          <div className="">
-            <h2 className='resultDivHeaderDesktop'>This Is How Our System Looks at Job Descriptions</h2>
-          <img src={jobDescriptionhighlited} alt="" />
+          <div className="listing" >
+            <ItemByItemReveal>
+            <h2 className='resultDivHeaderDesktop'>This Is How Our System Looks at Job Descriptions.</h2>
+            </ItemByItemReveal>
+            <Slide slideFrom='left' duration={1} >
+          <img src={jobDescriptionhighlited} alt="" ref={imageRef}/>
+          </Slide>
+
           </div>
           <div className="arrowDivDesktop">
-          <CurvedArrow />
-
+          <Reveal delay={0.5} distanceYAxis={0}>
+         <CurvedArrow />
+        </Reveal>
           </div>
-
-          {/* <DescriptionResultDivDesktop/> */}
           <div className="descriptionResultDivDesktop">
+          <ItemByItemReveal>
             <h2 className='resultDivHeaderDesktop'>After Text Analysis & Data Processing</h2>
-            <div className="resultListsDivDesktop">
-            <p style={{textAlign:'center'}}><strong >Role: </strong> Backend Developer</p>
-            <div className="row">
-              <div className="col1">
-              <strong>Programming Languages:</strong>
-            <ul>
-              <li>Typescript</li>
-              <li>Java</li>
-              <li>Python</li>
-              <li>Javascript</li>
-              <li>Scala</li>
-            </ul>
-              </div>
-              <div className="col2">
-              <strong>Databases:</strong>
-            <ul>
-              <li>MongoDB</li>
-              <li>Redis</li>
-              <li>PostgreSQL</li>
-            </ul>
-              </div>
+            </ItemByItemReveal>
+            <Slide className='SlideRightClassName' slideFrom='right' duration={1} >
+            <div className="resultListsDivDesktop" ref={resultDivRef} >
+            {spreadRows([row1, row2, row3])}
             </div>
-            <div className="row">
-              <div className="col1">
-              <strong>Cloud Architecture:</strong>
-            <ul>
-              <li>Microservices</li>
-            </ul>
-              </div>
-              <div className="col2">
-              <strong>Frameworks:</strong>
-            <ul>
-              <li>Node.js</li>
-              <li>Nest.js</li>
-              <li>Express.js</li>
-            </ul>
-
-            <ul>
-            </ul>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col1">
-              <strong>Methodologies:</strong>
-            <ul>
-              <li>Agile</li>
-            </ul>
-              </div>
-              <div className="col2">
-
-              </div>
-            </div>
-
-
-            </div>
+          </Slide>
 
           </div>
         </div>
         <>
+        <ItemByItemReveal customStyle={{textAlign:'center'}} speed={20} >
             <h1>What's Next? 🚀</h1>
             <h2>Discover our exciting upcoming improvements and features</h2>
+        </ItemByItemReveal>
+
             <FutureUpgrades/>
         </>
 

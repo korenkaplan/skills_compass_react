@@ -1,37 +1,54 @@
 import { useRef, useEffect, CSSProperties } from 'react';
 import { motion, useInView, useAnimation, UseInViewOptions } from "framer-motion";
 import React from 'react';
+import { FramerMotionVariants } from '../../utils/enums';
+import { framerMotionRepeatOnce } from '../../utils/variables';
 
-enum Variants {
-    basicHidden = 'hidden',
-    basicVisible = 'visible',
-}
 
 interface Props {
     amount?: UseInViewOptions["amount"];
     once?: boolean;
     className?: string;
-    visibleVariant?: Variants;
-    hiddenVariant?: Variants;
+    visibleVariant?: FramerMotionVariants;
+    hiddenVariant?: FramerMotionVariants;
     width?: 'fit-content' | '100%';
     children: React.ReactNode;
     duration?: number;
     speed?: number;
     customStyle?: CSSProperties;
+    enabled?: boolean;
+
 }
 
 const voidElements = new Set(['br', 'img', 'hr', 'input', 'link', 'meta', 'area', 'base', 'col', 'command', 'embed', 'keygen', 'param', 'source', 'track', 'wbr']);
 
-export default function ItemByItemReveal({ customStyle, className, speed, duration, children, visibleVariant, hiddenVariant, amount, once, width }: Props) {
+export default function ItemByItemReveal({
+    customStyle,
+    className,
+    speed = 10,
+    duration = 0.25,
+    children,
+    visibleVariant = FramerMotionVariants.basicVisible,
+    hiddenVariant = FramerMotionVariants.basicHidden,
+    amount = 0,
+    once = framerMotionRepeatOnce,
+    enabled = true,
+    width
+}: Props) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: once ? once : false, amount: amount ? amount : 0.2 });
+    const isInView = useInView(ref, {once, amount});
     const mainControls = useAnimation();
 
     useEffect(() => {
-        if (isInView) {
-            mainControls.start(visibleVariant ? visibleVariant.toString() : "visible");
-        } else {
-            mainControls.start("hidden");
+        if(enabled) {
+            if (isInView) {
+                mainControls.start(visibleVariant);
+            } else {
+                mainControls.start(hiddenVariant);
+            }
+        }
+        else {
+            mainControls.set(visibleVariant);
         }
     }, [isInView, mainControls, visibleVariant]);
 

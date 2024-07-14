@@ -12,7 +12,7 @@ import { TypeAnimation } from 'react-type-animation';
 import _ from 'lodash'
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
-import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
+import ScaleOnTapButtonWrapper from '../../components/FramerMotion/HoverEffect';
 interface LandingPageProps {
   isLoading: boolean;
   defaultSection: string;

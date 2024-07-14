@@ -63,11 +63,14 @@
   }
 .contentLandingPage{
 display: flex;
+justify-content: space-evenly;
+
 }
 .logoDiv{
 display: flex;
 flex-direction: column;
-flex: 1
+flex: 1;
+margin:auto
 }
 .textDiv{
 width: 50%;

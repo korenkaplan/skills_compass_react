@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { motion, useInView, useAnimation, UseInViewOptions } from "framer-motion";
+import { framerMotionRepeatOnce } from '../../utils/variables';
 enum Variants {
     basicHidden = 'hidden',
     basicVisible = 'visible',
@@ -25,7 +26,7 @@ export default function WordByWordReveal({
     visibleVariant = Variants.basicVisible,
     hiddenVariant = Variants.basicHidden,
     amount = 0.2,
-    once = true,
+    once = framerMotionRepeatOnce,
     width,
     enabled = true,
 

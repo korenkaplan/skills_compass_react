@@ -1,6 +1,7 @@
 import React, {useRef, useEffect, CSSProperties} from 'react';
 import {motion, useInView, useAnimation, UseInViewOptions} from "framer-motion";
 import {FramerMotionVariants} from '../../utils/enums'
+import { framerMotionRepeatOnce } from '../../utils/variables';
 
 interface Props {
     children: JSX.Element;
@@ -24,7 +25,7 @@ export default function Reveal ({
     slidingSquare,
     squareStyle,
     className,
-    once = true,
+    once = framerMotionRepeatOnce,
     amount = 0.2,
     visibleVariant = FramerMotionVariants.basicVisible,
     hiddenVariant = FramerMotionVariants.basicHidden,
@@ -52,16 +53,16 @@ useEffect(() => {
         if (isInView)
             {
                 mainControls.start(visibleVariant)
-                slideControls.start("visible")
+                slideControls.start(visibleVariant)
             }
             if (!once && !isInView){
                 mainControls.start(hiddenVariant)
-                slideControls.start("hidden")
+                slideControls.start(hiddenVariant)
             }
     }
     else{
         mainControls.set(visibleVariant); // Instantly show without animation
-        slideControls.set("visible");
+        slideControls.set(visibleVariant);
     }
 
 },[isInView, enabled])
