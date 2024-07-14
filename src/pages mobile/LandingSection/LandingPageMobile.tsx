@@ -9,6 +9,10 @@ import LinearProgress from '@mui/material/LinearProgress';
 import {calculateMaxLineWidth} from '../../utils/functions'
 import Lottie from "lottie-react";
 import scrollAnimation from '../../assets/animations/scroll_down_animation.json'
+import Slide from '../../components/FramerMotion/Slide';
+import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
+import Reveal from '../../components/FramerMotion/Reveal';
+import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
 interface LandingPageProps {
   isLoading: boolean;
 }
@@ -64,24 +68,33 @@ useEffect(() => {
   return (
     <div className="section main heightAndBorder" >
       <div className="mainContainerLandingPage" style={{backgroundColor:backgroundColor}}>
+        <Slide>
       <div className="image-container">
-        <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo Your Image" className="rotatingImage"/>
+        <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo " className="rotatingImage"/>
       </div>
+      </Slide>
+      <ItemByItemReveal>
       <div className="textContainerLandingPage">
         <h1  className='logoHeader'>{logoText}</h1>
         <Line height="5px" width="175px" color={textColor} radius="4px" />
         <h2 className='headerLandingPageMobile'>Discover the <strong className='highlighted'>Most Wanted </strong> Skills  for your job in  Israel's High-Tech industry</h2>
       </div>
+      </ItemByItemReveal>
+
       <div className="loadingDivMobile" style={{color:'antiquewhite', width:'50%', display: isLoading? 'block' :'none'}}>
       <h3 className={`fade-text ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
       <LinearProgress color="inherit" />
       </div>
+      <Reveal>
+      <ScaleOnTapButtonWrapper enableHoverEffect={true}>
       <div
           onClick={() => document.getElementById('overviewPage')?.scrollIntoView({behavior:'smooth'})}
           className="actionButtonMobile" style={{display: isLoading? 'none': 'flex'}}>
           <p>Get Started</p>
           <Lottie className='alottieMobile' animationData={scrollAnimation} loop={true} autoPlay={true} />
         </div>
+      </ScaleOnTapButtonWrapper>
+      </Reveal>
       </div>
     </div>
   );
