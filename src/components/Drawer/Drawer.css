@@ -9,9 +9,7 @@
 .active {
     color: red;
 }
-.li{
-    color: white;
-}
+
 
   .drawer{
     overflow-y: auto;

@@ -11,6 +11,9 @@ import logo from '../../assets/logo/logo ellow ribbon with text.png';
 import './Drawer.css';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
+import Slide from '../FramerMotion/Slide';
+import Reveal from '../FramerMotion/Reveal';
+import NavbarItemsHover from '../FramerMotion/NavbarItemsHover';
 
 interface TemporaryDrawerProps {
   open: boolean;
@@ -57,6 +60,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
 
   const DrawerList = (
     <Box className='drawer' sx={{ width: 250, backgroundColor: '#1E2028' }} role="presentation">
+      <Slide slideFrom='left'>
       <div className="">
         <div className="logoDiv">
           <img src={logo} alt="Logo" style={{ width: isMobile ? '50%' : '80%' }} />
@@ -64,16 +68,12 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
         <Divider sx={{ backgroundColor: 'white' }} />
         <List>
           {sections.filter(section => (section.label !== 'Home')).map((section) => (
-            <ListItem
+          <NavbarItemsHover>
+          <ListItem
               key={section.id}
               disablePadding
               onClick={() => handleClick(section.id)}
-              sx={{
-                '&:hover': {
-                  backgroundColor: 'gray', // Replace 'lightgray' with your desired hover color
-                }
-              }}
-              className={'li'}
+        
             >
               <ListItemButton
                 sx={{ textAlign: 'center', justifyContent: 'center' }} // Added justifyContent
@@ -81,6 +81,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
                 <ListItemText primary={section.label} />
               </ListItemButton>
             </ListItem>
+            </NavbarItemsHover>
           ))}
         </List>
         <Divider />
@@ -89,7 +90,11 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
           <p>{time} | {date}</p>
         </div>
       </div>
+      </Slide>
+      <Reveal delay={1}>
       <BringThemHomeNowDiv />
+
+      </Reveal>
     </Box>
   );
 

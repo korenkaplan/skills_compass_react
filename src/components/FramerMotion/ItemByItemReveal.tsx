@@ -61,7 +61,7 @@ export default function ItemByItemReveal({
                         hidden: { opacity: 0 },
                         visible: { opacity: 1 },
                     }}
-                    initial={hiddenVariant ? hiddenVariant : "hidden"}
+                    initial={hiddenVariant}
                     animate={mainControls}
                     transition={{
                         duration: duration ? duration : 0.25,
