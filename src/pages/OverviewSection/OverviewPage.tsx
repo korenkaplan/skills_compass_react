@@ -141,14 +141,12 @@ const Overview: React.FC = () => {
             </ScaleOnTapButtonWrapper>
           </div>
         </Reveal>
-
         <div className="containerTextDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
           <Reveal >
             <div className='questionsDiv' dir='ltr'>
               <TypeQuestionAnimation fontSize={24} questions={questions} currentYear={currentYear} />
             </div>
           </Reveal>
-
           <p className='mainTextDesktop'>{mainText}</p>
           <Reveal >
             <ScaleOnTapButtonWrapper>
