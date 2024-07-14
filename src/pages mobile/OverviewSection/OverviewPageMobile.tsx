@@ -126,7 +126,8 @@ const OverviewPageMobile: React.FC = () => {
     setCurrentYear(currentYear)
   }, []);
   const questionsRowsStyle: CSSProperties = {
-    height: '100px'
+    height: '100px',
+    color:' black',
   };
   const getScrollDownAnimationStyle = (): CSSProperties => ({
     height: '150px',
@@ -154,7 +155,7 @@ const OverviewPageMobile: React.FC = () => {
             </div>
           </Reveal>
 
-          <div style={{}} className="">
+          <div  className="">
             {mainText}
           </div>
           <Reveal>

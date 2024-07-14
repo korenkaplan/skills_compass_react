@@ -2,10 +2,10 @@
 //#region imports
 import React, { useState, useEffect, CSSProperties } from 'react';
 import './RolePageMobile.css';
-import { backgroundColor} from '../../utils/variables';
+import { backgroundColor } from '../../utils/variables';
 import { FormattedDataRow, Role } from '../../utils/interfaces';
 import axios from 'axios';
-import {CategoryData } from '../../utils/interfaces';
+import { CategoryData } from '../../utils/interfaces';
 import Line from '../../components/Line/Line'
 import whiteCount from '../../assets/white icons/count.png'
 import greenCount from '../../assets/white icons/green-count.png'
@@ -13,20 +13,26 @@ import whitePercentage from '../../assets/white icons/percentage.png'
 import greenPercentage from '../../assets/white icons/green-percentage.png'
 import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
 import Switch from '@mui/material/Switch/Switch';
-import {FormGroup} from '@mui/material';
+import { FormGroup } from '@mui/material';
 import { Tooltip } from 'react-tooltip'
 import info from '../../assets/icons/info.png'
 import _ from 'lodash'
 import TechRowMobile from '../TechRow/TechRowMobile';
+import Reveal from '../../components/FramerMotion/Reveal';
+import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
+import Slide from '../../components/FramerMotion/Slide'
+import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
+import RevealNoRelative from '../../components/FramerMotion/RevealNoRelative';
 //#endregion
 
 interface RolePageProps {
   role: Role;
   rolesFetched: boolean;
+  framerMotionEnabled: boolean;
 }
 
-const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
-//#region constants and states
+const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEnabled = true }) => {
+  //#region constants and states
   const allCategoriesString = 'all categories'
   const aggregateSwitchElementTitle = 'Multiple Categories'
   const listLImitSwitchElementTitle = 'Limit List Size'
@@ -49,50 +55,49 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
   const [categoryAmount, setCategoryAmount] = useState(0);
   const [screenWidthPercent] = useState<number>(0.70)
   const [screenWidth] = useState<number>(window.innerWidth)
-//#endregion
-//#region functions
+  //#endregion
+  //#region functions
 
   const togglerPressed = (buttonTitle: string) => {
-    if(buttonTitle !== alignment)
-      {
-        setAlignment(buttonTitle)
-        setShowPercentage(!showPercentage);
-      }
+    if (buttonTitle !== alignment) {
+      setAlignment(buttonTitle)
+      setShowPercentage(!showPercentage);
+    }
   }
   const handleCategoryClicked = (categoryKey: string) => {
-      // check if aggregatedSwitch is true:
-      if (aggregatedSwitch == true) {
-        if(selectedCategories.includes(categoryKey) && selectedCategories.length == 1){
-          return
-        }
-        if(categoryKey === allCategoriesString)
-          return
-        // if already selected remove from list
-        if (selectedCategories.includes(categoryKey) && selectedCategories.length > 0){
-            const tempList = selectedCategories
-            setSelectedCategories(tempList.filter(category => category !== categoryKey))
-        }
-        else {
-          // else add it and refresh the tech list
-          const newList = [...selectedCategories, categoryKey].filter(category => category !== allCategoriesString)
-          setSelectedCategories(newList)
-        }
+    // check if aggregatedSwitch is true:
+    if (aggregatedSwitch == true) {
+      if (selectedCategories.includes(categoryKey) && selectedCategories.length == 1) {
+        return
       }
-
-      else{
-        // if aggregatedSwitch is false:
-        // just set it as selected category
-        setSelectedCategory(categoryKey); // Set the selected category
-        setTechList(data[categoryKey]);
-
+      if (categoryKey === allCategoriesString)
+        return
+      // if already selected remove from list
+      if (selectedCategories.includes(categoryKey) && selectedCategories.length > 0) {
+        const tempList = selectedCategories
+        setSelectedCategories(tempList.filter(category => category !== categoryKey))
       }
+      else {
+        // else add it and refresh the tech list
+        const newList = [...selectedCategories, categoryKey].filter(category => category !== allCategoriesString)
+        setSelectedCategories(newList)
+      }
+    }
+
+    else {
+      // if aggregatedSwitch is false:
+      // just set it as selected category
+      setSelectedCategory(categoryKey); // Set the selected category
+      setTechList(data[categoryKey]);
+
+    }
 
 
 
   };
 
   const checkIfTechInAggregatedList = (result: FormattedDataRow[], tech_id: number) => {
-   return result.some(item => item.id === tech_id)
+    return result.some(item => item.id === tech_id)
   }
 
   const aggregatedTechList = (limitValue = -1, slice = false, amountPerCategory = -1, sliceCategory = false) => {
@@ -120,12 +125,11 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
     //sort results by category.amount descending
     result.sort((a, b) => b.amount - a.amount);
     // set tech list to result
-    if(slice === true)
-      {
-        const slicedResult = result.slice(0, limitValue > 0 ? limitValue : amount > 0 ? amount : defaultAmount)
-        setTechList(slicedResult)
-        return
-      }
+    if (slice === true) {
+      const slicedResult = result.slice(0, limitValue > 0 ? limitValue : amount > 0 ? amount : defaultAmount)
+      setTechList(slicedResult)
+      return
+    }
 
     setTechList(result)
   }
@@ -141,37 +145,33 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
     const value = event.target.checked
     setAggregatedSwitch(value);
 
-    if(value === false)
-      {
-        setTechList(data[selectedCategory])
-        return
-      }
+    if (value === false) {
+      setTechList(data[selectedCategory])
+      return
+    }
 
-    else if(value === true)
-      {
-        if (selectedCategories.length == 0)
-          {
-            if (selectedCategory == allCategoriesString)
-              {
-                const defaultCategory = allCategories[1]
-                setSelectedCategories([defaultCategory])
-              }
-            else{
-              setSelectedCategories([selectedCategory])
-            }
-          }
-
-        else {
-          aggregatedTechList(amount, listLimitSwitch, categoryAmount, categoryLimitSwitch)
+    else if (value === true) {
+      if (selectedCategories.length == 0) {
+        if (selectedCategory == allCategoriesString) {
+          const defaultCategory = allCategories[1]
+          setSelectedCategories([defaultCategory])
         }
-
+        else {
+          setSelectedCategories([selectedCategory])
+        }
       }
+
+      else {
+        aggregatedTechList(amount, listLimitSwitch, categoryAmount, categoryLimitSwitch)
+      }
+
+    }
   };
 
   const getCategoryButtonClass = (category: string) => {
     if (aggregatedSwitch) {
-      if(category === allCategoriesString)
-          return 'disabled'
+      if (category === allCategoriesString)
+        return 'disabled'
 
       return selectedCategories.includes(category) ? 'selected' : '';
     }
@@ -207,12 +207,12 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched }) => {
     setCategoryLimitSwitch(value);
     aggregatedTechList(amount, listLimitSwitch, categoryAmount, value)
   }
-//#endregion
-//#region use effect and other
-useEffect(() => {
-  if(aggregatedSwitch == true)
-    aggregatedTechList(amount, listLimitSwitch, categoryAmount, categoryLimitSwitch)
-},[selectedCategories])
+  //#endregion
+  //#region use effect and other
+  useEffect(() => {
+    if (aggregatedSwitch == true)
+      aggregatedTechList(amount, listLimitSwitch, categoryAmount, categoryLimitSwitch)
+  }, [selectedCategories])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -263,9 +263,9 @@ useEffect(() => {
 
   const toggler = (
     <div className="toggler">
-    <div onClick={()=> togglerPressed("percentages")} className={`toggler_button percentageButton  ${alignment == 'percentages'? 'selected_toggler_button': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'percentages'? whitePercentage: greenPercentage} /></div>
-    <div onClick={()=> togglerPressed("counts")} className={`toggler_button countButton  ${alignment == 'counts'? 'selected_toggler_button': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'counts'? whiteCount: greenCount} /></div>
-  </div>
+      <div onClick={() => togglerPressed("percentages")} className={`toggler_button percentageButton  ${alignment == 'percentages' ? 'selected_toggler_button' : ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'percentages' ? whitePercentage : greenPercentage} /></div>
+      <div onClick={() => togglerPressed("counts")} className={`toggler_button countButton  ${alignment == 'counts' ? 'selected_toggler_button' : ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'counts' ? whiteCount : greenCount} /></div>
+    </div>
   )
 
   const inputStyle: CSSProperties = {
@@ -280,7 +280,7 @@ useEffect(() => {
     boxSizing: 'border-box', // Ensure padding and border are included in width and height
     fontSize: '16px', // Example font size
     padding: '8px', // Example padding
-    display: listLimitSwitch? 'block' : 'none',
+    display: listLimitSwitch ? 'block' : 'none',
   };
 
   const CategoryInputStyle: CSSProperties = {
@@ -295,143 +295,155 @@ useEffect(() => {
     boxSizing: 'border-box', // Ensure padding and border are included in width and height
     fontSize: '16px', // Example font size
     padding: '8px', // Example padding
-    display: categoryLimitSwitch? 'block' : 'none',
+    display: categoryLimitSwitch ? 'block' : 'none',
   };
-//#endregion
+  //#endregion
 
-const calculateMaxLineWidth = () => {
-  // Example logic to calculate maxLineWidth based on screen width
-  // Adjust the calculation as needed
-  return screenWidth * screenWidthPercent;
-};
-const [maxLineWidths, setMaxLineWidth] = useState(calculateMaxLineWidth());
-
-useEffect(() => {
-  const handleResize = () => {
-    setMaxLineWidth(calculateMaxLineWidth());
+  const calculateMaxLineWidth = () => {
+    // Example logic to calculate maxLineWidth based on screen width
+    // Adjust the calculation as needed
+    return screenWidth * screenWidthPercent;
   };
+  const [maxLineWidths, setMaxLineWidth] = useState(calculateMaxLineWidth());
 
-  window.addEventListener('resize', handleResize);
+  useEffect(() => {
+    const handleResize = () => {
+      setMaxLineWidth(calculateMaxLineWidth());
+    };
 
-  // Cleanup listener on component unmount
-  return () => {
-    window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const splitAndInterleaveCategories = (categories: string) => {
+    const midIndex = Math.ceil(categories.length / 2);
+    const firstHalf = categories.slice(0, midIndex);
+    const secondHalf = categories.slice(midIndex);
+
+    const interleaved = [];
+    for (let i = 0; i < firstHalf.length; i++) {
+      if (firstHalf[i]) interleaved.push(firstHalf[i]);
+      if (secondHalf[i]) interleaved.push(secondHalf[i]);
+    }
+
+    return interleaved;
   };
-}, []);
-
-const splitAndInterleaveCategories = (categories: string) => {
-  const midIndex = Math.ceil(categories.length / 2);
-  const firstHalf = categories.slice(0, midIndex);
-  const secondHalf = categories.slice(midIndex);
-
-  const interleaved = [];
-  for (let i = 0; i < firstHalf.length; i++) {
-    if (firstHalf[i]) interleaved.push(firstHalf[i]);
-    if (secondHalf[i]) interleaved.push(secondHalf[i]);
+  const tooltipStyle: CSSProperties = {
+    maxWidth: screenWidth - 50,
+    whiteSpace: 'normal',
+    padding: '15px',
+    backgroundColor: 'rgb(0, 0, 0,1)',
+    zIndex: 3,
   }
-
-  return interleaved;
-};
-const tooltipStyle:CSSProperties = {
-  maxWidth:screenWidth- 50,
-  whiteSpace: 'normal',
-  padding: '15px',
-  backgroundColor:'rgb(0, 0, 0,1)',
-  zIndex: 3,
-}
-return (
+  return (
     <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section  heightAndBorder">
-       <div className="togglerInfoDiv">
+      <Slide enabled={framerMotionEnabled} slideFrom='left'>
+        <div>
+          <div className="togglerInfoDiv">
             <img className='infoImg togglerInfo' src={info} alt="" />
-           {toggler}
-           <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.togglerInfo'>
-            <div>
-              <h3>Percentages</h3>
-              <p>Show the percentage of job listings that mention this technology.</p>
-            </div>
-            <div>
-              <h3>Count</h3>
-              <p>Show the total number of job postings that mention this technology.</p>
-            </div>
-          </Tooltip>
-          </div>
-      <div className="headersDiv">
-        <h1 className='headerRolePage'>{_.upperCase(role.name)}</h1>
-        <h2 className='subheaderRolePage'>JOB POSTINGS AMOUNT : {totalListingsCount}</h2>
-      </div>
-        <div className="switchesDiv">
-      </div>
-        <Line height="2px" width="100%" color={'antiquewhite'} radius="4px" />
-        <FormGroup>
-          <div  className="switchMultipleCategoriesDiv">
-            <FormControlLabel
-            control={<Switch color='warning' checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
-            style={{ color: 'antiquewhite', fontSize:'20px', marginTop:5 }}
-            label={aggregateSwitchElementTitle}
-          />
-          <img className='infoImg SwitchMultipleCategories' src={info} alt="" />
-          <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchMultipleCategories'>
-            <div>
-              <h3>Enable Multi-Category Selection</h3>
-              <p>Select multiple categories to view a combined and sorted list of their items.</p>
-            </div>
-          </Tooltip>
-          </div>
-          <div className="switchDiv limitDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
-            <div className="">
-          <FormControlLabel
-            control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
-            style={{ color: 'antiquewhite', fontSize:'20px' }}
-            label={listLImitSwitchElementTitle}
-          />
-            <img className='infoImg SwitchLimitDiv' src={info} alt="" />
-          <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitDiv'>
-            <div>
-            <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
-            </div>
-          </Tooltip>
-          </div>
-          <input
-            type='number'
-            id="outlined-basic"
-            value={amount == 0 ? defaultAmount : amount}
-            onChange={handleAmountChange}
-            min={1} // Ensure the input doesn't accept negative values
-            max={100}
-            style={inputStyle} // Apply custom styles via style attribute
-          />
-          </div>
-
-          <div className="switchDiv limitPerCategoryDiv" style={{display: aggregatedSwitch? 'flex': 'none'}}>
-            <div className="">
-            <FormControlLabel
-            control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
-            style={{ color: 'antiquewhite', fontSize:'20px' }}
-            label={categoryLImitSwitchElementTitle}
-          />
-           <img className='infoImg SwitchLimitPerCategory' src={info} alt="" />
-            <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitPerCategory'>
+            {toggler}
+            <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.togglerInfo'>
               <div>
-              <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>
+                <h3>Percentages</h3>
+                <p>Show the percentage of job listings that mention this technology.</p>
+              </div>
+              <div>
+                <h3>Count</h3>
+                <p>Show the total number of job postings that mention this technology.</p>
               </div>
             </Tooltip>
+          </div>
+          <div className="headersDiv">
+            <h1 className='headerRolePage'>{_.upperCase(role.name)}</h1>
+            <h2 className='subheaderRolePage'>JOB POSTINGS AMOUNT : {totalListingsCount}</h2>
+          </div>
+          <Line height="2px" width="100%" color={'antiquewhite'} radius="4px" />
+          <FormGroup>
+            <div className="switchMultipleCategoriesDiv">
+              <FormControlLabel
+                control={<Switch color='warning' checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
+                style={{ color: 'antiquewhite', fontSize: '20px', marginTop: 5 }}
+                label={aggregateSwitchElementTitle}
+              />
+              <img className='infoImg SwitchMultipleCategories' src={info} alt="" />
+              <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchMultipleCategories'>
+                <div>
+                  <h3>Enable Multi-Category Selection</h3>
+                  <p>Select multiple categories to view a combined and sorted list of their items.</p>
+                </div>
+              </Tooltip>
             </div>
 
-          <input
-            type='number'
-            id="outlined-basic"
-            value={categoryAmount == 0 ? defaultAmount : categoryAmount}
-            onChange={handleCategoryAmountChange}
-            min={1} // Ensure the input doesn't accept negative values
-            max={100}
-            style={CategoryInputStyle} // Apply custom styles via style attribute
-          />
-          </div>
+            <SwitchesReveal duration={0.3} slideFrom='left' enabled={aggregatedSwitch}>
+              <div className="switchDiv limitDiv" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
+                <div className="">
+                  <FormControlLabel
+                    control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
+                    style={{ color: 'antiquewhite', fontSize: '20px' }}
+                    label={listLImitSwitchElementTitle}
+                  />
+                  <img className='infoImg SwitchLimitDiv' src={info} alt="" />
+                  <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitDiv'>
+                    <div>
+                      <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
+                    </div>
+                  </Tooltip>
+                </div>
+                <SwitchesReveal slideAmount={0} enabled={listLimitSwitch}>
+                  <input
+                    type='number'
+                    id="outlined-basic"
+                    value={amount == 0 ? defaultAmount : amount}
+                    onChange={handleAmountChange}
+                    min={1} // Ensure the input doesn't accept negative values
+                    max={100}
+                    style={inputStyle} // Apply custom styles via style attribute
+                  />
+                </SwitchesReveal>
+              </div>
+            </SwitchesReveal>
 
-      </FormGroup>
+            <SwitchesReveal delay={0.5} slideFrom='left' enabled={aggregatedSwitch}>
+              <div className="switchDiv limitPerCategoryDiv" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
+                <div className="">
+                  <FormControlLabel
+                    control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
+                    style={{ color: 'antiquewhite', fontSize: '20px' }}
+                    label={categoryLImitSwitchElementTitle}
+                  />
+                  <img className='infoImg SwitchLimitPerCategory' src={info} alt="" />
+                  <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitPerCategory'>
+                    <div>
+                      <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>
+                    </div>
+                  </Tooltip>
+                </div>
+                <SwitchesReveal slideAmount={0} enabled={categoryLimitSwitch}>
+
+                  <input
+                    type='number'
+                    id="outlined-basic"
+                    value={categoryAmount == 0 ? defaultAmount : categoryAmount}
+                    onChange={handleCategoryAmountChange}
+                    min={1} // Ensure the input doesn't accept negative values
+                    max={100}
+                    style={CategoryInputStyle} // Apply custom styles via style attribute
+                  />
+                </SwitchesReveal>
+
+              </div>
+            </SwitchesReveal>
+
+          </FormGroup>
+        </div>
+
+      </Slide>
 
       <Line height="2px" width="100%" margin='0 0 20px 0' color={'antiquewhite'} radius="4px" />
-
       <div className="loadingDivRolePage" style={{ display: isAnimating ? 'flex' : 'none' }}>
         <div className="loadingDivInner">
           <h1 className={`loading-text ${isAnimating ? 'animate' : ''}`}>
@@ -444,47 +456,52 @@ return (
       </div>
 
       <div className="dataDiv" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
-      {data && (
-  <div className='categoriesButtonDiv'>
-    {allCategories && allCategories.length > 0 && (
-      <>
-        {/* Render the first category as is */}
-        <span
-          onClick={() => handleCategoryClicked(allCategories[0])}
-          className={`categoryButton textRolePage ${getCategoryButtonClass(allCategories[0])}`}
-          key={allCategories[0]}>
-          {_.startCase(allCategories[0])}
-        </span>
+        {data && (
+          <div className='categoriesButtonDiv'>
+            {allCategories && allCategories.length > 0 && (
+              <>
+                <span
+                  onClick={() => handleCategoryClicked(allCategories[0])}
+                  className={`categoryButtonMobile textRolePage ${getCategoryButtonClass(allCategories[0])}`}
+                  key={allCategories[0]}>
+                  {_.startCase(allCategories[0])}
+                </span>
 
-        {/* Render the rest of the categories sorted and interleaved */}
-        {splitAndInterleaveCategories(
-          // @ts-expect-error
-          allCategories.slice(1).sort((a, b) => a.length - b.length)
-        ).map(category => (
-          <span
-            onClick={() => handleCategoryClicked(category)}
-            className={`categoryButton textRolePage ${getCategoryButtonClass(category)}`}
-            key={category}>
-            {_.startCase(category)}
-          </span>
-        ))}
-      </>
-    )}
-  </div>
-)}
-        <div className="techListDiv" >
-          {techList.map((techCount, index) => (
-            <TechRowMobile
-              totalListingsAmount={totalListingsCount}
-              maxCount={totalListingsCount}
-              maxLineWidth={maxLineWidths}
-              key={index}
-              tech={techCount.tech}
-              count={showPercentage ? calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount}
-              showPercentage={showPercentage}
-            />
-          ))}
-        </div>
+                {splitAndInterleaveCategories(
+                  // @ts-expect-error
+                  allCategories.slice(1).sort((a, b) => a.length - b.length)
+                ).map((category, i) => (
+                  <span
+                    onClick={() => handleCategoryClicked(category)}
+                    className={`categoryButtonMobile textRolePage ${getCategoryButtonClass(category)}`}
+                    key={category}>
+                    <Reveal className='RevealCategoryButtonMobile' enabled={framerMotionEnabled} duration={0.3} delay={i / 10}>
+                      <div className="">
+                        {_.startCase(category)}
+                      </div>
+                    </Reveal>
+
+                  </span>
+                ))}
+              </>
+            )}
+          </div>
+        )}
+        <Reveal enabled={framerMotionEnabled}>
+          <div className="techListDiv" >
+            {techList.map((techCount, index) => (
+              <TechRowMobile
+                totalListingsAmount={totalListingsCount}
+                maxCount={totalListingsCount}
+                maxLineWidth={maxLineWidths}
+                key={index}
+                tech={techCount.tech}
+                count={showPercentage ? calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount}
+                showPercentage={showPercentage}
+              />
+            ))}
+          </div>
+        </Reveal>
       </div>
       <br />
     </div>

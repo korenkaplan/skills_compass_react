@@ -33,7 +33,7 @@ const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: 
       [{
         id: `mobile_${role.id}`, // Ensure unique IDs for mobile
         label: _.startCase(role.name),
-        component: () => <RolePageMobile  {...roleProps} />,
+        component: () => <RolePageMobile framerMotionEnabled={index == 0}  {...roleProps} />,
         isRole: true,
       }] :
       [{
@@ -93,6 +93,7 @@ const MainPage: React.FC = () => {
   const sectionsMobile = useMemo(() => {
     return [
       { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile  isLoading={isLoading} /> },
+      { id: 'RoleSelect', isRole: false, label: 'Roles', component: () => <RoleSelect  sections={convertRolesToSections(roles, rolesFetched, true)} /> },
       { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
       { id: 'RoleSelect', isRole: false, label: 'Roles', component: () => <RoleSelect  sections={convertRolesToSections(roles, rolesFetched, true)} /> },
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorksMobile },
