@@ -13,6 +13,8 @@ import {FaqAccordion} from '../../utils/interfaces'
 import { FaGithub } from "react-icons/fa";
 import { MdSupportAgent, MdAlternateEmail  } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
+import Reveal from '../../components/FramerMotion/Reveal';
+import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 interface FaqPageProps {
 
 }
@@ -181,6 +183,7 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
       const currentIndex = globalIndex++;
       const isExpanded = expandedIndices.includes(currentIndex);
       return (
+        <Reveal>
         <Accordion
           key={currentIndex}
           expanded={isExpanded}
@@ -207,26 +210,34 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
             </Typography>
           </AccordionDetails>
         </Accordion>
+        </Reveal>
       );
     })}
   </div>
 );
   return (
     <div style={{backgroundColor:backgroundColor}} className="section  containerFaqDesktop dividerBottom " >
+      <Reveal>
         <div className="headerDivFaqDesktop">
           <FaQuestionCircle style={{margin:'0 20px 0 0'}}  size={50}/>
           <h1>Frequently Asked Questions</h1>
         </div>
+      </Reveal>
+
         <div className="accordionDivDesktop">
           <div className="generalDesktop">
+          <ItemByItemReveal>
             <div className="headerIconDivDesktop">
             <FaQuestionCircle size={20} style={{margin:'0 5px 0 0'}} />
             <h2>General</h2>
             </div>
+            </ItemByItemReveal>
+
             <div className="accordionsDesktop">
             {displayFaqQuestionsSection(generalSectionQuestionsList)}
             </div>
           </div>
+
           <div className="DataCollectionDesktop">
           <div className="headerIconDivDesktop">
             <BsCollection  size={20} style={{margin:'0 5px 0 0'}} />
@@ -268,6 +279,7 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
             </Accordion>
             </div>
           </div>
+
           <div className="TechnicalSupportDesktop">
           <div className="headerIconDivDesktop">
             <MdSupportAgent  size={25} style={{margin:'0 5px 0 0'}} />
@@ -277,6 +289,10 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
               {displayFaqQuestionsSection(technicalSupportSectionQuestionsList)}
             </div>
           </div>
+
+
+
+
         </div>
     </div>
   );
