@@ -25,6 +25,8 @@ import ribbon from '../assets/icons/icons8-ribbon-50.png'
 import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
 import ContactFooter from './ContactFooter/ContactFooter';
 import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
+import ItemByItemReveal from '../components/FramerMotion/ItemByItemReveal';
+import Reveal from '../components/FramerMotion/Reveal';
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap((role, index) => {
@@ -53,17 +55,17 @@ const MainPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const marginLeftAmount = 250;
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
-  const [isOpen, setIsOpen] = useState<boolean>(isMobile? false : true);
+  const [isOpen, setIsOpen] = useState<boolean>(isMobile ? false : true);
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
-  const headerStyle:CSSProperties = {
+  const headerStyle: CSSProperties = {
     color: backgroundColor,
     fontSize: '20px',
     marginLeft: '20px',
   };
   const burgerHeaderStyle: CSSProperties = {
-    display:'flex',
+    display: 'flex',
     alignItems: 'center',
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
 
 
   }
@@ -92,10 +94,9 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile  isLoading={isLoading} /> },
-      { id: 'ContactInformationMobile', isRole: false, label: 'Contact Us', component: ContactInformationMobile },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },
       { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
-      { id: 'RoleSelect', isRole: false, label: 'Roles', component: () => <RoleSelect  sections={convertRolesToSections(roles, rolesFetched, true)} /> },
+      { id: 'RoleSelect', isRole: false, label: 'Roles', component: () => <RoleSelect sections={convertRolesToSections(roles, rolesFetched, true)} /> },
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorksMobile },
       { id: 'faqPage', isRole: false, label: 'FAQ', component: FaqPageMobile },
       { id: 'ContactInformationMobile', isRole: false, label: 'Contact Us', component: ContactInformationMobile },
@@ -120,33 +121,44 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-         <div className="appbar" style={{ border: `1px solid ${backgroundColor}`, display: isMobile? 'flex': 'none' }} onClick={() => toggleDrawer(true)}>
-          <div style={burgerHeaderStyle}>
-                <div className="burgerButtonDiv" style={{ border: `1px solid ${backgroundColor}` }} onClick={() => toggleDrawer(true)}>
-              <img src={menuPng} style={{ width: '30px', color: backgroundColor }} alt="" />
-            </div>
-            <p style={headerStyle}>Skills Compass</p>
+      <div className="appbar" style={{ border: `1px solid ${backgroundColor}`, display: isMobile ? 'flex' : 'none' }} onClick={() => toggleDrawer(true)}>
+        <div style={burgerHeaderStyle}>
+          <div className="burgerButtonDiv" style={{ border: `1px solid ${backgroundColor}` }} onClick={() => toggleDrawer(true)}>
+            <img src={menuPng} style={{ width: '30px', color: backgroundColor }} alt="" />
           </div>
-            <div className="icons">
-            <div className="iconWithATag">
-        <a className='' href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
-              <img  src={ribbon} alt="My Image" className="clickableImageDesktop" />
-          </a>
-        </div>
-            <div className="iconWithATag">
-        <a className='' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-              <img src={linkedin} alt="My Image" className="clickableImageDesktop" />
-          </a>
-            </div>
-            <div className="iconWithATag">
-        <a className='' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-              <img  src={github} alt="My Image" className="clickableImageDesktop" />
-          </a>
+          <ItemByItemReveal>
+            <p style={headerStyle}>Skills Compass</p>
+          </ItemByItemReveal>
         </div>
 
+        <div className="icons">
+          <Reveal>
+            <div className="iconWithATag">
+              <a className='' href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
+                <img src={ribbon} alt="My Image" className="clickableImageDesktop" />
+              </a>
             </div>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <div className="iconWithATag">
+              <a className='' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
+                <img src={linkedin} alt="My Image" className="clickableImageDesktop" />
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={0.6}>
+            <div className="iconWithATag">
+              <a className='' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
+                <img src={github} alt="My Image" className="clickableImageDesktop" />
+              </a>
+            </div>
+          </Reveal>
+
+
+
+
+        </div>
       </div>
-
       {
         isMobile ?
           (

@@ -19,10 +19,8 @@ import info from '../../assets/icons/info.png'
 import _ from 'lodash'
 import TechRowMobile from '../TechRow/TechRowMobile';
 import Reveal from '../../components/FramerMotion/Reveal';
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Slide from '../../components/FramerMotion/Slide'
 import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
-import RevealNoRelative from '../../components/FramerMotion/RevealNoRelative';
 //#endregion
 
 interface RolePageProps {
