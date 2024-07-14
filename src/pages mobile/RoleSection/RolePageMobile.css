@@ -17,7 +17,9 @@
 .togglerInfoDiv {
   display: flex;
   align-items: center;
-  justify-content: right;
+  position: relative;
+  right: 20px;
+  justify-content: center;
   width: fit-content;
   width: 100%;
   margin: 0 0 25px 15px;
@@ -148,8 +150,8 @@ margin: 0 10px 0 0;
   margin: auto;
 }
 
-.categoryButton {
-  padding:5px;
+.categoryButtonMobile {
+  padding:10px;
   text-align: center;
   margin: 5px;
   font-size: 14px;
@@ -163,9 +165,10 @@ margin: 0 10px 0 0;
   transition: background-color 0.7s;
   transition: border-radius 1s;
   transition: width 3;
+  box-sizing: border-box;
 }
 
-.categoryButton.selected {
+.categoryButtonMobile.selected {
   background-color: rgb(8, 97, 86);
   color: antiquewhite;
   border-radius: 10px;
@@ -184,5 +187,10 @@ margin: 0 10px 0 0;
 }
 .disabled {
   background-color: gray;
+}
+.RevealCategoryButtonMobile{
+  height: '20px';
+  padding: 0;
+
 }
 /* Custom CSS for Tooltip */

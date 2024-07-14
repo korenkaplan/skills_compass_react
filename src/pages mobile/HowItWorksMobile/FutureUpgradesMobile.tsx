@@ -5,6 +5,8 @@ import moreRoles from '../../assets/animations/moreJobs.json'
 import graphs from '../../assets/animations/graphs.json'
 import roadmap from '../../assets/animations/roadmap.json'
 import {backgroundColor} from '../../utils/variables'
+import Slide from '../../components/FramerMotion/Slide';
+import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 const FutureUpgradesMobile: React.FC = () => {
 
 
@@ -46,13 +48,17 @@ const futureUpgradesList: FutureUpgrade[] = [
     <div style={{backgroundColor:backgroundColor}} className="three-steps">
     <div className="steps-containerMobile">
         {
-            futureUpgradesList.map(item => (
+            futureUpgradesList.map((item, index )=> (
                 <div className="stepMobile">
+              <Slide slideFrom={index % 2 == 0 ? 'left' : 'right'} amount={0.3} >
                 <div className="step-number">
                     <Lottie animationData={item.lottie} loop={true} className='FutureUpgradeMobile'  style={item.styleObject} />
                 </div>
+              </Slide>
+              <ItemByItemReveal customStyle={{textAlign:'center'}} speed={20} >
                 <h3>{item.header}</h3>
                 {item.text}
+             </ItemByItemReveal>
             </div>
             ))
         }

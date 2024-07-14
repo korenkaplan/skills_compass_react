@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './TechRowMobile.css'; // Make sure to create this CSS file to style the component
-import _ from 'lodash';
-
+import { motion } from 'framer-motion';
 interface TechRowProps {
   tech: string;
   count: number;
@@ -25,21 +24,9 @@ const TechRowMobile: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineW
       scaleFactor = maxLineWidth / 100; // Scale factor based on percentage (out of 100)
 
     calculatedWidth = Math.min(count * scaleFactor, maxLineWidth);
-
+    setLineWidth(calculatedWidth);
+    
     // Set the line width with a delay to create a loading effect
-    const delay = 10; // milliseconds
-    let currentWidth = 0;
-    const increment = Math.max(calculatedWidth / 100, 1); // Increment the width in 100 steps
-    const timer = setInterval(() => {
-      currentWidth += increment;
-      if (currentWidth >= calculatedWidth) {
-        clearInterval(timer);
-        setLineWidth(calculatedWidth);
-      } else {
-        setLineWidth(currentWidth);
-      }
-    }, delay);
-    return () => clearInterval(timer);
   }, [count, maxCount, maxLineWidth, showPercentage]);
 
   const formatTitle = (title: string) => {
@@ -64,7 +51,11 @@ const TechRowMobile: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineW
     }
     return `${count}`;
   };
-
+  const duration = 1;
+  const lineVariants = {
+    hidden: { width: 0 },
+    visible: { width: lineWidth }
+  };
   return (
     <div className="tech-row">
       <div className="tech-name-container">
@@ -72,7 +63,15 @@ const TechRowMobile: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineW
       </div>
       <div className="lineAndNumDiv">
       <div className="lineWrapper" style={{ width: `${maxLineWidth}px` }}>
-        <div className="tech-line" style={{ width: `${lineWidth}px` }}></div>
+      <motion.div
+          className="tech-line"
+          style={{ width: `${lineWidth}px` }}
+          initial="hidden"
+          animate="visible"
+          variants={lineVariants}
+          transition={{ duration: duration, ease: 'easeInOut' }}
+        ></motion.div>
+        {/* <div className="tech-line" style={{ width: `${lineWidth}px` }}></div> */}
       </div>
       <span className="tech-count">{showPercentageOrCount()}</span>
     </div>

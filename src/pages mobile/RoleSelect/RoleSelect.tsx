@@ -7,7 +7,8 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
+import Reveal from '../../components/FramerMotion/Reveal';
+import './RoleSelect.css'
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -58,38 +59,46 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
 
   const selectInputStyle: React.CSSProperties = {
     backgroundColor: 'antiquewhite',
-    color:backgroundColor,
+    color: backgroundColor,
+    // border: '12px solid red',
+    width: '100%',
   };
 
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section main">
-<FormControl sx={{ m: 1, width: '90%' }}>
-  <Select
-    labelId="demo-multiple-name-label"
-    id="demo-multiple-name"
-    multiple
-    value={selectedNames}
-    onChange={handleChange}
-    input={<OutlinedInput label="Role" />}
-    MenuProps={MenuProps}
-    sx={selectInputStyle}
-  >
-    {sections.map((section) => (
-      <MenuItem
-        key={section.label}
-        value={section.label}
-        style={getStyles(section.label, selectedNames, theme)}
-      >
-        {section.label}
-      </MenuItem>
-    ))}
-  </Select>
-</FormControl>
+      <div className='roleSelectContentMobile'>
+      <FormControl sx={{ m: 1, width: '90%', }}>
+      <Reveal  className='RevealSelectRoleMobile'>
+        <Select
+          labelId="demo-multiple-name-label"
+          id="demo-multiple-name"
+          multiple
+          value={selectedNames}
+          onChange={handleChange}
+          input={<OutlinedInput label="Role" />}
+          MenuProps={MenuProps}
+          sx={selectInputStyle}
+        >
+          {sections.map((section) => (
+            <MenuItem
+              key={section.label}
+              value={section.label}
+              style={getStyles(section.label, selectedNames, theme)}
+            >
+              {section.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </Reveal>
+
+      </FormControl>
       {selectedSections && selectedSections.map((section) => (
         <div key={section.id} id={section.id} className="section">
           <section.component />
         </div>
       ))}
+      </div>
+
     </div>
   );
 }

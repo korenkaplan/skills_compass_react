@@ -8,6 +8,8 @@ import { backgroundColor } from '../../utils/variables';
 import OneDigit from '../../assets/digits/icons8-1-50.png';
 import TwoDigit from '../../assets/digits/icons8-2-50.png';
 import ThreeDigit from '../../assets/digits/icons8-3-50.png';
+import Slide from '../../components/FramerMotion/Slide';
+import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 
 const ThreeStepsMobile: React.FC = () => {
 const digitSize = 50
@@ -80,15 +82,19 @@ margin: '0 0 50px 0',
     <div style={{ backgroundColor: backgroundColor }} className="three-steps">
       <div className="steps-containerMobile">
         {
-          steps.map(step => (
+          steps.map((step, index) => (
             < div style={stepWrapperStyle}>
-              <div className="stepMobile">
-              <div className="step-numberMobile" style={imageContainerStyle}>
+               <div className="stepMobile">
+              <Slide slideFrom={index % 2 == 0 ? 'left' : 'right'} amount={0.3} >
+               <div className="step-numberMobile" style={imageContainerStyle}>
                 <img  src={step.img} style={digitStyle} alt="digit" />
                 <Lottie animationData={step.lottie} loop={true} className='lottieAnimationThreeSteps' style={step.styleObject} />
               </div>
+              </Slide>
+               <ItemByItemReveal customStyle={{textAlign:'center'}} speed={20} >
               <h2>{step.header}</h2>
               {step.text}
+              </ItemByItemReveal>
             </div>
           </div>
           ))

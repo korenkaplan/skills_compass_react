@@ -1,4 +1,4 @@
-import React, {CSSProperties, useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import './OverviewPageMobile.css';
 import { backgroundColor } from '../../utils/variables';
 import logo from '../../assets/logo/logo.png';
@@ -9,6 +9,9 @@ import Line from '../../components/Line/Line';
 import bell from '../../assets/icons/bell.png'
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
 import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
+import Reveal from '../../components/FramerMotion/Reveal';
+import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
+import Slide from '../../components/FramerMotion/Slide';
 const OverviewPageMobile: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80
@@ -25,18 +28,42 @@ const OverviewPageMobile: React.FC = () => {
   const developerSurveyText = () => (
     <>
       <div className="topMobile" >
-        <div className="overviewInnerHeaderMobile">
-          <img src={bell} alt="" style={{ width: `${bellLogoSize}px`, height: `${bellLogoSize}px` }} />
-          <h2 style={{ margin: '0 0 0 10px', fontSize: '25px' }}>Rings a Bell?</h2>
-        </div>
-        <p>Do you sometimes feel overwhelmed by the  countless technologies out there, and unsure which ones to learn in order to stay relevant in the constantly changing job market?</p>
-        <p><strong>You've Come To The Right Place!</strong> 🚀</p>
+        <Reveal>
+          <div className="overviewInnerHeaderMobile">
+            <img src={bell} alt="" style={{ width: `${bellLogoSize}px`, height: `${bellLogoSize}px` }} />
+            <h2 style={{ margin: '0 0 0 10px', fontSize: '25px' }}>Rings a Bell?</h2>
+          </div>
+        </Reveal>
+        <Slide slideFrom='right'>
+          <p>Do you sometimes feel overwhelmed by the  countless technologies out there, and unsure which ones to learn in order to stay relevant in the constantly changing job market?</p>
+
+        </Slide>
+        <Reveal >
+          <p><strong>You've Come To The Right Place!</strong> 🚀</p>
+
+        </Reveal>
         <Line height='1px' width='80%' color={backgroundColor} />
-        <p>Our mission is to guide you through the most in-demand technologies in Israel's hi-tech job market. 🌟</p>
-        <p>We do the hard research work for you and provide real-time data to help you stay ahead. 📊</p>
-        <p><strong>What Makes Us Unique ?</strong> 🔍</p>
+
+        <Slide slideFrom='left'>
+          <p>Our mission is to guide you through the most in-demand technologies in Israel's hi-tech job market. 🌟</p>
+
+        </Slide>
+        <Slide slideFrom='right'>
+          <p>We do the hard research work for you and provide real-time data to help you stay ahead. 📊</p>
+
+        </Slide>
+        <Reveal >
+          <p><strong>What Makes Us Unique ?</strong> 🔍</p>
+
+        </Reveal>
         <Line height='1px' width='80%' color={backgroundColor} />
-        <p>All our data is extracted straight from analyzing <strong>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google Jobs</strong> and from companies websites.</p>
+
+        <Slide slideFrom='left'>
+          <p>All our data is extracted straight from analyzing <strong>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google Jobs</strong> and from companies websites.</p>
+
+        </Slide>
+
+
       </div>
     </>
   );
@@ -44,18 +71,34 @@ const OverviewPageMobile: React.FC = () => {
   const developerSurveyTextHeb = () => (
     <>
       <div className="topMobile">
+        <Reveal>
         <div className="overviewInnerHeaderMobile">
           <img src={bell} alt="" style={{ width: `${bellLogoSize}px`, height: `${bellLogoSize}px` }} />
           <h2 style={{ margin: '0 0 0 10px', fontSize: '25px' }}>מצלצל לך מוכר ?</h2>
         </div>
+        </Reveal>
+        <Slide slideFrom='right'>
         <p>אם גם אתה הולך לאיבוד לפעמים מהכמות האין סופית של טכנולוגיות  ולא יודע מה כדאי  ללמוד כדי להיות הכי רלוונטי לשוק העבודה שממשיך להתקדם ולהשתנות ללא הפסקה ?</p>
+        </Slide>
+        <Reveal>
         <p><strong>אז הגעת למקום הנכון!</strong> 🚀</p>
+        </Reveal>
         <Line height='1px' width='70%' color={backgroundColor} />
+        <Slide slideFrom='left'>
         <p>המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>
+
+        </Slide>
+        <Slide slideFrom='right'>
         <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג משרה.</p>
+        </Slide>
+        <Reveal>
         <p><strong>מה מייחד אותנו משאר האתרים?</strong> 🔍</p>
+        </Reveal>
         <Line height='1px' width='70%' color={backgroundColor} />
-        <p>כל המידע שלנו מגיע היישר מניתוח של <strong> אלפי משרות</strong> מאתרי חיפוש העבודה הפופולרים ביותר כמו <strong dir='ltr' style={{marginLeft:'5px'}}>LinkedIn, Google Jobs </strong> ומאתרי החברות .</p>
+        <Slide slideFrom='left'>
+        <p>כל המידע שלנו מגיע היישר מניתוח של <strong> אלפי משרות</strong> מאתרי חיפוש העבודה הפופולרים ביותר כמו <strong dir='ltr' style={{ marginLeft: '5px' }}>LinkedIn, Google Jobs </strong> ומאתרי החברות .</p>
+        </Slide>
+
       </div>
     </>
   );
@@ -83,7 +126,8 @@ const OverviewPageMobile: React.FC = () => {
     setCurrentYear(currentYear)
   }, []);
   const questionsRowsStyle: CSSProperties = {
-    height:'100px'
+    height: '100px',
+    color:' black',
   };
   const getScrollDownAnimationStyle = (): CSSProperties => ({
     height: '150px',
@@ -91,30 +135,44 @@ const OverviewPageMobile: React.FC = () => {
   return (
     <div style={{ backgroundColor: backgroundColor }} className="section container heightAndBorder">
       <div className="textContainer" dir={isRotated ? 'rtl' : 'ltr'}>
-        <div className="containerHeader">
-          <h2 className='headerOverviewPage'>{header}</h2>
-          <div className='translateButtonDivMobile'
-           onClick={handleRotate}
-          >
-            <p className='translateButtonTitleDesktop'> {isRotated ? 'English' : 'עברית'}</p>
-            <img className='translateIconDesktop' src={translateIcon} alt="" />
-        </div>
-        </div>
+        <Reveal>
+          <div className="containerHeader">
+            <h2 className='headerOverviewPage'>{header}</h2>
+            <ScaleOnTapButtonWrapper>
+              <div className='translateButtonDivMobile'
+                onClick={handleRotate}
+              >
+                <p className='translateButtonTitleDesktop'> {isRotated ? 'English' : 'עברית'}</p>
+                <img className='translateIconDesktop' src={translateIcon} alt="" />
+              </div>
+            </ScaleOnTapButtonWrapper>
+          </div>
+        </Reveal>
         <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
-          <div style={questionsRowsStyle}  dir='ltr'>
-          <TypeQuestionAnimation fontSize={20}questions={questions} currentYear={currentYear} />
-          </div>
-          <div style={{}} className="">
-          {mainText}
+          <Reveal >
+            <div style={questionsRowsStyle} dir='ltr'>
+              <TypeQuestionAnimation fontSize={20} questions={questions} currentYear={currentYear} />
+            </div>
+          </Reveal>
 
+          <div  className="">
+            {mainText}
           </div>
-          <div className='OverviewPressHereDesktop' ><div className='pressHereButtonDesktopOverview' onClick={()=> document.getElementById('howItWorks')?.scrollIntoView({behavior:'smooth'})}>{isRotated ? 'להסבר המלא לחץ כאן': 'Full Explanation'}</div></div>
+          <Reveal>
+            <ScaleOnTapButtonWrapper>
+            <div className='OverviewPressHereDesktop' ><div className='pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorks')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div></div>
+
+            </ScaleOnTapButtonWrapper>
+          </Reveal>
         </div>
+        <Reveal >
         <div className="imageRow">
-          <p style={{color:backgroundColor}}>{bottomWords}</p>
-          <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='none' styleProps={getScrollDownAnimationStyle()}/>
+          <p style={{ color: backgroundColor }}>{bottomWords}</p>
+          <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='none' styleProps={getScrollDownAnimationStyle()} />
           <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
         </div>
+        </Reveal>
+
       </div>
     </div>
   );
