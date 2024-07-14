@@ -10,8 +10,7 @@ import translateIcon from '../../assets/icons/tranaslteIconForButton.png'
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
 import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
 import Reveal from '../../components/FramerMotion/Reveal';
-import ScaleOnTapButtonWrapper from '../../components/FramerMotion/HoverEffect';
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
+import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
 const Overview: React.FC = () => {
   const [currentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80

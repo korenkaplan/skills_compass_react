@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, CSSProperties} from 'react';
+import {useRef, useEffect, CSSProperties} from 'react';
 import {motion, useInView, useAnimation, UseInViewOptions} from "framer-motion";
 import {FramerMotionVariants} from '../../utils/enums'
 import { framerMotionRepeatOnce } from '../../utils/variables';

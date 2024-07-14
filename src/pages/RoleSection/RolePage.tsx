@@ -20,6 +20,7 @@ import _ from 'lodash'
 import WordByWordReveal from '../../components/FramerMotion/WordByWordReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
+import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
 
 //#endregion
 
@@ -140,6 +141,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
   }
 
   const calculatePercentages = (part: number, total: number) => { return (part / total) * 100 }
+
   const handleAggregationSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.checked
     setAggregatedSwitch(value);
@@ -283,7 +285,6 @@ useEffect(() => {
     boxSizing: 'border-box', // Ensure padding and border are included in width and height
     fontSize: '16px', // Example font size
     padding: '8px', // Example padding
-    display: listLimitSwitch? 'block' : 'none',
   };
 
   const CategoryInputStyle: CSSProperties = {
@@ -298,7 +299,6 @@ useEffect(() => {
     boxSizing: 'border-box', // Ensure padding and border are included in width and height
     fontSize: '16px', // Example font size
     padding: '8px', // Example padding
-    display: categoryLimitSwitch? 'block' : 'none',
   };
 //#endregion
 
@@ -325,7 +325,6 @@ useEffect(() => {
 return (
     <div style={{ backgroundColor: backgroundColor }} className="containerRolePageDesktop section ">
       <Slide enabled={framerMotionEnabled} slideFrom='left'>
-
       <div className="headerDivDesktop">
         <div className="headerAndTogglerDesktop">
           <h1 className='headerRolePageDesktop'>{_.upperCase(role.name)}</h1>
@@ -364,7 +363,8 @@ return (
             </div>
           </Tooltip>
           </div>
-          <div className="switchDivDesktop limitDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+          <SwitchesReveal  duration={0.3} slideFrom='left' enabled = {aggregatedSwitch}>
+          <div  className="switchDivDesktop limitDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
             <div className="infoAndLabelAndSwitchDivDesktop">
           <FormControlLabel
             control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
@@ -378,6 +378,7 @@ return (
             <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
             </div>
           </Tooltip>
+          <SwitchesReveal slideAmount={0}   enabled = {listLimitSwitch}>
           <input
             type='number'
             id="outlined-basic"
@@ -387,7 +388,11 @@ return (
             max={100}
             style={inputStyle} // Apply custom styles via style attribute
           />
+             </SwitchesReveal>
           </div>
+          </SwitchesReveal>
+
+          <SwitchesReveal  delay={0.5} slideFrom='left' enabled = {aggregatedSwitch}>
           <div className="switchDivDesktop limitPerCategoryDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
             <div className="infoAndLabelAndSwitchDivDesktop">
             <FormControlLabel
@@ -404,6 +409,8 @@ return (
               </div>
             </Tooltip>
 
+
+          <SwitchesReveal  slideAmount={0}  enabled = {categoryLimitSwitch}>
           <input
             type='number'
             id="outlined-basic"
@@ -413,7 +420,10 @@ return (
             max={100}
             style={CategoryInputStyle} // Apply custom styles via style attribute
           />
+          </SwitchesReveal>
           </div>
+          </SwitchesReveal>
+
       </FormGroup>
         </div>
 

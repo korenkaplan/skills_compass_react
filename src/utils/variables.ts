@@ -1,3 +1,4 @@
+
 // variables.ts
 const backgroundColor: string = '#253439';
 const sideMenuBackgroundColor: string = '#1E2028';

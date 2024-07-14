@@ -1,5 +1,5 @@
 // src/components/SideMenu.tsx
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef} from 'react';
 import {backgroundColor} from '../../utils/variables'
 import ThreeSteps from './ThreeSteps';
 import './HowItWorks.css'
@@ -9,7 +9,6 @@ import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
-import HoverEffect from '../../components/FramerMotion/HoverEffect';
 //#region Technologies objects
 
 interface Category {
