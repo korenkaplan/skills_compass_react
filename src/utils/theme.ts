@@ -1,9 +1,9 @@
-export const theme = {
-    primaryBackgroundColor: '#111111',
-    secondaryBackgroundColor: '#232323',
-    primaryHeaderColor:'#ebecf3',
-    buttonsBackgroundColor: '#0aff9d',
-    iconsBackgroundColor:'#7e7f82',
-    contrastColor: '#0aff9d',
-    navbarBackgroundColor: '#080808',
-}
+
+export const primaryBackgroundColor= '#111111'
+export const secondaryBackgroundColor= '#232323'
+export const primaryHeaderColor='#ebecf3'
+export const buttonsBackgroundColor= '#0aff9d'
+export const iconsBackgroundColor='#7e7f82'
+export const contrastColor= '#0aff9d'
+export const navbarBackgroundColor= '#080808'
+export const navbarItemsColor= '#3b3b3d'

@@ -9,11 +9,13 @@ import ListItemText from '@mui/material/ListItemText';
 import { Section } from '../../utils/interfaces';
 import logo from '../../assets/logo/logo ellow ribbon with text.png';
 import './Drawer.css';
+import '../../utils/variables.css'
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 import Slide from '../FramerMotion/Slide';
 import Reveal from '../FramerMotion/Reveal';
 import NavbarItemsHover from '../FramerMotion/NavbarItemsHover';
+import {navbarItemsColor} from '../../utils/theme'
 
 interface TemporaryDrawerProps {
   open: boolean;
@@ -59,7 +61,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
   }, []);
 
   const DrawerList = (
-    <Box className='drawer' sx={{ width: 250, backgroundColor: '#1E2028' }} role="presentation">
+    <Box className='drawer' sx={{ width: 250}} role="presentation">
       <Slide slideFrom='left'>
       <div className="">
         <div className="logoDiv">
@@ -73,10 +75,10 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
               key={section.id}
               disablePadding
               onClick={() => handleClick(section.id)}
-        
+
             >
               <ListItemButton
-                sx={{ textAlign: 'center', justifyContent: 'center' }} // Added justifyContent
+                sx={{ textAlign: 'center', justifyContent: 'center', color:{navbarItemsColor} }} // Added justifyContent
               >
                 <ListItemText primary={section.label} />
               </ListItemButton>
