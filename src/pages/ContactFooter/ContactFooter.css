@@ -40,7 +40,7 @@
 }
 
 .iconTextDesktop {
-  color: white;
+  color: var( --text-color);
   font-size: 16px;
 }
 .clickableImageDesktop {

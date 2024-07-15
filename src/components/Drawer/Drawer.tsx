@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -15,7 +14,8 @@ import { useMediaQuery } from 'react-responsive';
 import Slide from '../FramerMotion/Slide';
 import Reveal from '../FramerMotion/Reveal';
 import NavbarItemsHover from '../FramerMotion/NavbarItemsHover';
-import {navbarItemsColor} from '../../utils/theme'
+import {navbarItemsColor, contrastColor, textColor} from '../../utils/theme'
+import { Drawer } from '@mui/material';
 
 interface TemporaryDrawerProps {
   open: boolean;
@@ -29,9 +29,10 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
   const [date, setDate] = useState<string>();
   const [isFetched, setIsFetched] = useState<boolean>(false);
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+  const [selectedSection, setSelectedSection] = useState<string>(null);
 
   const handleClick = (id: string) => {
-
+    setSelectedSection(id)
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
@@ -78,7 +79,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
 
             >
               <ListItemButton
-                sx={{ textAlign: 'center', justifyContent: 'center', color:{navbarItemsColor} }} // Added justifyContent
+                sx={{ textAlign: 'center', justifyContent: 'center', color: section.id == selectedSection ? contrastColor : textColor }} // Added justifyContent
               >
                 <ListItemText primary={section.label} />
               </ListItemButton>

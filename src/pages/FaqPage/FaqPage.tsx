@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
-import React, { useState } from 'react';
+import React, { CSSProperties, useState } from 'react';
 import './FaqPage.css'
-import {backgroundColor} from '../../utils/variables'
+import '../../utils/variables.css'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -15,6 +15,7 @@ import { MdSupportAgent, MdAlternateEmail  } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 import Reveal from '../../components/FramerMotion/Reveal';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
+import {secondaryBackgroundColor,primaryBackgroundColor, buttonsBackgroundColor, textColor,buttonTextColor} from '../../utils/theme.ts'
 interface FaqPageProps {
 
 }
@@ -192,18 +193,20 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
           onMouseLeave={handleMouseLeave}
         >
           <AccordionSummary
-            expandIcon={<AiFillCaretDown />}
+            expandIcon={<AiFillCaretDown  color={hoveredIndex === currentIndex || isExpanded? primaryBackgroundColor: buttonsBackgroundColor}/>}
             aria-controls={`panel${currentIndex + 1}-content`}
             id={`panel${currentIndex + 1}-header`}
             style={{
-              backgroundColor: isExpanded ? backgroundHoveredColor : (hoveredIndex === currentIndex ? backgroundHoveredColor : 'white'),
-              color: hoveredIndex === currentIndex ? textColorHovered : isExpanded ? textColorHovered : 'black'
+              backgroundColor: isExpanded ? buttonsBackgroundColor : (hoveredIndex === currentIndex ? buttonsBackgroundColor : primaryBackgroundColor),
+
+              color: hoveredIndex === currentIndex ? primaryBackgroundColor : isExpanded ? buttonTextColor : buttonsBackgroundColor,
+              border:`1px solid ${hoveredIndex !== currentIndex ? buttonsBackgroundColor: buttonTextColor}`,
             }}
           >
             <Typography ><strong>{accordion.question}</strong></Typography>
           </AccordionSummary>
           <AccordionDetails
-          style={{backgroundColor: 'antiquewhite'}}
+          style={{backgroundColor: secondaryBackgroundColor, color: textColor}}
           >
             <Typography>
               {accordion.answer}
@@ -216,7 +219,7 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
   </div>
 );
   return (
-    <div style={{backgroundColor:backgroundColor}} className="section  containerFaqDesktop dividerBottom " >
+    <div  className="section  containerFaqDesktop dividerBottom " >
       <Reveal>
         <div className="headerDivFaqDesktop">
           <FaQuestionCircle style={{margin:'0 20px 0 0'}}  size={50}/>
@@ -251,17 +254,19 @@ const displayFaqQuestionsSection = (questions: FaqAccordion[]) => (
                     onMouseLeave={handleMouseLeave}
             >
               <AccordionSummary
-              expandIcon={<AiFillCaretDown />}
+              expandIcon={<AiFillCaretDown color={hoveredIndex === uniqueIndex || expandedIndices.includes(uniqueIndex)? primaryBackgroundColor: buttonsBackgroundColor} />}
               aria-controls={`panel${uniqueIndex}-content`}
               id={`panel${uniqueIndex}-header`}
               style={{
-                backgroundColor:  expandedIndices.includes(uniqueIndex) ? backgroundHoveredColor : (hoveredIndex === uniqueIndex ? backgroundHoveredColor : 'white'),
-                color: hoveredIndex === uniqueIndex ? textColorHovered : expandedIndices.includes(uniqueIndex) ? textColorHovered : 'black'
+                backgroundColor:  expandedIndices.includes(uniqueIndex) ? buttonsBackgroundColor : (hoveredIndex === uniqueIndex ? buttonsBackgroundColor : primaryBackgroundColor),
+                color: hoveredIndex === uniqueIndex ? primaryBackgroundColor : expandedIndices.includes(uniqueIndex) ? buttonTextColor : buttonsBackgroundColor,
+                border:`1px solid ${hoveredIndex !== uniqueIndex ? buttonsBackgroundColor: buttonTextColor}`,
               }}
               >
                 <Typography><strong>How do you ensure the accuracy of the job listings?</strong></Typography>
               </AccordionSummary>
               <AccordionDetails
+               style={{backgroundColor: secondaryBackgroundColor, color: textColor}}
               >
                 {displayFaqQuestionsSection(innerDataCollectionSectionQuestionsList)}
                 <p>To view in more details you welcome to visit my github reopsitories:</p>
