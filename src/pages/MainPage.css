@@ -61,6 +61,7 @@
     display: flex;
     box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
     overflow: hidden;
+    background-color: var(--primary-background-color);
 
 
   }
@@ -92,15 +93,15 @@
   /* Scrollbar track */
   .sectionsWrapperDesktop::-webkit-scrollbar {
     width: fit-content; /* Width of the scrollbar */
-    background-color: antiquewhite;
+    background-color: var(--scrollbar-background-color);
     border-radius: 20px; /* Roundness of the handle */
   }
 
   /* Scrollbar handle */
   .sectionsWrapperDesktop::-webkit-scrollbar-thumb {
-    background: #253439; /* Color of the scrollbar handle */
+    background:var(--scrollbar-thumb-background-color); /* Color of the scrollbar handle */
     border-radius: 10px; /* Roundness of the handle */
-    border: 2px solid antiquewhite;
+    border: 2px solid var(--navbar-background-color);
     width: 50%;
 
   }

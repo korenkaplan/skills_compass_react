@@ -1,0 +1,14 @@
+:root {
+    --primary-background-color: #111111;
+    --secondary-background-color: #232323;
+    --main-header-color: #ebecf3;
+    --text-color: #c8c9cf;
+    --buttons-background-color: #0aff9d;
+    --buttons-text-color: #232323;
+    --icons-color:#7e7e82;
+    --scrollbar-background-color:#7e7e82;
+    --scrollbar-thumb-background-color:#0aff9d;
+    --contrast-color:#0aff9d;
+    --navbar-background-color: #080808;
+
+}

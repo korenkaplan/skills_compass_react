@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo, CSSProperties } from 'react';
 import './MainPage.css';
+import '../utils/variables.css'
 import LandingPage from './LandingSection/LandingPage';
 import FaqPage from './FaqPage/FaqPage';
 import RolePage from './RoleSection/RolePage';

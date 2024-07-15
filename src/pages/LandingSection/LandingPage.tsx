@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
 import React, { useState, useEffect, CSSProperties } from 'react';
 import './LandingPage.css'
-import { backgroundColor } from '../../utils/variables'
+import '../../utils/variables.css'
 import logoCropped from '../../assets/logo/logoCropped-removebg-preview.png'
 import '../../CSS/RotatingImage.css'
 import LinearProgress from '@mui/material/LinearProgress';
@@ -10,6 +10,7 @@ import Lottie from "lottie-react";
 import scrollAnimation from '../../assets/animations/scroll_down_animation.json'
 import { TypeAnimation } from 'react-type-animation';
 import _ from 'lodash'
+import getStartedLottie from '../../assets/animations/scroll down animation black.json'
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
 import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
@@ -97,14 +98,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ isLoading, defaultSection, ro
           onClick={() => handleClick(defaultSection)}
           className="actionButton" style={{ display: isLoading ? 'none' : 'flex' }}>
           <p>Get Started</p>
-          <Lottie className='alottie' animationData={scrollAnimation} loop={true} autoPlay={true} />
+          <Lottie className='alottie' animationData={getStartedLottie} loop={true} autoPlay={true} />
         </div>
       </ScaleOnTapButtonWrapper>
     </Reveal>
 
   )
   return (
-    <div style={{ backgroundColor: backgroundColor }} className="section main  heightAndBorder" >
+    <div className="section main  heightAndBorder" >
       <div className="contentLandingPage">
         <div className="textDiv">
           <div className="">
