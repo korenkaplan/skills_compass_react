@@ -76,6 +76,9 @@
   .li{
     font-size: 16px;
   }
+  h1 {
+    color: var(--main-header-color);
+  }
   .drawerButton{
     position: absolute;
     top: 2%;

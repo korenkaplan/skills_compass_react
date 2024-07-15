@@ -2,6 +2,10 @@
   padding: 70px 50px 20px 50px;
   display: flex;
   flex-direction: column;
+  color: var(--text-color);
+}
+.containerRolePageDesktop h1 {
+  color: var(--main-header-color);
 }
 .headerAndTogglerDesktop{
   display: flex;
@@ -12,6 +16,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
 }
 .togglerInfoDivDesktop {
   display: flex;
@@ -24,6 +29,11 @@
   align-items: center;
 
 }
+.FormControlLabelDesktop{
+  color: var(--text-color);
+  font-size: 20px;
+  margin-top: 5px;
+}
 .infoAndLabelAndSwitchDivDesktop{
   display: flex;
   align-items: center;
@@ -33,13 +43,18 @@ width: 20px;
 height: 20px;
 margin: 0 10px 0 0;
 }
+.inputDesktop{
+  background-color: var(--primary-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--contrast-color);
+}
 .headerRolePageDesktop{
   margin: 0;
 }
 .subheaderRolePageDesktop {
-  color: antiquewhite;
   font-size: 17px;
   margin: 10px 0 5px 0; /* Reset margin */
+  color: var(--main-header-color);
 }
 .switchDivDesktop {
   display: flex;
@@ -60,11 +75,11 @@ margin: 0 10px 0 0;
 .togglerDesktop {
   width: 100px;
   height: 34px;
-  background:antiquewhite;
+  background:var(--secondary-background-color);
   border-radius: 10px;
   display: flex;
   padding: 2px;
-  box-shadow: -1px 5px 10px 0px rgba(0,0,0,0.64);
+  border: 1px solid var(--contrast-color);
 }
 .toggler_buttonDesktop{
   display: flex;
@@ -72,9 +87,7 @@ margin: 0 10px 0 0;
   align-items: center;
 }
 .selected_toggler_buttonDesktop {
-  background-color: #08678a;
-  background-color: rgba(149, 195, 140, 0.785);
-  background-color: #086156;
+  background-color: var(--contrast-color);
   transition: background-color 0.3s ease-in-out;
 
 
@@ -93,7 +106,6 @@ margin: 0 10px 0 0;
 
 }
 .textRolePageDesktop {
-  color: antiquewhite;
   font-size: 17px;
 }
 .headerRolePageDesktop {
@@ -161,22 +173,20 @@ margin: 0 10px 0 0;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
-  background-color: antiquewhite;
-  color: #253439;
-  border: 1px solid antiquewhite;
+  color: var(--buttons-background-color);
+  border: 1px solid var(--buttons-background-color);
   transition: background-color 0.7s;
   transition: border-radius 1s;
   transition: width 3;
 }
 .categoryButtonDesktop:hover {
-  background-color: #95c38cc8;
-  color: antiquewhite;
+  background-color: var(--buttons-background-color);
+  color: var(--primary-background-color);
 }
 .categoryButtonDesktop.selected {
-  background-color: #086156;
-  color: antiquewhite;
+  background-color: var(--buttons-background-color);
+  color: var(--primary-background-color);
   border-radius: 20px;
-  border: 1px solid antiquewhite;
   transition: background-color 0.7s;
   transition: border-radius 1s;
 }

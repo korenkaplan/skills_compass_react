@@ -1,7 +1,6 @@
 //#region imports
 import React, { useState, useEffect, CSSProperties } from 'react';
 import './RolePage.css';
-import { backgroundColor} from '../../utils/variables';
 import { FormattedDataRow, Role } from '../../utils/interfaces';
 import axios from 'axios';
 import {CategoryData } from '../../utils/interfaces';
@@ -21,7 +20,8 @@ import WordByWordReveal from '../../components/FramerMotion/WordByWordReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
 import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
-
+import {contrastColor} from '../../utils/theme'
+import '../../CSS/GlobalMui.css'
 //#endregion
 
 interface RolePageProps {
@@ -268,18 +268,15 @@ useEffect(() => {
 
   const toggler = (
     <div className="togglerDesktop">
-    <div onClick={()=> togglerPressed("percentages")} className={`toggler_buttonDesktop percentageButtonDesktop  ${alignment == 'percentages'? 'selected_toggler_buttonDesktop': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'percentages'? whitePercentage: greenPercentage} /></div>
-    <div onClick={()=> togglerPressed("counts")} className={`toggler_buttonDesktop countButtonDesktop  ${alignment == 'counts'? 'selected_toggler_buttonDesktop': ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'counts'? whiteCount: greenCount} /></div>
+    <div onClick={()=> togglerPressed("percentages")} className={`toggler_buttonDesktop percentageButtonDesktop  ${alignment == 'percentages'? 'selected_toggler_buttonDesktop': ''}`}><img style={{ width: 27, height: 27 }} src={alignment !== 'percentages'? whitePercentage: greenPercentage} /></div>
+    <div onClick={()=> togglerPressed("counts")} className={`toggler_buttonDesktop countButtonDesktop  ${alignment == 'counts'? 'selected_toggler_buttonDesktop': ''}`}><img style={{ width: 27, height: 27 }} src={alignment !== 'counts'? whiteCount: greenCount} /></div>
   </div>
   )
 
   const inputStyle: CSSProperties = {
     width: '60px',
     height: '30px',
-    color: '#333', // Desired text color
-    backgroundColor: '#f0f0f0', // Background color
     textAlign: 'center', // Center align the input text
-    border: '1px solid #ccc', // Example border
     borderRadius: '4px', // Example border radius
     outline: 'none', // Remove default outline
     boxSizing: 'border-box', // Ensure padding and border are included in width and height
@@ -290,10 +287,7 @@ useEffect(() => {
   const CategoryInputStyle: CSSProperties = {
     width: '60px',
     height: '30px',
-    color: '#333', // Desired text color
-    backgroundColor: '#f0f0f0', // Background color
     textAlign: 'center', // Center align the input text
-    border: '1px solid #ccc', // Example border
     borderRadius: '4px', // Example border radius
     outline: 'none', // Remove default outline
     boxSizing: 'border-box', // Ensure padding and border are included in width and height
@@ -323,14 +317,13 @@ useEffect(() => {
   };
 }, []);
 return (
-    <div style={{ backgroundColor: backgroundColor }} className="containerRolePageDesktop section ">
+    <div  className="containerRolePageDesktop section ">
       <Slide enabled={framerMotionEnabled} slideFrom='left'>
       <div className="headerDivDesktop">
         <div className="headerAndTogglerDesktop">
           <h1 className='headerRolePageDesktop'>{_.upperCase(role.name)}</h1>
           <div className="togglerInfoDivDesktop">
-          <IoInformationCircleSharp style={{marginRight: 10, color:'antiquewhite'}} className='togglerInfoDesktop' size={22}/>
-
+          <IoInformationCircleSharp style={{marginRight: 10, color:contrastColor}} className='togglerInfoDesktop' size={22}/>
            {toggler}
            <Tooltip place='left' anchorSelect='.togglerInfoDesktop'>
             <div>
@@ -343,19 +336,18 @@ return (
             </div>
           </Tooltip>
           </div>
-
         </div>
-        <h4 className='subheaderRolePageDesktop'>JOB POSTINGS AMOUNT : {totalListingsCount}</h4>
+        <h4 className='subheaderRolePageDesktop'>JOB POSTINGS AMOUNT : <span className='highlighted'>{totalListingsCount}</span></h4>
         <div className="switchesDivDesktop">
-        <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
+        <Line height="1px" width="360px" color={contrastColor} radius="4px" />
         <FormGroup>
           <div data-tip data-for='tooltip-right' className="switchMultipleCategoriesDivDesktop">
             <FormControlLabel
-            control={<Switch color='warning' checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
-            style={{ color: 'antiquewhite', fontSize:'20px', marginTop:5 }}
+            className='FormControlLabelDesktop'
+            control={<Switch sx={{color:'red'}} checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
             label={aggregateSwitchElementTitle}
           />
-            <IoInformationCircleSharp style={{color:'antiquewhite'}} className='SwitchMultipleCategoriesDesktop' size={22}/>
+            <IoInformationCircleSharp style={{color:contrastColor}} className='SwitchMultipleCategoriesDesktop' size={22}/>
           <Tooltip place='right' anchorSelect='.SwitchMultipleCategoriesDesktop'>
             <div>
               <h3>Enable Multi-Category Selection</h3>
@@ -368,10 +360,10 @@ return (
             <div className="infoAndLabelAndSwitchDivDesktop">
           <FormControlLabel
             control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
-            style={{ color: 'antiquewhite', fontSize:'20px' }}
+            className='FormControlLabelDesktop'
             label={listLImitSwitchElementTitle}
           />
-          <IoInformationCircleSharp style={{color:'antiquewhite'}}  className='SwitchLimitDivDesktop' size={22}/>
+          <IoInformationCircleSharp  style={{color:contrastColor}}  className='SwitchLimitDivDesktop' size={22}/>
           </div>
           <Tooltip place='right' anchorSelect='.SwitchLimitDivDesktop'>
             <div>
@@ -386,6 +378,7 @@ return (
             onChange={handleAmountChange}
             min={1} // Ensure the input doesn't accept negative values
             max={100}
+            className='inputDesktop'
             style={inputStyle} // Apply custom styles via style attribute
           />
              </SwitchesReveal>
@@ -397,10 +390,10 @@ return (
             <div className="infoAndLabelAndSwitchDivDesktop">
             <FormControlLabel
             control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
-            style={{ color: 'antiquewhite', fontSize:'20px' }}
+            className='FormControlLabelDesktop'
             label={categoryLImitSwitchElementTitle}
           />
-          <IoInformationCircleSharp style={{color:'antiquewhite'}}  className='SwitchLimitPerCategoryDesktop' size={22}/>
+          <IoInformationCircleSharp style={{color:contrastColor}}  className='SwitchLimitPerCategoryDesktop' size={22}/>
             </div>
 
             <Tooltip place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
@@ -412,6 +405,7 @@ return (
 
           <SwitchesReveal  slideAmount={0}  enabled = {categoryLimitSwitch}>
           <input
+            className='inputDesktop'
             type='number'
             id="outlined-basic"
             value={categoryAmount == 0 ? defaultAmount : categoryAmount}
@@ -429,11 +423,12 @@ return (
 
       <div>
     </div>
-      <Line height="1px" width="360px" color={'antiquewhite'} radius="4px" />
+      <Line height="1px" width="360px" color={contrastColor} radius="4px" />
       </div>
       </Slide>
+
       <div className="descriptionDivDesktop textRolePageDesktop"><WordByWordReveal  enabled={framerMotionEnabled} speed={30} text={role.description}/> </div>
-      <Line height="0.5px" width="100%" margin='0 0 20px 0' color={'antiquewhite'} radius="4px" />
+      <Line height="0.5px" width="100%" margin='0 0 20px 0' color={contrastColor} radius="4px" />
 
       <div className="loadingDivRolePageDesktop" style={{ display: isAnimating ? 'flex' : 'none' }}>
         <div className="loadingDivInnerDesktop">

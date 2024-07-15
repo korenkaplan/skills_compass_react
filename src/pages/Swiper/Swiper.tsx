@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { backgroundColor } from '../../utils/variables';
 import './Swiper.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -38,7 +37,7 @@ const SwiperPage: React.FC<SwiperPageProps> = ({ sections }) => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: backgroundColor }} className="section main">
+    <div  className="section main">
       <div className="App">
         <Slider {...settings}>
           {sections.map((section) => (

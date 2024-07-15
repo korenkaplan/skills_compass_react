@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './TechRow.css'; // Make sure to create this CSS file to style the component
-
+import '../../utils/variables.css'
 interface TechRowProps {
   tech: string;
   count: number;
