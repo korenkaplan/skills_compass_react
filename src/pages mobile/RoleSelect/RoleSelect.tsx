@@ -1,5 +1,4 @@
 // src/components/SideMenu.tsx
-import { backgroundColor } from '../../utils/variables';
 import { Section } from '../../utils/interfaces';
 import * as React from 'react';
 import { Theme, useTheme } from '@mui/material/styles';
@@ -9,6 +8,9 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Reveal from '../../components/FramerMotion/Reveal';
 import './RoleSelect.css'
+import { IoMdArrowDropdown } from "react-icons/io";
+
+import {contrastColor, primaryBackgroundColor} from '../../utils/theme'
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -18,6 +20,9 @@ const MenuProps = {
       width: 250,
     },
   },
+  MenuListProps:{
+     disablePadding: true
+  }
 };
 
 function getStyles(name: string, selectedNames: string[], theme: Theme) {
@@ -26,6 +31,13 @@ function getStyles(name: string, selectedNames: string[], theme: Theme) {
       selectedNames.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
+        backgroundColor: primaryBackgroundColor,
+        color: contrastColor,
+        border: `1px solid ${contrastColor}`,
+        '& .MuiList-root': {
+          paddingTop: 0, // Remove top padding
+          paddingBottom: 0, // Remove bottom padding
+        },
   };
 }
 
@@ -58,14 +70,14 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
   };
 
   const selectInputStyle: React.CSSProperties = {
-    backgroundColor: 'antiquewhite',
-    color: backgroundColor,
-    // border: '12px solid red',
+    backgroundColor: primaryBackgroundColor,
+    color: contrastColor,
+    border: `1px solid ${contrastColor}`,
     width: '100%',
   };
 
   return (
-    <div style={{ backgroundColor: backgroundColor }} className="section main">
+    <div  className="section main">
       <div className='roleSelectContentMobile'>
       <FormControl sx={{ m: 1, width: '90%', }}>
       <Reveal  className='RevealSelectRoleMobile'>
@@ -77,10 +89,12 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
           onChange={handleChange}
           input={<OutlinedInput label="Role" />}
           MenuProps={MenuProps}
+          IconComponent={()=> <IoMdArrowDropdown size={35}/>}
           sx={selectInputStyle}
         >
           {sections.map((section) => (
             <MenuItem
+
               key={section.label}
               value={section.label}
               style={getStyles(section.label, selectedNames, theme)}

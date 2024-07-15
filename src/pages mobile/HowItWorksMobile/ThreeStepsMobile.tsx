@@ -4,23 +4,15 @@ import Lottie from 'lottie-react';
 import pagesAnimation from '../../assets/animations/pages.json';
 import robotScans from '../../assets/animations/robotScan.json';
 import legoAnimation from '../../assets/animations/Lottie Lego.json';
-import { backgroundColor } from '../../utils/variables';
 import OneDigit from '../../assets/digits/icons8-1-50.png';
 import TwoDigit from '../../assets/digits/icons8-2-50.png';
 import ThreeDigit from '../../assets/digits/icons8-3-50.png';
 import Slide from '../../components/FramerMotion/Slide';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
+import StepNumber from '../../components/StepNumber/StepNumber';
+import Reveal from '../../components/FramerMotion/Reveal';
 
 const ThreeStepsMobile: React.FC = () => {
-const digitSize = 50
-
-
-
-  const digitStyle = {
-    height: `${digitSize}px`,
-    width: `${digitSize}px`,
-    margin:' 0 0 20px 0'
-  };
  const stepTextStyle:CSSProperties = {
   fontSize:'17px',
  }
@@ -79,15 +71,21 @@ margin: '0 0 50px 0',
 
 }
   return (
-    <div style={{ backgroundColor: backgroundColor }} className="three-steps">
+    <div  className="three-steps">
       <div className="steps-containerMobile">
         {
           steps.map((step, index) => (
             < div style={stepWrapperStyle}>
+
+
+
                <div className="stepMobile">
+                <Reveal>
+                <StepNumber size={50} number={step.key}/>
+                </Reveal>
+               <div className="step-content">
               <Slide slideFrom={index % 2 == 0 ? 'left' : 'right'} amount={0.3} >
-               <div className="step-numberMobile" style={imageContainerStyle}>
-                <img  src={step.img} style={digitStyle} alt="digit" />
+                <div className="step-contentMobile" style={imageContainerStyle}>
                 <Lottie animationData={step.lottie} loop={true} className='lottieAnimationThreeSteps' style={step.styleObject} />
               </div>
               </Slide>
@@ -95,6 +93,7 @@ margin: '0 0 50px 0',
               <h2>{step.header}</h2>
               {step.text}
               </ItemByItemReveal>
+              </div>
             </div>
           </div>
           ))

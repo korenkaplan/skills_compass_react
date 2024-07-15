@@ -5,7 +5,7 @@ import '../../utils/variables.css'
 
 interface PageProps {
     size: number
-    number: number
+    number: number | string
     fontSize?: number
 }
 

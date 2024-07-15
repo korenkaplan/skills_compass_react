@@ -1,7 +1,6 @@
 // src/components/SideMenu.tsx
 import React, { CSSProperties } from 'react';
 import './HowItWorksMobile.css'
-import { backgroundColor } from '../../utils/variables'
 import ThreeStepsMobile from './ThreeStepsMobile';
 import FutureUpgradesMobile from './FutureUpgradesMobile';
 import Line from '../../components/Line/Line';
@@ -9,7 +8,7 @@ import jobDescriptionhighlited from '../../assets/images/Job description highlit
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
-
+import {contrastColor, primaryHeaderColor, textColor} from '../../utils/theme'
 
 interface Category {
   name: string;
@@ -53,7 +52,7 @@ const row3: CategoryRow = { columns: [role, methodologies] }
 const HowItWorksMobile: React.FC = () => {
   const headerStyle: CSSProperties = {
     fontSize: '35px',
-
+    color:primaryHeaderColor,
   }
   const spreadRows = (rows: CategoryRow[]) => {
     let delayInSeconds = 3;
@@ -77,12 +76,12 @@ const HowItWorksMobile: React.FC = () => {
     ));
   };
   return (
-    <div style={{ backgroundColor: backgroundColor, padding: 50, color: 'white' }} className="section OverviewContainerDesktop heightAndBorder  " >
+    <div style={{ padding: 50 }} className="section OverviewContainerDesktop heightAndBorder  " >
 
       <>
         <ItemByItemReveal customStyle={{ textAlign: 'center' }} speed={20} >
           <h1 style={headerStyle} >Workflow 🛠️</h1>
-          <h2>Discover our  3-step process for delivering the most relevant and reliable data on the internet</h2>
+          <h2 style={{color:textColor}} >Discover our  3-step process for delivering the most relevant and reliable data on the internet</h2>
         </ItemByItemReveal>
         <ThreeStepsMobile />
       </>
@@ -108,7 +107,7 @@ const HowItWorksMobile: React.FC = () => {
 
         </div>
       </div>
-      <Line margin='50px 0' height='1px' width='80%' color='white' />
+      <Line margin='50px 0' height='1px' width='80%' color={contrastColor} />
       <>
         <ItemByItemReveal customStyle={{ textAlign: 'center' }} speed={20} >
           <h1 style={headerStyle}>What's Next? 🚀</h1>

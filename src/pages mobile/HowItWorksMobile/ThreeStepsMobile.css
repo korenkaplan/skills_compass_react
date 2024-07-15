@@ -54,3 +54,8 @@ svg {
   align-items: center;
 }
 
+.stepMobile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

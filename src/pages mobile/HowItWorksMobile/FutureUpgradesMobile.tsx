@@ -45,11 +45,12 @@ const futureUpgradesList: FutureUpgrade[] = [
 ]
 
   return (
-    <div style={{backgroundColor:backgroundColor}} className="three-steps">
+    <div  className="three-steps">
     <div className="steps-containerMobile">
         {
             futureUpgradesList.map((item, index )=> (
-                <div className="stepMobile">
+                <Slide  amount={0.3}>
+                <div className="step-content">
               <Slide slideFrom={index % 2 == 0 ? 'left' : 'right'} amount={0.3} >
                 <div className="step-number">
                     <Lottie animationData={item.lottie} loop={true} className='FutureUpgradeMobile'  style={item.styleObject} />
@@ -60,6 +61,8 @@ const futureUpgradesList: FutureUpgrade[] = [
                 {item.text}
              </ItemByItemReveal>
             </div>
+                </Slide>
+
             ))
         }
 
