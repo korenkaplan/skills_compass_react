@@ -16,11 +16,7 @@ const ThreeSteps: React.FC = () => {
     height: '200px',
   };
 
-  const digitStyle = {
-    height: '60px',
-    width: '60px',
-    margin:' 0 0 20px 0'
-  };
+
 
   const imageContainerStyle: CSSProperties = {
     display: 'flex',

@@ -9,7 +9,7 @@ interface Props {
 
 
 
-export default function NavbarItemsHover({ delay = 0, duration = 0.3, children, scaleAmount = 1.3}: Props) {
+export default function NavbarItemsHover({ delay = 0, duration = 0.3, children}: Props) {
 
     return (
         <motion.div

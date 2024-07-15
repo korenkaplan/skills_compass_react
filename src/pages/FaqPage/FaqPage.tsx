@@ -1,5 +1,5 @@
 // src/components/SideMenu.tsx
-import React, { CSSProperties, useState } from 'react';
+import React, {useState } from 'react';
 import './FaqPage.css'
 import '../../utils/variables.css'
 import Accordion from '@mui/material/Accordion';
@@ -25,8 +25,6 @@ const FaqPage: React.FC<FaqPageProps> = () => {
   const [expandedIndices, setExpandedIndices] = useState<number[]>([]);
 
   let globalIndex = 13;
-  const backgroundHoveredColor = '#086156'
-  const textColorHovered = 'antiquewhite';
   const uniqueIndex = 100
   const generalSectionQuestionsList: FaqAccordion[] = [
     {

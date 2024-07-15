@@ -14,7 +14,7 @@ import { useMediaQuery } from 'react-responsive';
 import Slide from '../FramerMotion/Slide';
 import Reveal from '../FramerMotion/Reveal';
 import NavbarItemsHover from '../FramerMotion/NavbarItemsHover';
-import {navbarItemsColor, contrastColor, textColor} from '../../utils/theme'
+import {textColor} from '../../utils/theme'
 import { Drawer } from '@mui/material';
 
 interface TemporaryDrawerProps {
@@ -29,10 +29,8 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
   const [date, setDate] = useState<string>();
   const [isFetched, setIsFetched] = useState<boolean>(false);
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
-  const [selectedSection, setSelectedSection] = useState<string>(null);
 
   const handleClick = (id: string) => {
-    setSelectedSection(id)
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
