@@ -25,7 +25,6 @@ const percentOfScreenWidth = 0.40
 const [logoWidth, setMaxLineWidth] = useState(calculateMaxLineWidth(percentOfScreenWidth));
 const [currentIndex, setCurrentIndex] = useState(0);
 const logoText: string = 'SKILLS COMPASS'
-const textColor = 'antiquewhite'
 const waiting_titles: string[] = [
   'Please Be Patient I\'m Using Free Hosting...',
   'Hang tight! Good things come to those who wait...',

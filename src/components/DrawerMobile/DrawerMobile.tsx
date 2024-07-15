@@ -9,6 +9,8 @@ import { Section } from '../../utils/interfaces';
 import logo from '../../assets/logo/logo ellow ribbon with text.png';
 import './DrawerMobile.css'
 import axios from 'axios';
+import {navbarBackgroundColor, contrastColor} from '../../utils/theme'
+import NavbarItemsHover from '../../components/FramerMotion/NavbarItemsHover';
 interface DrawerMobileProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
@@ -62,7 +64,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   }, [sections]);
 
   const DrawerList = (
-    <Box className='drawer' sx={{ width: 250, backgroundColor: '#1E2028' }} role="presentation">
+    <Box className='drawer' sx={{ width: 250, backgroundColor:navbarBackgroundColor, border:`1px solid ${contrastColor}`, overflowY:'hidden' }} role="presentation">
       <div>
         <div className="logoDiv">
           <img src={logo} alt="Logo" style={{ width: '60%' }} />
@@ -70,21 +72,18 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
         <Divider sx={{ backgroundColor: 'white' }} />
         <div className="firstSection">
         {notRolesSectionsList.length > 0 && (
+          <NavbarItemsHover>
           <ListItem
             key={notRolesSectionsList[0].id}
             disablePadding
             onClick={() => handleClick(notRolesSectionsList[0].id)}
-            sx={{
-              '&:hover': {
-                backgroundColor: 'gray',
-              }
-            }}
             className={'li'}
           >
             <ListItemButton >
               <ListItemText primary={notRolesSectionsList[0].label} />
             </ListItemButton>
           </ListItem>
+          </NavbarItemsHover>
         )}
         </div>
 

@@ -1,7 +1,6 @@
 // src/components/SideMenu.tsx
 import React, { useState } from 'react';
 import './FaqPageMobile.css'
-import { backgroundColor } from '../../utils/variables'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -16,6 +15,8 @@ import { FaLinkedin } from "react-icons/fa";
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
+import {primaryHeaderColor, secondaryBackgroundColor,primaryBackgroundColor, buttonsBackgroundColor, textColor,buttonTextColor} from '../../utils/theme.ts'
+
 interface FaqPageProps {
 
 }
@@ -25,8 +26,6 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
   const [expandedIndices, setExpandedIndices] = useState<number[]>([]);
 
   let globalIndex = 13;
-  const backgroundHoveredColor = '#086156'
-  const textColorHovered = 'antiquewhite';
   const uniqueIndex = 100
   const generalSectionQuestionsList: FaqAccordion[] = [
     {
@@ -193,18 +192,20 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
               onMouseLeave={handleMouseLeave}
             >
               <AccordionSummary
-                expandIcon={<AiFillCaretDown />}
+                expandIcon={<AiFillCaretDown color={hoveredIndex === currentIndex || isExpanded? primaryBackgroundColor: buttonsBackgroundColor}/>}
                 aria-controls={`panel${currentIndex + 1}-content`}
                 id={`panel${currentIndex + 1}-header`}
                 style={{
-                  backgroundColor: isExpanded ? backgroundHoveredColor : (hoveredIndex === currentIndex ? backgroundHoveredColor : 'white'),
-                  color: hoveredIndex === currentIndex ? textColorHovered : isExpanded ? textColorHovered : 'black'
+                  backgroundColor: isExpanded ? buttonsBackgroundColor : (hoveredIndex === currentIndex ? buttonsBackgroundColor : primaryBackgroundColor),
+
+                  color: hoveredIndex === currentIndex ? primaryBackgroundColor : isExpanded ? buttonTextColor : buttonsBackgroundColor,
+                  border:`1px solid ${hoveredIndex !== currentIndex ? buttonsBackgroundColor: buttonTextColor}`,
                 }}
               >
                 <Typography ><strong>{accordion.question}</strong></Typography>
               </AccordionSummary>
               <AccordionDetails
-                style={{ backgroundColor: 'antiquewhite' }}
+               style={{backgroundColor: secondaryBackgroundColor, color: textColor}}
               >
                 <Typography>
                   {accordion.answer}
@@ -217,7 +218,7 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
     </div>
   );
   return (
-    <div style={{ backgroundColor: backgroundColor }} className="section  containerFaq heightAndBorder" >
+    <div className="section  containerFaq heightAndBorder" >
       <div className="headerDivFaq">
         <ItemByItemReveal>
           <h3 className='headerFaqMobile'>Frequently Asked Questions</h3>
@@ -227,7 +228,7 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
         <div className="general">
           <Slide slideFrom='left'>
             <div className="headerIconDiv">
-              <FaQuestionCircle size={20} style={{ margin: '0 5px 0 0' }} />
+              <FaQuestionCircle size={20} style={{ margin: '0 5px 0 0' , color:primaryHeaderColor}} />
               <h2>General</h2>
             </div>
           </Slide>
@@ -255,17 +256,19 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
               onMouseLeave={handleMouseLeave}
             >
               <AccordionSummary
-                expandIcon={<AiFillCaretDown />}
+                expandIcon={<AiFillCaretDown color={hoveredIndex === uniqueIndex || expandedIndices.includes(uniqueIndex)? primaryBackgroundColor: buttonsBackgroundColor} />}
                 aria-controls={`panel${uniqueIndex}-content`}
                 id={`panel${uniqueIndex}-header`}
                 style={{
-                  backgroundColor: expandedIndices.includes(uniqueIndex) ? backgroundHoveredColor : (hoveredIndex === uniqueIndex ? backgroundHoveredColor : 'white'),
-                  color: hoveredIndex === uniqueIndex ? textColorHovered : expandedIndices.includes(uniqueIndex) ? textColorHovered : 'black'
+                  backgroundColor:  expandedIndices.includes(uniqueIndex) ? buttonsBackgroundColor : (hoveredIndex === uniqueIndex ? buttonsBackgroundColor : primaryBackgroundColor),
+                  color: hoveredIndex === uniqueIndex ? primaryBackgroundColor : expandedIndices.includes(uniqueIndex) ? buttonTextColor : buttonsBackgroundColor,
+                  border:`1px solid ${hoveredIndex !== uniqueIndex ? buttonsBackgroundColor: buttonTextColor}`,
                 }}
               >
                 <Typography><strong>How do you ensure the accuracy of the job listings?</strong></Typography>
               </AccordionSummary>
               <AccordionDetails
+               style={{backgroundColor: secondaryBackgroundColor, color: textColor}}
               >
                 {displayFaqQuestionsSection(innerDataCollectionSectionQuestionsList)}
                 <p>To view in more details you welcome to visit my github reopsitories:</p>

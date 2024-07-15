@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
 import React from 'react';
 import './ContactFooterMobile.css';
-import { resumeDownloadLink, sideMenuBackgroundColor } from '../../utils/variables';
+import { resumeDownloadLink } from '../../utils/variables';
 import linkedin from '../../assets/icons/linkedin.png'
 import github from '../../assets/icons/github.png'
 import whatsapp from '../../assets/icons/whatsapp.png'
@@ -14,7 +14,7 @@ import Reveal from '../../components/FramerMotion/Reveal';
 const ContactFooterMobile: React.FC = () => {
 
   return (
-        <div style={{ backgroundColor: sideMenuBackgroundColor }} className={"section aboutMeContainerMobile"}>
+        <div  className={"section aboutMeContainerMobile"}>
           <div className="communicationAboutMeDivMobile">
           <div style={{display:'flex', flexDirection:'column'}}>
           <ItemByItemReveal>

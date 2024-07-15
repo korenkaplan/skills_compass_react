@@ -4,7 +4,6 @@ import Lottie from 'lottie-react';
 import moreRoles from '../../assets/animations/moreJobs.json'
 import graphs from '../../assets/animations/graphs.json'
 import roadmap from '../../assets/animations/roadmap.json'
-import {backgroundColor} from '../../utils/variables'
 import Slide from '../../components/FramerMotion/Slide';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 const FutureUpgradesMobile: React.FC = () => {

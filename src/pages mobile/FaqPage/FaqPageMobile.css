@@ -11,9 +11,13 @@
     justify-content: center;
     align-items: center;
 }
+.containerFaq h2 {
+  color: var(--main-header-color);
 
+}
 .headerFaqMobile{
   font-size: 20px;
+  color: var(--main-header-color);
 }
 .headerDivFaq{
     display: flex;

@@ -9,9 +9,7 @@ import _ from 'lodash';
 import axios from 'axios';
 import TemporaryDrawer from '../components/Drawer/Drawer';
 import { useMediaQuery } from 'react-responsive';
-import { backgroundColor } from '../utils/variables';
 import SwiperPage from './Swiper/Swiper';
-import menuPng from '../assets/icons/menu_green.png'
 import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
 import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
 import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
@@ -20,15 +18,16 @@ import ContactInformationMobile from '../pages mobile/ContactFooterMobile/Contac
 import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
 import Overview from './OverviewSection/OverviewPage';
 import HowItWorks from './HowItWorks/HowItWorks';
-import linkedin from '../assets/icons/linkedin black.png'
-import github from '../assets/icons/github black.png'
 import ribbon from '../assets/icons/icons8-ribbon-50.png'
 import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
 import ContactFooter from './ContactFooter/ContactFooter';
 import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
 import ItemByItemReveal from '../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../components/FramerMotion/Reveal';
-
+import { RxHamburgerMenu } from "react-icons/rx";
+import {contrastColor} from '../utils/theme'
+import { CiLinkedin } from "react-icons/ci";
+import { FaGithub } from "react-icons/fa";
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap((role, index) => {
     const roleProps = { role: role, rolesFetched: rolesFetched };
@@ -59,7 +58,7 @@ const MainPage: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(isMobile ? false : true);
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
   const headerStyle: CSSProperties = {
-    color: backgroundColor,
+    color: contrastColor,
     fontSize: '20px',
     marginLeft: '20px',
   };
@@ -95,7 +94,6 @@ const MainPage: React.FC = () => {
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorksMobile },
       { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },
       { id: 'overviewPage', isRole: false, label: 'Overview', component: OverviewPageMobile },
       { id: 'RoleSelect', isRole: false, label: 'Roles', component: () => <RoleSelect sections={convertRolesToSections(roles, rolesFetched, true)} /> },
@@ -123,35 +121,33 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-      <div className="appbar" style={{ border: `1px solid ${backgroundColor}`, display: isMobile ? 'flex' : 'none' }} onClick={() => toggleDrawer(true)}>
+      <div className="appbar" style={{ display: isMobile ? 'flex' : 'none' }} >
         <div style={burgerHeaderStyle}>
-          <div className="burgerButtonDiv" style={{ border: `1px solid ${backgroundColor}` }} onClick={() => toggleDrawer(true)}>
-            <img src={menuPng} style={{ width: '30px', color: backgroundColor }} alt="" />
-          </div>
+          <RxHamburgerMenu className='burgerMenuIcon' size={30} onClick={() => toggleDrawer(true)} />
           <ItemByItemReveal>
             <p style={headerStyle}>Skills Compass</p>
           </ItemByItemReveal>
         </div>
 
-        <div className="icons">
+        <div  className="iconsdiv">
           <Reveal>
-            <div className="iconWithATag">
+            <div  className="iconWithATag">
               <a className='' href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
                 <img src={ribbon} alt="My Image" className="clickableImageDesktop" />
               </a>
             </div>
           </Reveal>
           <Reveal delay={0.3}>
-            <div className="iconWithATag">
+            <div  className="iconWithATag">
               <a className='' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-                <img src={linkedin} alt="My Image" className="clickableImageDesktop" />
+              <CiLinkedin size={30}   color={contrastColor}/>
               </a>
             </div>
           </Reveal>
           <Reveal delay={0.6}>
-            <div className="iconWithATag">
+            <div   className="iconWithATag">
               <a className='' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-                <img src={github} alt="My Image" className="clickableImageDesktop" />
+              <FaGithub  size={30}  color={contrastColor}/>
               </a>
             </div>
           </Reveal>
