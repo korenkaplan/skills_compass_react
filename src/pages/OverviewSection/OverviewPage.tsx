@@ -1,12 +1,14 @@
 // src/components/SideMenu.tsx
 import React, { CSSProperties, useState } from 'react';
 import './OverViewPage.css'
+import '../../utils/variables.css'
 import { backgroundColor, } from '../../utils/variables'
-import logo from '../../assets/logo/logo.png'
+import {contrastColor} from '../../utils/theme'
+import logo from '../../assets/logo/logo ellow ribbon with text.png'
 import '../../CSS/RotatingImageClick.css'
 import bell from '../../assets/icons/bell.png'
 import Line from '../../components/Line/Line';
-import translateIcon from '../../assets/icons/tranaslteIconForButton.png'
+import translateIcon from '../../assets/iconsDark/translate.png'
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
 import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
 import Reveal from '../../components/FramerMotion/Reveal';
@@ -40,10 +42,10 @@ const Overview: React.FC = () => {
 
         </Reveal>
         <Reveal slidingSquare={showSquare}>
-          <p><strong>You've Come To The Right Place!</strong> 🚀</p>
+          <h3>You've Come To The Right Place! 🚀</h3>
 
         </Reveal>
-        <Line height='1px' width='80%' color={backgroundColor} />
+        <Line height='2px' width='80%' color={contrastColor} />
         <Reveal slidingSquare={showSquare}>
           <p>Our mission is to guide you through the most in-demand technologies in Israel's hi-tech job market. 🌟</p>
 
@@ -53,12 +55,12 @@ const Overview: React.FC = () => {
 
         </Reveal>
         <Reveal slidingSquare={showSquare}>
-          <p><strong>What Makes Us Unique ?</strong> 🔍</p>
+          <h3>What Makes Us Unique ? 🔍</h3>
 
         </Reveal>
-        <Line height='1px' width='80%' color={backgroundColor} />
+        <Line height='2px' width='80%' color={contrastColor} />
         <Reveal slidingSquare={showSquare}>
-          <p>All our data is extracted straight from analyzing <strong>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google Jobs</strong> and from companies websites.
+          <p>All our data is extracted straight from analyzing <strong className='highlighted'>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google-Jobs</strong> and from companies websites.
           </p>
         </Reveal>
       </div>
@@ -126,13 +128,13 @@ const Overview: React.FC = () => {
 
 
   return (
-    <div style={{ backgroundColor: backgroundColor, padding: 50 }} className="section OverviewContainerDesktop heightAndBorder  " >
+    <div style={{  padding: 50 }} className="section OverviewContainerDesktop heightAndBorder  " >
       <div className="textContainerDesktop " dir={isRotated ? 'rtl' : 'ltr'}>
         <Reveal>
           <div className="containerHeaderDesktop">
-            <h2 className='headerOverviewPageDesktop'>{header}</h2>
+            <h2 className='headerOverviewPageDesktop'>{header}<strong className='highlighted'>.</strong></h2>
             <ScaleOnTapButtonWrapper>
-              <div className='translateButtonDivDesktop'
+              <div className='custom-button translateButtonDivDesktop'
                 onClick={handleRotate}
               >
                 <p className='translateButtonTitleDesktop'> {isRotated ? 'English' : 'עברית'}</p>
@@ -150,7 +152,7 @@ const Overview: React.FC = () => {
           <p className='mainTextDesktop'>{mainText}</p>
           <Reveal >
             <ScaleOnTapButtonWrapper>
-              <div className='OverviewPressHereDesktop' ><div className='pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorks')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div></div>
+              <div className='OverviewPressHereDesktop ' ><div className='custom-button pressHereButtonDesktopOverview'  onClick={() => document.getElementById('howItWorks')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div></div>
             </ScaleOnTapButtonWrapper>
           </Reveal>
 

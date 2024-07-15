@@ -7,7 +7,6 @@ import '../../CSS/RotatingImage.css'
 import LinearProgress from '@mui/material/LinearProgress';
 import { calculateMaxLineWidth } from '../../utils/functions'
 import Lottie from "lottie-react";
-import scrollAnimation from '../../assets/animations/scroll_down_animation.json'
 import { TypeAnimation } from 'react-type-animation';
 import _ from 'lodash'
 import getStartedLottie from '../../assets/animations/scroll down animation black.json'

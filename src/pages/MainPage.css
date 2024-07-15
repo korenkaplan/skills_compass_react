@@ -87,6 +87,16 @@
 
 
   }
+  .custom-button{
+    background-color: var(--buttons-background-color);
+    color: var(--buttons-text-color);
+    border-radius: 10px;
+    padding: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
   .sectionsWrapperDesktop{
     overflow-y: scroll;
   }

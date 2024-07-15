@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--text-color)
 }
 .overviewInnerHeaderDesktop{
   display: flex;
@@ -11,30 +12,14 @@
   align-items: center;
 }
 .translateButtonDivDesktop{
-  display: flex;
-  align-items: center;
   justify-content: space-around;
-  border: 3px solid black;
-  padding: 0 5px;
-  border-radius: 5px;
   cursor: pointer;
-  color: antiquewhite;
-  background-color: #357b92;
   height: 35px;
   width: 100px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add outer shadow */
+  box-shadow: 0px 2px 4px var(--secondary-background-color); /* Add outer shadow */
 
 }
 .pressHereButtonDesktopOverview{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  border: 3px solid black;
-  padding: 0 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: antiquewhite;
-  background-color: #357b92;
   height: 35px;
   width: 200px;
   position: relative;
@@ -57,8 +42,11 @@
   height: 150px;
 }
 .translateIconDesktop{
-width: 30px;
-height: 30px;
+width: 24px;
+height: 24px;
+background-color: var(--buttons-text-color);
+border-radius: 50%;
+padding:2px
 }
 .topDesktop {
   display: flex;
@@ -68,7 +56,20 @@ height: 30px;
   width: 70%;
   margin: auto;
   margin-top: 20px;
+}
+.topDesktop p {
+  color: var(--text-color)
 
+}
+.topDesktop h2 {
+  color: var( --main-header-color)
+}
+.topDesktop h3 {
+  color: var( --main-header-color);
+  font-size: 21px;
+}
+.topDesktop strong {
+  color:var( --contrast-color) ;
 }
 .scrollDownAnimationMouseDesktop {
   border-radius: 100px;
@@ -78,12 +79,12 @@ height: 30px;
 }
 
 .scrollDownAnimationMouseDesktop:hover {
-  box-shadow: 0px 0px 5px 3px rgba(0, 10, 0, 0.64);
+  box-shadow: 0px 0px 5px 3px var(--contrast-color);
   transition: box-shadow 1s ease-in-out;
 }
 
 .textContainerDesktop {
-    background-color: antiquewhite;
+    color: var(--text-color);
     border-radius: 20px;
     max-width: 1000px;
     width: 50%;
@@ -91,9 +92,9 @@ height: 30px;
     flex-direction: column;
     text-align: center;
     padding: 20px 20px 20px 20px;
-    box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
-    -webkit-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
-    -moz-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
+    box-shadow: -1px 6px 30px 4px var(--contrast-color);
+    -webkit-box-shadow: -1px 6px 30px 4px var(--contrast-color);
+    -moz-box-shadow: -1px 6px 30px 4px var(--contrast-color);
   }
 
   .containerHeaderDesktop {
@@ -105,7 +106,7 @@ height: 30px;
   }
 
   .headerOverviewPageDesktop {
-    color: #253439;
+    color: var(--main-header-color);
     font-family: 'Inknut Antiqua', serif;
     font-size: xx-large;
     margin: 0;
@@ -153,6 +154,7 @@ height: 30px;
   }
   .questionsDiv{
     height: 120px;
+    color: var(--main-header-color);
   }
 
   @media (max-width: 768px) {
