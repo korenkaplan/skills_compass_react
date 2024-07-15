@@ -79,7 +79,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
 
             >
               <ListItemButton
-                sx={{ textAlign: 'center', justifyContent: 'center', color: section.id == selectedSection ? contrastColor : textColor }} // Added justifyContent
+                sx={{ textAlign: 'center', justifyContent: 'center', color: textColor }} // Added justifyContent
               >
                 <ListItemText primary={section.label} />
               </ListItemButton>
