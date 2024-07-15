@@ -11,7 +11,6 @@
 
   }
   .headerLandingPageMobile{
-    color: antiquewhite;
     font-family: 'Inknut Antiqua', serif;
     font-size: 18px;
     text-align: center;
@@ -20,7 +19,6 @@
   .loadingDiv{
     text-align: center;
     height:'300px';
-    color:'antiquewhite';
   }
   .fade-text {
     opacity: 0;
@@ -43,7 +41,6 @@
   }
 
   .headerLandingPage {
-    color: antiquewhite;
     font-family: 'Inknut Antiqua', serif;
     text-align: center;
     width: 80%;
@@ -53,13 +50,11 @@
 
   }
   .logoHeader {
-    color: antiquewhite;
     font-family: 'Inknut Antiqua', serif;
     text-align: center;
     font-size: 30px;
   }
   .visitors-div {
-    background-color: antiquewhite;
     position: fixed; /* Change position to fixed */
     top: 0;
     right: 0;
@@ -90,8 +85,8 @@ right: 20px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: 'red';
   padding: 100px 0 15px 0;
+  color: var(--text-color);
 }
 .textContainerLandingPage{
   display: flex;
@@ -102,9 +97,9 @@ right: 20px;
 .actionButtonMobile {
   display: flex;
   align-items: center; /* Align items vertically */
-  background-color: blueviolet;
+  background-color: var(--buttons-background-color);
+  color: var(--buttons-text-color);
   width: 150px;
-  color: antiquewhite;
   padding: 0 15px; /* Add padding for spacing */
   border-radius: 20px;
   justify-content: space-between;

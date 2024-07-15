@@ -1,17 +1,18 @@
 // src/components/SideMenu.tsx
 import React, { useState, useEffect } from 'react';
 import './LandingPageMobile.css'
-import {backgroundColor} from '../../utils/variables'
+import '../../utils/variables.css'
 import logoCropped from '../../assets/logo/logoCropped-removebg-preview.png'
 import '../../CSS/RotatingImage.css'
 import Line from '../../components/Line/Line'
 import LinearProgress from '@mui/material/LinearProgress';
 import {calculateMaxLineWidth} from '../../utils/functions'
 import Lottie from "lottie-react";
-import scrollAnimation from '../../assets/animations/scroll_down_animation.json'
+import scrollAnimation from '../../assets/animations/scroll down animation black.json'
 import Slide from '../../components/FramerMotion/Slide';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
+import {contrastColor} from '../../utils/theme'
 import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
 interface LandingPageProps {
   isLoading: boolean;
@@ -67,7 +68,7 @@ useEffect(() => {
 
   return (
     <div className="section main heightAndBorder" >
-      <div className="mainContainerLandingPage" style={{backgroundColor:backgroundColor}}>
+      <div className="mainContainerLandingPage" >
         <Slide>
       <div className="image-container">
         <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo " className="rotatingImage"/>
@@ -76,7 +77,7 @@ useEffect(() => {
       <ItemByItemReveal>
       <div className="textContainerLandingPage">
         <h1  className='logoHeader'>{logoText}</h1>
-        <Line height="5px" width="175px" color={textColor} radius="4px" />
+        <Line height="5px" width="175px" color={contrastColor} radius="4px" />
         <h2 className='headerLandingPageMobile'>Discover the <strong className='highlighted'>Most Wanted </strong> Skills  for your job in  Israel's High-Tech industry</h2>
       </div>
       </ItemByItemReveal>

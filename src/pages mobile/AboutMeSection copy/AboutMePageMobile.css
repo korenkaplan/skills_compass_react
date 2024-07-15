@@ -32,19 +32,7 @@
   box-sizing: border-box;
 
 }
-.textContainer {
-  background-color: antiquewhite;
-  border-radius: 20px;
-  width: 100%;
-  min-height: 700px;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  padding: 20px 10px 20px 25px;
-  box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
-  -webkit-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
-  -moz-box-shadow: -1px 6px 64px 16px rgba(0,0,0,0.64);
-}
+
 .mainTextDivAboutMeMobile pre {
   max-width: 90%; /* Ensure <pre> tag respects max-width of .textContainer */
   white-space: pre-wrap; /* Wrap long lines in <pre> content */

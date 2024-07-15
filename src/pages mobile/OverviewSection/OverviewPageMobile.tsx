@@ -1,10 +1,10 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 import './OverviewPageMobile.css';
 import { backgroundColor } from '../../utils/variables';
-import logo from '../../assets/logo/logo.png';
+import logo from '../../assets/logo/logo wit yellow ribbon.png';
 import '../../CSS/RotatingImageClick.css';
-import translateIcon from '../../assets/icons/tranaslteIconForButton.png'
-
+import translateIcon from '../../assets/iconsDark/translate.png'
+import {contrastColor} from '../../utils/theme'
 import Line from '../../components/Line/Line';
 import bell from '../../assets/icons/bell.png'
 import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
@@ -42,7 +42,7 @@ const OverviewPageMobile: React.FC = () => {
           <p><strong>You've Come To The Right Place!</strong> 🚀</p>
 
         </Reveal>
-        <Line height='1px' width='80%' color={backgroundColor} />
+        <Line height='2px' width='80%' color={contrastColor} />
 
         <Slide slideFrom='left'>
           <p>Our mission is to guide you through the most in-demand technologies in Israel's hi-tech job market. 🌟</p>
@@ -56,7 +56,7 @@ const OverviewPageMobile: React.FC = () => {
           <p><strong>What Makes Us Unique ?</strong> 🔍</p>
 
         </Reveal>
-        <Line height='1px' width='80%' color={backgroundColor} />
+        <Line height='2px' width='80%' color={contrastColor} />
 
         <Slide slideFrom='left'>
           <p>All our data is extracted straight from analyzing <strong>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google Jobs</strong> and from companies websites.</p>
@@ -127,23 +127,22 @@ const OverviewPageMobile: React.FC = () => {
   }, []);
   const questionsRowsStyle: CSSProperties = {
     height: '100px',
-    color:' black',
   };
   const getScrollDownAnimationStyle = (): CSSProperties => ({
     height: '150px',
   });
   return (
-    <div style={{ backgroundColor: backgroundColor }} className="section container heightAndBorder">
-      <div className="textContainer" dir={isRotated ? 'rtl' : 'ltr'}>
+    <div className="section container heightAndBorder">
+      <div className="textContainerMobile" dir={isRotated ? 'rtl' : 'ltr'}>
         <Reveal>
           <div className="containerHeader">
             <h2 className='headerOverviewPage'>{header}</h2>
             <ScaleOnTapButtonWrapper>
-              <div className='translateButtonDivMobile'
+              <div className='custom-button translateButtonDivMobile'
                 onClick={handleRotate}
               >
                 <p className='translateButtonTitleDesktop'> {isRotated ? 'English' : 'עברית'}</p>
-                <img className='translateIconDesktop' src={translateIcon} alt="" />
+                <img className='translateIconMobile' src={translateIcon} alt="" />
               </div>
             </ScaleOnTapButtonWrapper>
           </div>
@@ -151,7 +150,7 @@ const OverviewPageMobile: React.FC = () => {
         <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
           <Reveal >
             <div style={questionsRowsStyle} dir='ltr'>
-              <TypeQuestionAnimation fontSize={20} questions={questions} currentYear={currentYear} />
+              <TypeQuestionAnimation  fontSize={20} questions={questions} currentYear={currentYear} />
             </div>
           </Reveal>
 
@@ -167,7 +166,7 @@ const OverviewPageMobile: React.FC = () => {
         </div>
         <Reveal >
         <div className="imageRow">
-          <p style={{ color: backgroundColor }}>{bottomWords}</p>
+          <p >{bottomWords}</p>
           <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='none' styleProps={getScrollDownAnimationStyle()} />
           <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
         </div>

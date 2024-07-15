@@ -42,7 +42,7 @@ const Overview: React.FC = () => {
 
         </Reveal>
         <Reveal slidingSquare={showSquare}>
-          <h3>You've Come To The Right Place! 🚀</h3>
+          <p><strong>You've Come To The Right Place! 🚀</strong></p>
 
         </Reveal>
         <Line height='2px' width='80%' color={contrastColor} />
@@ -55,7 +55,7 @@ const Overview: React.FC = () => {
 
         </Reveal>
         <Reveal slidingSquare={showSquare}>
-          <h3>What Makes Us Unique ? 🔍</h3>
+          <p><strong>What Makes Us Unique ? 🔍</strong></p>
 
         </Reveal>
         <Line height='2px' width='80%' color={contrastColor} />
