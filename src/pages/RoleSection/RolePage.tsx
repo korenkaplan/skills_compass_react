@@ -344,7 +344,7 @@ return (
           <div data-tip data-for='tooltip-right' className="switchMultipleCategoriesDivDesktop">
             <FormControlLabel
             className='FormControlLabelDesktop'
-            control={<Switch sx={{color:'red'}} checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
+            control={<Switch  checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
             label={aggregateSwitchElementTitle}
           />
             <IoInformationCircleSharp style={{color:contrastColor}} className='SwitchMultipleCategoriesDesktop' size={22}/>

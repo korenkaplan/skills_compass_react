@@ -13,7 +13,11 @@
   flex-direction: column;
   text-align: center;
 }
-
+.formControlLabelMobile{
+  font-size: 20px;
+  margin-top: 5px;
+  color: var(--text-color);
+}
 .togglerInfoDiv {
   display: flex;
   align-items: center;
@@ -35,10 +39,10 @@ margin: 0 10px 0 0;
 }
 .headerRolePage {
   font-size: 24px;
-  color: antiquewhite;
+  color: var(--main-header-color);
 }
 .subheaderRolePage {
-  color: antiquewhite;
+  color: var(--main-header-color);
   font-size: 15px;
   margin: 10px 0 5px 0; /* Reset margin */
 }
@@ -48,15 +52,21 @@ margin: 0 10px 0 0;
   justify-content: space-between; /* Space between items */
   flex-wrap: wrap; /* Wrap items if they exceed container width */
 }
-
+.inputMobile {
+  background-color: var(--primary-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--contrast-color);
+  border-radius: 10px;
+}
 .toggler {
   width: 100px;
   height: 34px;
-  background:antiquewhite;
+  background:var(--secondary-background-color);
   border-radius: 10px;
   display: flex;
   padding: 2px;
   box-shadow: -1px 5px 10px 0px rgba(0,0,0,0.64);
+  border: 1px solid var(--contrast-color) ;
 }
 .toggler_button{
   display: flex;
@@ -64,9 +74,8 @@ margin: 0 10px 0 0;
   align-items: center;
 }
 .selected_toggler_button {
-  background-color: #08678a;
-  background-color: rgba(149, 195, 140, 0.785);
-  background-color: #086156;
+  background:var(--contrast-color);
+
   transition: background-color 0.3s ease-in-out;
 
 
@@ -159,9 +168,8 @@ margin: 0 10px 0 0;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
-  background-color: antiquewhite;
-  color: #253439;
-  border: 1px solid antiquewhite;
+  color: var(--contrast-color);
+  border: 1px solid var(--contrast-color);
   transition: background-color 0.7s;
   transition: border-radius 1s;
   transition: width 3;
@@ -169,10 +177,9 @@ margin: 0 10px 0 0;
 }
 
 .categoryButtonMobile.selected {
-  background-color: rgb(8, 97, 86);
-  color: antiquewhite;
+  background-color: var(--contrast-color);
+  color: var( --primary-background-color);
   border-radius: 10px;
-  border: 1px solid antiquewhite;
   transition: background-color 0.7s;
   transition: border-radius 1s;
 }

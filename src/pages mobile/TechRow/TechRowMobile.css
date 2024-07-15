@@ -30,8 +30,7 @@
 
 .tech-line {
   height: 15px;
-  background-color: #086156; /* Change the background color to your desired color */
-  border: 1px solid #F4F2EF;
+  border: 1px solid var(--contrast-color);
   border-radius: 0 10px 10px 0;
 }
 

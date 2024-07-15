@@ -2,7 +2,6 @@
 //#region imports
 import React, { useState, useEffect, CSSProperties } from 'react';
 import './RolePageMobile.css';
-import { backgroundColor } from '../../utils/variables';
 import { FormattedDataRow, Role } from '../../utils/interfaces';
 import axios from 'axios';
 import { CategoryData } from '../../utils/interfaces';
@@ -15,12 +14,13 @@ import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
 import Switch from '@mui/material/Switch/Switch';
 import { FormGroup } from '@mui/material';
 import { Tooltip } from 'react-tooltip'
-import info from '../../assets/icons/info.png'
 import _ from 'lodash'
 import TechRowMobile from '../TechRow/TechRowMobile';
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide'
 import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
+import { IoInformationCircleSharp } from 'react-icons/io5';
+import {contrastColor, } from '../../utils/theme'
 //#endregion
 
 interface RolePageProps {
@@ -261,19 +261,15 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
 
   const toggler = (
     <div className="toggler">
-      <div onClick={() => togglerPressed("percentages")} className={`toggler_button percentageButton  ${alignment == 'percentages' ? 'selected_toggler_button' : ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'percentages' ? whitePercentage : greenPercentage} /></div>
-      <div onClick={() => togglerPressed("counts")} className={`toggler_button countButton  ${alignment == 'counts' ? 'selected_toggler_button' : ''}`}><img style={{ width: 27, height: 27 }} src={alignment == 'counts' ? whiteCount : greenCount} /></div>
+      <div onClick={() => togglerPressed("percentages")} className={`toggler_button percentageButton  ${alignment == 'percentages' ? 'selected_toggler_button' : ''}`}><img style={{ width: 27, height: 27 }} src={alignment !== 'percentages' ? whitePercentage : greenPercentage} /></div>
+      <div onClick={() => togglerPressed("counts")} className={`toggler_button countButton  ${alignment == 'counts' ? 'selected_toggler_button' : ''}`}><img style={{ width: 27, height: 27 }} src={alignment !== 'counts' ? whiteCount : greenCount} /></div>
     </div>
   )
 
   const inputStyle: CSSProperties = {
     width: '60px',
     height: '30px',
-    color: '#333', // Desired text color
-    backgroundColor: '#f0f0f0', // Background color
     textAlign: 'center', // Center align the input text
-    border: '1px solid #ccc', // Example border
-    borderRadius: '4px', // Example border radius
     outline: 'none', // Remove default outline
     boxSizing: 'border-box', // Ensure padding and border are included in width and height
     fontSize: '16px', // Example font size
@@ -284,11 +280,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const CategoryInputStyle: CSSProperties = {
     width: '60px',
     height: '30px',
-    color: '#333', // Desired text color
-    backgroundColor: '#f0f0f0', // Background color
     textAlign: 'center', // Center align the input text
-    border: '1px solid #ccc', // Example border
-    borderRadius: '4px', // Example border radius
     outline: 'none', // Remove default outline
     boxSizing: 'border-box', // Ensure padding and border are included in width and height
     fontSize: '16px', // Example font size
@@ -338,11 +330,11 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
     zIndex: 3,
   }
   return (
-    <div style={{ backgroundColor: backgroundColor }} className="containerRolePage section  heightAndBorder">
+    <div  className="containerRolePage section  heightAndBorder">
       <Slide enabled={framerMotionEnabled} slideFrom='left'>
         <div>
           <div className="togglerInfoDiv">
-            <img className='infoImg togglerInfo' src={info} alt="" />
+          <IoInformationCircleSharp style={{marginRight: 10, color:contrastColor}} className='togglerInfo' size={22}/>
             {toggler}
             <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.togglerInfo'>
               <div>
@@ -357,17 +349,17 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
           </div>
           <div className="headersDiv">
             <h1 className='headerRolePage'>{_.upperCase(role.name)}</h1>
-            <h2 className='subheaderRolePage'>JOB POSTINGS AMOUNT : {totalListingsCount}</h2>
+            <h2 className='subheaderRolePage'>JOB POSTINGS AMOUNT : <span className='highlighted'>{totalListingsCount}</span></h2>
           </div>
-          <Line height="2px" width="100%" color={'antiquewhite'} radius="4px" />
+          <Line height="2px" width="100%" color={contrastColor} radius="4px" />
           <FormGroup>
             <div className="switchMultipleCategoriesDiv">
               <FormControlLabel
                 control={<Switch color='warning' checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
-                style={{ color: 'antiquewhite', fontSize: '20px', marginTop: 5 }}
                 label={aggregateSwitchElementTitle}
+                className='formControlLabelMobile'
               />
-              <img className='infoImg SwitchMultipleCategories' src={info} alt="" />
+          <IoInformationCircleSharp style={{marginRight: 10, color:contrastColor}} className='SwitchMultipleCategories' size={22}/>
               <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchMultipleCategories'>
                 <div>
                   <h3>Enable Multi-Category Selection</h3>
@@ -381,10 +373,10 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                 <div className="">
                   <FormControlLabel
                     control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
-                    style={{ color: 'antiquewhite', fontSize: '20px' }}
                     label={listLImitSwitchElementTitle}
+                     className='formControlLabelMobile'
                   />
-                  <img className='infoImg SwitchLimitDiv' src={info} alt="" />
+                  <IoInformationCircleSharp style={{marginRight: 10, color:contrastColor}} className='SwitchLimitDiv' size={22}/>
                   <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitDiv'>
                     <div>
                       <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
@@ -394,6 +386,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                 <SwitchesReveal slideAmount={0} enabled={listLimitSwitch}>
                   <input
                     type='number'
+                    className='inputMobile'
                     id="outlined-basic"
                     value={amount == 0 ? defaultAmount : amount}
                     onChange={handleAmountChange}
@@ -410,10 +403,10 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                 <div className="">
                   <FormControlLabel
                     control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
-                    style={{ color: 'antiquewhite', fontSize: '20px' }}
                     label={categoryLImitSwitchElementTitle}
+                    className='formControlLabelMobile'
                   />
-                  <img className='infoImg SwitchLimitPerCategory' src={info} alt="" />
+                  <IoInformationCircleSharp style={{marginRight: 10, color:contrastColor}} className='SwitchLimitPerCategory' size={22}/>
                   <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitPerCategory'>
                     <div>
                       <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>
@@ -429,6 +422,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                     onChange={handleCategoryAmountChange}
                     min={1} // Ensure the input doesn't accept negative values
                     max={100}
+                    className='inputMobile'
                     style={CategoryInputStyle} // Apply custom styles via style attribute
                   />
                 </SwitchesReveal>
@@ -441,7 +435,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
 
       </Slide>
 
-      <Line height="2px" width="100%" margin='0 0 20px 0' color={'antiquewhite'} radius="4px" />
+      <Line height="2px" width="100%" margin='0 0 20px 0' color={contrastColor} radius="4px" />
       <div className="loadingDivRolePage" style={{ display: isAnimating ? 'flex' : 'none' }}>
         <div className="loadingDivInner">
           <h1 className={`loading-text ${isAnimating ? 'animate' : ''}`}>
