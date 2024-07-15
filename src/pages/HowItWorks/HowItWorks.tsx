@@ -1,8 +1,8 @@
 // src/components/SideMenu.tsx
 import React, { useEffect, useRef} from 'react';
-import {backgroundColor} from '../../utils/variables'
 import ThreeSteps from './ThreeSteps';
 import './HowItWorks.css'
+import '../../utils/variables.css'
 import FutureUpgrades from './FutureUpgrades';
 import jobDescriptionhighlited from '../../assets/images/Job description highlited.png'
 import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
@@ -62,7 +62,7 @@ const spreadRows = (rows: CategoryRow[]) => {
       {row.columns.map((col, colIndex) => (
         <div className={`col${colIndex + 1}`} key={colIndex}>
           <Slide delay={0.5}>
-          <strong>{col.name}</strong>
+          <strong >{col.name}</strong>
           </Slide>
           <ul>
             {col.items.map((item, itemIndex) => (
@@ -97,7 +97,7 @@ const getElementHeight = (element: HTMLElement): number => {
   return result
 };
   return (
-    <div style={{backgroundColor:backgroundColor, padding:50, color:'white'}} className="section OverviewContainerDesktop heightAndBorder  " >
+    <div style={{padding:50}} className="section OverviewContainerDesktop heightAndBorder  " >
         <>
             <ItemByItemReveal customStyle={{textAlign:'center'}} speed={20} >
             <h1 >Workflow 🛠️</h1>
@@ -105,6 +105,7 @@ const getElementHeight = (element: HTMLElement): number => {
             </ItemByItemReveal>
             <ThreeSteps/>
         </>
+
         <div className="imagesDivDesktop">
           <div className="listing" >
             <ItemByItemReveal>
@@ -132,6 +133,8 @@ const getElementHeight = (element: HTMLElement): number => {
 
           </div>
         </div>
+
+
         <>
         <ItemByItemReveal customStyle={{textAlign:'center'}} speed={20} >
             <h1>What's Next? 🚀</h1>

@@ -1,0 +1,9 @@
+.stepNumberContainerDesktop{
+    border: 2px solid var(--contrast-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    color: var(--contrast-color);
+}
