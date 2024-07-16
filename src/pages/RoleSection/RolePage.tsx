@@ -21,7 +21,7 @@ import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
 import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
 import {contrastColor} from '../../utils/theme'
-import '../../CSS/GlobalMui.css'
+import { motion, AnimatePresence } from 'framer-motion';
 //#endregion
 
 interface RolePageProps {
@@ -52,7 +52,17 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
   const [allCategories, setAllCategories] = useState<string[]>([])
   const [categoryLimitSwitch, setCategoryLimitSwitch] = useState(false)
   const [categoryAmount, setCategoryAmount] = useState(0);
-
+  const techRowTransitionSpeed = 15
+  const textVariants = {
+    initial: { opacity: 0, x: 100},
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -100 }
+  };
+  const textVariantsWithRotation = {
+    initial: { opacity: 0, x: 100, rotate: 90 },
+    animate: { opacity: 1, x: 0, rotate: 0 },
+    exit: { opacity: 0, x: -100, rotate: -90 }
+  };
 //#endregion
 //#region functions
 
@@ -316,6 +326,8 @@ useEffect(() => {
     window.removeEventListener('resize', handleResize);
   };
 }, []);
+
+
 return (
     <div  className="containerRolePageDesktop section ">
       <Slide enabled={framerMotionEnabled} slideFrom='left'>
@@ -450,7 +462,7 @@ return (
               onClick={() => handleCategoryClicked(category)}
               className={`categoryButtonDesktop textRolePageDesktop ${getCategoryButtonClass(category)}`}
               >
-                <Reveal enabled={framerMotionEnabled} duration={0.3} delay={i / 40}>
+                <Reveal enabled={framerMotionEnabled} duration={0.3}>
                 <div >
               {_.startCase(category)}
                 </div>
@@ -461,8 +473,22 @@ return (
           </div>
         )}
           <Reveal enabled={framerMotionEnabled}>
-        <div className="techListDivDesktop" >
+
+        <div className="techListDivDesktop"
+        >
           {techList.map((techCount, index) => (
+           <AnimatePresence
+                   mode='popLayout'
+                 >
+            <motion.div
+            key={`${index}${Date.now()}`}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={textVariants}
+            transition={{delay:index/techRowTransitionSpeed}}
+            className='TechRowWrapperMotionDiv'
+            >
             <TechRow
               totalListingsAmount={totalListingsCount}
               maxCount={totalListingsCount}
@@ -472,8 +498,12 @@ return (
               count={showPercentage ? calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount}
               showPercentage={showPercentage}
             />
+            </motion.div>
+            </AnimatePresence>
+
           ))}
           </div>
+
         </Reveal>
       </div>
       <br />
