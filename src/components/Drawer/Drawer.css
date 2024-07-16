@@ -9,10 +9,23 @@
 .active {
     color: red;
 }
-
-
+.iconsDivDrawer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 15px 0 0 0;
+  /* background-color: var(--secondary-background-color); */
+}
+.iconWithATagDrawer{
+  color: var(--icons-color);
+  }
+.iconWithATagDrawerDiv :hover{
+color: var(--contrast-color);
+}
   .drawer{
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     padding: 4px;

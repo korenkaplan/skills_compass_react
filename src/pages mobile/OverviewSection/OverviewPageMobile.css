@@ -123,7 +123,7 @@
   color:black;
 
 }
-
+.pressHereButtonDesktopOverview
 @media (max-width: 768px) {
   .textContainer {
     padding: 15px 10px;

@@ -9,6 +9,7 @@ interface ScrollDownMouseAnimationProps {
   loop?: boolean;
   autoPlay?: boolean;
   CustomClassName?: string;
+  style?: CSSProperties
 }
 
 const ScrollDownMouseAnimation: React.FC<ScrollDownMouseAnimationProps> = ({

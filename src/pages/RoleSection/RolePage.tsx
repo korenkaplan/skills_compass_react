@@ -11,7 +11,6 @@ import greenCount from '../../assets/white icons/green-count.png'
 import whitePercentage from '../../assets/white icons/percentage.png'
 import greenPercentage from '../../assets/white icons/green-percentage.png'
 import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
-import Switch from '@mui/material/Switch/Switch';
 import {FormGroup} from '@mui/material';
 import { Tooltip } from 'react-tooltip';
 import { IoInformationCircleSharp } from "react-icons/io5";
@@ -21,7 +20,9 @@ import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
 import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
 import {contrastColor} from '../../utils/theme'
+import {switchesDivWidth} from '../../utils/variables'
 import { motion, AnimatePresence } from 'framer-motion';
+import { CustomSwitch } from '../../components/CustomSwitch/CustomSwitch';
 //#endregion
 
 interface RolePageProps {
@@ -58,11 +59,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -100 }
   };
-  const textVariantsWithRotation = {
-    initial: { opacity: 0, x: 100, rotate: 90 },
-    animate: { opacity: 1, x: 0, rotate: 0 },
-    exit: { opacity: 0, x: -100, rotate: -90 }
-  };
+
 //#endregion
 //#region functions
 
@@ -144,16 +141,15 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
     setTechList(result)
   }
 
-  const handleLimitSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.checked
+  const handleLimitSwitchChange = (value: boolean) => {
     setListLimitSwitch(value);
     aggregatedTechList(value === true ? amount : defaultAmount, value, categoryAmount, categoryLimitSwitch)
   }
 
   const calculatePercentages = (part: number, total: number) => { return (part / total) * 100 }
 
-  const handleAggregationSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.checked
+
+  const handleAggregationSwitchChange = (value: boolean) => {
     setAggregatedSwitch(value);
 
     if(value === false)
@@ -182,7 +178,6 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
 
       }
   };
-
   const getCategoryButtonClass = (category: string) => {
     if (aggregatedSwitch) {
       if(category === allCategoriesString)
@@ -217,8 +212,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
 
   };
 
-  const handleCategoryLimitSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.checked
+  const handleCategoryLimitSwitchChange = (value:boolean) => {
     setCategoryLimitSwitch(value);
     aggregatedTechList(amount, listLimitSwitch, categoryAmount, value)
   }
@@ -351,12 +345,13 @@ return (
         </div>
         <h4 className='subheaderRolePageDesktop'>JOB POSTINGS AMOUNT : <span className='highlighted'>{totalListingsCount}</span></h4>
         <div className="switchesDivDesktop">
-        <Line height="1px" width="360px" color={contrastColor} radius="4px" />
+        <Line height="1px" width={`${switchesDivWidth}px`} color={contrastColor} radius="4px" />
+       <div className="formGroupDesktop">
         <FormGroup>
           <div data-tip data-for='tooltip-right' className="switchMultipleCategoriesDivDesktop">
             <FormControlLabel
             className='FormControlLabelDesktop'
-            control={<Switch  checked={aggregatedSwitch} onChange={handleAggregationSwitchChange} />}
+            control={<CustomSwitch isOn={aggregatedSwitch} onClick={() => handleAggregationSwitchChange(!aggregatedSwitch)} />}
             label={aggregateSwitchElementTitle}
           />
             <IoInformationCircleSharp style={{color:contrastColor}} className='SwitchMultipleCategoriesDesktop' size={22}/>
@@ -368,10 +363,11 @@ return (
           </Tooltip>
           </div>
           <SwitchesReveal  duration={0.3} slideFrom='left' enabled = {aggregatedSwitch}>
-          <div  className="switchDivDesktop limitDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+          <div  className="switchDivDesktop limitDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none', width:`${switchesDivWidth}px`}}>
             <div className="infoAndLabelAndSwitchDivDesktop">
           <FormControlLabel
-            control={<Switch color='secondary' checked={listLimitSwitch} onChange={handleLimitSwitchChange} />}
+
+            control={ <CustomSwitch isOn={listLimitSwitch} onClick={() => handleLimitSwitchChange(!listLimitSwitch)} />}
             className='FormControlLabelDesktop'
             label={listLImitSwitchElementTitle}
           />
@@ -398,10 +394,12 @@ return (
           </SwitchesReveal>
 
           <SwitchesReveal  delay={0.5} slideFrom='left' enabled = {aggregatedSwitch}>
-          <div className="switchDivDesktop limitPerCategoryDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none'}}>
+          <div className="switchDivDesktop limitPerCategoryDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none', width:`${switchesDivWidth}px`}}>
             <div className="infoAndLabelAndSwitchDivDesktop">
+
             <FormControlLabel
-            control={<Switch color='success' checked={categoryLimitSwitch} onChange={handleCategoryLimitSwitchChange} />}
+
+            control={< CustomSwitch isOn={categoryLimitSwitch} onClick={() => handleCategoryLimitSwitchChange(!categoryLimitSwitch)} />}
             className='FormControlLabelDesktop'
             label={categoryLImitSwitchElementTitle}
           />
@@ -431,11 +429,11 @@ return (
           </SwitchesReveal>
 
       </FormGroup>
+      </div>
         </div>
-
       <div>
     </div>
-      <Line height="1px" width="360px" color={contrastColor} radius="4px" />
+    <Line height="1px" width={`${switchesDivWidth}px`} color={contrastColor} radius="4px" />
       </div>
       </Slide>
 
@@ -456,7 +454,7 @@ return (
       <div className="dataDivDesktop" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
         {data && (
           <div className='categoriesButtonDivDesktop'>
-            {allCategories?.map((category, i) =>
+            {allCategories?.map((category) =>
             (
               <span
               onClick={() => handleCategoryClicked(category)}
@@ -481,7 +479,7 @@ return (
                    mode='popLayout'
                  >
             <motion.div
-            key={`${index}${Date.now()}`}
+            key={`${index}${techCount.id}`}
             initial="initial"
             animate="animate"
             exit="exit"

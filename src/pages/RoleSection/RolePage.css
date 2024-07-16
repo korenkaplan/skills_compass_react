@@ -27,7 +27,9 @@
 .switchMultipleCategoriesDivDesktop{
   display: flex;
   align-items: center;
-
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+  padding-left: 20px;
 }
 .FormControlLabelDesktop{
   color: var(--text-color);
@@ -56,14 +58,22 @@ margin: 0 10px 0 0;
   margin: 10px 0 5px 0; /* Reset margin */
   color: var(--main-header-color);
 }
+.formGroupDesktop{
+  padding: 10px 0;
+}
+.limitDivDesktop{
+}
 .switchDivDesktop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 360px; /* Default width */
   max-width: 100%; /* Allow it to shrink if necessary */
   flex-wrap: wrap; /* Wrap items if they exceed container width */
+  /* border: 1px solid red; */
+  padding-left: 20px;
+  box-sizing: border-box;
 }
+
 .switchRevealDivDesktop{
   display: flex;
   align-items: center;

@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .headerAndToggler{
   display: flex;
   align-items: center;
@@ -31,11 +32,22 @@
 .switchMultipleCategoriesDiv{
   display: flex;
   align-items: center;
+  max-width: 100%;
+
 }
-.infoImg {
-width: 20px;
-height: 20px;
-margin: 0 10px 0 0;
+.switchLeftSideMobile{
+  display: flex;
+  align-items: center;
+}
+.formGroupMobileSwitch{
+  box-sizing: border-box;
+  padding: 8px 0 8px 20px;
+}
+.IoInformationCircleSharpMobile{
+  margin-right: 10px;
+  color: var(--contrast-color);
+  position: relative;
+  top: 2px;
 }
 .headerRolePage {
   font-size: 24px;
@@ -47,10 +59,11 @@ margin: 0 10px 0 0;
   margin: 10px 0 5px 0; /* Reset margin */
 }
 .switchDiv {
-  width: 360px; /* Default width */
-  max-width: 100%; /* Allow it to shrink if necessary */
+  width:100%; /* Default width */
   justify-content: space-between; /* Space between items */
   flex-wrap: wrap; /* Wrap items if they exceed container width */
+  display: flex;
+  align-items: center;
 }
 .inputMobile {
   background-color: var(--primary-background-color);
@@ -194,6 +207,7 @@ margin: 0 10px 0 0;
 }
 .disabled {
   background-color: gray;
+  color: var(--secondary-background-colorr);
 }
 .RevealCategoryButtonMobile{
   height: '20px';

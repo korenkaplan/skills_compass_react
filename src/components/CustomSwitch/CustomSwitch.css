@@ -1,0 +1,39 @@
+.switch {
+    width: 35px;
+    height:12px;
+    border-radius: 100px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .switch.on {
+    background-color: var(--contrast-color);
+    justify-content: flex-end;
+  }
+
+  .switch.off {
+    background-color: var(--secondary-background-color);
+    justify-content: flex-start;
+  }
+
+  .switch.on div {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-background-color);
+    border-radius: 200px;
+    box-shadow: 1px 2px 3px var((--contrast-color));
+
+    border: 1px solid var(--contrast-color)
+
+  }
+  .switch.off div {
+    width: 20px;
+    height: 20px;
+    background-color: var(--contrast-color);
+    border-radius: 200px;
+    box-shadow: 1px 2px 3px var((--contrast-color));
+    border: 1px solid var(--primary-background-color)
+
+  }

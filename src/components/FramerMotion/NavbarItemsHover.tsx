@@ -18,6 +18,7 @@ export default function NavbarItemsHover({ delay = 0, duration = 0.3, children}:
                 hover: {color: primaryHeaderColor,
                      backgroundColor: primaryBackgroundColor,
                      borderRight: `5px solid ${contrastColor}`,
+                     borderLeft: `5px solid ${contrastColor}`,
                     }
             }}
             transition={{delay: delay, duration:duration, ease:'easeInOut', stiffness: 300}}

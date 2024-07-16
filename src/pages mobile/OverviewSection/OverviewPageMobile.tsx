@@ -12,6 +12,7 @@ import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/
 import Reveal from '../../components/FramerMotion/Reveal';
 import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
 import Slide from '../../components/FramerMotion/Slide';
+import { motion, AnimatePresence } from 'framer-motion';
 const OverviewPageMobile: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80
@@ -131,11 +132,24 @@ const OverviewPageMobile: React.FC = () => {
   const getScrollDownAnimationStyle = (): CSSProperties => ({
     height: '150px',
   });
+  const textVariants = {
+    initial: { opacity: 0,  x: isRotated ? -200 : 200},
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: isRotated ? 200 : -200 }
+
+  };
   return (
     <div className="section container heightAndBorder">
       <div className="textContainerMobile" dir={isRotated ? 'rtl' : 'ltr'}>
         <Reveal>
-          <div className="containerHeader">
+          <motion.div
+            key={isRotated ? 'hebrew' : 'english'}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={textVariants}
+            transition={{ duration: 0.5 }}
+           className="containerHeader">
             <h2 className='headerOverviewPage'>{header}</h2>
             <ScaleOnTapButtonWrapper>
               <div className='custom-button translateButtonDivMobile'
@@ -145,7 +159,7 @@ const OverviewPageMobile: React.FC = () => {
                 <img className='translateIconMobile' src={translateIcon} alt="" />
               </div>
             </ScaleOnTapButtonWrapper>
-          </div>
+          </motion.div>
         </Reveal>
         <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
           <Reveal >
@@ -153,13 +167,25 @@ const OverviewPageMobile: React.FC = () => {
               <TypeQuestionAnimation  fontSize={20} questions={questions} currentYear={currentYear} />
             </div>
           </Reveal>
+          <AnimatePresence>
 
-          <div  className="">
+          <motion.div
+             key={isRotated ? 'hebrew' : 'english'}
+             initial="initial"
+             animate="animate"
+             exit="exit"
+             variants={textVariants}
+             transition={{ duration: 0.5 }}
+          >
             {mainText}
-          </div>
+          </motion.div>
+          </AnimatePresence>
+
           <Reveal>
             <ScaleOnTapButtonWrapper>
-            <div className='OverviewPressHereDesktop' ><div className='pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorks')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div></div>
+            <div className='OverviewPressHereDesktop' >
+              <div className='custom-button pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorks')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div>
+              </div>
 
             </ScaleOnTapButtonWrapper>
           </Reveal>

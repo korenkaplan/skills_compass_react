@@ -55,7 +55,8 @@
     align-items: center;
     border-radius: 0 0 0 10px; /* Apply border radius only to bottom-left corner */
     z-index: 9999; /* Set a high z-index value to ensure it's above all other content */
-    box-shadow: 0px 2px 4px var(--contrast-color); /* Add outer shadow */
+
+
 
   }
 .contentLandingPage{
@@ -77,7 +78,10 @@ flex-direction: column;
 justify-content: space-between;
 align-items: flex-start;
 padding: 60px;
-box-shadow: 0px 15px 16px var(--contrast-color); /* Box-shadow on hover */
+border-left: 2px dotted var(--contrast-color);
+border-top: 2px dotted var(--contrast-color);
+box-shadow:var(--contrast-color) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+box-shadow: rgba(10, 255, 157,0.4) 5px 5px, rgba(10, 255, 157,0.3) 10px 10px, rgba(10, 255, 157,0.2) 15px 15px, rgba(10, 255, 157,0.1) 20px 20px, rgba(10, 255, 157,0.05) 25px 25px;
 border-radius: 0 20px 120px 0;
 
 }

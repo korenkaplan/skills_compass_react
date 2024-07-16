@@ -54,7 +54,7 @@ const MainPage: React.FC = () => {
   const [rolesFetched, setRolesFetched] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const marginLeftAmount = 250;
-  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 1200px)' });
   const [isOpen, setIsOpen] = useState<boolean>(isMobile ? false : true);
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
   const headerStyle: CSSProperties = {
@@ -151,10 +151,6 @@ const MainPage: React.FC = () => {
               </a>
             </div>
           </Reveal>
-
-
-
-
         </div>
       </div>
       {
