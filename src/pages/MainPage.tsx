@@ -56,6 +56,20 @@ const MainPage: React.FC = () => {
   const marginLeftAmount = 250;
   const isMobile = useMediaQuery({ query: '(max-width: 1200px)' });
   const [isOpen, setIsOpen] = useState<boolean>(isMobile ? false : true);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+
+  const changeColor = ()=> {
+    if(window.scrollY >= 90)
+    {
+      setIsScrolled(true)
+    }
+    else{
+      setIsScrolled(false)
+
+    }
+  }
+
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
   const headerStyle: CSSProperties = {
     color: contrastColor,
@@ -121,7 +135,7 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-      <div className="appbar" style={{ display: isMobile ? 'flex' : 'none' }} >
+      <div className="appbar" style={{ display: isMobile ? 'flex' : 'none', opacity:isScrolled? 0.3: 1 }} >
         <div style={burgerHeaderStyle}>
           <RxHamburgerMenu className='burgerMenuIcon' size={30} onClick={() => toggleDrawer(true)} />
           <ItemByItemReveal>

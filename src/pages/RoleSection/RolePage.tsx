@@ -348,7 +348,7 @@ return (
         <Line height="1px" width={`${switchesDivWidth}px`} color={contrastColor} radius="4px" />
        <div className="formGroupDesktop">
         <FormGroup>
-          <div data-tip data-for='tooltip-right' className="switchMultipleCategoriesDivDesktop">
+          <div data-tip data-for='tooltip-right' className="switchDivMargin switchMultipleCategoriesDivDesktop">
             <FormControlLabel
             className='FormControlLabelDesktop'
             control={<CustomSwitch isOn={aggregatedSwitch} onClick={() => handleAggregationSwitchChange(!aggregatedSwitch)} />}
@@ -363,7 +363,7 @@ return (
           </Tooltip>
           </div>
           <SwitchesReveal  duration={0.3} slideFrom='left' enabled = {aggregatedSwitch}>
-          <div  className="switchDivDesktop limitDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none', width:`${switchesDivWidth}px`}}>
+          <div  className="switchDivDesktop limitDivDesktop switchDivMargin" style={{display: aggregatedSwitch? 'flex': 'none', width:`${switchesDivWidth}px`}}>
             <div className="infoAndLabelAndSwitchDivDesktop">
           <FormControlLabel
 
@@ -394,7 +394,7 @@ return (
           </SwitchesReveal>
 
           <SwitchesReveal  delay={0.5} slideFrom='left' enabled = {aggregatedSwitch}>
-          <div className="switchDivDesktop limitPerCategoryDivDesktop" style={{display: aggregatedSwitch? 'flex': 'none', width:`${switchesDivWidth}px`}}>
+          <div className="switchDivDesktop limitPerCategoryDivDesktop " style={{display: aggregatedSwitch? 'flex': 'none', width:`${switchesDivWidth}px`}}>
             <div className="infoAndLabelAndSwitchDivDesktop">
 
             <FormControlLabel

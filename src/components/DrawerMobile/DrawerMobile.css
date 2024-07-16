@@ -6,15 +6,15 @@
     align-items: center;
 }
 
-.active {
-    color: red;
-}
-.li{
-    color: white;
-}
+.ListItemMobile{
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .drawer{
-    overflow-y: auto;
+}
+  .drawerMobile{
+    overflow: hidden;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     padding: 4px;

@@ -358,7 +358,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
           </div>
           <Line height="2px" width="100%" color={contrastColor} radius="4px" />
           <FormGroup className='formGroupMobileSwitch'>
-            <div className="switchMultipleCategoriesDiv">
+            <div className="switchDivMargin switchMultipleCategoriesDiv">
               <FormControlLabel
                 control={<CustomSwitch isOn={aggregatedSwitch} onClick={() => handleAggregationSwitchChange(!aggregatedSwitch)} />}
                 label={aggregateSwitchElementTitle}
@@ -375,7 +375,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
 
 
             <SwitchesReveal duration={0.3} slideFrom='left' enabled={aggregatedSwitch}>
-              <div className="switchDiv limitDiv" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
+              <div className="switchDiv limitDiv switchDivMargin" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
                 <div className="switchLeftSideMobile">
                   <FormControlLabel
                     control={ <CustomSwitch isOn={listLimitSwitch} onClick={() => handleLimitSwitchChange(!listLimitSwitch)} />}
@@ -406,7 +406,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
             </SwitchesReveal>
 
             <SwitchesReveal delay={0.5} slideFrom='left' enabled={aggregatedSwitch}>
-              <div className="switchDiv limitPerCategoryDiv" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
+              <div className="switchDiv limitPerCategoryDiv switchDivMargin" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
                 <div className="switchLeftSideMobile">
                   <FormControlLabel
                     control={< CustomSwitch isOn={categoryLimitSwitch} onClick={() => handleCategoryLimitSwitchChange(!categoryLimitSwitch)} />}

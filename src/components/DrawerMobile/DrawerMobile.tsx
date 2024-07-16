@@ -64,7 +64,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   }, [sections]);
 
   const DrawerList = (
-    <Box className='drawer' sx={{ width: 250, backgroundColor:navbarBackgroundColor, border:`1px solid ${contrastColor}`, overflowY:'hidden' }} role="presentation">
+    <Box className='drawerMobile' sx={{ width: 250, backgroundColor:navbarBackgroundColor, border:`1px solid ${contrastColor}`, overflowY:'hidden' }} role="presentation">
       <div>
         <div className="logoDiv">
           <img src={logo} alt="Logo" style={{ width: '120px' }} />
@@ -77,10 +77,10 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
             key={notRolesSectionsList[0].id}
             disablePadding
             onClick={() => handleClick(notRolesSectionsList[0].id)}
-            className={'li'}
+
           >
             <ListItemButton >
-              <ListItemText primary={notRolesSectionsList[0].label} />
+              <ListItemText className={'ListItemMobile'} primary={notRolesSectionsList[0].label} />
             </ListItemButton>
           </ListItem>
           </NavbarItemsHover>
@@ -99,10 +99,10 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
               backgroundColor: 'gray',
             }
           }}
-          className={'li'}
+
           >
           <ListItemButton >
-            <ListItemText primary={section.label} />
+            <ListItemText className={'ListItemMobile'} primary={section.label} />
           </ListItemButton>
           </ListItem>
         )))}
