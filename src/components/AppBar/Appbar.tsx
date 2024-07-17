@@ -7,6 +7,7 @@ import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
 import ribbon from '../../assets/icons/icons8-ribbon-50.png';
 import './Appbar.css'
+import { appBarHeight } from '../../utils/variables';
 interface AppBarProps {
   isMobile: boolean;
   toggleDrawer: (newOpen: boolean) => void;
@@ -26,7 +27,7 @@ const AppBar: React.FC<AppBarProps> = ({ isMobile, toggleDrawer }) => {
   };
 
   return (
-    <div className="appBar" style={{ display: isMobile ? 'flex' : 'none' }}>
+    <div className="appBar" style={{ display: isMobile ? 'flex' : 'none', height: `${appBarHeight}px`}}>
       <div style={burgerHeaderStyle}>
         <RxHamburgerMenu className="burgerMenuIcon" size={30} onClick={() => toggleDrawer(true)} />
         <ItemByItemReveal>

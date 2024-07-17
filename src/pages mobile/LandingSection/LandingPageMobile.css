@@ -85,7 +85,7 @@ right: 20px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 100px 0 15px 0;
+  padding: 0 0 15px 0;
   color: var(--text-color);
 }
 .textContainerLandingPage{
@@ -107,6 +107,7 @@ right: 20px;
   transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Initial box-shadow */
   height:55px;
+  margin-top: 30px;
 }
 .alottieMobile {
   width: 50px;

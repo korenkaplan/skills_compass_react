@@ -6,4 +6,5 @@ const resumeDownloadLink: string = "https://drive.google.com/uc?export=download&
 const textColor: string = '#F4F2EF';
 const framerMotionRepeatOnce: boolean = true;
 const switchesDivWidth: number = 400
-export { switchesDivWidth, backgroundColor, textColor, resumeDownloadLink, sideMenuBackgroundColor, framerMotionRepeatOnce};
+const appBarHeight: number = 110
+export { appBarHeight, switchesDivWidth, backgroundColor, textColor, resumeDownloadLink, sideMenuBackgroundColor, framerMotionRepeatOnce};

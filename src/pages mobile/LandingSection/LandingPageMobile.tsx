@@ -14,6 +14,7 @@ import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
 import {contrastColor} from '../../utils/theme'
 import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
+import { appBarHeight } from '../../utils/variables';
 interface LandingPageProps {
   isLoading: boolean;
 }
@@ -40,7 +41,7 @@ const waiting_titles: string[] = [
   'Don\'t worry... Next time the result will be cached!',
   'Sorry for the wait, fill free to read the overview',
 ];
-
+const extraSpaceFromAppBarInPx = 50
 
 useEffect(() => {
   const handleResize = () => {
@@ -67,7 +68,7 @@ useEffect(() => {
 
   return (
     <div className="section main heightAndBorder" >
-      <div className="mainContainerLandingPage" >
+      <div className="mainContainerLandingPage" style={{marginTop:`${appBarHeight + extraSpaceFromAppBarInPx}px`}}>
         <Slide>
       <div className="image-container">
         <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo " className="rotatingImage"/>
