@@ -112,7 +112,7 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-      <AppBar  isMobile={isMobile} toggleDrawer={toggleDrawer}/>
+      <AppBar isMobile={isMobile} toggleDrawer={toggleDrawer}/>
       <Content
         isMobile={isMobile}
         sections={isMobile ? sectionsMobile : sections}

@@ -1,7 +1,6 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 import './OverviewPageMobile.css';
 import { backgroundColor } from '../../utils/variables';
-import logo from '../../assets/logo/logo wit yellow ribbon.png';
 import '../../CSS/RotatingImageClick.css';
 import translateIcon from '../../assets/iconsDark/translate.png'
 import {contrastColor} from '../../utils/theme'
@@ -105,12 +104,9 @@ const OverviewPageMobile: React.FC = () => {
   );
   const headerEnglish = "Overview";
   const headerHeb = "סקירה כללית";
-  const bottomWordsEng = "Happy reading!";
-  const bottomWordsHeb = "קריאה מהנה!";
 
 
   const [header, setHeader] = useState<string>(headerEnglish);
-  const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
   const [isRotated, setIsRotated] = useState(false);
   const [mainText, setMainText] = useState(developerSurveyText);
 
@@ -118,7 +114,6 @@ const OverviewPageMobile: React.FC = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
     setHeader(isRotated ? headerEnglish : headerHeb); // Toggle between English and Hebrew texts
     setMainText(isRotated ? developerSurveyText : developerSurveyTextHeb); // Toggle between English and Hebrew texts
-    setBottomWords(isRotated ? bottomWordsEng : bottomWordsHeb); // Toggle between English and Hebrew texts
   };
 
 

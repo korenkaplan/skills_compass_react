@@ -6,7 +6,7 @@ import { FaGithub } from 'react-icons/fa';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
 import ribbon from '../../assets/icons/icons8-ribbon-50.png';
-
+import './Appbar.css'
 interface AppBarProps {
   isMobile: boolean;
   toggleDrawer: (newOpen: boolean) => void;
