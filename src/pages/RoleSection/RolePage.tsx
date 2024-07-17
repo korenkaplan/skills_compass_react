@@ -454,9 +454,10 @@ return (
       <div className="dataDivDesktop" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
         {data && (
           <div className='categoriesButtonDivDesktop'>
-            {allCategories?.map((category) =>
+            {allCategories?.map((category, i) =>
             (
               <span
+              key={`${category}${i}`}
               onClick={() => handleCategoryClicked(category)}
               className={`categoryButtonDesktop textRolePageDesktop ${getCategoryButtonClass(category)}`}
               >
@@ -476,6 +477,7 @@ return (
         >
           {techList.map((techCount, index) => (
            <AnimatePresence
+           key={`${techCount.id}${selectedCategory}`}
                    mode='popLayout'
                  >
             <motion.div

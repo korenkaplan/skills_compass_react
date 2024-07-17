@@ -75,7 +75,9 @@ margin: '0 0 50px 0',
       <div className="steps-containerMobile">
         {
           steps.map((step, index) => (
-            < div style={stepWrapperStyle}>
+            < div style={stepWrapperStyle}
+            key={index}
+            >
 
 
 

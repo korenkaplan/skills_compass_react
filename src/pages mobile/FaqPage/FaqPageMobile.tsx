@@ -183,7 +183,9 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
         const currentIndex = globalIndex++;
         const isExpanded = expandedIndices.includes(currentIndex);
         return (
-          <Reveal>
+          <Reveal
+          key={`${currentIndex}${accordion.question}`}
+          >
             <Accordion
               key={currentIndex}
               expanded={isExpanded}
@@ -207,9 +209,9 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
               <AccordionDetails
                style={{backgroundColor: secondaryBackgroundColor, color: textColor}}
               >
-                <Typography>
+                <span>
                   {accordion.answer}
-                </Typography>
+                </span>
               </AccordionDetails>
             </Accordion>
           </Reveal>

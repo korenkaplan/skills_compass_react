@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, CSSProperties } from 'react';
 import './MainPage.css';
-import '../utils/variables.css'
+import '../utils/variables.css';
 import LandingPage from './LandingSection/LandingPage';
 import FaqPage from './FaqPage/FaqPage';
 import RolePage from './RoleSection/RolePage';
@@ -9,6 +9,8 @@ import _ from 'lodash';
 import axios from 'axios';
 import TemporaryDrawer from '../components/Drawer/Drawer';
 import { useMediaQuery } from 'react-responsive';
+
+
 import SwiperPage from './Swiper/Swiper';
 import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
 import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
@@ -18,36 +20,41 @@ import ContactInformationMobile from '../pages mobile/ContactFooterMobile/Contac
 import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
 import Overview from './OverviewSection/OverviewPage';
 import HowItWorks from './HowItWorks/HowItWorks';
-import ribbon from '../assets/icons/icons8-ribbon-50.png'
+
+
+import ribbon from '../assets/icons/icons8-ribbon-50.png';
 import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
 import ContactFooter from './ContactFooter/ContactFooter';
 import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
 import ItemByItemReveal from '../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../components/FramerMotion/Reveal';
-import { RxHamburgerMenu } from "react-icons/rx";
-import {contrastColor} from '../utils/theme'
-import { CiLinkedin } from "react-icons/ci";
-import { FaGithub } from "react-icons/fa";
+import { RxHamburgerMenu } from 'react-icons/rx';
+import { contrastColor } from '../utils/theme';
+import { CiLinkedin } from 'react-icons/ci';
+import { FaGithub } from 'react-icons/fa';
+
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap((role, index) => {
     const roleProps = { role: role, rolesFetched: rolesFetched };
-    return isMobile ?
-      [{
-        id: `mobile_${role.id}`, // Ensure unique IDs for mobile
-        label: _.startCase(role.name),
-        component: () => <RolePageMobile framerMotionEnabled={index == 0}  {...roleProps} />,
-        isRole: true,
-      }] :
-      [{
-        id: `desktop_${role.id}`, // Ensure unique IDs for desktop
-        label: _.startCase(role.name),
-        component: () => <RolePage framerMotionEnabled={index == 0} {...roleProps} />,
-        isRole: true,
-      }];
+    return isMobile
+      ? [
+          {
+            id: `mobile_${role.id}`, // Ensure unique IDs for mobile
+            label: _.startCase(role.name),
+            component: () => <RolePageMobile framerMotionEnabled={index === 0} {...roleProps} />,
+            isRole: true,
+          },
+        ]
+      : [
+          {
+            id: `desktop_${role.id}`, // Ensure unique IDs for desktop
+            label: _.startCase(role.name),
+            component: () => <RolePage framerMotionEnabled={index === 0} {...roleProps} />,
+            isRole: true,
+          },
+        ];
   });
 };
-
-
 
 const MainPage: React.FC = () => {
   const [roles, setRoles] = useState<Role[]>([]);
@@ -56,33 +63,36 @@ const MainPage: React.FC = () => {
   const marginLeftAmount = 250;
   const isMobile = useMediaQuery({ query: '(max-width: 1200px)' });
   const [isOpen, setIsOpen] = useState<boolean>(isMobile ? false : true);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [opacity, setOpacity] = useState(1);
 
+  const handleScroll = () => {
+    console.log('here is scroll');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    console.log(scrollTop); // Log the scroll position to check if the event is firing
+    setOpacity(scrollTop > 250 ? 0.5 : 1); // Change 0.5 to desired opacity
+  };
 
-  const changeColor = ()=> {
-    if(window.scrollY >= 90)
-    {
-      setIsScrolled(true)
-    }
-    else{
-      setIsScrolled(false)
-
-    }
-  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
+
   const headerStyle: CSSProperties = {
     color: contrastColor,
     fontSize: '20px',
     marginLeft: '20px',
   };
+
   const burgerHeaderStyle: CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+  };
 
-
-  }
   const toggleDrawer = (newOpen: boolean) => {
     if (!isMobile) {
       setIsOpen(true);
@@ -90,6 +100,7 @@ const MainPage: React.FC = () => {
       setIsOpen(newOpen);
     }
   };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -97,7 +108,6 @@ const MainPage: React.FC = () => {
         setRoles(response.data);
         setRolesFetched(true);
         setIsLoading(false);
-
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -117,10 +127,9 @@ const MainPage: React.FC = () => {
     ];
   }, [roles, rolesFetched, isMobile]);
 
-
   const sections = useMemo(() => {
     return [
-      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage roles={roles && roles.map(role => role.name)} defaultSection='overview' isLoading={false} /> },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage roles={roles && roles.map((role) => role.name)} defaultSection="overview" isLoading={false} /> },
       { id: 'overview', isRole: false, label: 'Overview', component: Overview },
       { id: 'swiperPage', isRole: false, label: 'Roles Overview', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)} /> },
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorks },
@@ -135,67 +144,61 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-      <div className="appbar" style={{ display: isMobile ? 'flex' : 'none', opacity:isScrolled? 0.3: 1 }} >
+      <div className="appbar" style={{ display: isMobile ? 'flex' : 'none', opacity: opacity }}>
         <div style={burgerHeaderStyle}>
-          <RxHamburgerMenu className='burgerMenuIcon' size={30} onClick={() => toggleDrawer(true)} />
+          <RxHamburgerMenu className="burgerMenuIcon" size={30} onClick={() => toggleDrawer(true)} />
           <ItemByItemReveal>
             <p style={headerStyle}>Skills Compass</p>
           </ItemByItemReveal>
         </div>
 
-        <div  className="iconsdiv">
+        <div className="iconsdiv">
           <Reveal>
-            <div  className="iconWithATag">
-              <a className='' href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
+            <div className="iconWithATag">
+              <a className="" href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
                 <img src={ribbon} alt="My Image" className="clickableImageDesktop" />
               </a>
             </div>
           </Reveal>
           <Reveal delay={0.3}>
-            <div  className="iconWithATag">
-              <a className='' href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-              <CiLinkedin size={30}   color={contrastColor}/>
+            <div className="iconWithATag">
+              <a className="" href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
+                <CiLinkedin size={30} color={contrastColor} />
               </a>
             </div>
           </Reveal>
           <Reveal delay={0.6}>
-            <div   className="iconWithATag">
-              <a className='' href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-              <FaGithub  size={30}  color={contrastColor}/>
+            <div className="iconWithATag">
+              <a className="" href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
+                <FaGithub size={30} color={contrastColor} />
               </a>
             </div>
           </Reveal>
         </div>
       </div>
-      {
-        isMobile ?
-          (
-            <>
-              <DrawerMobile sections={sectionsMobile} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
-              <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
-                {sectionsMobile.map(section => (
-                  <div key={section.id} id={section.id} className="section">
-                    <section.component />
-                  </div>
-                ))}
+      {isMobile ? (
+        <>
+          <DrawerMobile sections={sectionsMobile} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
+          <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
+            {sectionsMobile.map((section) => (
+              <div key={section.id} id={section.id} className="section">
+                <section.component />
               </div>
-            </>
-          )
-          :
-          (
-            <div className='sectionsWrapperDesktop'>
-              <TemporaryDrawer sections={sections} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
-              <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
-                {
-                  sections.map(section => (
-                    <div key={section.id} id={section.id} className="section">
-                      <section.component />
-                    </div>
-                  ))}
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="sectionsWrapperDesktop">
+          <TemporaryDrawer sections={sections} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
+          <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
+            {sections.map((section) => (
+              <div key={section.id} id={section.id} className="section">
+                <section.component />
               </div>
-            </div>
-          )
-      }
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

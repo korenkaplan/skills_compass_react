@@ -48,7 +48,9 @@ const futureUpgradesList: FutureUpgrade[] = [
     <div className="steps-containerMobile">
         {
             futureUpgradesList.map((item, index )=> (
-                <Slide  amount={0.3}>
+                <Slide  amount={0.3}
+                key={index}
+                >
                 <div className="step-content">
               <Slide slideFrom={index % 2 == 0 ? 'left' : 'right'} amount={0.3} >
                 <div className="step-number">

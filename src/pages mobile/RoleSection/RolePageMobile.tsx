@@ -473,7 +473,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                   <span
                     onClick={() => handleCategoryClicked(category)}
                     className={`categoryButtonMobile textRolePage ${getCategoryButtonClass(category)}`}
-                    key={category}>
+                    key={`${category}${i}`}>
                     <Reveal className='RevealCategoryButtonMobile' enabled={framerMotionEnabled} duration={0.3} delay={i / 10}>
                       <div className="">
                         {_.startCase(category)}
@@ -490,6 +490,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
           <div className="techListDiv" >
             {techList.map((techCount, index) => (
                <AnimatePresence
+               key={`${techCount.id}${index}${selectedCategory}}`}
                mode='popLayout'
              >
         <motion.div

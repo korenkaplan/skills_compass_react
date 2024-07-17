@@ -59,13 +59,15 @@ const HowItWorksMobile: React.FC = () => {
     return rows.map((row, rowIndex) => (
       <div className="rowMobile" key={rowIndex}>
         {row.columns.map((col, colIndex) => (
-          <div className={`col${colIndex + 1}Mobile`} key={colIndex}>
+          <div className={`col${colIndex + 1}Mobile`} key={`${rowIndex}${colIndex}`}>
             <Slide delay={0.5}>
               <strong>{col.name}</strong>
             </Slide>
             <ul>
               {col.items.map((item, itemIndex) => (
-                <Reveal duration={1} delay={(delayInSeconds++) / 10}>
+                <Reveal
+                key={`${item}${itemIndex}`}
+                duration={1} delay={(delayInSeconds++) / 10}>
                   <li key={itemIndex}>{item}</li>
                 </Reveal>
               ))}

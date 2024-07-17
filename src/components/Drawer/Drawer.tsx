@@ -72,7 +72,8 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
       <Slide slideFrom='left'>
         <List>
           {sections.filter(section => (section.label !== 'Home')).map((section) => (
-          <NavbarItemsHover>
+          <NavbarItemsHover
+          key={section.id}>
           <ListItem
               key={section.id}
               disablePadding
@@ -80,7 +81,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
 
             >
               <ListItemButton
-                sx={{ textAlign: 'center', justifyContent: 'center', color: textColor }} // Added justifyContent
+                sx={{ textAlign: 'center', justifyContent: 'center', color: textColor }}
               >
                 <ListItemText primary={section.label} />
               </ListItemButton>
@@ -124,13 +125,12 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
       </div>
       <Reveal delay={1}>
       <BringThemHomeNowDiv />
-
       </Reveal>
     </Box>
   );
 
   return (
-    <Drawer variant={variant} slotProps={{ backdrop: { invisible: true } }} open={open} onClose={() => toggleDrawer(false)}>
+    <Drawer variant={variant} open={open} onClose={() => toggleDrawer(false)}>
       {DrawerList}
     </Drawer>
   );
