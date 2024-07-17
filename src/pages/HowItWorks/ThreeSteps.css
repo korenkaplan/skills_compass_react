@@ -62,6 +62,7 @@ svg {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: red;
 }
 p strong {
   color: 'red'

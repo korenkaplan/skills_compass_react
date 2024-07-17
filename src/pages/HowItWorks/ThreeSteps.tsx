@@ -42,7 +42,6 @@ const stepNumberFontSize = 30
           <h3>🔍 Scanning</h3>
           <p>We scan <strong style={strongStyle}>100+</strong> job listings on a daily basis from various  job searching websites to ensure our data is consistently up-to-date and highly reliable.</p>
           </div>
-
         </div>
         </Slide>
         <Reveal  delay={arrowFramerMotionANimationDelay} distanceYAxis={0}>

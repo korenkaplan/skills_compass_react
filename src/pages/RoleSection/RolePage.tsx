@@ -348,7 +348,7 @@ return (
         <Line height="1px" width={`${switchesDivWidth}px`} color={contrastColor} radius="4px" />
        <div className="formGroupDesktop">
         <FormGroup>
-          <div data-tip data-for='tooltip-right' className="switchDivMargin switchMultipleCategoriesDivDesktop">
+          <div data-tip data-for='tooltip-right' className="inputWrapper switchDivMargin switchMultipleCategoriesDivDesktop">
             <FormControlLabel
             className='FormControlLabelDesktop'
             control={<CustomSwitch isOn={aggregatedSwitch} onClick={() => handleAggregationSwitchChange(!aggregatedSwitch)} />}
@@ -386,7 +386,7 @@ return (
             onChange={handleAmountChange}
             min={1} // Ensure the input doesn't accept negative values
             max={100}
-            className='inputDesktop'
+            className='inputWrapper inputDesktop'
             style={inputStyle} // Apply custom styles via style attribute
           />
              </SwitchesReveal>
@@ -415,7 +415,7 @@ return (
 
           <SwitchesReveal  slideAmount={0}  enabled = {categoryLimitSwitch}>
           <input
-            className='inputDesktop'
+            className='inputDesktop inputWrapper'
             type='number'
             id="outlined-basic"
             value={categoryAmount == 0 ? defaultAmount : categoryAmount}
@@ -477,11 +477,10 @@ return (
         >
           {techList.map((techCount, index) => (
            <AnimatePresence
-           key={`${techCount.id}${selectedCategory}`}
+           key={`${index}${techCount.id}`}
                    mode='popLayout'
                  >
             <motion.div
-            key={`${index}${techCount.id}`}
             initial="initial"
             animate="animate"
             exit="exit"

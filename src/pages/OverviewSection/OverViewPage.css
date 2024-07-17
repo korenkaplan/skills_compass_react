@@ -156,7 +156,9 @@ padding:2px
     height: 120px;
     color: var(--main-header-color);
   }
-
+.logoRightCorner{
+  width: 20%;
+}
   @media (max-width: 768px) {
     .textContainer {
       padding: 15px 10px;

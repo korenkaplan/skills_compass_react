@@ -185,7 +185,7 @@ const Overview: React.FC = () => {
             <ScaleOnTapButtonWrapper>
               <ScrollDownMouseAnimation CustomClassName='scrollDownAnimationMouseDesktop' scrollToSectionId='swiperPage' styleProps={getScrollDownAnimationStyle()} />
             </ScaleOnTapButtonWrapper>
-            <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
+            <img src={logo} alt="Logo" className="logoRightCorner" />
           </div>
         </Reveal>
 

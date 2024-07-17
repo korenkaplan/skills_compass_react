@@ -50,6 +50,9 @@ margin: 0 10px 0 0;
   color: var(--text-color);
   border: 1px solid var(--contrast-color);
 }
+.inputWrapper{
+  margin-bottom: 8px;
+}
 .headerRolePageDesktop{
   margin: 0;
 }

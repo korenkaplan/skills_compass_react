@@ -7,7 +7,10 @@
     --buttons-text-color: #232323;
     --icons-color:#7e7e82;
     --scrollbar-background-color:#7e7e82;
-    --scrollbar-thumb-background-color:#0aff9d;
-    --contrast-color:rgb(10, 255, 157);
+    --scrollbar-thumb-background-color:rgb(10, 255, 157);
+    --contrast-color-red: 10;
+    --contrast-color-green: 255;
+    --contrast-color-blue: 157;
+    --contrast-color: rgba(var(--contrast-color-red), var(--contrast-color-green), var(--contrast-color-blue), 1);
     --navbar-background-color: #080808;
 }
