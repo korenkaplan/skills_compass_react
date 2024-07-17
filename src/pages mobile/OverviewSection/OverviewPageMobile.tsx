@@ -192,9 +192,7 @@ const OverviewPageMobile: React.FC = () => {
         </div>
         <Reveal >
         <div className="imageRow">
-          <p >{bottomWords}</p>
           <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='none' styleProps={getScrollDownAnimationStyle()} />
-          <img src={logo} alt="Logo" className="logos" /> {/* Insert the logo image */}
         </div>
         </Reveal>
 

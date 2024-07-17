@@ -20,14 +20,14 @@ import { CiLinkedin } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import ribbon from '../../assets/icons/icons8-ribbon-50.png'
 import Line from '../../components/Line/Line';
-interface TemporaryDrawerProps {
+export interface DrawerDesktopProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
   variant: 'temporary' | 'persistent' | 'permanent';
   sections: Section[];
 }
 
-const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, variant, sections }) => {
+const DrawerDesktop: React.FC<DrawerDesktopProps> = ({ open, toggleDrawer, variant, sections }) => {
   const [time, setTime] = useState<string>();
   const [date, setDate] = useState<string>();
   const [isFetched, setIsFetched] = useState<boolean>(false);
@@ -123,7 +123,7 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
           </Reveal>
         </div>
       </div>
-      <Reveal delay={1}>
+      <Reveal  delay={1}>
       <BringThemHomeNowDiv />
       </Reveal>
     </Box>
@@ -136,4 +136,4 @@ const TemporaryDrawer: React.FC<TemporaryDrawerProps> = ({ open, toggleDrawer, v
   );
 };
 
-export default TemporaryDrawer;
+export default DrawerDesktop;

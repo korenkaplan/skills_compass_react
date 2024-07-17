@@ -9,7 +9,7 @@
   display: flex;
   height: fit-content;
   justify-content: space-evenly;
-  align-items: flex-start; /* Align items to the start to ensure consistent height */
+  align-items: center; /* Align items to the start to ensure consistent height */
   position: relative;
   color: var(--text-color);
 }
@@ -62,7 +62,6 @@ svg {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: red;
 }
 p strong {
   color: 'red'

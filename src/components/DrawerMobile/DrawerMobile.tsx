@@ -11,7 +11,7 @@ import './DrawerMobile.css'
 import axios from 'axios';
 import {navbarBackgroundColor, contrastColor} from '../../utils/theme'
 import NavbarItemsHover from '../../components/FramerMotion/NavbarItemsHover';
-interface DrawerMobileProps {
+export interface DrawerMobileProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
   variant: 'temporary' | 'persistent' | 'permanent';

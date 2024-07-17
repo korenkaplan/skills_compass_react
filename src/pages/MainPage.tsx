@@ -1,33 +1,28 @@
-import React, { useEffect, useState, useMemo, CSSProperties, lazy } from 'react';
+import React, { useEffect, useState, useMemo} from 'react';
 import './MainPage.css';
 import '../utils/variables.css';
 import { Role, Section } from '../utils/interfaces';
 import _ from 'lodash';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-import ribbon from '../assets/icons/icons8-ribbon-50.png';
-import ItemByItemReveal from '../components/FramerMotion/ItemByItemReveal';
-import Reveal from '../components/FramerMotion/Reveal';
-import { RxHamburgerMenu } from 'react-icons/rx';
-import { contrastColor } from '../utils/theme';
-import { CiLinkedin } from 'react-icons/ci';
-import { FaGithub } from 'react-icons/fa';
-const LandingPageMobile = lazy(() => import('../pages mobile/LandingSection/LandingPageMobile'))
-const OverviewPageMobile = lazy(() => import('../pages mobile/OverviewSection/OverviewPageMobile'))
-const RolePageMobile = lazy(() => import('../pages mobile/RoleSection/RolePageMobile'))
-const FaqPageMobile = lazy(() => import('../pages mobile/FaqPage/FaqPageMobile'))
-const HowItWorksMobile = lazy(() => import('../pages mobile/HowItWorksMobile/HowItWorksMobile'))
-const ContactInformationMobile = lazy(() => import('../pages mobile/ContactFooterMobile/ContactFooterMobile'))
-const RoleSelect = lazy(() => import('../pages mobile/RoleSelect/RoleSelect'))
-const SwiperPage = lazy(() => import('../pages/Swiper/Swiper'))
-const LandingPage = lazy(() => import('../pages/LandingSection/LandingPage'))
-const FaqPage = lazy(() => import('../pages/FaqPage/FaqPage'))
-const RolePage = lazy(() => import('../pages/RoleSection/RolePage'))
-const Overview = lazy(() => import('../pages/OverviewSection/OverviewPage'))
-const HowItWorks = lazy(() => import('../pages/HowItWorks/HowItWorks'))
-const ContactFooter = lazy(() => import('../pages/ContactFooter/ContactFooter'))
-const DrawerMobile = lazy(() => import('../components/DrawerMobile/DrawerMobile'))
-const TemporaryDrawer = lazy(() => import('../components/Drawer/Drawer'))
+import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
+import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
+import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
+import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
+import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
+import ContactInformationMobile from '../pages mobile/ContactFooterMobile/ContactFooterMobile';
+import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
+import SwiperPage from '../pages/Swiper/Swiper';
+import LandingPage from '../pages/LandingSection/LandingPage';
+import FaqPage from '../pages/FaqPage/FaqPage';
+import RolePage from '../pages/RoleSection/RolePage';
+import Overview from '../pages/OverviewSection/OverviewPage';
+import HowItWorks from '../pages/HowItWorks/HowItWorks';
+import ContactFooter from '../pages/ContactFooter/ContactFooter';
+import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
+import DrawerDesktop from '../components/Drawer/Drawer';
+import AppBar from '../components/AppBar/Appbar';
+import Content from '../components/Content/Content';
 
 
 
@@ -62,34 +57,7 @@ const MainPage: React.FC = () => {
   const marginLeftAmount = 250;
   const isMobile = useMediaQuery({ query: '(max-width: 1200px)' });
   const [isOpen, setIsOpen] = useState<boolean>(isMobile ? false : true);
-  const [opacity, setOpacity] = useState(1);
-
-  const handleScroll = () => {
-    console.log('here is scroll');
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    console.log(scrollTop); // Log the scroll position to check if the event is firing
-    setOpacity(scrollTop > 250 ? 0.5 : 1); // Change 0.5 to desired opacity
-  };
-
-  useEffect(() => {
-    console.log('here is scroll add', Date.now());
-    window.addEventListener('scroll', handleScroll);
-  }, []);
-
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
-
-  const headerStyle: CSSProperties = {
-    color: contrastColor,
-    fontSize: '20px',
-    marginLeft: '20px',
-  };
-
-  const burgerHeaderStyle: CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  };
-
   const toggleDrawer = (newOpen: boolean) => {
     if (!isMobile) {
       setIsOpen(true);
@@ -98,20 +66,6 @@ const MainPage: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://dev-skill-compass-server.onrender.com/usage_stats/get-all-roles/');
-        setRoles(response.data);
-        setRolesFetched(true);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const sectionsMobile = useMemo(() => {
     return [
@@ -135,68 +89,40 @@ const MainPage: React.FC = () => {
     ];
   }, [roles, rolesFetched, isMobile]);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://dev-skill-compass-server.onrender.com/usage_stats/get-all-roles/');
+        setRoles(response.data);
+        setRolesFetched(true);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   useEffect(() => {
     setIsOpen(!isMobile);
   }, [isMobile]);
 
   return (
     <div className="main-page">
-      <div className="appbar" style={{ display: isMobile ? 'flex' : 'none', opacity: opacity }}>
-        <div style={burgerHeaderStyle}>
-          <RxHamburgerMenu className="burgerMenuIcon" size={30} onClick={() => toggleDrawer(true)} />
-          <ItemByItemReveal>
-            <p style={headerStyle}>Skills Compass</p>
-          </ItemByItemReveal>
-        </div>
-
-        <div className="iconsdiv">
-          <Reveal>
-            <div className="iconWithATag">
-              <a className="" href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
-                <img src={ribbon} alt="My Image" className="clickableImageDesktop" />
-              </a>
-            </div>
-          </Reveal>
-          <Reveal delay={0.3}>
-            <div className="iconWithATag">
-              <a className="" href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-                <CiLinkedin size={30} color={contrastColor} />
-              </a>
-            </div>
-          </Reveal>
-          <Reveal delay={0.6}>
-            <div className="iconWithATag">
-              <a className="" href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-                <FaGithub size={30} color={contrastColor} />
-              </a>
-            </div>
-          </Reveal>
-        </div>
+      <AppBar  isMobile={isMobile} toggleDrawer={toggleDrawer}/>
+      <Content
+        isMobile={isMobile}
+        sections={isMobile ? sectionsMobile : sections}
+        DrawerComponent={isMobile ? DrawerMobile : DrawerDesktop}
+        variant={variant}
+        isOpen={isOpen}
+        toggleDrawer={toggleDrawer}
+        marginLeftAmount={marginLeftAmount}
+      />
       </div>
-      {isMobile ? (
-        <>
-          <DrawerMobile sections={sectionsMobile} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
-          <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
-            {sectionsMobile.map((section) => (
-              <div key={section.id} id={section.id} className="section">
-                <section.component />
-              </div>
-            ))}
-          </div>
-        </>
-      ) : (
-        <div className="sectionsWrapperDesktop">
-          <TemporaryDrawer sections={sections} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
-          <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
-            {sections.map((section) => (
-              <div key={section.id} id={section.id} className="section">
-                <section.component />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
   );
 };
 
