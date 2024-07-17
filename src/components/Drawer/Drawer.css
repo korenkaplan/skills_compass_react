@@ -41,7 +41,7 @@ color: var(--contrast-color);
 
 /* Hide scrollbar for modern browsers */
 .drawer::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
   }
   .bringThemHomeNowDiv{
     bottom: 0;

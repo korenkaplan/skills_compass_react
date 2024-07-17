@@ -78,7 +78,7 @@ const HowItWorksMobile: React.FC = () => {
     ));
   };
   return (
-    <div style={{ padding: 50 }} className="section OverviewContainerDesktop heightAndBorder  " >
+    <div style={{ padding: 50 }} className="section OverviewContainerMobile heightAndBorder  " >
 
       <>
         <ItemByItemReveal customStyle={{ textAlign: 'center' }} speed={20} >

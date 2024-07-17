@@ -34,10 +34,6 @@ function getStyles(name: string, selectedNames: string[], theme: Theme) {
         backgroundColor: primaryBackgroundColor,
         color: contrastColor,
         border: `1px solid ${contrastColor}`,
-        '& .MuiList-root': {
-          paddingTop: 0, // Remove top padding
-          paddingBottom: 0, // Remove bottom padding
-        },
   };
 }
 
@@ -94,7 +90,6 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
         >
           {sections.map((section) => (
             <MenuItem
-
               key={section.label}
               value={section.label}
               style={getStyles(section.label, selectedNames, theme)}

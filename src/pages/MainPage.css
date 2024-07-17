@@ -52,7 +52,8 @@
 
   }
   .content {
-    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-y: hidden; /* Allow vertical scrolling */
+    overflow-x: hidden; /* Allow vertical scrolling */
     transition: margin 0.3s ease-in-out;
     max-width: 100vw;
   }

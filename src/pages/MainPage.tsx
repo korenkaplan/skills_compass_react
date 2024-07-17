@@ -1,37 +1,36 @@
-import React, { useEffect, useState, useMemo, CSSProperties } from 'react';
+import React, { useEffect, useState, useMemo, CSSProperties, lazy } from 'react';
 import './MainPage.css';
 import '../utils/variables.css';
-import LandingPage from './LandingSection/LandingPage';
-import FaqPage from './FaqPage/FaqPage';
-import RolePage from './RoleSection/RolePage';
 import { Role, Section } from '../utils/interfaces';
 import _ from 'lodash';
 import axios from 'axios';
-import TemporaryDrawer from '../components/Drawer/Drawer';
 import { useMediaQuery } from 'react-responsive';
-
-
-import SwiperPage from './Swiper/Swiper';
-import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
-import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
-import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
-import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
-import ContactInformationMobile from '../pages mobile/ContactFooterMobile/ContactFooterMobile';
-import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
-import Overview from './OverviewSection/OverviewPage';
-import HowItWorks from './HowItWorks/HowItWorks';
-
-
 import ribbon from '../assets/icons/icons8-ribbon-50.png';
-import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
-import ContactFooter from './ContactFooter/ContactFooter';
-import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
 import ItemByItemReveal from '../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../components/FramerMotion/Reveal';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { contrastColor } from '../utils/theme';
 import { CiLinkedin } from 'react-icons/ci';
 import { FaGithub } from 'react-icons/fa';
+const LandingPageMobile = lazy(() => import('../pages mobile/LandingSection/LandingPageMobile'))
+const OverviewPageMobile = lazy(() => import('../pages mobile/OverviewSection/OverviewPageMobile'))
+const RolePageMobile = lazy(() => import('../pages mobile/RoleSection/RolePageMobile'))
+const FaqPageMobile = lazy(() => import('../pages mobile/FaqPage/FaqPageMobile'))
+const HowItWorksMobile = lazy(() => import('../pages mobile/HowItWorksMobile/HowItWorksMobile'))
+const ContactInformationMobile = lazy(() => import('../pages mobile/ContactFooterMobile/ContactFooterMobile'))
+const RoleSelect = lazy(() => import('../pages mobile/RoleSelect/RoleSelect'))
+const SwiperPage = lazy(() => import('../pages/Swiper/Swiper'))
+const LandingPage = lazy(() => import('../pages/LandingSection/LandingPage'))
+const FaqPage = lazy(() => import('../pages/FaqPage/FaqPage'))
+const RolePage = lazy(() => import('../pages/RoleSection/RolePage'))
+const Overview = lazy(() => import('../pages/OverviewSection/OverviewPage'))
+const HowItWorks = lazy(() => import('../pages/HowItWorks/HowItWorks'))
+const ContactFooter = lazy(() => import('../pages/ContactFooter/ContactFooter'))
+const DrawerMobile = lazy(() => import('../components/DrawerMobile/DrawerMobile'))
+const TemporaryDrawer = lazy(() => import('../components/Drawer/Drawer'))
+
+
+
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap((role, index) => {
@@ -73,10 +72,8 @@ const MainPage: React.FC = () => {
   };
 
   useEffect(() => {
+    console.log('here is scroll add', Date.now());
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';

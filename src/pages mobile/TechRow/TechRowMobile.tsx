@@ -25,7 +25,7 @@ const TechRowMobile: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineW
 
     calculatedWidth = Math.min(count * scaleFactor, maxLineWidth);
     setLineWidth(calculatedWidth);
-    
+
     // Set the line width with a delay to create a loading effect
   }, [count, maxCount, maxLineWidth, showPercentage]);
 
@@ -65,7 +65,7 @@ const TechRowMobile: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineW
       <div className="lineWrapper" style={{ width: `${maxLineWidth}px` }}>
       <motion.div
           className="tech-line"
-          style={{ width: `${lineWidth}px` }}
+          style={{ width: `${lineWidth*0.5}px` }}
           initial="hidden"
           animate="visible"
           variants={lineVariants}
