@@ -68,7 +68,7 @@ useEffect(() => {
 
   return (
     <div className="section main heightAndBorder" >
-      <div className="mainContainerLandingPage" style={{marginTop:`${appBarHeight + extraSpaceFromAppBarInPx}px`}}>
+      <div className="mainContainerLandingPageMobile" style={{marginTop:`${appBarHeight + extraSpaceFromAppBarInPx}px`}}>
         <Slide>
       <div className="image-container">
         <img style={{width:`${logoWidth}px`}}  src={logoCropped} alt="mainLogo " className="rotatingImage"/>
