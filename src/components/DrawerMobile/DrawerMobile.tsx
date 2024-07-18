@@ -67,7 +67,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
       <div>
         <div className="nameSquareMobile">
           <p className='poppins-900 headerLetterMobile'>Skills</p>
-          <p className='poppins-900 dotHeaderMobile'>.</p>
+          <p className='poppins-900 dotDraweeMobile'></p>
           <p className='poppins-900 headerLetterMobile'>Compass</p>
         </div>
         <Divider sx={{ backgroundColor: 'white' }} />

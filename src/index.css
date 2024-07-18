@@ -15,7 +15,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--contrast-color);
   text-decoration: inherit;
 }
 a:hover {
@@ -29,12 +29,21 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
+  font-family: var(--default-font);
+  font-weight: 900;
 
+}
+h2, h3, input, p, span, div, strong {
+  font-family: var(--default-font);
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;

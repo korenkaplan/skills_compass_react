@@ -11,6 +11,7 @@
     --contrast-color-red: 10;
     --contrast-color-green: 255;
     --contrast-color-blue: 157;
+    --default-font: "Poppins", "Poppins", sans-serif;
     --contrast-color: rgba(var(--contrast-color-red), var(--contrast-color-green), var(--contrast-color-blue), 1);
     --navbar-background-color: #080808;
 }

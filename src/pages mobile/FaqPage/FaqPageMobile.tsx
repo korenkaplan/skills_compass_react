@@ -15,7 +15,8 @@ import { FaLinkedin } from "react-icons/fa";
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
-import {primaryHeaderColor, secondaryBackgroundColor,primaryBackgroundColor, buttonsBackgroundColor, textColor,buttonTextColor} from '../../utils/theme.ts'
+import {secondaryBackgroundColor,primaryBackgroundColor, buttonsBackgroundColor, textColor,buttonTextColor, contrastColor} from '../../utils/theme.ts'
+import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot.tsx';
 
 interface FaqPageProps {
 
@@ -221,16 +222,14 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
   );
   return (
     <div className="section  containerFaq heightAndBorder" >
-      <div className="headerDivFaq">
         <ItemByItemReveal>
-          <h3 className='headerFaqMobile'>Frequently Asked Questions</h3>
+        <HeaderWithDot  header={'FAQ'}/>
         </ItemByItemReveal>
-      </div>
       <div className="accordionDiv">
         <div className="general">
           <Slide slideFrom='left'>
             <div className="headerIconDiv">
-              <FaQuestionCircle size={20} style={{ margin: '0 5px 0 0' , color:primaryHeaderColor}} />
+              <FaQuestionCircle size={20} style={{ margin: '0 5px 0 0' , color:contrastColor}} />
               <h2>General</h2>
             </div>
           </Slide>
@@ -244,7 +243,7 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
         <div className="DataCollection">
           <Slide slideFrom='left'>
             <div className="headerIconDiv">
-              <BsCollection size={20} style={{ margin: '0 5px 0 0' }} />
+              <BsCollection size={20} style={{ margin: '0 5px 0 0', color:contrastColor }} />
               <h2>Data Collection</h2>
             </div>
 
@@ -291,7 +290,7 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
         <div className="TechnicalSupport">
           <Slide slideFrom='left'>
             <div className="headerIconDiv">
-              <MdSupportAgent size={25} style={{ margin: '0 5px 0 0' }} />
+              <MdSupportAgent size={25} style={{ margin: '0 5px 0 0', color:contrastColor }} />
               <h2>Technical Support</h2>
             </div>
 

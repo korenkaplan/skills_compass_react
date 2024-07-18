@@ -1,0 +1,32 @@
+.dotHeaderMobile {
+    background-color: var(--contrast-color);
+    font-size: 65px;
+    margin: 0;
+    padding: 0;
+    line-height: 35px;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    position: relative;
+    top: -11px;
+  }
+
+  .headerWithDotText {
+    color: var(--main-header-color);
+    margin: 0;
+    padding: 0;
+  }
+
+  .headerWithDotWrapper {
+    display: flex;
+    height: min-content;
+    padding: 0;
+    justify-content: center;
+    align-items: flex-end;
+    width: fit-content;
+  }
+
+  .redBorder {
+    border: 1px solid red;
+    padding: 0;
+  }

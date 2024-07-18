@@ -31,7 +31,7 @@ const AppBar: React.FC<AppBarProps> = ({ isMobile, toggleDrawer }) => {
       <div style={burgerHeaderStyle}>
         <RxHamburgerMenu className="burgerMenuIcon" size={30} onClick={() => toggleDrawer(true)} />
         <ItemByItemReveal>
-          <p style={headerStyle}>Skills Compass</p>
+          <p className='poppins-900' style={headerStyle}>Skills Compass</p>
         </ItemByItemReveal>
       </div>
 

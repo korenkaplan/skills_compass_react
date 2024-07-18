@@ -6,7 +6,7 @@ import './OverViewPage.css'
 import '../../utils/variables.css'
 import { backgroundColor, } from '../../utils/variables'
 import {contrastColor} from '../../utils/theme'
-import logo from '../../assets/logo/logo ellow ribbon with text.png'
+import logo from '../../assets/logo/logo wit yellow ribbon.png'
 import '../../CSS/RotatingImageClick.css'
 import bell from '../../assets/icons/bell.png'
 import Line from '../../components/Line/Line';
@@ -143,6 +143,7 @@ const Overview: React.FC = () => {
           transition={{ duration: 0.5 }}
           >
             <h2 className='headerOverviewPageDesktop'>{header}<strong className='highlighted'>.</strong></h2>
+
             <ScaleOnTapButtonWrapper>
               <div className='custom-button translateButtonDivDesktop'
                 onClick={handleRotate}
@@ -181,11 +182,14 @@ const Overview: React.FC = () => {
         </div>
         <Reveal >
           <div className="imageRowDesktop">
+            <div>
+            <img src={logo} alt="Logo" className="logoRightCorner" />
             <p>{bottomWords}</p>
+
+            </div>
             <ScaleOnTapButtonWrapper>
               <ScrollDownMouseAnimation CustomClassName='scrollDownAnimationMouseDesktop' scrollToSectionId='swiperPage' styleProps={getScrollDownAnimationStyle()} />
             </ScaleOnTapButtonWrapper>
-            <img src={logo} alt="Logo" className="logoRightCorner" />
           </div>
         </Reveal>
 

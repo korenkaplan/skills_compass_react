@@ -12,6 +12,8 @@
   }
   .headerLandingPageMobile{
     font-family: 'Inknut Antiqua', serif;
+  font-family: "Poppins", sans-serif;
+
     font-size: 18px;
     text-align: center;
     width: 85%;
@@ -51,6 +53,8 @@
   }
   .logoHeader {
     font-family: 'Inknut Antiqua', serif;
+  font-family: "Poppins", sans-serif;
+
     text-align: center;
     font-size: 30px;
   }
@@ -108,6 +112,8 @@ right: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Initial box-shadow */
   height:55px;
   margin-top: 30px;
+  font-family: "Poppins", sans-serif;
+
 }
 .alottieMobile {
   width: 50px;

@@ -13,11 +13,20 @@
   height: min-content;
   /* width:50%; */
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
-
+.dotDraweeMobile{
+  background-color: var(--contrast-color);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 10px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
 .poppins-900 {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--default-font);
   font-weight: 900;
   font-style: normal;
   font-size: 24px;
@@ -26,16 +35,7 @@
 .headerLetterMobile{
   color: var(--text-color);
 }
-.dotHeaderMobile{
-  color: var(--contrast-color);
-  /* background-color:  var(--contrast-color); */
-  width: 10px;
-  font-size: 40px;
-  position: relative;
-  bottom: 4px;
-  border-radius: 100%;
-  margin: 0 5px;
-}
+
 .ListItemMobile{
   color: white;
   display: flex;

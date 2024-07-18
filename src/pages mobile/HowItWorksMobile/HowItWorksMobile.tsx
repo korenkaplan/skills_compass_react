@@ -1,5 +1,5 @@
 // src/components/SideMenu.tsx
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import './HowItWorksMobile.css'
 import ThreeStepsMobile from './ThreeStepsMobile';
 import FutureUpgradesMobile from './FutureUpgradesMobile';
@@ -8,7 +8,8 @@ import jobDescriptionhighlited from '../../assets/images/Job description highlit
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Reveal from '../../components/FramerMotion/Reveal';
 import Slide from '../../components/FramerMotion/Slide';
-import {contrastColor, primaryHeaderColor, textColor} from '../../utils/theme'
+import {contrastColor, textColor} from '../../utils/theme'
+import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot';
 
 interface Category {
   name: string;
@@ -50,10 +51,7 @@ const row2: CategoryRow = { columns: [cloudArchitecture, frameworks] }
 const row3: CategoryRow = { columns: [role, methodologies] }
 
 const HowItWorksMobile: React.FC = () => {
-  const headerStyle: CSSProperties = {
-    fontSize: '35px',
-    color:primaryHeaderColor,
-  }
+
   const spreadRows = (rows: CategoryRow[]) => {
     let delayInSeconds = 3;
     return rows.map((row, rowIndex) => (
@@ -81,8 +79,8 @@ const HowItWorksMobile: React.FC = () => {
     <div style={{ padding: 50 }} className="section OverviewContainerMobile heightAndBorder  " >
 
       <>
-        <ItemByItemReveal customStyle={{ textAlign: 'center' }} speed={20} >
-          <h1 style={headerStyle} >Workflow 🛠️</h1>
+        <ItemByItemReveal className='flexCenter' customStyle={{ textAlign: 'center', flexDirection:'column' }} speed={20} >
+          <HeaderWithDot header='Workflow'/>
           <h2 style={{color:textColor}} >Discover our  3-step process for delivering the most relevant and reliable data on the internet</h2>
         </ItemByItemReveal>
         <ThreeStepsMobile />
@@ -111,8 +109,8 @@ const HowItWorksMobile: React.FC = () => {
       </div>
       <Line margin='50px 0' height='1px' width='80%' color={contrastColor} />
       <>
-        <ItemByItemReveal customStyle={{ textAlign: 'center' }} speed={20} >
-          <h1 style={headerStyle}>What's Next? 🚀</h1>
+      <ItemByItemReveal className='flexCenter' customStyle={{ textAlign: 'center', flexDirection:'column' }} speed={20} >
+        <HeaderWithDot header="What's Next"/>
           <h2>Discover our exciting upcoming improvements and features</h2>
         </ItemByItemReveal>
         <FutureUpgradesMobile />

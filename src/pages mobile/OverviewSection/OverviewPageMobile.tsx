@@ -12,6 +12,7 @@ import Reveal from '../../components/FramerMotion/Reveal';
 import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
 import Slide from '../../components/FramerMotion/Slide';
 import { motion, AnimatePresence } from 'framer-motion';
+import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot';
 const OverviewPageMobile: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80
@@ -145,7 +146,9 @@ const OverviewPageMobile: React.FC = () => {
             variants={textVariants}
             transition={{ duration: 0.5 }}
            className="containerHeader">
-            <h2 className='headerOverviewPage'>{header}</h2>
+          <HeaderWithDot lang={isRotated ? 'he' : 'en'} header={header}/>
+
+
             <ScaleOnTapButtonWrapper>
               <div className='custom-button translateButtonDivMobile'
                 onClick={handleRotate}
