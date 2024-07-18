@@ -6,7 +6,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Section } from '../../utils/interfaces';
-import logo from '../../assets/logo/logo ellow ribbon with text.png';
 import './DrawerMobile.css'
 import axios from 'axios';
 import {navbarBackgroundColor, contrastColor} from '../../utils/theme'
@@ -64,10 +63,12 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   }, [sections]);
 
   const DrawerList = (
-    <Box className='drawerMobile' sx={{ width: 250, backgroundColor:navbarBackgroundColor, border:`1px solid ${contrastColor}`, overflowY:'hidden' }} role="presentation">
+    <Box className='drawerMobile' sx={{ width: 250, backgroundColor:navbarBackgroundColor, borderRight:`1px solid ${contrastColor}`, overflowY:'hidden' }} role="presentation">
       <div>
-        <div className="logoDiv">
-          <img src={logo} alt="Logo" style={{ width: '120px' }} />
+        <div className="nameSquareMobile">
+          <p className='poppins-900 headerLetterMobile'>Skills</p>
+          <p className='poppins-900 dotHeaderMobile'>.</p>
+          <p className='poppins-900 headerLetterMobile'>Compass</p>
         </div>
         <Divider sx={{ backgroundColor: 'white' }} />
         <div className="firstSection">
