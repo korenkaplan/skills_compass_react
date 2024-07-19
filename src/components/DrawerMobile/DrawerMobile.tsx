@@ -121,7 +121,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   );
 
   return (
-    <Drawer variant={variant}  slotProps={{ backdrop: { invisible: true } }} open={open} onClose={() => toggleDrawer(false)}>
+    <Drawer style={{overflowY:'hidden'}} variant={variant}  slotProps={{ backdrop: { invisible: true } }} open={open} onClose={() => toggleDrawer(false)}>
       {DrawerList}
     </Drawer>
   );
