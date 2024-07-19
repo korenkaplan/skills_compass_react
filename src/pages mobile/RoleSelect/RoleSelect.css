@@ -8,20 +8,31 @@
     padding-top: 0;
 }
 
-   /* src/styles/CustomSelectStyles.css */
+/* src/styles/CustomSelectStyles.css */
 
-   .custom-select {
-    background-color: red !important;
+.custom-select {
+    background-color: #ff0000 !important; /* Red background for the Select component */
+  }
+
+  .custom-select .MuiSelect-select {
+    background-color: #ff0000 !important; /* Red background for the selected value */
   }
 
   .custom-select .MuiPaper-root {
-    background-color: red !important;
+    background-color: #000000 !important; /* Black background for the dropdown menu */
   }
 
   .custom-select .MuiMenuItem-root {
-    background-color: red !important;
+    background-color: #000000 !important; /* Black background for each menu item */
+    color: #00ff00; /* Green text for each menu item */
   }
 
   .custom-select .MuiMenuItem-root:hover {
-    background-color: red !important;
+    background-color: #444444 !important; /* Darker background on hover for each menu item */
+    color: #ffffff; /* White text on hover */
+  }
+
+  .custom-select .MuiMenuItem-root.Mui-selected {
+    background-color: #444444 !important; /* Darker background for the selected menu item */
+    color: #ffffff; /* White text for the selected item */
   }
