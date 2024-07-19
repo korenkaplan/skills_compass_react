@@ -7,3 +7,21 @@
 .css-6hp17o-MuiList-root-MuiMenu-list{
     padding-top: 0;
 }
+
+   /* src/styles/CustomSelectStyles.css */
+
+   .custom-select {
+    background-color: red !important;
+  }
+
+  .custom-select .MuiPaper-root {
+    background-color: red !important;
+  }
+
+  .custom-select .MuiMenuItem-root {
+    background-color: red !important;
+  }
+
+  .custom-select .MuiMenuItem-root:hover {
+    background-color: red !important;
+  }

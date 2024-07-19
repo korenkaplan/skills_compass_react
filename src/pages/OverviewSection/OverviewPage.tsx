@@ -98,25 +98,39 @@ const developerSurveyTextHeb = () => (
 
 const Overview: React.FC = () => {
   const [currentYear] = useState(new Date().getFullYear());
-  const [mainText, setMainText] = useState(developerSurveyText);
-  const [header, setHeader] = useState<string>(headerEnglish);
-  const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
-  const [isRotated, setIsRotated] = useState(false);
+
   const questions = [
-    `"Which cloud platform is more in use in the industry for DevOps roles: AWS or Azure?"`,
     `"Which programming language is most in demand in ${currentYear}?"`,
     `"Which database is more in use in ${currentYear} PostgreSQL or MySQL?"`,
     `"Which framework should I learn in ${currentYear} React or Angular?"`,
     `"Which database is more commonly used in the industry SQL or NoSql?"`,
     `"Is it worth learning PHP in ${currentYear}?"`,
     `"Java vs Python vs Node.Js for backend development in ${currentYear}?"`,
+    `"Which cloud platform is more in use in the industry for DevOps roles: AWS or Azure?"`,
     `"Which stack is more popular MEAN or MERN in ${currentYear}?"`,
   ];
+  const questionsHeb = [
+    `"איזו שפת תכנות היא המבוקשת ביותר בשנת ${currentYear}?"`,
+    `"איזה מסד נתונים נמצא יותר בשימוש בשנת ${currentYear}, PostgreSQL או MySQL?"`,
+    `"איזה פריימוורק כדאי ללמוד בשנת ${currentYear}, React או Angular?"`,
+    `"איזה מסד נתונים נמצא יותר בשימוש בתעשייה, SQL או NoSql?"`,
+    `"האם כדאי ללמוד PHP בשנת ${currentYear}?"`,
+    `"Java מול Python מול Node.Js לפיתוח צד שרת בשנת ${currentYear}?"`,
+    `"איזו פלטפורמת ענן נמצאת יותר בשימוש בתעשייה לתפקידי DevOps, AWS או Azure?"`,
+    `"איזו סטאק פופולרי יותר, MEAN או MERN בשנת ${currentYear}?"`,
+  ];
+  const [mainText, setMainText] = useState(developerSurveyText);
+  const [header, setHeader] = useState<string>(headerEnglish);
+  const [bottomWords, setBottomWords] = useState<string>(bottomWordsEng);
+  const [isRotated, setIsRotated] = useState(false);
+  const [typedQuestions, setTypedQuestions] = useState(questions)
+
   const handleRotate = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
     setMainText(isRotated ? developerSurveyText : developerSurveyTextHeb); // Toggle between English and Hebrew texts
     setHeader(isRotated ? headerEnglish : headerHeb); // Toggle between English and Hebrew texts
     setBottomWords(isRotated ? bottomWordsEng : bottomWordsHeb); // Toggle between English and Hebrew texts
+    setTypedQuestions(isRotated? questions: questionsHeb)
 
   };
 
@@ -157,7 +171,7 @@ const Overview: React.FC = () => {
         <div className="containerTextDesktop" dir={isRotated ? 'rtl' : 'ltr'}>
           <Reveal >
             <div className='questionsDiv' dir='ltr'>
-              <TypeQuestionAnimation fontSize={24} questions={questions} currentYear={currentYear} />
+              <TypeQuestionAnimation fontSize={24} questions={typedQuestions} currentYear={currentYear} />
             </div>
           </Reveal>
           <AnimatePresence>

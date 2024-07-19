@@ -87,6 +87,7 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
           MenuProps={MenuProps}
           IconComponent={()=> <IoMdArrowDropdown size={35}/>}
           sx={selectInputStyle}
+          className="custom-select"
         >
           {sections.map((section) => (
             <MenuItem
@@ -105,7 +106,7 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
         <div key={section.id} id={section.id} className="section">
           <section.component />
         </div>
-      ))}
+      )).reverse()}
       </div>
 
     </div>

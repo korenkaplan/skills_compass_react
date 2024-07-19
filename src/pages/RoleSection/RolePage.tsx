@@ -23,6 +23,8 @@ import {contrastColor} from '../../utils/theme'
 import {switchesDivWidth} from '../../utils/variables'
 import { motion, AnimatePresence } from 'framer-motion';
 import { CustomSwitch } from '../../components/CustomSwitch/CustomSwitch';
+import {techItemsPerCategory, allCategoriesItemsAmount} from '../../utils/variables'
+
 //#endregion
 
 interface RolePageProps {
@@ -239,8 +241,8 @@ useEffect(() => {
         const response = await axios.post('https://dev-skill-compass-server.onrender.com/usage_stats/get-role-count-stats-view/', {
           role_id: role.id,
           number_of_categories: 12,
-          limit: 10,
-          all_categories_limit: 20
+          limit: techItemsPerCategory,
+          all_categories_limit: allCategoriesItemsAmount
         });
         setData(response.data.data);
 
@@ -408,7 +410,7 @@ return (
 
             <Tooltip place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
               <div>
-              <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>
+              <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
               </div>
             </Tooltip>
 
@@ -421,7 +423,7 @@ return (
             value={categoryAmount == 0 ? defaultAmount : categoryAmount}
             onChange={handleCategoryAmountChange}
             min={1} // Ensure the input doesn't accept negative values
-            max={100}
+            max={techItemsPerCategory}
             style={CategoryInputStyle} // Apply custom styles via style attribute
           />
           </SwitchesReveal>

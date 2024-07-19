@@ -26,6 +26,17 @@ const OverviewPageMobile: React.FC = () => {
     `"Which cloud platform is more in use in the industry for DevOps roles: AWS or Azure?"`,
     `"Which stack is more popular MEAN or MERN in ${currentYear}?"`,
   ];
+  const questionsHeb = [
+    `"איזו שפת תכנות היא המבוקשת ביותר בשנת ${currentYear}?"`,
+    `"איזה מסד נתונים נמצא יותר בשימוש בשנת ${currentYear}, PostgreSQL או MySQL?"`,
+    `"איזה פריימוורק כדאי ללמוד בשנת ${currentYear}, React או Angular?"`,
+    `"איזה מסד נתונים נמצא יותר בשימוש בתעשייה, SQL או NoSql?"`,
+    `"האם כדאי ללמוד PHP בשנת ${currentYear}?"`,
+    `"Java מול Python מול Node.Js לפיתוח צד שרת בשנת ${currentYear}?"`,
+    `"איזו פלטפורמת ענן נמצאת יותר בשימוש בתעשייה לתפקידי DevOps, AWS או Azure?"`,
+    `"איזו סטאק פופולרי יותר, MEAN או MERN בשנת ${currentYear}?"`,
+  ];
+
   const developerSurveyText = () => (
     <>
       <div className="topMobile" >
@@ -110,11 +121,12 @@ const OverviewPageMobile: React.FC = () => {
   const [header, setHeader] = useState<string>(headerEnglish);
   const [isRotated, setIsRotated] = useState(false);
   const [mainText, setMainText] = useState(developerSurveyText);
-
+  const [typedQuestions, setTypedQuestions] = useState(questions)
   const handleRotate = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
     setHeader(isRotated ? headerEnglish : headerHeb); // Toggle between English and Hebrew texts
     setMainText(isRotated ? developerSurveyText : developerSurveyTextHeb); // Toggle between English and Hebrew texts
+    setTypedQuestions(isRotated? questions: questionsHeb)
   };
 
 
@@ -124,6 +136,7 @@ const OverviewPageMobile: React.FC = () => {
   }, []);
   const questionsRowsStyle: CSSProperties = {
     height: '100px',
+    marginTop:'15px',
   };
   const getScrollDownAnimationStyle = (): CSSProperties => ({
     height: '150px',
@@ -162,7 +175,7 @@ const OverviewPageMobile: React.FC = () => {
         <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
           <Reveal >
             <div style={questionsRowsStyle} dir='ltr'>
-              <TypeQuestionAnimation  fontSize={20} questions={questions} currentYear={currentYear} />
+              <TypeQuestionAnimation isRotated={isRotated}  fontSize={20} questions={typedQuestions} currentYear={currentYear} />
             </div>
           </Reveal>
           <AnimatePresence>

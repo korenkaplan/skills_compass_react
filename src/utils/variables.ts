@@ -7,4 +7,6 @@ const textColor: string = '#F4F2EF';
 const framerMotionRepeatOnce: boolean = true;
 const switchesDivWidth: number = 400
 const appBarHeight: number = 80
-export { appBarHeight, switchesDivWidth, backgroundColor, textColor, resumeDownloadLink, sideMenuBackgroundColor, framerMotionRepeatOnce};
+const techItemsPerCategory: number = 20
+const allCategoriesItemsAmount: number = 10
+export { allCategoriesItemsAmount, techItemsPerCategory, appBarHeight, switchesDivWidth, backgroundColor, textColor, resumeDownloadLink, sideMenuBackgroundColor, framerMotionRepeatOnce};

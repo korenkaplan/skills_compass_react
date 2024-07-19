@@ -22,6 +22,7 @@ import { IoInformationCircleSharp } from 'react-icons/io5';
 import {contrastColor, } from '../../utils/theme'
 import { motion, AnimatePresence } from 'framer-motion';
 import { CustomSwitch } from '../../components/CustomSwitch/CustomSwitch';
+import {techItemsPerCategory, allCategoriesItemsAmount} from '../../utils/variables'
 
 //#endregion
 
@@ -193,7 +194,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const handleCategoryAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Ensure the value is non-negative
     const value = parseInt(event.target.value, 10);
-    if (value >= 1) {
+    if (value >= 1 && value <= techItemsPerCategory) {
       setCategoryAmount(value);
       aggregatedTechList(amount, listLimitSwitch, value, categoryLimitSwitch)
     }
@@ -227,8 +228,8 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
         const response = await axios.post('https://dev-skill-compass-server.onrender.com/usage_stats/get-role-count-stats-view/', {
           role_id: role.id,
           number_of_categories: 7,
-          limit: 10,
-          all_categories_limit: 20
+          limit: techItemsPerCategory,
+          all_categories_limit: allCategoriesItemsAmount
         });
         setData(response.data.data);
 
@@ -416,7 +417,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                   <IoInformationCircleSharp  className='IoInformationCircleSharpMobile SwitchLimitPerCategory' size={22}/>
                   <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitPerCategory'>
                     <div>
-                      <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category.</p>
+                      <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
                     </div>
                   </Tooltip>
                 </div>
@@ -428,7 +429,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                     value={categoryAmount == 0 ? defaultAmount : categoryAmount}
                     onChange={handleCategoryAmountChange}
                     min={1} // Ensure the input doesn't accept negative values
-                    max={100}
+                    max={techItemsPerCategory}
                     className='inputMobile'
                     style={CategoryInputStyle} // Apply custom styles via style attribute
                   />
