@@ -6,12 +6,10 @@ import linkedin from '../../assets/icons/linkedin.png'
 import github from '../../assets/icons/github.png'
 import whatsapp from '../../assets/icons/whatsapp.png'
 import download from '../../assets/icons/download.png'
-import Line from '../../components/Line/Line'
 import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
 import Slide from '../../components/FramerMotion/Slide';
 import Reveal from '../../components/FramerMotion/Reveal';
 import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot';
-import { contrastColor } from '../../utils/theme';
 const ContactFooterMobile: React.FC = () => {
 
   return (
@@ -21,9 +19,7 @@ const ContactFooterMobile: React.FC = () => {
           <ItemByItemReveal>
             <HeaderWithDot fontSize={22} header={'CONTACT & INFORMATION'}/>
             </ItemByItemReveal>
-            <Slide slideFrom='left'>
-            <Line height="2px" width="80px" color={contrastColor} radius="4px" />
-            </Slide>
+
             </div>
 
             <div className="RowBottomAboutMe">
