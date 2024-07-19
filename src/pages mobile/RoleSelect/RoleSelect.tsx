@@ -19,7 +19,7 @@ const MenuProps = {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: 250,
-      backgroundColor:'red'
+      backgroundColor:'transparent',
     },
   },
   MenuListProps:{
@@ -89,7 +89,6 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
           MenuProps={MenuProps}
           IconComponent={()=> <IoMdArrowDropdown size={35}/>}
           sx={selectInputStyle}
-          className="custom-select"
         >
           {sections.map((section) => (
             <MenuItem
