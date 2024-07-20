@@ -22,7 +22,10 @@
 .tech-nameDesktop {
   white-space: nowrap;
 }
-
+.techRowCategory{
+  color: var(--contrast-color);
+  font-size: smaller;
+}
 .tech-lineDesktop {
   height: 20px;
   background-color: var(--primary-background-color); /* Change the background color to your desired color */

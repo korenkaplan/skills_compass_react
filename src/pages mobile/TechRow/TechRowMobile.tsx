@@ -8,9 +8,11 @@ interface TechRowProps {
   maxLineWidth: number; // Maximum line width in pixels
   showPercentage: boolean; // Indicates whether to show as percentage
   totalListingsAmount: number;
+  showCategory: boolean;
+  category: string;
 }
 
-const TechRowMobile: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineWidth, showPercentage }) => {
+const TechRowMobile: React.FC<TechRowProps> = ({showCategory=false, category, tech, count, maxCount, maxLineWidth, showPercentage }) => {
   const [lineWidth, setLineWidth] = useState(0);
 
   useEffect(() => {
@@ -60,6 +62,8 @@ const TechRowMobile: React.FC<TechRowProps> = ({ tech, count, maxCount, maxLineW
     <div className="tech-row">
       <div className="tech-name-container">
         <span className="tech-name">{formatTitle(tech)}</span>
+      <span style={{display: showCategory ? 'inline' : 'none'}} className="techRowCategoryMobile">{category}</span>
+
       </div>
       <div className="lineAndNumDiv">
       <div className="lineWrapper" style={{ width: `${maxLineWidth}px` }}>

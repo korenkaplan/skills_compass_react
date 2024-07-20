@@ -48,7 +48,6 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const [showPercentage, setShowPercentage] = useState<boolean>(true)
   const [isAnimating, setIsAnimating] = useState<boolean>(true)
   const [alignment, setAlignment] = React.useState('percentages');
-  const [loadingTitle, setLoadingTitle] = useState<string>('Loading Jobs Count')
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [aggregatedSwitch, setAggregatedSwitch] = useState(false)
   const [listLimitSwitch, setListLimitSwitch] = useState(false)
@@ -58,6 +57,8 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const [categoryAmount, setCategoryAmount] = useState(0);
   const [screenWidthPercent] = useState<number>(0.70)
   const [screenWidth] = useState<number>(window.innerWidth)
+  const [showCategoriesWithTechRow, setShowCategoriesWithTechRow] = useState(false)
+
   //#endregion
   //#region functions
 
@@ -120,6 +121,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
       categoryData.forEach(row => {
         // check if the row is not already in results list
         if (!checkIfTechInAggregatedList(result, row.id)) {
+          row.category = category
           result.push(row);
         }
       });
@@ -224,7 +226,6 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
         const res = await axios.get(`${apiPrefix}/core/get-jobs-count-for-role/?role_id=${role.id}`);
 
         setTotalListingsCount(res.data);
-        setLoadingTitle('Loading Categories Data');
 
         // Fetch role count stats view
         const response = await axios.post(`${apiPrefix}/usage_stats/get-role-count-stats-view/`, {
@@ -260,7 +261,21 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
     }
   }, [rolesFetched]);// Run this effect only once when the component mounts and rolesFetched is true
 
+  useEffect(() => {
+    const handleResize = () => {
+      setMaxLineWidth(calculateMaxLineWidth());
+    };
 
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  useEffect(() => {
+    setShowCategoriesWithTechRow(aggregatedSwitch == true && selectedCategories.length > 1)
+    },[selectedCategories, aggregatedSwitch ]);
   const toggler = (
     <div className="toggler">
       <div onClick={() => togglerPressed("percentages")} className={`toggler_button percentageButton  ${alignment == 'percentages' ? 'selected_toggler_button' : ''}`}><img style={{ width: 27, height: 27 }} src={alignment !== 'percentages' ? whitePercentage : greenPercentage} /></div>
@@ -298,18 +313,6 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   };
   const [maxLineWidths, setMaxLineWidth] = useState(calculateMaxLineWidth());
 
-  useEffect(() => {
-    const handleResize = () => {
-      setMaxLineWidth(calculateMaxLineWidth());
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const splitAndInterleaveCategories = (categories: string) => {
     const midIndex = Math.ceil(categories.length / 2);
@@ -509,6 +512,8 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                 tech={techCount.tech}
                 count={showPercentage ? calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount}
                 showPercentage={showPercentage}
+                category={techCount.category}
+                showCategory={showCategoriesWithTechRow}
               />
                  </motion.div>
                  </AnimatePresence>

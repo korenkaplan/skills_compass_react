@@ -7,7 +7,11 @@
   box-sizing: border-box;
 }
 
-
+.techRowCategoryMobile{
+  color: var(--contrast-color);
+  font-size: 12px;
+  margin-left: 10px;
+}
 .tech-name-container {
   width: 100%; /* Adjust the width as needed */
   overflow: hidden;

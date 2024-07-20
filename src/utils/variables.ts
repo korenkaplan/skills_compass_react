@@ -7,7 +7,7 @@ const textColor: string = '#F4F2EF';
 const framerMotionRepeatOnce: boolean = true;
 const switchesDivWidth: number = 400
 const appBarHeight: number = 80
-const techItemsPerCategory: number = 11
+const techItemsPerCategory: number = 10
 const allCategoriesItemsAmount: number = 10
 const isProductionModeEnabled: boolean = import.meta.env.VITE_IS_PRODUCTION
 const apiPrefix: string = import.meta.env.VITE_IS_PRODUCTION == 'true' ? import.meta.env.VITE_API_BASE_URL : 'http://127.0.0.1:8000'

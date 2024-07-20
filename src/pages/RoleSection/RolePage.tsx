@@ -62,6 +62,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -100 }
   };
+  const [showCategoriesWithTechRow, setShowCategoriesWithTechRow] = useState(false)
 
 //#endregion
 //#region functions
@@ -104,11 +105,9 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
 
 
   };
-
   const checkIfTechInAggregatedList = (result: FormattedDataRow[], tech_id: number) => {
    return result.some(item => item.id === tech_id)
   }
-
   const aggregatedTechList = (limitValue = -1, slice = false, amountPerCategory = -1, sliceCategory = false) => {
     const result: FormattedDataRow[] = [];
 
@@ -126,6 +125,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
       categoryData.forEach(row => {
         // check if the row is not already in results list
         if (!checkIfTechInAggregatedList(result, row.id)) {
+          row.category = category
           result.push(row);
         }
       });
@@ -143,15 +143,11 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
 
     setTechList(result)
   }
-
   const handleLimitSwitchChange = (value: boolean) => {
     setListLimitSwitch(value);
     aggregatedTechList(value === true ? amount : defaultAmount, value, categoryAmount, categoryLimitSwitch)
   }
-
   const calculatePercentages = (part: number, total: number) => { return (part / total) * 100 }
-
-
   const handleAggregationSwitchChange = (value: boolean) => {
     setAggregatedSwitch(value);
 
@@ -202,8 +198,6 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
     }
 
   };
-
-
 
   const handleCategoryAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Ensure the value is non-negative
@@ -272,7 +266,9 @@ useEffect(() => {
     }
   }, [rolesFetched]);// Run this effect only once when the component mounts and rolesFetched is true
 
-
+useEffect(() => {
+setShowCategoriesWithTechRow(aggregatedSwitch == true && selectedCategories.length > 1)
+},[selectedCategories, aggregatedSwitch ]);
   const toggler = (
     <div className="togglerDesktop">
     <div onClick={()=> togglerPressed("percentages")} className={`toggler_buttonDesktop percentageButtonDesktop  ${alignment == 'percentages'? 'selected_toggler_buttonDesktop': ''}`}><img style={{ width: 27, height: 27 }} src={alignment !== 'percentages'? whitePercentage: greenPercentage} /></div>
@@ -499,6 +495,8 @@ return (
               tech={techCount.tech}
               count={showPercentage ? calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount}
               showPercentage={showPercentage}
+              showCategory={showCategoriesWithTechRow}
+              category={techCount.category}
             />
             </motion.div>
             </AnimatePresence>
