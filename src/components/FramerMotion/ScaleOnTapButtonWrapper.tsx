@@ -5,9 +5,10 @@ interface Props {
     scaleAmount?: number;
     enableHoverEffect?: boolean;
     duration?: number;
+    className?: string;
 }
 
-const scaleVariants = (scaleAmount: number, enableHoverEffect: boolean, duration: number) => ({
+const scaleVariants = ( scaleAmount: number, enableHoverEffect: boolean, duration: number) => ({
     tap: { scale: scaleAmount },
     hover: enableHoverEffect
         ? {
@@ -17,7 +18,7 @@ const scaleVariants = (scaleAmount: number, enableHoverEffect: boolean, duration
         : {}
 });
 
-export default function ScaleOnTapButtonWrapper({ duration = 1.3, children, scaleAmount = 0.95, enableHoverEffect = true }: Props) {
+export default function ScaleOnTapButtonWrapper({ duration = 1.3, children, scaleAmount = 0.95, enableHoverEffect = true, className= '' }: Props) {
 
     return (
         <motion.div
@@ -25,6 +26,7 @@ export default function ScaleOnTapButtonWrapper({ duration = 1.3, children, scal
             whileHover="hover"
             variants={scaleVariants(scaleAmount, enableHoverEffect, duration)}
             style={{ position: "relative", overflow: 'hidden' }}
+            className={className}
         >
             {children}
         </motion.div>

@@ -14,6 +14,43 @@
   flex-direction: column;
   text-align: center;
 }
+.valueAdjustButton {
+  width: 30px;
+  height: 30px;
+  background-color: var(--contrast-color);
+  color: var(--primary-background-color);
+  border-radius: 50%;
+  text-align: center;
+}
+.numberInputMobile {
+  color: var(--contrast-color);
+  border: 1px solid var(--contrast-color);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.inputDivMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: min-content;
+
+}
+
+.PLusMinusIconMobile {
+  width: 18px;
+  height: 18px;
+  margin: 0 5px;
+  padding: 0;
+}
 .skeletonButton {
 width: 40%;
 height: 200px;
@@ -42,23 +79,33 @@ height: 200px;
   align-items: center;
   max-width: 100%;
 }
-.switchDivMargin{
+.switchDivMargin {
   margin-bottom: 7px;
 }
-.switchLeftSideMobile{
+
+.switchLeftSideMobile {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
-.formGroupMobileSwitch{
-  box-sizing: border-box;
-  padding: 8px 0 8px 20px;
-}
-.IoInformationCircleSharpMobile{
-  margin-right: 10px;
-  color: var(--contrast-color);
+
+.IoInformationCircleSharpMobile {
+  margin: 0;
+  color: var(--text-color);
   position: relative;
   top: 2px;
 }
+
+.formControlLabelMobile {
+  margin: 0;
+  padding: 0;
+}
+
+.formGroupMobileSwitch {
+  box-sizing: border-box;
+  padding: 8px 0 8px 20px;
+}
+
 .headerRolePage {
   font-size: 24px;
   color: var(--main-header-color);

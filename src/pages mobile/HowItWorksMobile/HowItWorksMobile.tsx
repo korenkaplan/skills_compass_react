@@ -85,7 +85,7 @@ const HowItWorksMobile: React.FC = () => {
         </ItemByItemReveal>
         <ThreeStepsMobile />
       </>
-      <div className="imagesDivMobile">
+      <div className="imagesDivMobile flexCenter">
         <div className="">
           <ItemByItemReveal>
             <h2 className='resultDivHeaderMobile'>This Is How Our System Looks at Job Descriptions</h2>
@@ -113,8 +113,9 @@ const HowItWorksMobile: React.FC = () => {
         <HeaderWithDot header="What's Next"/>
           <h2>Discover our exciting upcoming improvements and features</h2>
         </ItemByItemReveal>
+        <div className="flexCenter">
         <FutureUpgradesMobile />
-
+        </div>
       </>
     </div>
   );
