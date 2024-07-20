@@ -65,8 +65,6 @@ const MainPage: React.FC = () => {
       setIsOpen(newOpen);
     }
   };
-
-
   const sectionsMobile = useMemo(() => {
     return [
       { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} /> },

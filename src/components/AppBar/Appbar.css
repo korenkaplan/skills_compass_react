@@ -1,5 +1,5 @@
 .appBar{
-    position: fixed;
+    /* position: fixed; */
     z-index: 2;
     background-color:var(--navbar-background-color);
     width: 100%;
