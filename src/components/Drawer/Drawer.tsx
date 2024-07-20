@@ -20,6 +20,8 @@ import { CiLinkedin } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import ribbon from '../../assets/icons/icons8-ribbon-50.png'
 import Line from '../../components/Line/Line';
+import { apiPrefix } from '../../utils/variables';
+
 export interface DrawerDesktopProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
@@ -50,7 +52,7 @@ const DrawerDesktop: React.FC<DrawerDesktopProps> = ({ open, toggleDrawer, varia
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://dev-skill-compass-server.onrender.com/usage_stats/get-last-scan-date-and-time-view/');
+        const response = await axios.get(`${apiPrefix}/usage_stats/get-last-scan-date-and-time-view/`);
         setTime(response.data.data['time']);
         setDate(response.data.data['date']);
         setIsFetched(true);

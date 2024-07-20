@@ -4,6 +4,7 @@ import './SideMenu.css';
 import logo from '../assets/logo/logo ellow ribbon with text.png'; // Import the logo image
 import { Section } from '../utils/interfaces';
 import axios from 'axios';
+import { apiPrefix } from '../utils/variables';
 
 interface SideMenuProps {
   sections: Section[];
@@ -30,7 +31,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ sections, activeSection }) => {
  useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://dev-skill-compass-server.onrender.com/usage_stats/get-last-scan-date-and-time-view/');
+      const response = await axios.get(`${apiPrefix}/usage_stats/get-last-scan-date-and-time-view/`);
       setTime(response.data.data['time'])
       setDate(response.data.data['date'])
       setIsFetched(true)

@@ -10,6 +10,8 @@ import './DrawerMobile.css'
 import axios from 'axios';
 import {navbarBackgroundColor, contrastColor} from '../../utils/theme'
 import NavbarItemsHover from '../../components/FramerMotion/NavbarItemsHover';
+import { apiPrefix } from '../../utils/variables';
+
 export interface DrawerMobileProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
@@ -42,7 +44,9 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://dev-skill-compass-server.onrender.com/usage_stats/get-last-scan-date-and-time-view/');
+        const response = await axios.get(`${apiPrefix}/usage_stats/get-last-scan-date-and-time-view/`);
+        console.log(response);
+
         setTime(response.data.data['time']);
         setDate(response.data.data['date']);
         setIsFetched(true);

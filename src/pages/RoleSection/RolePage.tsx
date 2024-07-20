@@ -24,6 +24,7 @@ import {switchesDivWidth} from '../../utils/variables'
 import { motion, AnimatePresence } from 'framer-motion';
 import { CustomSwitch } from '../../components/CustomSwitch/CustomSwitch';
 import {techItemsPerCategory, allCategoriesItemsAmount} from '../../utils/variables'
+import { apiPrefix } from '../../utils/variables';
 
 //#endregion
 
@@ -232,13 +233,13 @@ useEffect(() => {
         await new Promise(resolve => setTimeout(resolve, 0));
 
         // Fetch total listings count
-        const res = await axios.get(`https://dev-skill-compass-server.onrender.com/core/get-jobs-count-for-role/?role_id=${role.id}`);
+        const res = await axios.get(`${apiPrefix}/core/get-jobs-count-for-role/?role_id=${role.id}`);
 
         setTotalListingsCount(res.data);
         setLoadingTitle('Loading Categories Data');
 
         // Fetch role count stats view
-        const response = await axios.post('https://dev-skill-compass-server.onrender.com/usage_stats/get-role-count-stats-view/', {
+        const response = await axios.post(`${apiPrefix}/usage_stats/get-role-count-stats-view/`, {
           role_id: role.id,
           number_of_categories: 12,
           limit: techItemsPerCategory,

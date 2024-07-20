@@ -9,4 +9,6 @@ const switchesDivWidth: number = 400
 const appBarHeight: number = 80
 const techItemsPerCategory: number = 20
 const allCategoriesItemsAmount: number = 10
-export { allCategoriesItemsAmount, techItemsPerCategory, appBarHeight, switchesDivWidth, backgroundColor, textColor, resumeDownloadLink, sideMenuBackgroundColor, framerMotionRepeatOnce};
+const isProductionModeEnabled: boolean = import.meta.env.VITE_IS_PRODUCTION
+const apiPrefix: string = import.meta.env.VITE_IS_PRODUCTION == 'true' ? import.meta.env.VITE_API_BASE_URL : 'http://127.0.0.1:8000'
+export { apiPrefix, isProductionModeEnabled, allCategoriesItemsAmount, techItemsPerCategory, appBarHeight, switchesDivWidth, backgroundColor, textColor, resumeDownloadLink, sideMenuBackgroundColor, framerMotionRepeatOnce};

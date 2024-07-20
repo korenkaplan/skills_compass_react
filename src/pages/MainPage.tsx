@@ -23,7 +23,7 @@ import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
 import DrawerDesktop from '../components/Drawer/Drawer';
 import AppBar from '../components/AppBar/Appbar';
 import Content from '../components/Content/Content';
-
+import { apiPrefix } from '../utils/variables';
 
 
 
@@ -93,7 +93,7 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://dev-skill-compass-server.onrender.com/usage_stats/get-all-roles/');
+        const response = await axios.get(`${apiPrefix}/usage_stats/get-all-roles/`);
         setRoles(response.data);
         setRolesFetched(true);
         setIsLoading(false);
