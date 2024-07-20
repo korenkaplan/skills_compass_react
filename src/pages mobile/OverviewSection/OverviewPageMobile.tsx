@@ -195,7 +195,7 @@ const OverviewPageMobile: React.FC = () => {
           <Reveal>
             <ScaleOnTapButtonWrapper>
             <div className='OverviewPressHereDesktop' >
-              <div className='custom-button pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorks')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div>
+              <div className='custom-button pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorksMobile')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div>
               </div>
 
             </ScaleOnTapButtonWrapper>
