@@ -24,6 +24,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CustomSwitch } from '../../components/CustomSwitch/CustomSwitch';
 import {techItemsPerCategory, allCategoriesItemsAmount} from '../../utils/variables'
 import { apiPrefix } from '../../utils/variables';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 //#endregion
 
@@ -445,17 +446,13 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
       </Slide>
 
       <Line height="2px" width="100%" margin='0 0 20px 0' color={contrastColor} radius="4px" />
-      <div className="loadingDivRolePage" style={{ display: isAnimating ? 'flex' : 'none' }}>
-        <div className="loadingDivInner">
-          <h1 className={`loading-text ${isAnimating ? 'animate' : ''}`}>
-            {loadingTitle}
-            <span className="dot">.</span>
-            <span className="dot">.</span>
-            <span className="dot">.</span>
-          </h1>
+      <div style={{ display: isAnimating ? 'block' : 'none' }}>
+      <SkeletonTheme   baseColor="#202020" highlightColor="#444">
+        <p>
+            <Skeleton style={{marginBottom: '10px'}} count={10} />
+          </p>
+        </SkeletonTheme>
         </div>
-      </div>
-
       <div className="dataDiv" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
         {data && (
           <div className='categoriesButtonDiv'>
@@ -489,7 +486,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
           </div>
         )}
         <Reveal enabled={framerMotionEnabled}>
-          <div className="techListDiv" >
+            <div className="techListDiv" >
             {techList.map((techCount, index) => (
                <AnimatePresence
                key={`${techCount.id}${index}${selectedCategory}}`}

@@ -24,7 +24,7 @@ import DrawerDesktop from '../components/Drawer/Drawer';
 import AppBar from '../components/AppBar/Appbar';
 import Content from '../components/Content/Content';
 import { apiPrefix } from '../utils/variables';
-
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
