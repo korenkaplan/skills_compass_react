@@ -2,6 +2,7 @@ import React from 'react';
 import { Section } from '../../utils/interfaces';
 import { DrawerDesktopProps } from '../../components/Drawer/Drawer'; // Adjust the import according to your actual Drawer component's props location
 import { DrawerMobileProps } from '../../components/DrawerMobile/DrawerMobile';
+import { appBarHeight } from '../../utils/variables';
 
 interface ContentProps {
   isMobile: boolean;
@@ -24,7 +25,7 @@ const Content: React.FC<ContentProps> = ({
   marginLeftAmount,
 }) => {
   return (
-    <div style={{marginTop: isMobile ? `${extraSpaceFromAppBarInPx}px` : '0px'}} className={isMobile ? "sectionsWrapperMobile" : "sectionsWrapperDesktop"}>
+    <div style={{position:'relative', marginTop: isMobile ? `${appBarHeight +  extraSpaceFromAppBarInPx}px` : '0px'}} className={isMobile ? "sectionsWrapperMobile" : "sectionsWrapperDesktop"}>
       <DrawerComponent sections={sections} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
       <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
         {sections.map((section) => (

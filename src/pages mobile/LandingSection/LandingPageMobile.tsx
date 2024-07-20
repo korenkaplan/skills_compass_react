@@ -16,11 +16,12 @@ import {contrastColor} from '../../utils/theme'
 import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
 interface LandingPageProps {
   isLoading: boolean;
+  defaultSection: string
 }
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
-const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading }) => {
+const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading, defaultSection }) => {
 const percentOfScreenWidth = 0.40
 const [logoWidth, setMaxLineWidth] = useState(calculateMaxLineWidth(percentOfScreenWidth));
 const [currentIndex, setCurrentIndex] = useState(0);
@@ -87,7 +88,7 @@ useEffect(() => {
       <Reveal>
       <ScaleOnTapButtonWrapper enableHoverEffect={true}>
       <div
-          onClick={() => document.getElementById('overviewPage')?.scrollIntoView({behavior:'smooth'})}
+          onClick={() => document.getElementById(defaultSection)?.scrollIntoView({behavior:'smooth', block:'start'})}
           className="actionButtonMobile" style={{display: isLoading? 'none': 'flex'}}>
           <p>Get Started</p>
           <Lottie className='alottieMobile' animationData={scrollAnimation} loop={true} autoPlay={true} />
