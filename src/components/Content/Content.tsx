@@ -25,7 +25,7 @@ const Content: React.FC<ContentProps> = ({
   marginLeftAmount,
 }) => {
   return (
-    <div style={{marginTop: isMobile ? `${appBarHeight + 80 + extraSpaceFromAppBarInPx}px` : '0px'}} className={isMobile ? "sectionsWrapperMobile" : "sectionsWrapperDesktop"}>
+    <div style={{marginTop: isMobile ? `${appBarHeight  + extraSpaceFromAppBarInPx}px` : '0px'}} className={isMobile ? "sectionsWrapperMobile" : "sectionsWrapperDesktop"}>
       <DrawerComponent sections={sections} variant={variant} open={isOpen} toggleDrawer={toggleDrawer} />
       <div className="content" style={{ marginLeft: isOpen && !isMobile ? marginLeftAmount : 0 }}>
         {sections.map((section) => (
