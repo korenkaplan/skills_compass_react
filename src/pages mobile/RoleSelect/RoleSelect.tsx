@@ -1,8 +1,6 @@
 // src/components/SideMenu.tsx
 import { Section } from '../../utils/interfaces';
 import * as React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import Reveal from '../../components/FramerMotion/Reveal';
 import './RoleSelect.css';
 import { MultiSelect } from 'primereact/multiselect';
 interface RoleSelectProps {
@@ -15,13 +13,7 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
   const handleChange = (e: { value: Section[] }) => {
     setSelectedSections(e.value);
   };
-  const myTheme = {
-    multiselect: {
-      backgroundColor: '#f0f0f0', // Change background color
-      textColor: '#333333', // Change text color
-      // Customize other properties as needed
-    }
-  };
+
   return (
     <div className="section main">
       <div className='roleSelectContentMobile'>
