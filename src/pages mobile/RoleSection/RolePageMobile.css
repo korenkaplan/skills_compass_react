@@ -132,9 +132,8 @@ height: 200px;
   width: 100px;
   height: 34px;
   background:var(--secondary-background-color);
-  border-radius: 10px;
+  border-radius: 11px;
   display: flex;
-  padding: 2px;
   box-shadow: -1px 5px 10px 0px rgba(0,0,0,0.64);
   border: 1px solid var(--contrast-color) ;
 }
@@ -264,7 +263,8 @@ height: 200px;
 }
 .disabled {
   background-color: gray;
-  color: var(--secondary-background-colorr);
+  color: var(--secondary-background-color);
+  border: 1px solid var(--secondary-background-color);
 }
 .RevealCategoryButtonMobile{
   height: '20px';

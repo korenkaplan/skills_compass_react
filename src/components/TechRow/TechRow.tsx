@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './TechRow.css'; // Make sure to create this CSS file to style the component
 import '../../utils/variables.css'
+import _ from 'lodash'
 interface TechRowProps {
   tech: string;
   count: number;
@@ -63,7 +64,7 @@ const TechRow: React.FC<TechRowProps> = ({ showCategory=false, category, tech, c
     <div className="tech-rowDesktop">
       <div className="tech-name-containerDesktop">
         <span className="tech-nameDesktop">{formatTitle(tech)} </span>
-      <span style={{display: showCategory ? 'inline' : 'none'}} className="techRowCategory">{category}</span>
+      <span style={{display: showCategory ? 'inline' : 'none'}} className="techRowCategory">{_.startCase(category)}</span>
 
       </div>
       <div className="lineWrapperDesktop" style={{ width: `${maxLineWidth}px` }}>

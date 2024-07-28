@@ -30,7 +30,7 @@ const OverviewPageMobile: React.FC = () => {
     `"איזו שפת תכנות היא המבוקשת ביותר בשנת ${currentYear}?"`,
     `"איזה מסד נתונים נמצא יותר בשימוש בשנת ${currentYear}, PostgreSQL או MySQL?"`,
     `"איזה פריימוורק כדאי ללמוד בשנת ${currentYear}, React או Angular?"`,
-    `"איזה מסד נתונים נמצא יותר בשימוש בתעשייה, SQL או NoSql?"`,
+    `"איזה סוג של מסד נתונים נמצא יותר בשימוש בתעשייה, SQL או NoSql?"`,
     `"האם כדאי ללמוד PHP בשנת ${currentYear}?"`,
     `"Java מול Python מול Node.Js לפיתוח צד שרת בשנת ${currentYear}?"`,
     `"איזו פלטפורמת ענן נמצאת יותר בשימוש בתעשייה לתפקידי DevOps, AWS או Azure?"`,
@@ -108,7 +108,7 @@ const OverviewPageMobile: React.FC = () => {
         </Reveal>
         <Line height='1px' width='70%' color={backgroundColor} />
         <Slide slideFrom='left'>
-        <p>כל המידע שלנו מגיע היישר מניתוח של <strong> אלפי משרות</strong> מאתרי חיפוש העבודה הפופולרים ביותר כמו <strong dir='ltr' style={{ marginLeft: '5px' }}>LinkedIn, Google Jobs </strong> ומאתרי החברות .</p>
+        <p>כל המידע שלנו מגיע היישר מניתוח של <strong> אלפי משרות</strong> מאתרי חיפוש העבודה הפופולרים ביותר כמו <strong dir='ltr' style={{ marginLeft: '5px' }}>LinkedIn, Google Jobs </strong> ומאתרי החברות.</p>
         </Slide>
 
       </div>

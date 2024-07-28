@@ -47,7 +47,6 @@
     overflow: hidden;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-    padding: 4px;
     min-height: 100vh;
     box-sizing: border-box;
     display: flex;

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './TechRowMobile.css'; // Make sure to create this CSS file to style the component
 import { motion } from 'framer-motion';
+import _ from 'lodash'
+
 interface TechRowProps {
   tech: string;
   count: number;
@@ -62,7 +64,7 @@ const TechRowMobile: React.FC<TechRowProps> = ({showCategory=false, category, te
     <div className="tech-row">
       <div className="tech-name-container">
         <span className="tech-name">{formatTitle(tech)}</span>
-      <span style={{display: showCategory ? 'inline' : 'none'}} className="techRowCategoryMobile">{category}</span>
+      <span style={{display: showCategory ? 'inline' : 'none'}} className="techRowCategoryMobile">{_.startCase(category)}</span>
 
       </div>
       <div className="lineAndNumDiv">
