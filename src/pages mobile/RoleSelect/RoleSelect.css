@@ -6,6 +6,37 @@
 }
 .css-6hp17o-MuiList-root-MuiMenu-list{
     padding-top: 0;
+    width: 100%;
 }
 
+/* src/components/RoleSelect.css */
 
+/* Custom styling for MultiSelect dropdown */
+.custom-multiselect .p-multiselect-panel {
+    background-color: var(--primary-background-color) !important;
+    color: var(--contrast-color) !important;
+    background-color: red;
+
+  }
+
+  /* Custom styling for options */
+  .custom-multiselect .p-multiselect-item {
+    background-color: var(--primary-background-color) !important;
+    color: var(--contrast-color) !important;
+    background-color: red;
+
+  }
+
+  /* Hover and selected states */
+  .custom-multiselect .p-multiselect-item:hover {
+    background-color: var(--contrast-color) !important;
+    color: var(--primary-background-color) !important;
+    background-color: red;
+
+  }
+
+  .custom-multiselect .p-multiselect-item.p-highlight {
+    background-color: var(--contrast-color) !important;
+    color: var(--primary-background-color) !important;
+    background-color: red;
+  }
