@@ -1,16 +1,16 @@
-.appBar{
-    position: fixed;
-    z-index: 2;
-    background-color:var(--navbar-background-color);
-    width: 100%;
-    display: flex;
-    padding: 0 10px ;
-    border-radius: 0 0 10px 10px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    box-shadow: -1px 2px 3px 0px var(--contrast-color);
-    -webkit-box-shadow: -1px 2px 3px 0px var(--contrast-color);
-    -moz-box-shadow: -1px 2px 3px 0px var(--contrast-color);
-  }
+.appBar {
+  position: fixed;
+  z-index: 9999;
+  top: 15px;
+  left: 15px;
+  background-color: var(--navbar-background-color);
+  display: flex;
+  border-radius: 50%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px;
+  box-shadow: none; /* Remove default shadow */
+  opacity: 0.90;
+}

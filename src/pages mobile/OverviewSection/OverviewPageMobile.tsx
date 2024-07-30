@@ -13,6 +13,7 @@ import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapBut
 import Slide from '../../components/FramerMotion/Slide';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot';
+import { ScrollSmoothToView } from '../../utils/functions';
 const OverviewPageMobile: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80
@@ -195,14 +196,14 @@ const OverviewPageMobile: React.FC = () => {
           <Reveal>
             <ScaleOnTapButtonWrapper>
             <div className='OverviewPressHereDesktop' >
-              <div className='custom-button pressHereButtonDesktopOverview' onClick={() => document.getElementById('howItWorksMobile')?.scrollIntoView({ behavior: 'smooth' })}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div>
+              <div className='custom-button pressHereButtonDesktopOverview' onClick={()=> ScrollSmoothToView('howItWorksMobile')}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div>
               </div>
 
             </ScaleOnTapButtonWrapper>
           </Reveal>
         </div>
         <Reveal >
-        <div className="imageRow">
+        <div className="imageRow" onClick={()=> ScrollSmoothToView('RoleSelect')}>
           <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='none' styleProps={getScrollDownAnimationStyle()} />
         </div>
         </Reveal>

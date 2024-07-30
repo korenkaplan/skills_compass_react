@@ -9,12 +9,18 @@
 .nameSquareMobile {
   display: flex;
   background-color: var(--secondary-background-color);
-  /* border-radius: 20px; */
   margin: auto;
   height: min-content;
-  /* width:50%; */
   justify-content: center;
   align-items: flex-end;
+}
+.topNavbarMobile{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
 }
 .dotDraweeMobile{
   background-color: var(--contrast-color);

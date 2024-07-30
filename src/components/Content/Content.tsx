@@ -2,7 +2,6 @@ import React, { memo, useMemo } from 'react';
 import { Section } from '../../utils/interfaces';
 import { DrawerDesktopProps } from '../../components/Drawer/Drawer';
 import { DrawerMobileProps } from '../../components/DrawerMobile/DrawerMobile';
-import { appBarHeight } from '../../utils/variables';
 import './Content.css';
 
 interface ContentProps {
@@ -15,7 +14,6 @@ interface ContentProps {
   marginLeftAmount: number;
 }
 
-const extraSpaceFromAppBarInPx = 0;
 
 const Content: React.FC<ContentProps> = memo(({
   isMobile,
@@ -38,7 +36,7 @@ const Content: React.FC<ContentProps> = memo(({
 
   return (
     <div
-      style={{ position: 'relative', marginTop: isMobile ? `${appBarHeight + extraSpaceFromAppBarInPx}px` : '0px' }}
+      style={{ position: 'relative' }}
       className={isMobile ? "sectionsWrapperMobile" : "sectionsWrapperDesktop"}
     >
       <DrawerComponent

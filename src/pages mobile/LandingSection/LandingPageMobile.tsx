@@ -6,7 +6,7 @@ import logoCropped from '../../assets/logo/logoCropped-removebg-preview.png'
 import '../../CSS/RotatingImage.css'
 import Line from '../../components/Line/Line'
 import LinearProgress from '@mui/material/LinearProgress';
-import {calculateMaxLineWidth} from '../../utils/functions'
+import {calculateMaxLineWidth, ScrollSmoothToView} from '../../utils/functions'
 import Lottie from "lottie-react";
 import scrollAnimation from '../../assets/animations/scroll down animation black.json'
 import Slide from '../../components/FramerMotion/Slide';
@@ -86,9 +86,9 @@ useEffect(() => {
       </div>
       <Reveal>
       <div
-          className="actionButtonMobile" style={{display: isLoading? 'none': 'flex'}}>
+          className="actionButtonMobile" style={{display: isLoading? 'none': 'flex'}} onClick={()=> ScrollSmoothToView('overviewMobile')}>
           <Lottie className='alottieMobile' animationData={scrollAnimation} loop={true} autoPlay={true} />
-          <p>Scroll Down</p>
+          <p  >Get Started</p>
           <Lottie className='alottieMobile' animationData={scrollAnimation} loop={true} autoPlay={true} />
         </div>
       </Reveal>
