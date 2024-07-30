@@ -21,6 +21,7 @@ import HowItWorks from './pages/HowItWorks/HowItWorks';
 import ContactFooter from './pages/ContactFooter/ContactFooter';
 import DrawerMobile from './components/DrawerMobile/DrawerMobile';
 import DrawerDesktop from './components/Drawer/Drawer';
+import AppBar from './components/AppBar/Appbar';
 import Content from './components/Content/Content';
 import { apiPrefix } from './utils/variables';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -110,7 +111,7 @@ const MainPage: React.FC = () => {
   }, [fetchRoles]);
   return (
     <div className="main-page">
-      {/* <AppBar isMobile={isMobile} isOpen={isOpen} toggleDrawer={toggleDrawer} /> */}
+      <AppBar isMobile={isMobile} isOpen={isOpen} toggleDrawer={toggleDrawer} />
       <Content
         isMobile={isMobile}
         sections={isMobile ? sectionsMobile : sections}
