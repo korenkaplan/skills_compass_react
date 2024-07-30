@@ -124,9 +124,20 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   );
 
   return (
-    <Drawer style={{overflowY:'hidden'}} variant={variant}  slotProps={{ backdrop: { invisible: true } }} open={open} onClose={() => toggleDrawer(false)}>
-      {DrawerList}
-    </Drawer>
+    <Drawer
+    style={{ overflowY: 'hidden' }}
+    variant={variant}
+    slotProps={{ backdrop: { invisible: true } }}
+    open={open}
+    onClose={() => toggleDrawer(false)}
+    sx={{
+      '& .MuiPaper-root': {
+        backgroundColor: 'var(--navbar-background-color)', // Custom background color
+      },
+    }}
+  >
+    {DrawerList}
+  </Drawer>
   );
 };
 
