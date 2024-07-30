@@ -111,7 +111,7 @@ const MainPage: React.FC = () => {
   }, [fetchRoles]);
   return (
     <div className="main-page">
-      {/* <AppBar isMobile={isMobile} isOpen={isOpen} toggleDrawer={toggleDrawer} /> */}
+      <AppBar isMobile={isMobile} isOpen={isOpen} toggleDrawer={toggleDrawer} />
       <Content
         isMobile={isMobile}
         sections={isMobile ? sectionsMobile : sections}
