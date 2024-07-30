@@ -133,6 +133,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
     sx={{
       '& .MuiPaper-root': {
         backgroundColor: 'var(--navbar-background-color)', // Custom background color
+        borderRight: '1px solid var(--contrast-color)',
       },
     }}
   >

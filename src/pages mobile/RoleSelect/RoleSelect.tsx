@@ -2,7 +2,6 @@
 import { Section } from '../../utils/interfaces';
 import * as React from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
@@ -52,16 +51,17 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
       <div className='roleSelectContentMobile'>
         <ThemeProvider theme={darkTheme}>
           <FormControl sx={{ m: 1, width: 300 }}>
-            <InputLabel id="demo-multiple-checkbox-label">Roles</InputLabel>
             <Select
-              labelId="demo-multiple-checkbox-label"
               id="demo-multiple-checkbox"
               multiple
               value={selectedSections}
               onChange={handleChange}
-              input={<OutlinedInput label="Roles" />}
+              input={<OutlinedInput />}
               renderValue={(selected) => selected.join(', ')}
               MenuProps={MenuProps}
+              sx={{
+                border:  '1px solid var(--contrast-color)',
+              }}
 
             >
               {sections.map((section) => (
