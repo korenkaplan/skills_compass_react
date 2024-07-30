@@ -1,29 +1,29 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import './MainPage.css';
-import '../utils/variables.css';
-import { Role, Section } from '../utils/interfaces';
+import './utils/variables.css';
+import { Role, Section } from './utils/interfaces';
 import _ from 'lodash';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-import LandingPageMobile from '../pages mobile/LandingSection/LandingPageMobile';
-import OverviewPageMobile from '../pages mobile/OverviewSection/OverviewPageMobile';
-import RolePageMobile from '../pages mobile/RoleSection/RolePageMobile';
-import FaqPageMobile from '../pages mobile/FaqPage/FaqPageMobile';
-import HowItWorksMobile from '../pages mobile/HowItWorksMobile/HowItWorksMobile';
-import ContactInformationMobile from '../pages mobile/ContactFooterMobile/ContactFooterMobile';
-import RoleSelect from '../pages mobile/RoleSelect/RoleSelect';
-import SwiperPage from '../pages/Swiper/Swiper';
-import LandingPage from '../pages/LandingSection/LandingPage';
-import FaqPage from '../pages/FaqPage/FaqPage';
-import RolePage from '../pages/RoleSection/RolePage';
-import Overview from '../pages/OverviewSection/OverviewPage';
-import HowItWorks from '../pages/HowItWorks/HowItWorks';
-import ContactFooter from '../pages/ContactFooter/ContactFooter';
-import DrawerMobile from '../components/DrawerMobile/DrawerMobile';
-import DrawerDesktop from '../components/Drawer/Drawer';
-import AppBar from '../components/AppBar/Appbar';
-import Content from '../components/Content/Content';
-import { apiPrefix } from '../utils/variables';
+import LandingPageMobile from './pages mobile/LandingSection/LandingPageMobile';
+import OverviewPageMobile from './pages mobile/OverviewSection/OverviewPageMobile';
+import RolePageMobile from './pages mobile/RoleSection/RolePageMobile';
+import FaqPageMobile from './pages mobile/FaqPage/FaqPageMobile';
+import HowItWorksMobile from './pages mobile/HowItWorksMobile/HowItWorksMobile';
+import ContactInformationMobile from './pages mobile/ContactFooterMobile/ContactFooterMobile';
+import RoleSelect from './pages mobile/RoleSelect/RoleSelect';
+import SwiperPage from './pages/Swiper/Swiper';
+import LandingPage from './pages/LandingSection/LandingPage';
+import FaqPage from './pages/FaqPage/FaqPage';
+import RolePage from './pages/RoleSection/RolePage';
+import Overview from './pages/OverviewSection/OverviewPage';
+import HowItWorks from './pages/HowItWorks/HowItWorks';
+import ContactFooter from './pages/ContactFooter/ContactFooter';
+import DrawerMobile from './components/DrawerMobile/DrawerMobile';
+import DrawerDesktop from './components/Drawer/Drawer';
+import AppBar from './components/AppBar/Appbar';
+import Content from './components/Content/Content';
+import { apiPrefix } from './utils/variables';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
@@ -31,21 +31,21 @@ const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: 
     const roleProps = { role: role, rolesFetched: rolesFetched };
     return isMobile
       ? [
-          {
-            id: `mobile_${role.id}`, // Ensure unique IDs for mobile
-            label: _.startCase(role.name),
-            component: () => <RolePageMobile framerMotionEnabled={index === 0} {...roleProps} />,
-            isRole: true,
-          },
-        ]
+        {
+          id: `mobile_${role.id}`, // Ensure unique IDs for mobile
+          label: _.startCase(role.name),
+          component: () => <RolePageMobile framerMotionEnabled={index === 0} {...roleProps} />,
+          isRole: true,
+        },
+      ]
       : [
-          {
-            id: `desktop_${role.id}`, // Ensure unique IDs for desktop
-            label: _.startCase(role.name),
-            component: () => <RolePage framerMotionEnabled={index === 0} {...roleProps} />,
-            isRole: true,
-          },
-        ];
+        {
+          id: `desktop_${role.id}`, // Ensure unique IDs for desktop
+          label: _.startCase(role.name),
+          component: () => <RolePage framerMotionEnabled={index === 0} {...roleProps} />,
+          isRole: true,
+        },
+      ];
   });
 };
 
