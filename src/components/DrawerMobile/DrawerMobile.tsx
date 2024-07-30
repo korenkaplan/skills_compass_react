@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import { Section } from '../../utils/interfaces';
 import './DrawerMobile.css'
 import axios from 'axios';
 import {navbarBackgroundColor} from '../../utils/theme'
 import NavbarItemsHover from '../../components/FramerMotion/NavbarItemsHover';
-import { apiPrefix } from '../../utils/variables';
+import { apiPrefix, appBarHeight } from '../../utils/variables';
 
 export interface DrawerMobileProps {
   open: boolean;
@@ -66,15 +64,21 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
     getRolesSections();
   }, [sections]);
 
+  // const topHeaderDiv = (
+  //   <div className="nameSquareMobile">
+  //   <p className='poppins-900 headerLetterMobile'>Skills</p>
+  //   <p className='poppins-900 dotDraweeMobile'></p>
+  //   <p className='poppins-900 headerLetterMobile'>Compass</p>
+  // </div>
+  // )
+  const listButtonCssStyle: CSSProperties = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
   const DrawerList = (
     <Box className='drawerMobile' sx={{ width: 250, backgroundColor:navbarBackgroundColor, overflowY:'hidden' }} role="presentation">
       <div>
-        <div className="nameSquareMobile">
-          <p className='poppins-900 headerLetterMobile'>Skills</p>
-          <p className='poppins-900 dotDraweeMobile'></p>
-          <p className='poppins-900 headerLetterMobile'>Compass</p>
-        </div>
-        <Divider sx={{ backgroundColor: 'white' }} />
         <div className="firstSection">
         {notRolesSectionsList.length > 0 && (
           <NavbarItemsHover>
@@ -82,10 +86,10 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
             key={notRolesSectionsList[0].id}
             disablePadding
             onClick={() => handleClick(notRolesSectionsList[0].id)}
-
+            className='ListItemMobile'
           >
-            <ListItemButton >
-              <ListItemText className={'ListItemMobile'} primary={notRolesSectionsList[0].label} />
+            <ListItemButton sx={listButtonCssStyle} >
+            <p >{notRolesSectionsList[0].label}</p>
             </ListItemButton>
           </ListItem>
           </NavbarItemsHover>
@@ -96,6 +100,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
           {
         notRolesSectionsList && (notRolesSectionsList.slice(1).map((section)=> (
           <ListItem
+          className='ListItemMobile'
           key={section.id}
           disablePadding
           onClick={() => handleClick(section.id)}
@@ -106,8 +111,8 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
           }}
 
           >
-          <ListItemButton >
-            <ListItemText className={'ListItemMobile'} primary={section.label} />
+          <ListItemButton  sx={listButtonCssStyle}>
+          <p >{section.label}</p>
           </ListItemButton>
           </ListItem>
         )))}
@@ -134,6 +139,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
       '& .MuiPaper-root': {
         backgroundColor: 'var(--navbar-background-color)', // Custom background color
         borderRight: '1px solid var(--contrast-color)',
+        marginTop: `${appBarHeight + 1}px`
       },
     }}
   >

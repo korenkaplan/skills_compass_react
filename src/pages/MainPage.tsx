@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo} from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import './MainPage.css';
 import '../utils/variables.css';
 import { Role, Section } from '../utils/interfaces';
@@ -24,8 +24,7 @@ import DrawerDesktop from '../components/Drawer/Drawer';
 import AppBar from '../components/AppBar/Appbar';
 import Content from '../components/Content/Content';
 import { apiPrefix } from '../utils/variables';
-import 'react-loading-skeleton/dist/skeleton.css'
-
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap((role, index) => {
@@ -58,6 +57,7 @@ const MainPage: React.FC = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 1200px)' });
   const [isOpen, setIsOpen] = useState<boolean>(isMobile ? false : true);
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
+
   const toggleDrawer = (newOpen: boolean) => {
     if (!isMobile) {
       setIsOpen(true);
@@ -65,6 +65,7 @@ const MainPage: React.FC = () => {
       setIsOpen(newOpen);
     }
   };
+
   const sectionsMobile = useMemo(() => {
     return [
       { id: 'landingPageMobile', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} defaultSection="overviewMobile" /> },
@@ -87,7 +88,6 @@ const MainPage: React.FC = () => {
     ];
   }, [roles, rolesFetched, isMobile]);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -103,14 +103,13 @@ const MainPage: React.FC = () => {
     fetchData();
   }, []);
 
-
   useEffect(() => {
     setIsOpen(!isMobile);
   }, [isMobile]);
 
   return (
     <div className="main-page">
-      <AppBar isMobile={isMobile} toggleDrawer={toggleDrawer}/>
+      <AppBar isMobile={isMobile} isOpen={isOpen} toggleDrawer={toggleDrawer} />
       <Content
         isMobile={isMobile}
         sections={isMobile ? sectionsMobile : sections}
@@ -120,7 +119,7 @@ const MainPage: React.FC = () => {
         toggleDrawer={toggleDrawer}
         marginLeftAmount={marginLeftAmount}
       />
-      </div>
+    </div>
   );
 };
 
