@@ -9,6 +9,7 @@ import axios from 'axios';
 import {navbarBackgroundColor} from '../../utils/theme'
 import NavbarItemsHover from '../../components/FramerMotion/NavbarItemsHover';
 import { apiPrefix, appBarHeight } from '../../utils/variables';
+import { useMediaQuery } from 'react-responsive';
 
 export interface DrawerMobileProps {
   open: boolean;
@@ -22,6 +23,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   const [date, setDate] = useState<string>();
   const [isFetched, setIsFetched] = useState<boolean>(false);
   const [notRolesSectionsList, setNotRolesSectionsList] = useState<Section[]>([]);
+  const isIpad = useMediaQuery({ query: '(max-width: 900px)' });
 
   const handleClick = (id: string) => {
     toggleDrawer(false)
@@ -77,7 +79,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
     alignItems: 'center',
   }
   const DrawerList = (
-    <Box className='drawerMobile' sx={{ width: 250, backgroundColor:navbarBackgroundColor, overflowY:'hidden' }} role="presentation">
+    <Box className='drawerMobile' sx={{ width: isIpad ?  '100vw' : '250px' , backgroundColor:navbarBackgroundColor, overflowY:'hidden' }} role="presentation">
       <div>
         <div className="firstSection">
         {notRolesSectionsList.length > 0 && (
@@ -139,7 +141,8 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
       '& .MuiPaper-root': {
         backgroundColor: 'var(--navbar-background-color)', // Custom background color
         borderRight: '1px solid var(--contrast-color)',
-        marginTop: `${appBarHeight + 1}px`
+        marginTop: `${appBarHeight + 1}px`,
+        opacity:0.95,
       },
     }}
   >

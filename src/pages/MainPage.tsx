@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import './MainPage.css';
 import '../utils/variables.css';
 import { Role, Section } from '../utils/interfaces';
@@ -58,13 +58,13 @@ const MainPage: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(isMobile ? false : true);
   const variant: 'temporary' | 'persistent' | 'permanent' = isMobile ? 'temporary' : 'persistent';
 
-  const toggleDrawer = (newOpen: boolean) => {
+  const toggleDrawer = useCallback((newOpen: boolean) => {
     if (!isMobile) {
       setIsOpen(true);
     } else {
       setIsOpen(newOpen);
     }
-  };
+  }, [isMobile]);
 
   const sectionsMobile = useMemo(() => {
     return [
@@ -88,25 +88,27 @@ const MainPage: React.FC = () => {
     ];
   }, [roles, rolesFetched, isMobile]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${apiPrefix}/usage_stats/get-all-roles/`);
-        setRoles(response.data);
-        setRolesFetched(true);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
 
-    fetchData();
-  }, []);
 
   useEffect(() => {
     setIsOpen(!isMobile);
   }, [isMobile]);
 
+
+  const fetchRoles = useCallback(async () => {
+    try {
+      const response = await axios.get(`${apiPrefix}/usage_stats/get-all-roles/`);
+      setRoles(response.data);
+      setRolesFetched(true);
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchRoles();
+  }, [fetchRoles]);
   return (
     <div className="main-page">
       <AppBar isMobile={isMobile} isOpen={isOpen} toggleDrawer={toggleDrawer} />
