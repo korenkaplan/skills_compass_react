@@ -45,15 +45,14 @@
 }
   .drawerMobile{
     overflow: hidden;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-    min-height: 100vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    max-height: 100vh;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-
 
 /* Hide scrollbar for modern browsers */
 .drawer::-webkit-scrollbar {
@@ -71,7 +70,7 @@
     border-bottom: 2px solid red;
   }
   .lastScanDiv{
-    border-top: 1px solid white;
+    border-bottom: 1px solid white;
     display: flex;
     color: white;
     width: 100%;

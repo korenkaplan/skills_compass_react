@@ -8,7 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { Section } from '../../utils/interfaces';
 import './DrawerMobile.css'
 import axios from 'axios';
-import {navbarBackgroundColor, contrastColor} from '../../utils/theme'
+import {navbarBackgroundColor} from '../../utils/theme'
 import NavbarItemsHover from '../../components/FramerMotion/NavbarItemsHover';
 import { apiPrefix } from '../../utils/variables';
 
@@ -67,7 +67,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   }, [sections]);
 
   const DrawerList = (
-    <Box className='drawerMobile' sx={{ width: 250, backgroundColor:navbarBackgroundColor, borderRight:`1px solid ${contrastColor}`, overflowY:'hidden' }} role="presentation">
+    <Box className='drawerMobile' sx={{ width: 250, backgroundColor:navbarBackgroundColor, overflowY:'hidden' }} role="presentation">
       <div>
         <div className="nameSquareMobile">
           <p className='poppins-900 headerLetterMobile'>Skills</p>
@@ -112,7 +112,6 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
           </ListItem>
         )))}
           </div>
-        <Divider />
         {isFetched && (
           <div className="lastScanDiv" style={{ display: 'flex' }}>
             <p style={{ marginRight: '10px' }}>Last Scan: </p>
