@@ -139,8 +139,7 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
     onClose={() => toggleDrawer(false)}
     sx={{
       '& .MuiPaper-root': {
-        backgroundColor: 'var(--navbar-background-color)', // Custom background color
-        borderRight: '1px solid var(--contrast-color)',
+        backgroundColor: 'var(--navbar-background-color)',
         marginTop: `${appBarHeight + 1}px`,
         opacity:0.95,
       },
