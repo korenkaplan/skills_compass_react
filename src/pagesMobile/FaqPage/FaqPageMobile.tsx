@@ -8,15 +8,15 @@ import Typography from '@mui/material/Typography';
 import { AiFillCaretDown } from "react-icons/ai";
 import { FaQuestionCircle } from "react-icons/fa";
 import { BsCollection } from "react-icons/bs";
-import { FaqAccordion } from '../../utils/interfaces'
+import { FaqAccordion } from '@utils/interfaces'
 import { FaGithub } from "react-icons/fa";
 import { MdSupportAgent, MdAlternateEmail } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
-import Reveal from '../../components/FramerMotion/Reveal';
-import Slide from '../../components/FramerMotion/Slide';
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
-import {secondaryBackgroundColor,primaryBackgroundColor, buttonsBackgroundColor, textColor,buttonTextColor, contrastColor} from '../../utils/theme.ts'
-import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot.tsx';
+import Reveal from '@components/FramerMotion/Reveal';
+import Slide from '@components/FramerMotion/Slide';
+import ItemByItemReveal from '@components/FramerMotion/ItemByItemReveal';
+import {secondaryBackgroundColor,primaryBackgroundColor, buttonsBackgroundColor, textColor,buttonTextColor, contrastColor} from '@utils/theme.ts'
+import HeaderWithDot from '@components/HeaderWithDot/HeaderWithDot.tsx';
 
 interface FaqPageProps {
 

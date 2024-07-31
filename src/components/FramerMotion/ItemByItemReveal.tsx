@@ -1,8 +1,8 @@
 import { useRef, useEffect, CSSProperties } from 'react';
 import { motion, useInView, useAnimation, UseInViewOptions } from "framer-motion";
 import React from 'react';
-import { FramerMotionVariants } from '../../utils/enums';
-import { framerMotionRepeatOnce } from '../../utils/variables';
+import { FramerMotionVariants } from '@utils/enums';
+import { framerMotionRepeatOnce } from '@utils/variables';
 
 
 interface Props {
@@ -36,11 +36,11 @@ export default function ItemByItemReveal({
     width
 }: Props) {
     const ref = useRef(null);
-    const isInView = useInView(ref, {once, amount});
+    const isInView = useInView(ref, { once, amount });
     const mainControls = useAnimation();
 
     useEffect(() => {
-        if(enabled) {
+        if (enabled) {
             if (isInView) {
                 mainControls.start(visibleVariant);
             } else {

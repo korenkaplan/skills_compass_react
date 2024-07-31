@@ -1,19 +1,19 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 import './OverviewPageMobile.css';
-import { backgroundColor } from '../../utils/variables';
-import '../../CSS/RotatingImageClick.css';
-import translateIcon from '../../assets/iconsDark/translate.png'
-import {contrastColor} from '../../utils/theme'
-import Line from '../../components/Line/Line';
-import bell from '../../assets/icons/bell.png'
-import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
-import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
-import Reveal from '../../components/FramerMotion/Reveal';
-import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
-import Slide from '../../components/FramerMotion/Slide';
+import { backgroundColor } from '@utils/variables';
+import '@CSS/RotatingImageClick.css';
+import translateIcon from '@assets/iconsDark/translate.png'
+import { contrastColor } from '@utils/theme'
+import Line from '@components/Line/Line';
+import bell from '@assets/icons/bell.png'
+import TypeQuestionAnimation from '@components/TypeQuestionAnimation/TypeQuestionAnimation ';
+import ScrollDownMouseAnimation from '@components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
+import Reveal from '@components/FramerMotion/Reveal';
+import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWrapper';
+import Slide from '@components/FramerMotion/Slide';
 import { motion, AnimatePresence } from 'framer-motion';
-import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot';
-import { ScrollSmoothToView } from '../../utils/functions';
+import HeaderWithDot from '@components/HeaderWithDot/HeaderWithDot';
+import { ScrollSmoothToView } from '@utils/functions';
 const OverviewPageMobile: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const bellLogoSize = 80
@@ -85,31 +85,31 @@ const OverviewPageMobile: React.FC = () => {
     <>
       <div className="topMobile">
         <Reveal>
-        <div className="overviewInnerHeaderMobile">
-          <img src={bell} alt="" style={{ width: `${bellLogoSize}px`, height: `${bellLogoSize}px` }} />
-          <h2 style={{ margin: '0 0 0 10px', fontSize: '25px' }}>מצלצל לך מוכר ?</h2>
-        </div>
+          <div className="overviewInnerHeaderMobile">
+            <img src={bell} alt="" style={{ width: `${bellLogoSize}px`, height: `${bellLogoSize}px` }} />
+            <h2 style={{ margin: '0 0 0 10px', fontSize: '25px' }}>מצלצל לך מוכר ?</h2>
+          </div>
         </Reveal>
         <Slide slideFrom='right'>
-        <p>אם גם אתה הולך לאיבוד לפעמים מהכמות האין סופית של טכנולוגיות  ולא יודע מה כדאי  ללמוד כדי להיות הכי רלוונטי לשוק העבודה שממשיך להתקדם ולהשתנות ללא הפסקה ?</p>
+          <p>אם גם אתה הולך לאיבוד לפעמים מהכמות האין סופית של טכנולוגיות  ולא יודע מה כדאי  ללמוד כדי להיות הכי רלוונטי לשוק העבודה שממשיך להתקדם ולהשתנות ללא הפסקה ?</p>
         </Slide>
         <Reveal>
-        <p><strong>אז הגעת למקום הנכון!</strong> 🚀</p>
+          <p><strong>אז הגעת למקום הנכון!</strong> 🚀</p>
         </Reveal>
         <Line height='1px' width='70%' color={backgroundColor} />
         <Slide slideFrom='left'>
-        <p>המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>
+          <p>המטרה שלנו היא לעזור ולהכווין אנשים בנוגע לטכנולוגיות המבוקשות ביותר בשוק העבודה בהייטק הישראלי, ולעשות סדר בבלאגן.  🌟</p>
 
         </Slide>
         <Slide slideFrom='right'>
-        <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג משרה.</p>
+          <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג משרה.</p>
         </Slide>
         <Reveal>
-        <p><strong>מה מייחד אותנו משאר האתרים?</strong> 🔍</p>
+          <p><strong>מה מייחד אותנו משאר האתרים?</strong> 🔍</p>
         </Reveal>
         <Line height='1px' width='70%' color={backgroundColor} />
         <Slide slideFrom='left'>
-        <p>כל המידע שלנו מגיע היישר מניתוח של <strong> אלפי משרות</strong> מאתרי חיפוש העבודה הפופולרים ביותר כמו <strong dir='ltr' style={{ marginLeft: '5px' }}>LinkedIn, Google Jobs </strong> ומאתרי החברות.</p>
+          <p>כל המידע שלנו מגיע היישר מניתוח של <strong> אלפי משרות</strong> מאתרי חיפוש העבודה הפופולרים ביותר כמו <strong dir='ltr' style={{ marginLeft: '5px' }}>LinkedIn, Google Jobs </strong> ומאתרי החברות.</p>
         </Slide>
 
       </div>
@@ -127,7 +127,7 @@ const OverviewPageMobile: React.FC = () => {
     setIsRotated(prevState => !prevState); // Toggle the rotation state
     setHeader(isRotated ? headerEnglish : headerHeb); // Toggle between English and Hebrew texts
     setMainText(isRotated ? developerSurveyText : developerSurveyTextHeb); // Toggle between English and Hebrew texts
-    setTypedQuestions(isRotated? questions: questionsHeb)
+    setTypedQuestions(isRotated ? questions : questionsHeb)
   };
 
 
@@ -137,13 +137,13 @@ const OverviewPageMobile: React.FC = () => {
   }, []);
   const questionsRowsStyle: CSSProperties = {
     height: '100px',
-    marginTop:'15px',
+    marginTop: '15px',
   };
   const getScrollDownAnimationStyle = (): CSSProperties => ({
     height: '150px',
   });
   const textVariants = {
-    initial: { opacity: 0,  x: isRotated ? -200 : 200},
+    initial: { opacity: 0, x: isRotated ? -200 : 200 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: isRotated ? 200 : -200 }
 
@@ -159,8 +159,8 @@ const OverviewPageMobile: React.FC = () => {
             exit="exit"
             variants={textVariants}
             transition={{ duration: 0.5 }}
-           className="containerHeader">
-          <HeaderWithDot lang={isRotated ? 'he' : 'en'} header={header}/>
+            className="containerHeader">
+            <HeaderWithDot lang={isRotated ? 'he' : 'en'} header={header} />
 
 
             <ScaleOnTapButtonWrapper>
@@ -176,36 +176,36 @@ const OverviewPageMobile: React.FC = () => {
         <div className="containerText" dir={isRotated ? 'rtl' : 'ltr'}>
           <Reveal >
             <div style={questionsRowsStyle} dir='ltr'>
-              <TypeQuestionAnimation isRotated={isRotated}  fontSize={20} questions={typedQuestions} currentYear={currentYear} />
+              <TypeQuestionAnimation isRotated={isRotated} fontSize={20} questions={typedQuestions} currentYear={currentYear} />
             </div>
           </Reveal>
           <AnimatePresence>
 
-          <motion.div
-             key={isRotated ? 'hebrew' : 'english'}
-             initial="initial"
-             animate="animate"
-             exit="exit"
-             variants={textVariants}
-             transition={{ duration: 0.5 }}
-          >
-            {mainText}
-          </motion.div>
+            <motion.div
+              key={isRotated ? 'hebrew' : 'english'}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={textVariants}
+              transition={{ duration: 0.5 }}
+            >
+              {mainText}
+            </motion.div>
           </AnimatePresence>
 
           <Reveal>
             <ScaleOnTapButtonWrapper>
-            <div className='OverviewPressHereDesktop' >
-              <div className='custom-button pressHereButtonDesktopOverview' onClick={()=> ScrollSmoothToView('howItWorksMobile')}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div>
+              <div className='OverviewPressHereDesktop' >
+                <div className='custom-button pressHereButtonDesktopOverview' onClick={() => ScrollSmoothToView('howItWorksMobile')}>{isRotated ? 'להסבר המלא לחץ כאן' : 'Full Explanation'}</div>
               </div>
 
             </ScaleOnTapButtonWrapper>
           </Reveal>
         </div>
         <Reveal >
-        <div className="imageRow" onClick={()=> ScrollSmoothToView('RoleSelect')}>
-          <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='none' styleProps={getScrollDownAnimationStyle()} />
-        </div>
+          <div className="imageRow" onClick={() => ScrollSmoothToView('RoleSelect')}>
+            <ScrollDownMouseAnimation CustomClassName='ScrollDownMouseAnimationMobile' scrollToSectionId='none' styleProps={getScrollDownAnimationStyle()} />
+          </div>
         </Reveal>
 
       </div>

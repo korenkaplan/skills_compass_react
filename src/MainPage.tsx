@@ -1,30 +1,31 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import './MainPage.css';
 import './utils/variables.css';
-import { Role, Section } from './utils/interfaces';
+import 'react-loading-skeleton/dist/skeleton.css';
 import _ from 'lodash';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-import LandingPageMobile from './pages mobile/LandingSection/LandingPageMobile';
-import OverviewPageMobile from './pages mobile/OverviewSection/OverviewPageMobile';
-import RolePageMobile from './pages mobile/RoleSection/RolePageMobile';
-import FaqPageMobile from './pages mobile/FaqPage/FaqPageMobile';
-import HowItWorksMobile from './pages mobile/HowItWorksMobile/HowItWorksMobile';
-import ContactInformationMobile from './pages mobile/ContactFooterMobile/ContactFooterMobile';
-import RoleSelect from './pages mobile/RoleSelect/RoleSelect';
-import SwiperPage from './pages/Swiper/Swiper';
-import LandingPage from './pages/LandingSection/LandingPage';
-import FaqPage from './pages/FaqPage/FaqPage';
-import RolePage from './pages/RoleSection/RolePage';
-import Overview from './pages/OverviewSection/OverviewPage';
-import HowItWorks from './pages/HowItWorks/HowItWorks';
-import ContactFooter from './pages/ContactFooter/ContactFooter';
-import DrawerMobile from './components/DrawerMobile/DrawerMobile';
-import DrawerDesktop from './components/Drawer/Drawer';
-import AppBar from './components/AppBar/Appbar';
-import Content from './components/Content/Content';
-import { apiPrefix } from './utils/variables';
-import 'react-loading-skeleton/dist/skeleton.css';
+import Content from '@components/Content/Content';
+import DrawerDesktop from '@components/Drawer/Drawer';
+import DrawerMobile from '@components/DrawerMobile/DrawerMobile';
+import  AppBar  from '@components/AppBar/Appbar';
+import ContactFooter from '@pages/ContactFooter/ContactFooter';
+import FaqPage from '@pages/FaqPage/FaqPage';
+import HowItWorks from '@pages/HowItWorks/HowItWorks';
+import LandingPage from '@pages/LandingSection/LandingPage';
+import Overview from '@pages/OverviewSection/OverviewPage';
+import RolePage from '@pages/RoleSection/RolePage';
+import SwiperPage from '@pages/Swiper/Swiper';
+import ContactInformationMobile from '@pagesMobile/ContactFooterMobile/ContactFooterMobile'
+import FaqPageMobile from '@pagesMobile/FaqPage/FaqPageMobile';
+import HowItWorksMobile from '@pagesMobile/HowItWorksMobile/HowItWorksMobile';
+import LandingPageMobile from '@pagesMobile/LandingSection/LandingPageMobile';
+import OverviewPageMobile from '@pagesMobile/OverviewSection/OverviewPageMobile';
+import RolePageMobile from '@pagesMobile/RoleSection/RolePageMobile';
+import RoleSelect from '@pagesMobile/RoleSelect/RoleSelect';
+import { Role, Section } from '@utils/interfaces';
+import { apiPrefix } from '@utils/variables';
+
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
   return roles.flatMap((role, index) => {

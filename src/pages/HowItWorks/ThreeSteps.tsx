@@ -1,15 +1,15 @@
 import React, { CSSProperties } from 'react';
 import './ThreeSteps.css';
-import '../../utils/variables.css'
-import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
+import '@utils/variables.css'
+import CurvedArrow from '@components/curvedArrow/CurvedArrow';
 import Lottie from 'lottie-react';
-import pagesAnimation from '../../assets/animations/pages.json';
-import robotScans from '../../assets/animations/robotScan.json';
-import legoAnimation from '../../assets/animations/Lottie Lego.json';
-import Slide from '../../components/FramerMotion/Slide';
-import Reveal from '../../components/FramerMotion/Reveal';
-import StepNumber from '../../components/StepNumber/StepNumber';
-import {contrastColor} from '../../utils/theme'
+import pagesAnimation from '@assets/animations/pages.json';
+import robotScans from '@assets/animations/robotScan.json';
+import legoAnimation from '@assets/animations/Lottie Lego.json';
+import Slide from '@components/FramerMotion/Slide';
+import Reveal from '@components/FramerMotion/Reveal';
+import StepNumber from '@components/StepNumber/StepNumber';
+import {contrastColor} from '@utils/theme'
 const ThreeSteps: React.FC = () => {
   const lottieStyle = {
     width: '100%',

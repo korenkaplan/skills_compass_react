@@ -1,5 +1,5 @@
 // src/components/SideMenu.tsx
-import { Section } from '../../utils/interfaces';
+import { Section } from '@utils/interfaces';
 import * as React from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
@@ -60,7 +60,7 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
               renderValue={(selected) => selected.join(', ')}
               MenuProps={MenuProps}
               sx={{
-                border:  '1px solid var(--contrast-color)',
+                border: '1px solid var(--contrast-color)',
               }}
 
             >
@@ -71,10 +71,10 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
                 >
                   <Checkbox
 
-                  checked={selectedSections.indexOf(section.label) > -1} />
+                    checked={selectedSections.indexOf(section.label) > -1} />
                   <ListItemText
 
-                  primary={section.label} />
+                    primary={section.label} />
                 </MenuItem>
               ))}
             </Select>

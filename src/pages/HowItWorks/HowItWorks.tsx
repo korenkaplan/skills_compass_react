@@ -2,13 +2,13 @@
 import React, { useEffect, useRef} from 'react';
 import ThreeSteps from './ThreeSteps';
 import './HowItWorks.css'
-import '../../utils/variables.css'
+import '@utils/variables.css'
 import FutureUpgrades from './FutureUpgrades';
-import jobDescriptionhighlited from '../../assets/images/Job description highlited.png'
-import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
-import Reveal from '../../components/FramerMotion/Reveal';
-import Slide from '../../components/FramerMotion/Slide';
+import jobDescriptionhighlited from '@assets/images/Job description highlited.png'
+import CurvedArrow from '@components/curvedArrow/CurvedArrow';
+import ItemByItemReveal from '@components/FramerMotion/ItemByItemReveal';
+import Reveal from '@components/FramerMotion/Reveal';
+import Slide from '@components/FramerMotion/Slide';
 //#region Technologies objects
 
 interface Category {

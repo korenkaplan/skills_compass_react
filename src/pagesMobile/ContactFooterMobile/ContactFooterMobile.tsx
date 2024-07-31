@@ -1,15 +1,15 @@
 // src/components/SideMenu.tsx
 import React from 'react';
 import './ContactFooterMobile.css';
-import { resumeDownloadLink } from '../../utils/variables';
-import linkedin from '../../assets/icons/linkedin.png'
-import github from '../../assets/icons/github.png'
-import whatsapp from '../../assets/icons/whatsapp.png'
-import download from '../../assets/icons/download.png'
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
-import Slide from '../../components/FramerMotion/Slide';
-import Reveal from '../../components/FramerMotion/Reveal';
-import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot';
+import { resumeDownloadLink } from '@utils/variables';
+import linkedin from '@assets/icons/linkedin.png'
+import github from '@assets/icons/github.png'
+import whatsapp from '@assets/icons/whatsapp.png'
+import download from '@assets/icons/download.png'
+import ItemByItemReveal from '@components/FramerMotion/ItemByItemReveal';
+import Slide from '@components/FramerMotion/Slide';
+import Reveal from '@components/FramerMotion/Reveal';
+import HeaderWithDot from '@components/HeaderWithDot/HeaderWithDot';
 const ContactFooterMobile: React.FC = () => {
 
   return (

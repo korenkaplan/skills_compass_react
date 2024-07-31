@@ -3,8 +3,8 @@ import './Swiper.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Section } from '../../utils/interfaces';
-import Reveal from '../../components/FramerMotion/Reveal';
+import { Section } from '@utils/interfaces';
+import Reveal from '@components/FramerMotion/Reveal';
 
 interface SwiperPageProps {
   sections: Section[];

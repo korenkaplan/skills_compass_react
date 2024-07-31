@@ -3,13 +3,13 @@ import React from 'react';
 import './HowItWorksMobile.css'
 import ThreeStepsMobile from './ThreeStepsMobile';
 import FutureUpgradesMobile from './FutureUpgradesMobile';
-import Line from '../../components/Line/Line';
-import jobDescriptionhighlited from '../../assets/images/Job description highlited.png'
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
-import Reveal from '../../components/FramerMotion/Reveal';
-import Slide from '../../components/FramerMotion/Slide';
-import {contrastColor, textColor} from '../../utils/theme'
-import HeaderWithDot from '../../components/HeaderWithDot/HeaderWithDot';
+import Line from '@components/Line/Line';
+import jobDescriptionhighlited from '@assets/images/Job description highlited.png'
+import ItemByItemReveal from '@components/FramerMotion/ItemByItemReveal';
+import Reveal from '@components/FramerMotion/Reveal';
+import Slide from '@components/FramerMotion/Slide';
+import { contrastColor, textColor } from '@utils/theme'
+import HeaderWithDot from '@components/HeaderWithDot/HeaderWithDot';
 
 interface Category {
   name: string;
@@ -64,8 +64,8 @@ const HowItWorksMobile: React.FC = () => {
             <ul>
               {col.items.map((item, itemIndex) => (
                 <Reveal
-                key={`${item}${itemIndex}`}
-                duration={1} delay={(delayInSeconds++) / 10}>
+                  key={`${item}${itemIndex}`}
+                  duration={1} delay={(delayInSeconds++) / 10}>
                   <li key={itemIndex}>{item}</li>
                 </Reveal>
               ))}
@@ -79,9 +79,9 @@ const HowItWorksMobile: React.FC = () => {
     <div style={{ padding: 50 }} className="section OverviewContainerMobile heightAndBorder  " >
 
       <>
-        <ItemByItemReveal className='flexCenter' customStyle={{ textAlign: 'center', flexDirection:'column' }} speed={20} >
-          <HeaderWithDot header='Workflow'/>
-          <h2 style={{color:textColor}} >Discover our  3-step process for delivering the most relevant and reliable data on the internet</h2>
+        <ItemByItemReveal className='flexCenter' customStyle={{ textAlign: 'center', flexDirection: 'column' }} speed={20} >
+          <HeaderWithDot header='Workflow' />
+          <h2 style={{ color: textColor }} >Discover our  3-step process for delivering the most relevant and reliable data on the internet</h2>
         </ItemByItemReveal>
         <ThreeStepsMobile />
       </>
@@ -109,12 +109,12 @@ const HowItWorksMobile: React.FC = () => {
       </div>
       <Line margin='50px 0' height='1px' width='80%' color={contrastColor} />
       <>
-      <ItemByItemReveal className='flexCenter' customStyle={{ textAlign: 'center', flexDirection:'column' }} speed={20} >
-        <HeaderWithDot header="What's Next"/>
+        <ItemByItemReveal className='flexCenter' customStyle={{ textAlign: 'center', flexDirection: 'column' }} speed={20} >
+          <HeaderWithDot header="What's Next" />
           <h2>Discover our exciting upcoming improvements and features</h2>
         </ItemByItemReveal>
         <div className="flexCenter">
-        <FutureUpgradesMobile />
+          <FutureUpgradesMobile />
         </div>
       </>
     </div>

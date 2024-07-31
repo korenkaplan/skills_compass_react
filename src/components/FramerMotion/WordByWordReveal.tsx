@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { motion, useInView, useAnimation, UseInViewOptions } from "framer-motion";
-import { framerMotionRepeatOnce } from '../../utils/variables';
+import { framerMotionRepeatOnce } from '@utils/variables';
 enum Variants {
     basicHidden = 'hidden',
     basicVisible = 'visible',
@@ -36,16 +36,15 @@ export default function WordByWordReveal({
     const mainControls = useAnimation();
 
     useEffect(() => {
-        if(enabled)
-        {
+        if (enabled) {
             if (isInView) {
                 mainControls.start(visibleVariant)
             }
-            if(!isInView && !once) {
+            if (!isInView && !once) {
                 mainControls.start(hiddenVariant)
             }
         }
-        else{
+        else {
             mainControls.set(visibleVariant)
 
         }

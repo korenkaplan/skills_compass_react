@@ -1,30 +1,30 @@
 //#region imports
 import React, { useState, useEffect, CSSProperties } from 'react';
 import './RolePage.css';
-import { FormattedDataRow, Role } from '../../utils/interfaces';
+import { FormattedDataRow, Role } from '@utils/interfaces';
 import axios from 'axios';
-import {CategoryData } from '../../utils/interfaces';
-import TechRow from '../../components/TechRow/TechRow';
-import Line from '../../components/Line/Line'
-import whiteCount from '../../assets/white icons/count.png'
-import greenCount from '../../assets/white icons/green-count.png'
-import whitePercentage from '../../assets/white icons/percentage.png'
-import greenPercentage from '../../assets/white icons/green-percentage.png'
+import {CategoryData } from '@utils/interfaces';
+import TechRow from '@components/TechRow/TechRow';
+import Line from '@components/Line/Line'
+import whiteCount from '@assets/white icons/count.png'
+import greenCount from '@assets/white icons/green-count.png'
+import whitePercentage from '@assets/white icons/percentage.png'
+import greenPercentage from '@assets/white icons/green-percentage.png'
 import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
 import {FormGroup} from '@mui/material';
 import { Tooltip } from 'react-tooltip';
 import { IoInformationCircleSharp } from "react-icons/io5";
 import _ from 'lodash'
-import WordByWordReveal from '../../components/FramerMotion/WordByWordReveal';
-import Reveal from '../../components/FramerMotion/Reveal';
-import Slide from '../../components/FramerMotion/Slide';
-import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
-import {contrastColor} from '../../utils/theme'
-import {switchesDivWidth} from '../../utils/variables'
+import WordByWordReveal from '@components/FramerMotion/WordByWordReveal';
+import Reveal from '@components/FramerMotion/Reveal';
+import Slide from '@components/FramerMotion/Slide';
+import SwitchesReveal from '@components/FramerMotion/SwitchesReveal';
+import {contrastColor} from '@utils/theme'
+import {switchesDivWidth} from '@utils/variables'
 import { motion, AnimatePresence } from 'framer-motion';
-import { CustomSwitch } from '../../components/CustomSwitch/CustomSwitch';
-import {techItemsPerCategory, allCategoriesItemsAmount} from '../../utils/variables'
-import { apiPrefix } from '../../utils/variables';
+import { CustomSwitch } from '@components/CustomSwitch/CustomSwitch';
+import {techItemsPerCategory, allCategoriesItemsAmount} from '@utils/variables'
+import { apiPrefix } from '@utils/variables';
 
 //#endregion
 

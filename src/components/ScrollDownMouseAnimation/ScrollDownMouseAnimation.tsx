@@ -1,7 +1,7 @@
 // ScrollDownMouseAnimation.tsx
 import React, { CSSProperties } from 'react';
 import Lottie from 'lottie-react';
-import scrollAnimation from '../../assets/lottieDark/mouseScrollDown.json';
+import scrollAnimation from '@assets/lottieDark/mouseScrollDown.json';
 
 interface ScrollDownMouseAnimationProps {
   scrollToSectionId: string;

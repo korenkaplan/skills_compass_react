@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
-import { Section } from '../../utils/interfaces';
-import { DrawerDesktopProps } from '../../components/Drawer/Drawer';
-import { DrawerMobileProps } from '../../components/DrawerMobile/DrawerMobile';
+import { Section } from '@utils/interfaces';
+import { DrawerDesktopProps } from '@components/Drawer/Drawer';
+import { DrawerMobileProps } from '@components/DrawerMobile/DrawerMobile';
 import './Content.css';
 
 interface ContentProps {

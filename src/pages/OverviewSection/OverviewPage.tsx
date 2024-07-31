@@ -3,18 +3,18 @@ import React, { CSSProperties, useState } from 'react';
 
 
 import './OverViewPage.css'
-import '../../utils/variables.css'
-import { backgroundColor, } from '../../utils/variables'
-import {contrastColor} from '../../utils/theme'
-import logo from '../../assets/logo/logo wit yellow ribbon.png'
-import '../../CSS/RotatingImageClick.css'
-import bell from '../../assets/icons/bell.png'
-import Line from '../../components/Line/Line';
-import translateIcon from '../../assets/iconsDark/translate.png'
-import TypeQuestionAnimation from '../../components/TypeQuestionAnimation/TypeQuestionAnimation ';
-import ScrollDownMouseAnimation from '../../components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
-import Reveal from '../../components/FramerMotion/Reveal';
-import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
+import '@utils/variables.css'
+import { backgroundColor, } from '@utils/variables'
+import {contrastColor} from '@utils/theme'
+import logo from '@assets/logo/logo wit yellow ribbon.png'
+import '@CSS/RotatingImageClick.css'
+import bell from '@assets/icons/bell.png'
+import Line from '@components/Line/Line';
+import translateIcon from '@assets/iconsDark/translate.png'
+import TypeQuestionAnimation from '@components/TypeQuestionAnimation/TypeQuestionAnimation ';
+import ScrollDownMouseAnimation from '@components/ScrollDownMouseAnimation/ScrollDownMouseAnimation';
+import Reveal from '@components/FramerMotion/Reveal';
+import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWrapper';
 import { motion, AnimatePresence } from 'framer-motion';
 const headerEnglish = "Overview"
 const headerHeb = "סקירה כללית"

@@ -1,10 +1,10 @@
 // src/components/SideMenu.tsx
 import React, { useEffect, useState } from 'react';
 import './SideMenu.css';
-import logo from '../assets/logo/logo ellow ribbon with text.png'; // Import the logo image
-import { Section } from '../utils/interfaces';
+import logo from '@assets/logo/logo ellow ribbon with text.png'; // Import the logo image
+import { Section } from '@utils/interfaces';
 import axios from 'axios';
-import { apiPrefix } from '../utils/variables';
+import { apiPrefix } from '@utils/variables';
 
 interface SideMenuProps {
   sections: Section[];
@@ -21,27 +21,27 @@ const SideMenu: React.FC<SideMenuProps> = ({ sections, activeSection }) => {
       section.scrollIntoView({ behavior: 'smooth' });
     }
   };
- const BringThemHomeNowDiv = () => (
-  <div className="bringThemHomeNowDiv">
-  <p>#BringThemHome</p>
-  <p className='nowHeader'>Now!</p>
-</div>
- );
+  const BringThemHomeNowDiv = () => (
+    <div className="bringThemHomeNowDiv">
+      <p>#BringThemHome</p>
+      <p className='nowHeader'>Now!</p>
+    </div>
+  );
 
- useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`${apiPrefix}/usage_stats/get-last-scan-date-and-time-view/`);
-      setTime(response.data.data['time'])
-      setDate(response.data.data['date'])
-      setIsFetched(true)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${apiPrefix}/usage_stats/get-last-scan-date-and-time-view/`);
+        setTime(response.data.data['time'])
+        setDate(response.data.data['date'])
+        setIsFetched(true)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  fetchData();
- })
+    fetchData();
+  })
   return (
     <div className="side-menu">
       <img src={logo} alt="Logo" className="logo" />
@@ -57,9 +57,9 @@ const SideMenu: React.FC<SideMenuProps> = ({ sections, activeSection }) => {
           </li>
         ))}
       </ul>
-      <BringThemHomeNowDiv/>
-      <div style={{display: isFetched? 'flex':'none'}} className="lastScanDiv">
-        <p style={{marginRight:'10px'}}>Last Jobs Scan: </p>
+      <BringThemHomeNowDiv />
+      <div style={{ display: isFetched ? 'flex' : 'none' }} className="lastScanDiv">
+        <p style={{ marginRight: '10px' }}>Last Jobs Scan: </p>
         <p>{time} | {date}</p>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { motion, useInView, useAnimation, UseInViewOptions } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { framerMotionRepeatOnce } from "../../utils/variables";
+import { framerMotionRepeatOnce } from "@utils/variables";
 
 type Props = {
   children: JSX.Element;
@@ -32,7 +32,7 @@ export default function Slide({
   const controls = useAnimation();
   const slideX = slideAmount
   useEffect(() => {
-    if(enabled){
+    if (enabled) {
       if (isInView) {
         controls.start("visible");
       }
@@ -40,7 +40,7 @@ export default function Slide({
         controls.start("hidden")
       }
     }
-    else{
+    else {
       controls.set("visible")
     }
 

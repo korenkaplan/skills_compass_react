@@ -1,7 +1,7 @@
 // src/components/SideMenu.tsx
 import React, {useState } from 'react';
 import './FaqPage.css'
-import '../../utils/variables.css'
+import '@utils/variables.css'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -9,13 +9,13 @@ import Typography from '@mui/material/Typography';
 import { AiFillCaretDown } from "react-icons/ai";
 import { FaQuestionCircle } from "react-icons/fa";
 import { BsCollection } from "react-icons/bs";
-import {FaqAccordion} from '../../utils/interfaces'
+import {FaqAccordion} from '@utils/interfaces'
 import { FaGithub } from "react-icons/fa";
 import { MdSupportAgent, MdAlternateEmail  } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
-import Reveal from '../../components/FramerMotion/Reveal';
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
-import {secondaryBackgroundColor,primaryBackgroundColor, buttonsBackgroundColor, textColor,buttonTextColor} from '../../utils/theme.ts'
+import Reveal from '@components/FramerMotion/Reveal';
+import ItemByItemReveal from '@components/FramerMotion/ItemByItemReveal';
+import {secondaryBackgroundColor,primaryBackgroundColor, buttonsBackgroundColor, textColor,buttonTextColor} from '@utils/theme.ts'
 interface FaqPageProps {
 
 }

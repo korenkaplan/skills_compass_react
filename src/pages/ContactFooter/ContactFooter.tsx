@@ -1,15 +1,15 @@
 // src/components/SideMenu.tsx
 import React, { CSSProperties } from 'react';
 import './ContactFooter.css';
-import { resumeDownloadLink } from '../../utils/variables';
-import linkedin from '../../assets/icons/linkedin.png'
-import github from '../../assets/icons/github.png'
-import whatsapp from '../../assets/icons/whatsapp.png'
-import download from '../../assets/icons/download.png'
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
-import Slide from '../../components/FramerMotion/Slide';
-import Reveal from '../../components/FramerMotion/Reveal';
-import '../../utils/variables.css'
+import { resumeDownloadLink } from '@utils/variables';
+import linkedin from '@assets/icons/linkedin.png'
+import github from '@assets/icons/github.png'
+import whatsapp from '@assets/icons/whatsapp.png'
+import download from '@assets/icons/download.png'
+import ItemByItemReveal from '@components/FramerMotion/ItemByItemReveal';
+import Slide from '@components/FramerMotion/Slide';
+import Reveal from '@components/FramerMotion/Reveal';
+import '@utils/variables.css'
 const ContactFooter: React.FC = () => {
 
   const headerStyle: CSSProperties = {

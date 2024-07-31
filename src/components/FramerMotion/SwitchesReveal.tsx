@@ -1,18 +1,18 @@
-import {useRef, useEffect, CSSProperties} from 'react';
-import {motion, useInView, useAnimation, UseInViewOptions} from "framer-motion";
-import {FramerMotionVariants} from '../../utils/enums'
-import { framerMotionRepeatOnce } from '../../utils/variables';
+import { useRef, useEffect, CSSProperties } from 'react';
+import { motion, useInView, useAnimation, UseInViewOptions } from "framer-motion";
+import { FramerMotionVariants } from '@utils/enums'
+import { framerMotionRepeatOnce } from '@utils/variables';
 
 interface Props {
     children: JSX.Element;
     width?: 'fit-content' | '100%';
     slidingSquare?: boolean;
-    squareStyle?:CSSProperties;
+    squareStyle?: CSSProperties;
     className?: string;
     once?: boolean;
     amount?: UseInViewOptions["amount"];
-    visibleVariant?: FramerMotionVariants ;
-    hiddenVariant?:  FramerMotionVariants;
+    visibleVariant?: FramerMotionVariants;
+    hiddenVariant?: FramerMotionVariants;
     delay?: number;
     duration?: number;
     enabled: boolean;
@@ -20,7 +20,7 @@ interface Props {
     slideAmount?: number;
 }
 
-export default function SwitchesReveal ({
+export default function SwitchesReveal({
     children,
     width,
     className,
@@ -34,36 +34,35 @@ export default function SwitchesReveal ({
     slideFrom = 'left',
     slideAmount = 100,
 
-} : Props)  {
-const ref = useRef(null)
-const isInView = useInView(ref, {once, amount});
-const mainControls = useAnimation();
+}: Props) {
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once, amount });
+    const mainControls = useAnimation();
 
-useEffect(() => {
-    if(enabled)
-    {
-      mainControls.start(visibleVariant)
-    }
-    else{
-        mainControls.start(hiddenVariant); // Instantly show without animation
-    }
+    useEffect(() => {
+        if (enabled) {
+            mainControls.start(visibleVariant)
+        }
+        else {
+            mainControls.start(hiddenVariant); // Instantly show without animation
+        }
 
-},[isInView, enabled])
+    }, [isInView, enabled])
 
-return (
-    <div className={className} ref={ref} style={{ width}}>
-        <motion.div
-        variants={{
-            hidden: { opacity: 0,x: slideFrom == 'left' ? -1 * slideAmount: slideAmount },
-            visible: { opacity: 1,y: 0, x: 0 },
-        }}
-        initial={hiddenVariant}
-        animate= {mainControls}
-        transition={{ duration: duration, delay:delay, ease:'easeInOut' }}
-        >
-          {children}
-        </motion.div>
+    return (
+        <div className={className} ref={ref} style={{ width }}>
+            <motion.div
+                variants={{
+                    hidden: { opacity: 0, x: slideFrom == 'left' ? -1 * slideAmount : slideAmount },
+                    visible: { opacity: 1, y: 0, x: 0 },
+                }}
+                initial={hiddenVariant}
+                animate={mainControls}
+                transition={{ duration: duration, delay: delay, ease: 'easeInOut' }}
+            >
+                {children}
+            </motion.div>
 
-    </div>
-)
+        </div>
+    )
 }

@@ -26,9 +26,13 @@
       "@utils/*": ["utils/*"],
       "@components/*": ["components/*"],
       "@assets/*": ["assets/*"],
-
+      "@pages/*": ["pages/*"],
+      "@pagesMobile/*": ["pagesMobile/*"],
+      "@CSS/*": ["CSS/*"],
+      "@FramerMotion/*": ["components/FramerMotion/*"],
     }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
+

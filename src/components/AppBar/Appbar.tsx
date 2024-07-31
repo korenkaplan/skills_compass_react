@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { contrastColor } from '../../utils/theme';
+import { contrastColor } from '@utils/theme';
 import Hamburger from 'hamburger-react';
 import './Appbar.css';
 

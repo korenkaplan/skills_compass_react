@@ -3,18 +3,18 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import { Section } from '../../utils/interfaces';
+import { Section } from '@utils/interfaces';
 import './DrawerMobile.css'
 import axios from 'axios';
-import {contrastColor, navbarBackgroundColor} from '../../utils/theme'
-import NavbarItemsHover from '../../components/FramerMotion/NavbarItemsHover';
-import { apiPrefix } from '../../utils/variables';
+import { contrastColor, navbarBackgroundColor } from '@utils/theme'
+import NavbarItemsHover from '@components/FramerMotion/NavbarItemsHover';
+import { apiPrefix } from '@utils/variables';
 import { useMediaQuery } from 'react-responsive';
-import ItemByItemReveal from '../../components/FramerMotion/ItemByItemReveal';
+import ItemByItemReveal from '@components/FramerMotion/ItemByItemReveal';
 import { CiLinkedin } from 'react-icons/ci';
 import { FaGithub } from 'react-icons/fa';
-import ribbon from '../../assets/icons/icons8-ribbon-50.png';
-import Reveal from '../../components/FramerMotion/Reveal';
+import ribbon from '@assets/icons/icons8-ribbon-50.png';
+import Reveal from '@components/FramerMotion/Reveal';
 export interface DrawerMobileProps {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
@@ -81,96 +81,96 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
     marginLeft: '20px',
   };
   const DrawerList = (
-    <Box className='drawerMobile' sx={{ width: isIpad ?  '100vw' : '250px' , backgroundColor:navbarBackgroundColor, overflowY:'hidden' }} role="presentation">
+    <Box className='drawerMobile' sx={{ width: isIpad ? '100vw' : '250px', backgroundColor: navbarBackgroundColor, overflowY: 'hidden' }} role="presentation">
       <div>
         <div className="topNavbarMobile">
-        <ItemByItemReveal>
-          <p className="poppins-900" style={headerStyle}>Skills Compass</p>
-        </ItemByItemReveal>
-        <Reveal>
-        <div className="iconsdiv">
-          <div className="iconWithATag">
-            <a href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
-              <img src={ribbon} alt="My Image" className="clickableImageDesktop" />
-            </a>
-          </div>
-          <div className="iconWithATag">
-            <a href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
-              <CiLinkedin size={30} color={contrastColor} />
-            </a>
-          </div>
-          <div className="iconWithATag">
-            <a href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
-              <FaGithub size={30} color={contrastColor} />
-            </a>
-          </div>
-      </div>
-      </Reveal>
+          <ItemByItemReveal>
+            <p className="poppins-900" style={headerStyle}>Skills Compass</p>
+          </ItemByItemReveal>
+          <Reveal>
+            <div className="iconsdiv">
+              <div className="iconWithATag">
+                <a href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
+                  <img src={ribbon} alt="My Image" className="clickableImageDesktop" />
+                </a>
+              </div>
+              <div className="iconWithATag">
+                <a href="https://www.linkedin.com/in/koren-kaplan/" target="_blank" rel="noopener noreferrer">
+                  <CiLinkedin size={30} color={contrastColor} />
+                </a>
+              </div>
+              <div className="iconWithATag">
+                <a href="https://github.com/korenkaplan/Dev-Skill-Compass-Server/" target="_blank" rel="noopener noreferrer">
+                  <FaGithub size={30} color={contrastColor} />
+                </a>
+              </div>
+            </div>
+          </Reveal>
 
         </div>
         <div className="firstSection">
-        {notRolesSectionsList.length > 0 && (
-          <NavbarItemsHover>
-          <ListItem
-            key={notRolesSectionsList[0].id}
-            disablePadding
-            onClick={() => handleClick(notRolesSectionsList[0].id)}
-            className='ListItemMobile'
-          >
-            <ListItemButton sx={listButtonCssStyle} >
-            <p >{notRolesSectionsList[0].label}</p>
-            </ListItemButton>
-          </ListItem>
-          </NavbarItemsHover>
-        )}
+          {notRolesSectionsList.length > 0 && (
+            <NavbarItemsHover>
+              <ListItem
+                key={notRolesSectionsList[0].id}
+                disablePadding
+                onClick={() => handleClick(notRolesSectionsList[0].id)}
+                className='ListItemMobile'
+              >
+                <ListItemButton sx={listButtonCssStyle} >
+                  <p >{notRolesSectionsList[0].label}</p>
+                </ListItemButton>
+              </ListItem>
+            </NavbarItemsHover>
+          )}
         </div>
 
-          <div className="restOfSections">
+        <div className="restOfSections">
           {
-        notRolesSectionsList && (notRolesSectionsList.slice(1).map((section)=> (
-          <NavbarItemsHover>
-          <ListItem
-          className='ListItemMobile'
-          key={section.id}
-          disablePadding
-          onClick={() => handleClick(section.id)}
-          >
-          <ListItemButton  sx={listButtonCssStyle}>
-          <p >{section.label}</p>
-          </ListItemButton>
-          </ListItem>
-          </NavbarItemsHover>
+            notRolesSectionsList && (notRolesSectionsList.slice(1).map((section) => (
+              <NavbarItemsHover>
+                <ListItem
+                  className='ListItemMobile'
+                  key={section.id}
+                  disablePadding
+                  onClick={() => handleClick(section.id)}
+                >
+                  <ListItemButton sx={listButtonCssStyle}>
+                    <p >{section.label}</p>
+                  </ListItemButton>
+                </ListItem>
+              </NavbarItemsHover>
 
-        )))}
-          </div>
+            )))}
+        </div>
         {isFetched && (
           <div className="lastScanDiv" style={{ display: 'flex' }}>
             <p style={{ marginRight: '10px' }}>Last Scan: </p>
             <p>{time} | {date}</p>
           </div>
         )}
-      <BringThemHomeNowDiv />
+        <BringThemHomeNowDiv />
       </div>
     </Box>
   );
 
   return (
     <Drawer
-    style={{ overflowY: 'hidden' }}
-    variant={variant}
-    slotProps={{ backdrop: { invisible: true } }}
-    open={open}
-    onClose={() => toggleDrawer(false)}
-    sx={{
-      '& .MuiPaper-root': {
-        backgroundColor: 'var(--navbar-background-color)',
-        // marginTop: `${appBarHeight + 1}px`,
-        opacity:0.95,
-      },
-    }}
-  >
-    {DrawerList}
-  </Drawer>
+      style={{ overflowY: 'hidden' }}
+      variant={variant}
+      slotProps={{ backdrop: { invisible: true } }}
+      open={open}
+      onClose={() => toggleDrawer(false)}
+      sx={{
+        '& .MuiPaper-root': {
+          backgroundColor: 'var(--navbar-background-color)',
+          // marginTop: `${appBarHeight + 1}px`,
+          opacity: 0.95,
+        },
+      }}
+    >
+      {DrawerList}
+    </Drawer>
   );
 };
 

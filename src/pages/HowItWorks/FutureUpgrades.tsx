@@ -1,13 +1,13 @@
 import React from 'react';
 import './FutureUpgrades.css';
-import '../../utils/variables.css'
-import CurvedArrow from '../../components/curvedArrow/CurvedArrow';
+import '@utils/variables.css'
+import CurvedArrow from '@components/curvedArrow/CurvedArrow';
 import Lottie from 'lottie-react';
-import moreRoles from '../../assets/animations/moreJobs.json'
-import graphs from '../../assets/animations/graphs.json'
-import roadmap from '../../assets/animations/roadmap.json'
-import Slide from '../../components/FramerMotion/Slide';
-import Reveal from '../../components/FramerMotion/Reveal';
+import moreRoles from '@assets/animations/moreJobs.json'
+import graphs from '@assets/animations/graphs.json'
+import roadmap from '@assets/animations/roadmap.json'
+import Slide from '@components/FramerMotion/Slide';
+import Reveal from '@components/FramerMotion/Reveal';
 const FutureUpgrades: React.FC = () => {
     const lottieStyle = {
         width: '100%',

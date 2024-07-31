@@ -2,31 +2,31 @@
 //#region imports
 import React, { useState, useEffect, CSSProperties } from 'react';
 import './RolePageMobile.css';
-import { FormattedDataRow, Role } from '../../utils/interfaces';
+import { FormattedDataRow, Role } from '@utils/interfaces';
 import axios from 'axios';
-import { CategoryData } from '../../utils/interfaces';
-import Line from '../../components/Line/Line'
-import whiteCount from '../../assets/white icons/count.png'
-import greenCount from '../../assets/white icons/green-count.png'
-import whitePercentage from '../../assets/white icons/percentage.png'
-import greenPercentage from '../../assets/white icons/green-percentage.png'
+import { CategoryData } from '@utils/interfaces';
+import Line from '@components/Line/Line'
+import whiteCount from '@assets/white icons/count.png'
+import greenCount from '@assets/white icons/green-count.png'
+import whitePercentage from '@assets/white icons/percentage.png'
+import greenPercentage from '@assets/white icons/green-percentage.png'
 import FormControlLabel from '@mui/material/FormControlLabel/FormControlLabel';
 import { FormGroup } from '@mui/material';
 import { Tooltip } from 'react-tooltip'
 import _ from 'lodash'
-import TechRowMobile from '../TechRow/TechRowMobile';
-import Reveal from '../../components/FramerMotion/Reveal';
-import Slide from '../../components/FramerMotion/Slide'
-import SwitchesReveal from '../../components/FramerMotion/SwitchesReveal';
+import TechRowMobile from '@pagesMobile/TechRow/TechRowMobile';
+import Reveal from '@components/FramerMotion/Reveal';
+import Slide from '@components/FramerMotion/Slide'
+import SwitchesReveal from '@components/FramerMotion/SwitchesReveal';
 import { IoInformationCircleSharp } from 'react-icons/io5';
-import { contrastColor, } from '../../utils/theme'
+import { contrastColor, } from '@utils/theme'
 import { motion, AnimatePresence } from 'framer-motion';
-import { CustomSwitch } from '../../components/CustomSwitch/CustomSwitch';
-import { techItemsPerCategory, allCategoriesItemsAmount } from '../../utils/variables'
-import { apiPrefix } from '../../utils/variables';
+import { CustomSwitch } from '@components/CustomSwitch/CustomSwitch';
+import { techItemsPerCategory, allCategoriesItemsAmount } from '@utils/variables'
+import { apiPrefix } from '@utils/variables';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
-import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
+import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWrapper';
 //#endregion
 
 interface RolePageProps {
@@ -198,7 +198,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
 
   const handleCategoryAmountChange = (increase: boolean) => {
     // Ensure the value is non-negative
-    if (increase == false && categoryAmount > 1 || increase === true && categoryAmount < techItemsPerCategory ) {
+    if (increase == false && categoryAmount > 1 || increase === true && categoryAmount < techItemsPerCategory) {
       const newAmount = increase ? categoryAmount + 1 : categoryAmount - 1;
       setCategoryAmount(newAmount);
       aggregatedTechList(amount, listLimitSwitch, newAmount, categoryLimitSwitch)
@@ -408,15 +408,15 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                   </Tooltip>
                 </div>
                 <SwitchesReveal slideAmount={0} enabled={categoryLimitSwitch}>
-                <div className="inputDivMobile" >
-                  <ScaleOnTapButtonWrapper  className='flexCenter'>
-                  <AiFillMinusCircle  className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(false)}/>
-                  </ScaleOnTapButtonWrapper>
-                  <div className="numberInputMobile" style={{margin: 0, padding: 0}}>{categoryAmount}</div>
-                  <ScaleOnTapButtonWrapper  className='flexCenter'>
-                  <AiFillPlusCircle  className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(true)}/>
-                  </ScaleOnTapButtonWrapper>
-                </div>
+                  <div className="inputDivMobile" >
+                    <ScaleOnTapButtonWrapper className='flexCenter'>
+                      <AiFillMinusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(false)} />
+                    </ScaleOnTapButtonWrapper>
+                    <div className="numberInputMobile" style={{ margin: 0, padding: 0 }}>{categoryAmount}</div>
+                    <ScaleOnTapButtonWrapper className='flexCenter'>
+                      <AiFillPlusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(true)} />
+                    </ScaleOnTapButtonWrapper>
+                  </div>
                 </SwitchesReveal>
 
               </div>

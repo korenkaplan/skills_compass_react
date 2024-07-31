@@ -1,18 +1,18 @@
 // src/components/SideMenu.tsx
 import React, { useState, useEffect, CSSProperties } from 'react';
 import './LandingPage.css'
-import '../../utils/variables.css'
-import logoCropped from '../../assets/logo/logoCropped-removebg-preview.png'
-import '../../CSS/RotatingImage.css'
+import '@utils/variables.css'
+import logoCropped from '@assets/logo/logoCropped-removebg-preview.png'
+import '@CSS/RotatingImage.css'
 import LinearProgress from '@mui/material/LinearProgress';
-import { calculateMaxLineWidth } from '../../utils/functions'
+import { calculateMaxLineWidth } from '@utils/functions'
 import Lottie from "lottie-react";
 import { TypeAnimation } from 'react-type-animation';
 import _ from 'lodash'
-import getStartedLottie from '../../assets/animations/scroll down animation black.json'
-import Reveal from '../../components/FramerMotion/Reveal';
-import Slide from '../../components/FramerMotion/Slide';
-import ScaleOnTapButtonWrapper from '../../components/FramerMotion/ScaleOnTapButtonWrapper';
+import getStartedLottie from '@assets/animations/scroll down animation black.json'
+import Reveal from '@components/FramerMotion/Reveal';
+import Slide from '@components/FramerMotion/Slide';
+import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWrapper';
 interface LandingPageProps {
   isLoading: boolean;
   defaultSection: string;
