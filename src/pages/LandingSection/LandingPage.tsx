@@ -103,14 +103,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ isLoading, defaultSection, se
             <Reveal>
               <h2 className='headerLandingPageDesktop'>Discover the <strong className='highlighted'>Most Wanted </strong> Skills for Your Dream Job in  <br />Israel's  High-Tech industry
                 <div style={rolesRowStyle} className="rolesRow">
-                  <h2 style={{ marginRight: '15px' }} className='headerLandingPageDesktop'><strong className='highlighted'>as a</strong></h2>
+                  <h2 style={{ marginRight: '15px' }} className='headerLandingPageDesktop'>as a</h2>
                   <TypeAnimation
                     sequence={sequence}
                     wrapper="span"
                     speed={40}
                     deletionSpeed={80}
                     repeat={Infinity}
-                    className='headerLandingPageDesktop'
+                    className='headerLandingPageDesktop highlighted'
                   />
                 </div>
               </h2>

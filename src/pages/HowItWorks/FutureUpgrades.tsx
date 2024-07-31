@@ -18,7 +18,7 @@ const FutureUpgrades: React.FC = () => {
     const amount = 0.5
     return (
         <div className="three-steps">
-            <div className="steps-container">
+            <div className="steps-container-Desktop">
                 <div className="stepAndArrowDiv">
                     <Slide amount={amount} slideFrom='left'>
                         <div className="step">

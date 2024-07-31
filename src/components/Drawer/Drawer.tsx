@@ -14,7 +14,6 @@ import { useMediaQuery } from 'react-responsive';
 import Slide from '@FramerMotion/Slide';
 import Reveal from '@FramerMotion/Reveal';
 import NavbarItemsHover from '@FramerMotion/NavbarItemsHover';
-import { textColor } from '@utils/theme'
 import { Drawer } from '@mui/material';
 import { CiLinkedin } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
@@ -83,9 +82,9 @@ const DrawerDesktop: React.FC<DrawerDesktopProps> = ({ open, toggleDrawer, varia
 
                 >
                   <ListItemButton
-                    sx={{ textAlign: 'center', justifyContent: 'center', color: textColor }}
+                    sx={{ textAlign: 'center', justifyContent: 'center' }}
                   >
-                    <ListItemText primary={section.label} />
+                    <ListItemText sx={{color:'white'}} primary={section.label} />
                   </ListItemButton>
                 </ListItem>
               </NavbarItemsHover>

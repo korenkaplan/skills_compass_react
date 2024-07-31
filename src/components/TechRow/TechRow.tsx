@@ -65,7 +65,7 @@ const TechRow: React.FC<TechRowProps> = ({ showCategory = false, category, tech,
       <div className="tech-name-containerDesktop">
         <span className="tech-nameDesktop">{formatTitle(tech)} </span>
         <span style={{ display: showCategory ? 'inline' : 'none' }} className="techRowCategory">{_.startCase(category)}</span>
-
+      
       </div>
       <div className="lineWrapperDesktop" style={{ width: `${maxLineWidth}px` }}>
         <motion.div

@@ -48,8 +48,6 @@ color: var(--contrast-color);
     /* display: none; */
   }
   .bringThemHomeNowDiv{
-    bottom: 0;
-    left: 2%;
     display: flex;
     color: white;
 

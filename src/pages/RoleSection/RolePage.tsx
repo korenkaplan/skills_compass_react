@@ -62,7 +62,7 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -100 }
   };
-  const [showCategoriesWithTechRow, setShowCategoriesWithTechRow] = useState(false)
+  const [showCategoriesWithTechRow, setShowCategoriesWithTechRow] = useState(true)
 
 //#endregion
 //#region functions
@@ -202,7 +202,11 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
   const handleCategoryAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Ensure the value is non-negative
     const value = parseInt(event.target.value, 10);
-    if (value >= 1) {
+    if (value > 10 ){
+      setCategoryAmount(10);
+      aggregatedTechList(amount, listLimitSwitch, value, categoryLimitSwitch)
+    }
+    else if (value >= 1) {
       setCategoryAmount(value);
       aggregatedTechList(amount, listLimitSwitch, value, categoryLimitSwitch)
     }
@@ -267,7 +271,7 @@ useEffect(() => {
   }, [rolesFetched]);// Run this effect only once when the component mounts and rolesFetched is true
 
 useEffect(() => {
-setShowCategoriesWithTechRow(aggregatedSwitch == true && selectedCategories.length > 1)
+setShowCategoriesWithTechRow(aggregatedSwitch == false && selectedCategory == allCategoriesString || selectedCategories.length > 1)
 },[selectedCategories, aggregatedSwitch ]);
   const toggler = (
     <div className="togglerDesktop">
@@ -319,8 +323,6 @@ useEffect(() => {
     window.removeEventListener('resize', handleResize);
   };
 }, []);
-
-
 return (
     <div  className="containerRolePageDesktop section ">
       <Slide enabled={framerMotionEnabled} slideFrom='left'>
@@ -356,8 +358,7 @@ return (
             <IoInformationCircleSharp style={{color:contrastColor}} className='SwitchMultipleCategoriesDesktop' size={22}/>
           <Tooltip place='right' anchorSelect='.SwitchMultipleCategoriesDesktop'>
             <div>
-              <h3>Enable Multi-Category Selection</h3>
-              <p>Select multiple categories to view a combined and sorted list of their items.</p>
+            <p>Choose multiple categories to create a custom view with a combined and sorted list.</p>
             </div>
           </Tooltip>
           </div>
@@ -374,7 +375,7 @@ return (
           </div>
           <Tooltip place='right' anchorSelect='.SwitchLimitDivDesktop'>
             <div>
-            <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
+            <p>Control the maximum number of items displayed on the list.</p>
             </div>
           </Tooltip>
           <SwitchesReveal slideAmount={0}   enabled = {listLimitSwitch}>
@@ -407,7 +408,7 @@ return (
 
             <Tooltip place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
               <div>
-              <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
+              <p>Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
               </div>
             </Tooltip>
 
@@ -498,6 +499,7 @@ return (
               showCategory={showCategoriesWithTechRow}
               category={techCount.category}
             />
+
             </motion.div>
             </AnimatePresence>
 

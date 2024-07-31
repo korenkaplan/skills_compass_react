@@ -32,7 +32,7 @@ const stepNumberSize = 50
 const stepNumberFontSize = 30
   return (
     <div  className="three-steps">
-      <div className="steps-container">
+      <div className="steps-container-Desktop">
         <Slide slideFrom='left'>
         <div className="step">
         <StepNumber fontSize={stepNumberFontSize} number={1} size={stepNumberSize}/>
@@ -43,11 +43,9 @@ const stepNumberFontSize = 30
           </div>
         </div>
         </Slide>
-
         <Reveal  delay={arrowFramerMotionANimationDelay} distanceYAxis={0}>
          <CurvedArrow />
         </Reveal>
-
         <div className="stepAndArrowDiv">
         <Reveal delay={0.5} distanceYAxis={0}>
         <div className="step">
@@ -59,13 +57,10 @@ const stepNumberFontSize = 30
           </div>
         </div>
         </Reveal>
-
         </div>
-
         <Reveal  delay={arrowFramerMotionANimationDelay} distanceYAxis={0}>
          <CurvedArrow />
         </Reveal>
-
           <Slide slideFrom='right'>
         <div className="step">
         <StepNumber fontSize={stepNumberFontSize} number={3} size={stepNumberSize}/>

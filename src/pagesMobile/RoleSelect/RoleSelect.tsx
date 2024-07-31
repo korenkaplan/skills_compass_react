@@ -84,7 +84,7 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ sections }) => {
           .filter((section) => selectedSections.includes(section.label))
           .map((section) => (
             <div key={section.id} id={section.id} className="section">
-              <section.component />
+              <section.component/>
             </div>
           )).reverse()}
       </div>
