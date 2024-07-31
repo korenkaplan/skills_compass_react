@@ -5,7 +5,7 @@
   left: 15px;
   background-color: var(--navbar-background-color);
   display: flex;
-  border-radius: 50%;
+  border-radius: 10px;
   flex-direction: row;
   justify-content: center;
   align-items: center;

@@ -86,15 +86,15 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading }) => {
           <LinearProgress color="inherit" />
         </div>
         <Reveal>
-          <ScaleOnTapButtonWrapper>
-
-          </ScaleOnTapButtonWrapper>
+          <ScaleOnTapButtonWrapper autoStart={true}>
           <div
             className="actionButtonMobile" style={{ display: isLoading ? 'none' : 'flex' }} onClick={() => ScrollSmoothToView('overviewMobile')}>
             <Lottie className='alottieMobile' animationData={scrollAnimation} loop={true} autoPlay={true} />
-            <p  >Get Started</p>
+            <p  >GET STARTED</p>
             <Lottie className='alottieMobile' animationData={scrollAnimation} loop={true} autoPlay={true} />
           </div>
+          </ScaleOnTapButtonWrapper>
+
         </Reveal>
       </div>
     </div>

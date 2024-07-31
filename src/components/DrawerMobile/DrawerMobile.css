@@ -16,11 +16,17 @@
 }
 .topNavbarMobile{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   border-bottom: 1px solid white;
   padding-bottom: 10px;
+}
+.iconsDivMobile{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
 }
 .dotDraweeMobile{
   background-color: var(--contrast-color);
@@ -72,8 +78,6 @@ align-items: center;
   .bringThemHomeNowDiv{
     display: flex;
     color: white;
-    position: relative;
-    left: 30px;
     justify-content: center;
   }
   .nowHeader{
@@ -87,4 +91,5 @@ align-items: center;
     width: 100%;
     align-items: center;
     justify-content: center;
+
   }

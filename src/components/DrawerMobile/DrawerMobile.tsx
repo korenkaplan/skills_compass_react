@@ -44,7 +44,14 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
       <p className='nowHeader'>Now!</p>
     </div>
   );
-
+  const LastScanTimeDiv = () => (
+    isFetched && (
+      <div className="lastScanDiv" style={{ display: 'flex' }}>
+        <p style={{ marginRight: '10px' }}>Last Scan: </p>
+        <p>{time} | {date}</p>
+      </div>
+    )
+  );
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -82,13 +89,12 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
   };
   const DrawerList = (
     <Box className='drawerMobile' sx={{ width: isIpad ? '100vw' : '250px', backgroundColor: navbarBackgroundColor, overflowY: 'hidden' }} role="presentation">
-      <div>
         <div className="topNavbarMobile">
           <ItemByItemReveal>
-            <p className="poppins-900" style={headerStyle}>Skills Compass</p>
+            <p className="poppins-900 navBarHeaderMobile" style={headerStyle}>Skills Compass</p>
           </ItemByItemReveal>
           <Reveal>
-            <div className="iconsdiv">
+            <div className="iconsDivMobile ">
               <div className="iconWithATag">
                 <a href="https://stories.bringthemhomenow.net/" target="_blank" rel="noopener noreferrer">
                   <img src={ribbon} alt="My Image" className="clickableImageDesktop" />
@@ -143,14 +149,8 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({ open, toggleDrawer, variant
 
             )))}
         </div>
-        {isFetched && (
-          <div className="lastScanDiv" style={{ display: 'flex' }}>
-            <p style={{ marginRight: '10px' }}>Last Scan: </p>
-            <p>{time} | {date}</p>
-          </div>
-        )}
+        <LastScanTimeDiv/>
         <BringThemHomeNowDiv />
-      </div>
     </Box>
   );
 

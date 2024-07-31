@@ -17,6 +17,10 @@
   padding: 15px 0 0 0;
   /* background-color: var(--secondary-background-color); */
 }
+.navBarHeaderMobile{
+  position: relative;
+  right: 8px;
+}
 .iconWithATagDrawer{
   color: var(--icons-color);
   }

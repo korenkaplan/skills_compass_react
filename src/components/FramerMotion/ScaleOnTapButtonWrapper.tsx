@@ -1,31 +1,33 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 
 interface Props {
     children: JSX.Element;
     scaleAmount?: number;
     enableHoverEffect?: boolean;
     duration?: number;
+    autoStart?: boolean;
     className?: string;
 }
 
-const scaleVariants = ( scaleAmount: number, enableHoverEffect: boolean, duration: number) => ({
-    tap: { scale: scaleAmount },
-    hover: enableHoverEffect
-        ? {
-              scale: [1, scaleAmount, 1],
-              transition: { duration: duration, repeat: Infinity }
-          }
-        : {}
-});
+export default function ScaleOnTapButtonWrapper({ duration = 1.3, children, scaleAmount = 0.95, enableHoverEffect = true, autoStart = false, className = '' }: Props) {
+    const controls = useAnimation();
 
-export default function ScaleOnTapButtonWrapper({ duration = 1.3, children, scaleAmount = 0.95, enableHoverEffect = true, className= '' }: Props) {
+    useEffect(() => {
+        if (autoStart) {
+            controls.start({
+                scale: [1, scaleAmount, 1],
+                transition: { duration: duration, repeat: Infinity, repeatType: "mirror" }
+            });
+        }
+    }, [autoStart, controls, scaleAmount, duration]);
 
     return (
         <motion.div
-            whileTap="tap"
-            whileHover="hover"
-            variants={scaleVariants(scaleAmount, enableHoverEffect, duration)}
-            style={{ position: "relative", overflow: 'hidden' }}
+            whileTap={!autoStart ? { scale: scaleAmount } : undefined}
+            whileHover={!autoStart && enableHoverEffect ? { scale: [1, scaleAmount, 1], transition: { duration: duration, repeat: Infinity } } : undefined}
+            animate={controls}
+            style={{ overflow: 'hidden' }}
             className={className}
         >
             {children}
