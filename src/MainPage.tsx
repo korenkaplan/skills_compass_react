@@ -66,10 +66,21 @@ const MainPage: React.FC = () => {
       setIsOpen(newOpen);
     }
   }, [isMobile]);
+  const sequence = roles && roles.map((role) => role.name).reduce((acc, role, index) => {
+    // Delay before typing the next question, except for the first one
+    if (index !== 0) {
+      acc.push(1500);
+    }
+    // Replace currentYear placeholder in the question
+    const formattedLabel = _.startCase(role)
+    acc.push(formattedLabel);
+    acc.push(1500); // Wait after typing each question
+    return acc;
+  }, [] as (string | number)[]);
 
   const sectionsMobile = useMemo(() => {
     return [
-      { id: 'landingPageMobile', isRole: false, label: 'Home', component: () => <LandingPageMobile isLoading={isLoading} defaultSection="overviewMobile" /> },
+      { id: 'landingPageMobile', isRole: false, label: 'Home', component: () => <LandingPageMobile sequence={sequence} isLoading={isLoading} defaultSection="overviewMobile" /> },
       { id: 'overviewMobile', isRole: false, label: 'Overview', component: OverviewPageMobile },
       { id: 'RoleSelect', isRole: false, label: 'Roles', component: () => <RoleSelect sections={convertRolesToSections(roles, rolesFetched, true)} /> },
       { id: 'howItWorksMobile', isRole: false, label: 'How It Works', component: HowItWorksMobile },
@@ -80,7 +91,7 @@ const MainPage: React.FC = () => {
 
   const sections = useMemo(() => {
     return [
-      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage roles={roles && roles.map((role) => role.name)} defaultSection="overview" isLoading={false} /> },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage sequence={sequence}  defaultSection="overview" isLoading={false} /> },
       { id: 'overview', isRole: false, label: 'Overview', component: Overview },
       { id: 'swiperPage', isRole: false, label: 'Roles Overview', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)} /> },
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorks },

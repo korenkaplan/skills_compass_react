@@ -16,12 +16,13 @@ import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWr
 interface LandingPageProps {
   isLoading: boolean;
   defaultSection: string;
-  roles: string[];
+  sequence: (string | number) []
+
 }
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
-const LandingPage: React.FC<LandingPageProps> = ({ isLoading, defaultSection, roles }) => {
+const LandingPage: React.FC<LandingPageProps> = ({ isLoading, defaultSection, sequence }) => {
   const percentOfScreenWidth = 0.18
   const [logoWidth, setMaxLineWidth] = useState(calculateMaxLineWidth(percentOfScreenWidth));
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,17 +72,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ isLoading, defaultSection, ro
       section.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  const sequence = roles.reduce((acc, role, index) => {
-    // Delay before typing the next question, except for the first one
-    if (index !== 0) {
-      acc.push(1500);
-    }
-    // Replace currentYear placeholder in the question
-    const formattedLabel = _.startCase(role)
-    acc.push(formattedLabel);
-    acc.push(1500); // Wait after typing each question
-    return acc;
-  }, [] as (string | number)[]);
+
+
   const rolesRowStyle: CSSProperties = {
     display: 'flex',
     justifyContent: 'flex-start',
@@ -118,7 +110,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ isLoading, defaultSection, ro
                     speed={40}
                     deletionSpeed={80}
                     repeat={Infinity}
-                    // style={{color: 'antiquewhite',}}
                     className='headerLandingPageDesktop'
                   />
                 </div>

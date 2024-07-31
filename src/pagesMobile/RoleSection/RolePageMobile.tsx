@@ -354,8 +354,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
               <IoInformationCircleSharp className=' IoInformationCircleSharpMobile SwitchMultipleCategories' size={22} />
               <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchMultipleCategories'>
                 <div>
-                  <h3>Enable Multi-Category Selection</h3>
-                  <p>Select multiple categories to view a combined and sorted list of their items.</p>
+                  <p>Choose multiple categories to create a custom view with a combined and sorted list.</p>
                 </div>
               </Tooltip>
             </div>
@@ -369,10 +368,10 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                     label={listLImitSwitchElementTitle}
                     className='formControlLabelMobile'
                   />
-                  <IoInformationCircleSharp className='IoInformationCircleSharpMobile' size={22} />
+                  <IoInformationCircleSharp className='IoInformationCircleSharpMobile SwitchLimitDiv' size={22} />
                   <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitDiv'>
                     <div>
-                      <p><strong>Limit The List Length:</strong> Control the maximum number of items displayed.</p>
+                      <p>Control the maximum number of items displayed on the list.</p>
                     </div>
                   </Tooltip>
                 </div>
@@ -403,7 +402,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
                   <IoInformationCircleSharp className='IoInformationCircleSharpMobile SwitchLimitPerCategory' size={22} />
                   <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitPerCategory'>
                     <div>
-                      <p><strong>Limit Items Per Category:</strong> Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
+                      <p>Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
                     </div>
                   </Tooltip>
                 </div>

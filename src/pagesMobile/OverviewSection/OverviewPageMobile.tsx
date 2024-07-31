@@ -72,7 +72,7 @@ const OverviewPageMobile: React.FC = () => {
         <Line height='2px' width='80%' color={contrastColor} />
 
         <Slide slideFrom='left'>
-          <p>All our data is extracted straight from analyzing <strong>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google Jobs</strong> and from companies websites.</p>
+          <p>All our data is extracted straight from analyzing <strong>thousands </strong> of job listings from the most popular job search websites such as <strong>LinkedIn, Google Jobs</strong> and directly from <strong>companies websites.</strong></p>
 
         </Slide>
 
@@ -102,7 +102,7 @@ const OverviewPageMobile: React.FC = () => {
 
         </Slide>
         <Slide slideFrom='right'>
-          <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג משרה.</p>
+          <p>אנחנו עושים את כל עבודת המחקר בשבילך ומספקים לך את המידע העדכני ביותר על הטכנולוגיות הכי מבוקשות בשוק לפי סוג המשרה.</p>
         </Slide>
         <Reveal>
           <p><strong>מה מייחד אותנו משאר האתרים?</strong> 🔍</p>

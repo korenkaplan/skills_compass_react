@@ -14,14 +14,16 @@ import ItemByItemReveal from '@components/FramerMotion/ItemByItemReveal';
 import Reveal from '@components/FramerMotion/Reveal';
 import { contrastColor } from '@utils/theme'
 import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWrapper';
+import { TypeAnimation } from 'react-type-animation';
 interface LandingPageProps {
   isLoading: boolean;
   defaultSection: string
+  sequence: (string | number) []
 }
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
-const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading }) => {
+const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading, sequence }) => {
   const percentOfScreenWidth = 0.40
   const [logoWidth, setMaxLineWidth] = useState(calculateMaxLineWidth(percentOfScreenWidth));
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -70,15 +72,24 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading }) => {
       <div className="mainContainerLandingPageMobile" >
         <Slide>
           <div className="image-container">
-            <img style={{ width: `${logoWidth}px` }} src={logoCropped} alt="mainLogo " className="rotatingImage" />
+            <img style={{ width: `${logoWidth}px` }} src={logoCropped} alt="mainLogo " className="" />
           </div>
         </Slide>
         <ItemByItemReveal>
           <div className="textContainerLandingPage">
             <h1 className='logoHeader'>{logoText}</h1>
             <Line height="5px" width="175px" color={contrastColor} radius="4px" />
-            <h2 className='headerLandingPageMobile'>Discover the <strong className='highlighted'>Most Wanted </strong> Skills  for your job in  Israel's High-Tech industry</h2>
+            <h2 className='headerLandingPageMobile'>Discover the <strong className='highlighted '>Most Wanted </strong> Skills  for your job in  Israel's High-Tech industry as a</h2>
+          <TypeAnimation
+                    sequence={sequence}
+                    wrapper="h2"
+                    speed={40}
+                    deletionSpeed={80}
+                    repeat={Infinity}
+                    className='headerLandingPageMobile typedRolesMobile'
+                  />
           </div>
+
         </ItemByItemReveal>
 
         <div className="loadingDivMobile" style={{ color: 'antiquewhite', width: '50%', display: isLoading ? 'block' : 'none' }}>

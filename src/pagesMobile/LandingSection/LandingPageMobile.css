@@ -10,6 +10,10 @@
   .logoLandingPage {
 
   }
+  .typedRolesMobile{
+    margin: auto;
+    color: var(--contrast-color);
+  }
   .headerLandingPageMobile{
     font-family: 'Inknut Antiqua', serif;
   font-family: "Poppins", sans-serif;
