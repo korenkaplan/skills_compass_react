@@ -1,5 +1,5 @@
 //#region imports
-import React, { useState, useEffect, CSSProperties } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RolePage.css';
 import { FormattedDataRow, Role } from '@utils/interfaces';
 import axios from 'axios';
@@ -25,6 +25,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CustomSwitch } from '@components/CustomSwitch/CustomSwitch';
 import {techItemsPerCategory, allCategoriesItemsAmount} from '@utils/variables'
 import { apiPrefix } from '@utils/variables';
+import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWrapper';
+import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
 //#endregion
 
@@ -52,10 +54,10 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [aggregatedSwitch, setAggregatedSwitch] = useState(false)
   const [listLimitSwitch, setListLimitSwitch] = useState(false)
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(10);
   const [allCategories, setAllCategories] = useState<string[]>([])
   const [categoryLimitSwitch, setCategoryLimitSwitch] = useState(false)
-  const [categoryAmount, setCategoryAmount] = useState(0);
+  const [categoryAmount, setCategoryAmount] = useState(5);
   const techRowTransitionSpeed = 15
   const textVariants = {
     initial: { opacity: 0, x: 100},
@@ -188,30 +190,27 @@ const RolePage: React.FC<RolePageProps> = ({ role, rolesFetched, framerMotionEna
       return selectedCategory === category ? 'selected' : '';
     }
   };
-  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAmountChange = (increase: boolean) => {
     // Ensure the value is non-negative
-    const value: number = parseInt(event.target.value, 10);
-    if (value >= 1) {
-      setAmount(value);
+    if (increase == false && amount > 1 || increase === true && amount < 100) {
+      const newAmount = increase ? amount + 1 : amount - 1;
+      setAmount(newAmount);
       const sliceList = true;
-      aggregatedTechList(value, sliceList, categoryAmount, categoryLimitSwitch)
+      aggregatedTechList(newAmount, sliceList, categoryAmount, categoryLimitSwitch)
     }
 
   };
 
-  const handleCategoryAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCategoryAmountChange = (increase: boolean) => {
     // Ensure the value is non-negative
-    const value = parseInt(event.target.value, 10);
-    if (value > 10 ){
-      setCategoryAmount(10);
-      aggregatedTechList(amount, listLimitSwitch, value, categoryLimitSwitch)
-    }
-    else if (value >= 1) {
-      setCategoryAmount(value);
-      aggregatedTechList(amount, listLimitSwitch, value, categoryLimitSwitch)
+    if (increase == false && categoryAmount > 1 || increase === true && categoryAmount < techItemsPerCategory) {
+      const newAmount = increase ? categoryAmount + 1 : categoryAmount - 1;
+      setCategoryAmount(newAmount);
+      aggregatedTechList(amount, listLimitSwitch, newAmount, categoryLimitSwitch)
     }
 
   };
+
 
   const handleCategoryLimitSwitchChange = (value:boolean) => {
     setCategoryLimitSwitch(value);
@@ -279,28 +278,6 @@ setShowCategoriesWithTechRow(aggregatedSwitch == false && selectedCategory == al
     <div onClick={()=> togglerPressed("counts")} className={`toggler_buttonDesktop countButtonDesktop  ${alignment == 'counts'? 'selected_toggler_buttonDesktop': ''}`}><img style={{ width: 27, height: 27 }} src={alignment !== 'counts'? whiteCount: greenCount} /></div>
   </div>
   )
-
-  const inputStyle: CSSProperties = {
-    width: '60px',
-    height: '30px',
-    textAlign: 'center', // Center align the input text
-    borderRadius: '4px', // Example border radius
-    outline: 'none', // Remove default outline
-    boxSizing: 'border-box', // Ensure padding and border are included in width and height
-    fontSize: '16px', // Example font size
-    padding: '8px', // Example padding
-  };
-
-  const CategoryInputStyle: CSSProperties = {
-    width: '60px',
-    height: '30px',
-    textAlign: 'center', // Center align the input text
-    borderRadius: '4px', // Example border radius
-    outline: 'none', // Remove default outline
-    boxSizing: 'border-box', // Ensure padding and border are included in width and height
-    fontSize: '16px', // Example font size
-    padding: '8px', // Example padding
-  };
 //#endregion
 
 const calculateMaxLineWidth = () => {
@@ -373,22 +350,21 @@ return (
           />
           <IoInformationCircleSharp  style={{color:contrastColor}}  className='SwitchLimitDivDesktop' size={22}/>
           </div>
-          <Tooltip place='right' anchorSelect='.SwitchLimitDivDesktop'>
+          <Tooltip style={{zIndex:9999}} place='right' anchorSelect='.SwitchLimitDivDesktop'>
             <div>
             <p>Control the maximum number of items displayed on the list.</p>
             </div>
           </Tooltip>
           <SwitchesReveal slideAmount={0}   enabled = {listLimitSwitch}>
-          <input
-            type='number'
-            id="outlined-basic"
-            value={amount == 0 ? defaultAmount : amount}
-            onChange={handleAmountChange}
-            min={1} // Ensure the input doesn't accept negative values
-            max={100}
-            className='inputWrapper inputDesktop'
-            style={inputStyle} // Apply custom styles via style attribute
-          />
+          <div className="inputDivMobile" >
+                    <ScaleOnTapButtonWrapper className='flexCenter'>
+                      <AiFillMinusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleAmountChange(false)} />
+                    </ScaleOnTapButtonWrapper>
+                    <div className="numberInputMobile" style={{ margin: 0, padding: 0 }}>{amount}</div>
+                    <ScaleOnTapButtonWrapper className='flexCenter'>
+                      <AiFillPlusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleAmountChange(true)} />
+                    </ScaleOnTapButtonWrapper>
+                  </div>
              </SwitchesReveal>
           </div>
           </SwitchesReveal>
@@ -406,7 +382,7 @@ return (
           <IoInformationCircleSharp style={{color:contrastColor}}  className='SwitchLimitPerCategoryDesktop' size={22}/>
             </div>
 
-            <Tooltip place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
+            <Tooltip style={{zIndex:9999}}  place='right' anchorSelect='.SwitchLimitPerCategoryDesktop'>
               <div>
               <p>Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
               </div>
@@ -414,16 +390,15 @@ return (
 
 
           <SwitchesReveal  slideAmount={0}  enabled = {categoryLimitSwitch}>
-          <input
-            className='inputDesktop inputWrapper'
-            type='number'
-            id="outlined-basic"
-            value={categoryAmount == 0 ? defaultAmount : categoryAmount}
-            onChange={handleCategoryAmountChange}
-            min={1} // Ensure the input doesn't accept negative values
-            max={techItemsPerCategory}
-            style={CategoryInputStyle} // Apply custom styles via style attribute
-          />
+          <div className="inputDivMobile" >
+                    <ScaleOnTapButtonWrapper className='flexCenter'>
+                      <AiFillMinusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(false)} />
+                    </ScaleOnTapButtonWrapper>
+                    <div className="numberInputMobile" style={{ margin: 0, padding: 0 }}>{categoryAmount}</div>
+                    <ScaleOnTapButtonWrapper className='flexCenter'>
+                      <AiFillPlusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(true)} />
+                    </ScaleOnTapButtonWrapper>
+                  </div>
           </SwitchesReveal>
           </div>
           </SwitchesReveal>

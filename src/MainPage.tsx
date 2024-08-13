@@ -25,6 +25,7 @@ import RolePageMobile from '@pagesMobile/RoleSection/RolePageMobile';
 import RoleSelect from '@pagesMobile/RoleSelect/RoleSelect';
 import { Role, Section } from '@utils/interfaces';
 import { apiPrefix } from '@utils/variables';
+import BthnCounter from '@components/DaysInHellCounter/DaysInHellCounter';
 
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
@@ -133,6 +134,7 @@ const MainPage: React.FC = () => {
         toggleDrawer={toggleDrawer}
         marginLeftAmount={marginLeftAmount}
       />
+      <BthnCounter lang='he'/>
     </div>
   );
 };

@@ -1,0 +1,155 @@
+/* src/components/SideMenu.css or AboutMePage.css */
+
+.aboutMeContainerMobile{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.imageDivMobile {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  padding: 13px 0 13px 0;
+}
+.headerDivAboutMeMobile {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+}
+.headrAboutMeMobile{
+  font-size: 24px;
+  color: antiquewhite;
+}
+.mainTextDivAboutMeMobile{
+  height: fit-content;
+  width: 100%; /* Use 100vw for full viewport width */
+  color: antiquewhite;
+  padding: 0 5px 0 5px;
+  box-sizing: border-box;
+
+}
+
+.mainTextDivAboutMeMobile pre {
+  max-width: 90%; /* Ensure <pre> tag respects max-width of .textContainer */
+  white-space: pre-wrap; /* Wrap long lines in <pre> content */
+  overflow-x: auto; /* Enable horizontal scroll if content overflows */
+  font-family: inherit
+}
+
+.communicationAboutMeDivMobile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.RowBottomAboutMe{
+  display: flex;
+  justify-content: space-between;
+
+}
+.whatsappDiv{
+  display: flex;
+  justify-content: center;
+}
+.iconDivMobile{
+  display: flex;
+}
+.wrapper {
+  display: inline-block; /* Ensure the container takes the size of the image */
+}
+.aboutMeContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 50px 10px 50px;
+    justify-content: space-between;
+  }
+
+
+  .firstRow {
+    margin-top: 10px;
+    display: flex;
+    width: 100%; /* Ensure the row takes full width */
+    flex: 1;
+  }
+  .headerAndTransalte {
+    display: flex;
+    align-items: center;
+  }
+
+  .aboutMeDiv {
+    width: 55%;
+  }
+
+  .header {
+    color: antiquewhite;
+    font-size: 35px;
+  }
+
+  .aboutMeText {
+    color: antiquewhite;
+    font-size: 20px;
+  }
+
+  .image {
+    width: 100%; /* Adjust based on the layout */
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+
+  }
+
+  .profilePic {
+    border-radius: 50px; /* Add border radius */
+    box-shadow: 0 2px 4px rgba(0, 4, 4, 0.25); /* Add outer shadow */
+    height: 200px; /* Maintain aspect ratio */
+    border: 2px solid white;
+  }
+  .thirdRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .aTag {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    position: relative;
+    margin-right: 5px;
+  }
+  .iconDiv {
+    width: 20%;
+    display: flex;
+  }
+  .iconsAndLinksDiv {
+    display: flex;
+    align-self: center;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    position: relative;
+    margin-right: 8px;
+  }
+
+  .iconText {
+    color: antiquewhite;
+    font-size: 16px;
+  }
+  .clickableImage {
+    width: 30px;
+  }
+  .subHeader {
+    color: antiquewhite;
+    font-size: 20px;
+  }
+   .custom_clampAboutME button{
+    background-color: antiquewhite;
+    color: #253439;
+    border: 0px solid antiquewhite;
+   }

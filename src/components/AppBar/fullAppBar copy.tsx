@@ -1,13 +1,13 @@
 import React, { CSSProperties } from 'react';
-import { contrastColor } from '@utils/theme';
+import { contrastColor } from '../../utils/theme';
 import { CiLinkedin } from 'react-icons/ci';
 import { FaGithub } from 'react-icons/fa';
-import ItemByItemReveal from '@FramerMotion/ItemByItemReveal';
-import Reveal from '@FramerMotion/Reveal';
-import ribbon from '@assets/icons/icons8-ribbon-50.png';
+import ItemByItemReveal from '../FramerMotion/ItemByItemReveal';
+import Reveal from '../FramerMotion/Reveal';
+import ribbon from '../../assets/icons/icons8-ribbon-50.png';
 import './Appbar.css';
 import Hamburger from 'hamburger-react';
-import { appBarHeight } from '@utils/variables';
+import { appBarHeight } from '../../utils/variables';
 
 interface AppBarProps {
   isMobile: boolean;

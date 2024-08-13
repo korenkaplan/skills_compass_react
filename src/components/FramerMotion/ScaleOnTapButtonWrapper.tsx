@@ -27,7 +27,7 @@ export default function ScaleOnTapButtonWrapper({ duration = 1.3, children, scal
             whileTap={!autoStart ? { scale: scaleAmount } : undefined}
             whileHover={!autoStart && enableHoverEffect ? { scale: [1, scaleAmount, 1], transition: { duration: duration, repeat: Infinity } } : undefined}
             animate={controls}
-            style={{ overflow: 'hidden' }}
+            style={{ overflow: 'hidden' , cursor: 'pointer' }}
             className={className}
         >
             {children}

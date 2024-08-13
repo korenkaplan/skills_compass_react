@@ -18,6 +18,12 @@
   justify-content: flex-start;
 
 }
+.PLusMinusIcon {
+  width: 18px;
+  height: 18px;
+  margin: 0 5px;
+  padding: 0;
+}
 .togglerInfoDivDesktop {
   display: flex;
   justify-content: space-between;
@@ -27,7 +33,6 @@
 .switchMultipleCategoriesDivDesktop{
   display: flex;
   align-items: center;
-  /* border: 1px solid red; */
   box-sizing: border-box;
   padding-left: 20px;
 }
@@ -72,7 +77,6 @@ margin: 0 10px 0 0;
   justify-content: space-between;
   max-width: 100%; /* Allow it to shrink if necessary */
   flex-wrap: wrap; /* Wrap items if they exceed container width */
-  /* border: 1px solid red; */
   padding-left: 20px;
   box-sizing: border-box;
 }
