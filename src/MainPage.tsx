@@ -134,7 +134,10 @@ const MainPage: React.FC = () => {
         toggleDrawer={toggleDrawer}
         marginLeftAmount={marginLeftAmount}
       />
+      <div style={{display: isMobile?'none' : 'block'}} >
       <BthnCounter lang='he'/>
+      </div>
+
     </div>
   );
 };
