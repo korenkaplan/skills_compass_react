@@ -91,7 +91,7 @@ const MainPage: React.FC = () => {
 
   const sections = useMemo(() => {
     return [
-      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage sequence={sequence}  defaultSection="overview" isLoading={false} /> },
+      { id: 'landingPage', isRole: false, label: 'Home', component: () => <LandingPage sequence={sequence}  defaultSection="overview" isLoading={isLoading} /> },
       { id: 'overview', isRole: false, label: 'Overview', component: Overview },
       { id: 'swiperPage', isRole: false, label: 'Roles Overview', component: () => <SwiperPage sections={convertRolesToSections(roles, rolesFetched, false)} /> },
       { id: 'howItWorks', isRole: false, label: 'How It Works', component: HowItWorks },

@@ -7,9 +7,6 @@
     border-radius: 8px; /* Add border radius */
     z-index: 1;
   }
-  .logoLandingPage {
-
-  }
   .typedRolesMobile{
     margin: auto;
     color: var(--contrast-color);
@@ -31,9 +28,12 @@
   }
 
   .fade-text.animate {
-    animation: fadeInOut 4s infinite;
+    animation: fadeInOut 3.5s infinite;
   }
-
+  .waitingTitles{
+    font-size: 18px;
+    text-align: center;
+  }
   @keyframes fadeInOut {
     0%, 100% { opacity: 0; }
     50% { opacity: 1; }

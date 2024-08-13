@@ -61,7 +61,7 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading, sequence }) 
     if (isLoading) {
       const interval = setInterval(() => {
         setCurrentIndex(getRandomInt(waiting_titles.length));
-      }, 4000); // Change every 3 seconds
+      }, 5000);
       return () => clearInterval(interval);
     }
   }, [isLoading]);
@@ -93,7 +93,7 @@ const LandingPageMobile: React.FC<LandingPageProps> = ({ isLoading, sequence }) 
         </ItemByItemReveal>
 
         <div className="loadingDivMobile" style={{ color: 'antiquewhite', width: '50%', display: isLoading ? 'block' : 'none' }}>
-          <h3 className={`fade-text ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
+          <h3 className={` waitingTitles ${isLoading ? 'animate' : ''}`}> {waiting_titles[currentIndex]}</h3>
           <LinearProgress color="inherit" />
         </div>
         <Reveal>

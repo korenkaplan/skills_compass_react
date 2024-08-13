@@ -25,7 +25,18 @@ interface FaqPageProps {
 const FaqPageMobile: React.FC<FaqPageProps> = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [expandedIndices, setExpandedIndices] = useState<number[]>([]);
-
+  const linkedInContactMeDiv = (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <FaLinkedin size={20} style={{ margin: '0 5px 0 0' }} />
+    <a href="#" onClick={() => window.open('https://www.linkedin.com/in/koren-kaplan/', '_blank')}>Message on LinkedIn</a>
+  </div>
+  )
+  const skillsCompassMailDiv = (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <MdAlternateEmail size={20} style={{ margin: '0 5px 0 0' }} />
+    <a href="mailto:skillscompassil@gmail.com" target="_blank">SkillsCompassIL@gmail.com</a>
+  </div>
+  )
   let globalIndex = 13;
   const uniqueIndex = 100
   const generalSectionQuestionsList: FaqAccordion[] = [
@@ -120,14 +131,8 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
             If you encounter any issues or bugs, please contact us through one of the following options:
           </p>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <MdAlternateEmail size={20} style={{ margin: '0 5px 0 0' }} />
-              <a href="mailto:skillscompassil@gmail.com" target="_blank">SkillsCompassIL@gmail.com</a>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <FaLinkedin size={20} style={{ margin: '0 5px 0 0' }} />
-              <a href="#" onClick={() => window.open('https://www.linkedin.com/in/koren-kaplan/', '_blank')}>Message on LinkedIn</a>
-            </div>
+            {skillsCompassMailDiv}
+            {linkedInContactMeDiv}
           </div>
         </>
       ),
@@ -135,9 +140,13 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
     {
       question: 'How can I provide feedback or suggest new features?',
       answer: (
+        <>
         <p>
           You can send your feedback and feature ideas directly to me through LinkedIn. I appreciate both positive and constructive feedback!
         </p>
+        {linkedInContactMeDiv}
+        </>
+
       ),
     },
     {
@@ -148,10 +157,7 @@ const FaqPageMobile: React.FC<FaqPageProps> = () => {
             Stay informed about new features and updates by following me on LinkedIn, where I share updates and code samples.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <FaLinkedin size={20} style={{ margin: '0 5px 0 0' }} />
-              <a href="#" onClick={() => window.open('https://www.linkedin.com/in/koren-kaplan/', '_blank')}>Message on LinkedIn</a>
-            </div>
+          {linkedInContactMeDiv}
           </div>
         </>
       ),
