@@ -29,7 +29,7 @@ import HostagesDaysCount from '@components/DaysInHellCounter/DaysInHellCounter';
 
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
-  return roles.flatMap((role, index) => {
+  return roles.flatMap((role) => {
     const roleProps = { role: role, rolesFetched: rolesFetched };
     return isMobile
       ? [

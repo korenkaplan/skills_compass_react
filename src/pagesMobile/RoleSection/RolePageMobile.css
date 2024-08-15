@@ -3,6 +3,25 @@
   display: flex;
   flex-direction: column;
 }
+.sliderMobile{
+  width: 90%;
+  margin: auto;
+}
+.slick-dots li button:before {
+  color: var(--text-color); /* Inactive dots */
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--contrast-color); /* Active dot */
+}
+
+.slick-dots li {
+  margin: 0 5px; /* Adjust the spacing between dots if necessary */
+}
+
+.slick-dots {
+  bottom: -30px; /* Adjust the position of the dots if necessary */
+}
 
 .headerAndToggler{
   display: flex;
@@ -218,37 +237,35 @@ height: 200px;
 }
 
 .categoriesButtonDiv {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: left;
   gap: 10px;
   margin-top: 10px;
   width: 100%;
   margin-bottom: 10px;
-  margin: auto;
+  margin: auto; */
 }
+
 
 .categoryButtonMobile {
-  padding:10px;
-  text-align: center;
-  margin: 5px;
-  font-size: 14px;
-  flex: 1 1 auto; /* Allows the items to grow and shrink */
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: bold;
   color: var(--contrast-color);
-  border: 1px solid var(--contrast-color);
-  transition: background-color 0.7s;
-  transition: border-radius 1s;
-  transition: width 3;
-  box-sizing: border-box;
+  width: 85%;
+  text-align: center;
+  margin: auto;
 }
+.categoriesSliderDiv{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
+}
 .categoryButtonMobile.selected {
   background-color: var(--contrast-color);
   color: var( --primary-background-color);
   border-radius: 10px;
+  padding:  03px;
   transition: background-color 0.7s;
   transition: border-radius 1s;
 }
