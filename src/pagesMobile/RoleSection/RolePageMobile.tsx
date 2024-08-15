@@ -28,6 +28,8 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWrapper';
 import Slider from "react-slick";
+import { GrPowerReset } from "react-icons/gr";
+
 //#endregion
 
 interface RolePageProps {
@@ -43,6 +45,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const listLImitSwitchElementTitle = 'Limit List Size'
   const categoryLImitSwitchElementTitle = 'Limit Per Category'
   const defaultAmount = 10
+  const defaultAmountPerCategory = 5
   const [data, setData] = useState<CategoryData>({});
   const [techList, setTechList] = useState<FormattedDataRow[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>(allCategoriesString); // Initialize with an empty string
@@ -53,10 +56,10 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [aggregatedSwitch, setAggregatedSwitch] = useState(false)
   const [listLimitSwitch, setListLimitSwitch] = useState(false)
-  const [amount, setAmount] = useState(10);
+  const [amount, setAmount] = useState(defaultAmount);
   const [allCategories, setAllCategories] = useState<string[]>([])
   const [categoryLimitSwitch, setCategoryLimitSwitch] = useState(false)
-  const [categoryAmount, setCategoryAmount] = useState(5);
+  const [categoryAmount, setCategoryAmount] = useState(defaultAmountPerCategory);
   const [screenWidthPercent] = useState<number>(0.70)
   const [screenWidth] = useState<number>(window.innerWidth)
   const [showCategoriesWithTechRow, setShowCategoriesWithTechRow] = useState(false)
@@ -195,8 +198,6 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
 
   };
 
-
-
   const handleCategoryAmountChange = (increase: boolean) => {
     // Ensure the value is non-negative
     if (increase == false && categoryAmount > 1 || increase === true && categoryAmount < techItemsPerCategory) {
@@ -210,6 +211,14 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const handleCategoryLimitSwitchChange = (value: boolean) => {
     setCategoryLimitSwitch(value);
     aggregatedTechList(amount, listLimitSwitch, categoryAmount, value)
+  }
+  const resetCategories = () => {
+    console.log('here');
+    const updatedSelectedCategories = []
+    updatedSelectedCategories.push(selectedCategories[0])
+    setSelectedCategories(updatedSelectedCategories)
+    setCategoryAmount(defaultAmountPerCategory)
+    setAmount(defaultAmount)
   }
   //#endregion
   //#region use effect and other
@@ -331,7 +340,19 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
     </>
 
   )
+  const resetButton = (
+    <SwitchesReveal delay={0.9} slideFrom='left' enabled={aggregatedSwitch}>
+    <ScaleOnTapButtonWrapper>
+              <div className='OverviewPressHereDesktop' >
+                <div className='custom-button resetCategoriesButton' style={{display: aggregatedSwitch? 'flex' : ' none'}} onClick={()=> resetCategories()}>
+                  Reset
+                <GrPowerReset className='GrPowerReset' />
+                </div>
+              </div>
 
+    </ScaleOnTapButtonWrapper>
+    </SwitchesReveal>
+  )
   const switchesDiv = (
     <FormGroup className='formGroupMobileSwitch'>
     <div className="switchDivMargin switchMultipleCategoriesDiv">
@@ -409,6 +430,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
 
       </div>
     </SwitchesReveal>
+      {resetButton}
 
   </FormGroup>
   )

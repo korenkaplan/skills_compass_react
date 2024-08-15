@@ -253,6 +253,7 @@ height: 200px;
   width: 85%;
   text-align: center;
   margin: auto;
+  margin-bottom: 3px;
 }
 .categoriesSliderDiv{
   display: flex;
@@ -282,9 +283,21 @@ height: 200px;
   background-color: gray;
   color: var(--secondary-background-color);
   border: 1px solid var(--secondary-background-color);
+  border-radius: 10px;
+
 }
 .RevealCategoryButtonMobile{
   height: '20px';
   padding: 0;
 
+}
+.resetCategoriesButton{
+  padding: 3px 3px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80px;
+}
+.GrPowerReset{
+  margin: 0;
 }
