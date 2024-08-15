@@ -36,7 +36,7 @@ const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: 
         {
           id: `mobile_${role.id}`, // Ensure unique IDs for mobile
           label: _.startCase(role.name),
-          component: () => <RolePageMobile framerMotionEnabled={index === 0} {...roleProps} />,
+          component: () => <RolePageMobile framerMotionEnabled={false} {...roleProps} />,
           isRole: true,
         },
       ]
@@ -44,7 +44,7 @@ const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: 
         {
           id: `desktop_${role.id}`, // Ensure unique IDs for desktop
           label: _.startCase(role.name),
-          component: () => <RolePage framerMotionEnabled={index === 0} {...roleProps} />,
+          component: () => <RolePage framerMotionEnabled={false} {...roleProps} />,
           isRole: true,
         },
       ];
