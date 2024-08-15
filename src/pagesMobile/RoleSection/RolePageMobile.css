@@ -297,6 +297,7 @@ height: 200px;
   justify-content: space-around;
   align-items: center;
   width: 80px;
+  margin: auto;
 }
 .GrPowerReset{
   margin: 0;

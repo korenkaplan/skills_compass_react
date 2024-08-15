@@ -215,7 +215,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const resetCategories = () => {
     console.log('here');
     const updatedSelectedCategories = []
-    updatedSelectedCategories.push(selectedCategories[0])
+    updatedSelectedCategories.push(selectedCategories[selectedCategories.length - 1])
     setSelectedCategories(updatedSelectedCategories)
     setCategoryAmount(defaultAmountPerCategory)
     setAmount(defaultAmount)
@@ -343,13 +343,10 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const resetButton = (
     <SwitchesReveal delay={0.9} slideFrom='left' enabled={aggregatedSwitch}>
     <ScaleOnTapButtonWrapper>
-              <div className='OverviewPressHereDesktop' >
                 <div className='custom-button resetCategoriesButton' style={{display: aggregatedSwitch? 'flex' : ' none'}} onClick={()=> resetCategories()}>
                   Reset
                 <GrPowerReset className='GrPowerReset' />
                 </div>
-              </div>
-
     </ScaleOnTapButtonWrapper>
     </SwitchesReveal>
   )
