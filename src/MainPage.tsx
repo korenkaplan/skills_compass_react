@@ -29,14 +29,14 @@ import HostagesDaysCount from '@components/DaysInHellCounter/DaysInHellCounter';
 
 
 const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: boolean): Section[] => {
-  return roles.flatMap((role, index) => {
+  return roles.flatMap((role) => {
     const roleProps = { role: role, rolesFetched: rolesFetched };
     return isMobile
       ? [
         {
           id: `mobile_${role.id}`, // Ensure unique IDs for mobile
           label: _.startCase(role.name),
-          component: () => <RolePageMobile framerMotionEnabled={index === 0} {...roleProps} />,
+          component: () => <RolePageMobile framerMotionEnabled={false} {...roleProps} />,
           isRole: true,
         },
       ]
@@ -44,7 +44,7 @@ const convertRolesToSections = (roles: Role[], rolesFetched: boolean, isMobile: 
         {
           id: `desktop_${role.id}`, // Ensure unique IDs for desktop
           label: _.startCase(role.name),
-          component: () => <RolePage framerMotionEnabled={index === 0} {...roleProps} />,
+          component: () => <RolePage framerMotionEnabled={false} {...roleProps} />,
           isRole: true,
         },
       ];

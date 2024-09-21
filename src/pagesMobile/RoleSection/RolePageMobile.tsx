@@ -27,6 +27,9 @@ import { apiPrefix } from '@utils/variables';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import ScaleOnTapButtonWrapper from '@components/FramerMotion/ScaleOnTapButtonWrapper';
+import Slider from "react-slick";
+import { GrPowerReset } from "react-icons/gr";
+
 //#endregion
 
 interface RolePageProps {
@@ -42,6 +45,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const listLImitSwitchElementTitle = 'Limit List Size'
   const categoryLImitSwitchElementTitle = 'Limit Per Category'
   const defaultAmount = 10
+  const defaultAmountPerCategory = 5
   const [data, setData] = useState<CategoryData>({});
   const [techList, setTechList] = useState<FormattedDataRow[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>(allCategoriesString); // Initialize with an empty string
@@ -52,10 +56,10 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [aggregatedSwitch, setAggregatedSwitch] = useState(false)
   const [listLimitSwitch, setListLimitSwitch] = useState(false)
-  const [amount, setAmount] = useState(10);
+  const [amount, setAmount] = useState(defaultAmount);
   const [allCategories, setAllCategories] = useState<string[]>([])
   const [categoryLimitSwitch, setCategoryLimitSwitch] = useState(false)
-  const [categoryAmount, setCategoryAmount] = useState(5);
+  const [categoryAmount, setCategoryAmount] = useState(defaultAmountPerCategory);
   const [screenWidthPercent] = useState<number>(0.70)
   const [screenWidth] = useState<number>(window.innerWidth)
   const [showCategoriesWithTechRow, setShowCategoriesWithTechRow] = useState(false)
@@ -194,8 +198,6 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
 
   };
 
-
-
   const handleCategoryAmountChange = (increase: boolean) => {
     // Ensure the value is non-negative
     if (increase == false && categoryAmount > 1 || increase === true && categoryAmount < techItemsPerCategory) {
@@ -209,6 +211,14 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   const handleCategoryLimitSwitchChange = (value: boolean) => {
     setCategoryLimitSwitch(value);
     aggregatedTechList(amount, listLimitSwitch, categoryAmount, value)
+  }
+  const resetCategories = () => {
+    console.log('here');
+    const updatedSelectedCategories = []
+    updatedSelectedCategories.push(selectedCategories[selectedCategories.length - 1])
+    setSelectedCategories(updatedSelectedCategories)
+    setCategoryAmount(defaultAmountPerCategory)
+    setAmount(defaultAmount)
   }
   //#endregion
   //#region use effect and other
@@ -231,7 +241,7 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
         // Fetch role count stats view
         const response = await axios.post(`${apiPrefix}/usage_stats/get-role-count-stats-view/`, {
           role_id: role.id,
-          number_of_categories: 7,
+          number_of_categories: 15,
           limit: techItemsPerCategory,
           all_categories_limit: allCategoriesItemsAmount
         });
@@ -294,20 +304,6 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
   };
   const [maxLineWidths, setMaxLineWidth] = useState(calculateMaxLineWidth());
 
-
-  const splitAndInterleaveCategories = (categories: string) => {
-    const midIndex = Math.ceil(categories.length / 2);
-    const firstHalf = categories.slice(0, midIndex);
-    const secondHalf = categories.slice(midIndex);
-
-    const interleaved = [];
-    for (let i = 0; i < firstHalf.length; i++) {
-      if (firstHalf[i]) interleaved.push(firstHalf[i]);
-      if (secondHalf[i]) interleaved.push(secondHalf[i]);
-    }
-
-    return interleaved;
-  };
   const tooltipStyle: CSSProperties = {
     maxWidth: screenWidth - 50,
     whiteSpace: 'normal',
@@ -321,10 +317,8 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -100 }
   };
-  return (
-    <div className="containerRolePage section  heightAndBorder">
-      <Slide enabled={framerMotionEnabled} slideFrom='left'>
-        <div>
+  const headerAndAmountToggler = (
+    <>
           <div className="togglerInfoDiv">
             <IoInformationCircleSharp style={{ marginRight: 10 }} className='IoInformationCircleSharpMobile togglerInfo' size={22} />
             {toggler}
@@ -343,162 +337,195 @@ const RolePageMobile: React.FC<RolePageProps> = ({ role, rolesFetched, framerMot
             <h1 className='headerRolePage'>{_.upperCase(role.name)}</h1>
             <h2 className='subheaderRolePage'>JOB POSTINGS AMOUNT : <span className='highlighted'>{totalListingsCount}</span></h2>
           </div>
-          <Line height="2px" width="100%" color={contrastColor} radius="4px" />
-          <FormGroup className='formGroupMobileSwitch'>
-            <div className="switchDivMargin switchMultipleCategoriesDiv">
-              <FormControlLabel
-                control={<CustomSwitch isOn={aggregatedSwitch} onClick={() => handleAggregationSwitchChange(!aggregatedSwitch)} />}
-                label={aggregateSwitchElementTitle}
-                className='formControlLabelMobile'
-              />
-              <IoInformationCircleSharp className=' IoInformationCircleSharpMobile SwitchMultipleCategories' size={22} />
-              <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchMultipleCategories'>
-                <div>
-                  <p>Choose multiple categories to create a custom view with a combined and sorted list.</p>
+    </>
+
+  )
+  const resetButton = (
+    <SwitchesReveal delay={0.9} slideFrom='left' enabled={aggregatedSwitch}>
+    <ScaleOnTapButtonWrapper>
+                <div className='custom-button resetCategoriesButton' style={{display: aggregatedSwitch? 'flex' : ' none'}} onClick={()=> resetCategories()}>
+                  Reset
+                <GrPowerReset className='GrPowerReset' />
                 </div>
-              </Tooltip>
+    </ScaleOnTapButtonWrapper>
+    </SwitchesReveal>
+  )
+  const switchesDiv = (
+    <FormGroup className='formGroupMobileSwitch'>
+    <div className="switchDivMargin switchMultipleCategoriesDiv">
+      <FormControlLabel
+        control={<CustomSwitch isOn={aggregatedSwitch} onClick={() => handleAggregationSwitchChange(!aggregatedSwitch)} />}
+        label={aggregateSwitchElementTitle}
+        className='formControlLabelMobile'
+      />
+      <IoInformationCircleSharp className=' IoInformationCircleSharpMobile SwitchMultipleCategories' size={22} />
+      <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchMultipleCategories'>
+        <div>
+          <p>Choose multiple categories to create a custom view with a combined and sorted list.</p>
+        </div>
+      </Tooltip>
+    </div>
+
+
+    <SwitchesReveal duration={0.3} slideFrom='left' enabled={aggregatedSwitch}>
+      <div className="switchDiv limitDiv switchDivMargin" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
+        <div className="switchLeftSideMobile">
+          <FormControlLabel
+            control={<CustomSwitch isOn={listLimitSwitch} onClick={() => handleLimitSwitchChange(!listLimitSwitch)} />}
+            label={listLImitSwitchElementTitle}
+            className='formControlLabelMobile'
+          />
+          <IoInformationCircleSharp className='IoInformationCircleSharpMobile SwitchLimitDiv' size={22} />
+          <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitDiv'>
+            <div>
+              <p>Control the maximum number of items displayed on the list.</p>
             </div>
-
-
-            <SwitchesReveal duration={0.3} slideFrom='left' enabled={aggregatedSwitch}>
-              <div className="switchDiv limitDiv switchDivMargin" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
-                <div className="switchLeftSideMobile">
-                  <FormControlLabel
-                    control={<CustomSwitch isOn={listLimitSwitch} onClick={() => handleLimitSwitchChange(!listLimitSwitch)} />}
-                    label={listLImitSwitchElementTitle}
-                    className='formControlLabelMobile'
-                  />
-                  <IoInformationCircleSharp className='IoInformationCircleSharpMobile SwitchLimitDiv' size={22} />
-                  <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitDiv'>
-                    <div>
-                      <p>Control the maximum number of items displayed on the list.</p>
-                    </div>
-                  </Tooltip>
-                </div>
-
-                <SwitchesReveal slideAmount={0} enabled={listLimitSwitch} >
-                  <div className="inputDivMobile" >
-                    <ScaleOnTapButtonWrapper className='flexCenter'>
-                      <AiFillMinusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleAmountChange(false)} />
-                    </ScaleOnTapButtonWrapper>
-                    <div className="numberInputMobile" style={{ margin: 0, padding: 0 }}>{amount}</div>
-                    <ScaleOnTapButtonWrapper className='flexCenter'>
-                      <AiFillPlusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleAmountChange(true)} />
-                    </ScaleOnTapButtonWrapper>
-                  </div>
-
-                </SwitchesReveal>
-              </div>
-            </SwitchesReveal>
-
-            <SwitchesReveal delay={0.5} slideFrom='left' enabled={aggregatedSwitch}>
-              <div className="switchDiv limitPerCategoryDiv switchDivMargin" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
-                <div className="switchLeftSideMobile">
-                  <FormControlLabel
-                    control={< CustomSwitch isOn={categoryLimitSwitch} onClick={() => handleCategoryLimitSwitchChange(!categoryLimitSwitch)} />}
-                    label={categoryLImitSwitchElementTitle}
-                    className='formControlLabelMobile'
-                  />
-                  <IoInformationCircleSharp className='IoInformationCircleSharpMobile SwitchLimitPerCategory' size={22} />
-                  <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitPerCategory'>
-                    <div>
-                      <p>Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
-                    </div>
-                  </Tooltip>
-                </div>
-                <SwitchesReveal slideAmount={0} enabled={categoryLimitSwitch}>
-                  <div className="inputDivMobile" >
-                    <ScaleOnTapButtonWrapper className='flexCenter'>
-                      <AiFillMinusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(false)} />
-                    </ScaleOnTapButtonWrapper>
-                    <div className="numberInputMobile" style={{ margin: 0, padding: 0 }}>{categoryAmount}</div>
-                    <ScaleOnTapButtonWrapper className='flexCenter'>
-                      <AiFillPlusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(true)} />
-                    </ScaleOnTapButtonWrapper>
-                  </div>
-                </SwitchesReveal>
-
-              </div>
-            </SwitchesReveal>
-
-          </FormGroup>
+          </Tooltip>
         </div>
 
-      </Slide>
-
-      <Line height="2px" width="100%" margin='0 0 20px 0' color={contrastColor} radius="4px" />
-      <div style={{ display: isAnimating ? 'block' : 'none' }}>
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
-          <p>
-            <Skeleton style={{ marginBottom: '10px' }} count={10} />
-          </p>
-        </SkeletonTheme>
-      </div>
-      <div className="dataDiv" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
-        {data && (
-          <div className='categoriesButtonDiv'>
-            {allCategories && allCategories.length > 0 && (
-              <>
-                <span
-                  onClick={() => handleCategoryClicked(allCategories[0])}
-                  className={`categoryButtonMobile textRolePage ${getCategoryButtonClass(allCategories[0])}`}
-                  key={allCategories[0]}>
-                  {_.startCase(allCategories[0])}
-                </span>
-
-                {splitAndInterleaveCategories(
-                  // @ts-expect-error
-                  allCategories.slice(1).sort((a, b) => a.length - b.length)
-                ).map((category, i) => (
-                  <span
-                    onClick={() => handleCategoryClicked(category)}
-                    className={`categoryButtonMobile textRolePage ${getCategoryButtonClass(category)}`}
-                    key={`${category}${i}`}>
-                    <Reveal className='RevealCategoryButtonMobile' enabled={framerMotionEnabled} duration={0.3} delay={i / 10}>
-                      <div className="">
-                        {_.startCase(category)}
-                      </div>
-                    </Reveal>
-
-                  </span>
-                ))}
-              </>
-            )}
+        <SwitchesReveal slideAmount={0} enabled={listLimitSwitch} >
+          <div className="inputDivMobile" >
+            <ScaleOnTapButtonWrapper className='flexCenter'>
+              <AiFillMinusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleAmountChange(false)} />
+            </ScaleOnTapButtonWrapper>
+            <div className="numberInputMobile" style={{ margin: 0, padding: 0 }}>{amount}</div>
+            <ScaleOnTapButtonWrapper className='flexCenter'>
+              <AiFillPlusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleAmountChange(true)} />
+            </ScaleOnTapButtonWrapper>
           </div>
-        )}
-        <Reveal enabled={framerMotionEnabled}>
-          <div className="techListDiv" >
-            {techList.map((techCount, index) => (
-              <AnimatePresence
-                key={`${techCount.id}${index}${selectedCategory}}`}
-                mode='popLayout'
+
+        </SwitchesReveal>
+      </div>
+    </SwitchesReveal>
+
+    <SwitchesReveal delay={0.5} slideFrom='left' enabled={aggregatedSwitch}>
+      <div className="switchDiv limitPerCategoryDiv switchDivMargin" style={{ display: aggregatedSwitch ? 'flex' : 'none' }}>
+        <div className="switchLeftSideMobile">
+          <FormControlLabel
+            control={< CustomSwitch isOn={categoryLimitSwitch} onClick={() => handleCategoryLimitSwitchChange(!categoryLimitSwitch)} />}
+            label={categoryLImitSwitchElementTitle}
+            className='formControlLabelMobile'
+          />
+          <IoInformationCircleSharp className='IoInformationCircleSharpMobile SwitchLimitPerCategory' size={22} />
+          <Tooltip style={tooltipStyle} place='bottom' anchorSelect='.SwitchLimitPerCategory'>
+            <div>
+              <p>Specify the maximum number of items per category  (maximum is {techItemsPerCategory} items).</p>
+            </div>
+          </Tooltip>
+        </div>
+        <SwitchesReveal slideAmount={0} enabled={categoryLimitSwitch}>
+          <div className="inputDivMobile" >
+            <ScaleOnTapButtonWrapper className='flexCenter'>
+              <AiFillMinusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(false)} />
+            </ScaleOnTapButtonWrapper>
+            <div className="numberInputMobile" style={{ margin: 0, padding: 0 }}>{categoryAmount}</div>
+            <ScaleOnTapButtonWrapper className='flexCenter'>
+              <AiFillPlusCircle className='PLusMinusIconMobile' color={contrastColor} onClick={() => handleCategoryAmountChange(true)} />
+            </ScaleOnTapButtonWrapper>
+          </div>
+        </SwitchesReveal>
+
+      </div>
+    </SwitchesReveal>
+      {resetButton}
+
+  </FormGroup>
+  )
+  const skeletonDiv = (
+    <div style={{ display: isAnimating ? 'block' : 'none' }}>
+    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+      <p>
+        <Skeleton style={{ marginBottom: '10px' }} count={10} />
+      </p>
+    </SkeletonTheme>
+  </div>
+  )
+  function chunkArray(array: string [], chunkSize: number) {
+    const result = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+      result.push(array.slice(i, i + chunkSize));
+    }
+    return result;
+  }
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  const categoriesDiv = (
+    <div className="dataDiv" style={{ display: isAnimating ? 'none' : 'flex', flexDirection: 'column', flexGrow: 1 }}>
+      {data && (
+        <div className='categoriesButtonDiv'>
+          {allCategories && allCategories.length > 0 && (
+            <Slider className='sliderMobile' {...settings}>
+              {chunkArray(allCategories, 4).map((categoryChunk, slideIndex) => (
+                <div className='categoriesSliderDiv' key={slideIndex}>
+                  {categoryChunk.map((category: string, i: number) => (
+                    <div
+                      onClick={() => handleCategoryClicked(category)}
+                      className={`categoryButtonMobile textRolePage ${getCategoryButtonClass(category)}`}
+                      key={`${category}${i}`}>
+                      {_.startCase(category)}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </Slider>
+          )}
+        </div>
+      )}
+
+    </div>
+  );
+const techRowsDiv = (
+<Reveal enabled={framerMotionEnabled}>
+        <div className="techListDiv">
+          {techList.map((techCount, index) => (
+            <AnimatePresence
+              key={`${techCount.id}${index}${selectedCategory}}`}
+              mode='popLayout'
+            >
+              <motion.div
+                key={`${techCount.id}${index}`}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={textVariants}
+                transition={{ delay: index / techRowTransitionSpeed }}
+                className='TechRowWrapperMotionDiv'
               >
-                <motion.div
-                  key={`${techCount.id}${index}`}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  variants={textVariants}
-                  transition={{ delay: index / techRowTransitionSpeed }}
-                  className='TechRowWrapperMotionDiv'
-                >
-                  <TechRowMobile
-                    totalListingsAmount={totalListingsCount}
-                    maxCount={totalListingsCount}
-                    maxLineWidth={maxLineWidths}
-                    key={index}
-                    tech={techCount.tech}
-                    count={showPercentage ? calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount}
-                    showPercentage={showPercentage}
-                    category={techCount.category}
-                    showCategory={showCategoriesWithTechRow}
-                  />
-                </motion.div>
-              </AnimatePresence>
-            ))}
-          </div>
-        </Reveal>
-      </div>
+                <TechRowMobile
+                  totalListingsAmount={totalListingsCount}
+                  maxCount={totalListingsCount}
+                  maxLineWidth={maxLineWidths}
+                  key={index}
+                  tech={techCount.tech}
+                  count={showPercentage ? calculatePercentages(techCount.amount, totalListingsCount) : techCount.amount}
+                  showPercentage={showPercentage}
+                  category={techCount.category}
+                  showCategory={showCategoriesWithTechRow}
+                />
+              </motion.div>
+            </AnimatePresence>
+          ))}
+        </div>
+      </Reveal>
+)
+  return (
+    <div className="containerRolePage section  heightAndBorder">
+      <Slide enabled={framerMotionEnabled} slideFrom='left'>
+        <div>
+          {headerAndAmountToggler}
+          <Line height="2px" width="100%" color={contrastColor} radius="4px" />
+          {switchesDiv}
+        </div>
+      </Slide>
+      <Line height="2px" width="100%" margin='0 0 20px 0' color={contrastColor} radius="4px" />
+        {skeletonDiv}
+        {categoriesDiv}
+        {techRowsDiv}
       <br />
     </div>
   );
